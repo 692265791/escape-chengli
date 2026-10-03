@@ -102,5 +102,21 @@
   setTimeout(function(){ if(!window.__ENTERED){ window.__ENTERED=true; location.href="game.html"+(_ch2?("?chapter="+_ch2):""); } }, 6000);
 })();
 </script>
+<div id="pageFade" style="position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;z-index:9999;transition:opacity .4s ease;"></div>
+<script>
+(function(){
+  var fade = document.getElementById("pageFade");
+  /* 页面加载后，黑幕从 1 淡出到 0 */
+  fade.style.opacity = "1";
+  requestAnimationFrame(function(){
+    setTimeout(function(){ fade.style.opacity = "0"; }, 60);
+  });
+  /* 跳转前，黑幕淡入到 1 */
+  var origHref = location.href;
+  window.addEventListener("beforeunload", function(){
+    fade.style.opacity = "1";
+  });
+})();
+</script>
 </body>
 </html>

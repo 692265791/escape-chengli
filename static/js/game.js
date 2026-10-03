@@ -129,10 +129,13 @@
   }
 
   function crossFadeBg(url) {
+    // 保证 bg 永远可见
+    $bg.style.backgroundImage = "url('" + url + "')";
+    $bg.classList.add("show");
+    // 交叉淡入到 bgNext（可选装饰）
     $bgNext.style.backgroundImage = "url('" + url + "')";
     $bgNext.classList.add("show", "zoom");
     setTimeout(function () {
-      $bg.style.backgroundImage = "url('" + url + "')";
       $bgNext.classList.remove("show", "zoom");
     }, 800);
   }
@@ -323,24 +326,104 @@
   function typeText(html, done) {
     typing = true;
     finished = false;
+
+    /* 把 html 拆成“可见字符”序列，同时保留标签结构 */
     var tmp = document.createElement("div");
     tmp.innerHTML = html;
-    var full = tmp.innerHTML;
-    $text.innerHTML = "";
-    var speed = window.__typeSpeed || 28;
-    if (speed <= 0) { $text.innerHTML = full; typing = false; finished = true; if (done) done(); return; }
-    var i = 0;
-    var visibleLen = full.replace(/<[^>]*>/g, "").length;
-    typeTimer = setInterval(function () {
-      i++;
-      $text.innerHTML = sliceHtml(full, i);
-      if (i >= visibleLen) {
-        clearInterval(typeTimer);
-        typing = false;
-        $text.innerHTML = full;
-        if (done) done();
+    var chars = [];
+    (function walk(n){
+      for (var i = 0; i < n.childNodes.length; i++){
+        var c = n.childNodes[i];
+        if (c.nodeType === 3){
+          for (var k = 0; k < c.nodeValue.length; k++){
+            chars.push({ ch: c.nodeValue[k], html: null });
+          }
+        } else if (c.nodeType === 1){
+          var open = c.outerHTML.match(/^<[^>]+>/)[0];
+          var close = "</" + c.tagName.toLowerCase() + ">";
+          var start = chars.length;
+          chars.push({ ch: "", html: open, isOpen: true, tag: c.tagName.toLowerCase() });
+          (function walkInner(el){
+            for (var j = 0; j < el.childNodes.length; j++){
+              var cc = el.childNodes[j];
+              if (cc.nodeType === 3){
+                for (var kk = 0; kk < cc.nodeValue.length; kk++){
+                  chars.push({ ch: cc.nodeValue[kk], html: null });
+                }
+              } else if (cc.nodeType === 1){
+                walkInner(cc);
+              }
+            }
+          })(c);
+          chars.push({ ch: "", html: close, isClose: true, tag: c.tagName.toLowerCase() });
+        }
       }
-    }, speed);
+    })(tmp);
+
+    /* 用 span 逐字渲染 */
+    $text.innerHTML = "";
+    var frag = document.createDocumentFragment();
+    var spans = [];
+    chars.forEach(function(c){
+      if (c.html){
+        /* 标签：用一个 span 包裹，本身不显示字符 */
+        var tagSpan = document.createElement("span");
+        tagSpan.dataset.tag = c.tag;
+        if (c.isOpen) tagSpan.dataset.role = "open";
+        else tagSpan.dataset.role = "close";
+        frag.appendChild(tagSpan);
+        return;
+      }
+      var sp = document.createElement("span");
+      sp.className = "tw-char";
+      sp.textContent = c.ch === " " ? "\u00A0" : c.ch;
+      frag.appendChild(sp);
+      spans.push(sp);
+    });
+    $text.appendChild(frag);
+
+    /* 按 span 逐字揭示（保留原有 class 效果） */
+    var speed = window.__typeSpeed || 28;
+    if (speed <= 0){
+      spans.forEach(function(sp){ sp.classList.add("tw-on"); });
+      typing = false; finished = true;
+      if (done) done();
+      return;
+    }
+
+    var idx = 0;
+    var lastT = 0;
+    var rafId = null;
+
+    function step(ts){
+      if (!typing) return;
+      if (!lastT) lastT = ts;
+      var dt = ts - lastT;
+
+      if (dt >= speed){
+        lastT = ts;
+        var sp = spans[idx];
+        if (sp){
+          sp.classList.add("tw-on");
+          /* 标点符号延迟稍长 */
+          var ch = sp.textContent;
+          if ("，。！？；：、".indexOf(ch) !== -1) {
+            /* 标点后多加 1.6 倍间隔 */
+            lastT = ts - speed * 0.6;
+          }
+        }
+        idx++;
+        if (idx >= spans.length){
+          typing = false;
+          finished = true;
+          if (done) done();
+          return;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    }
+    rafId = requestAnimationFrame(step);
+    typeTimer = { clear: function(){ typing = false; if (rafId) cancelAnimationFrame(rafId); } };
   }
 
   function sliceHtml(html, count) {

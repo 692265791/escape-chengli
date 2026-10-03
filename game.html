@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#f2f2f4">
 <title>逃离程丽</title>
-<link rel="stylesheet" href="static/css/game-all.min.css">
-<link rel="stylesheet" href="static/css/fx.css">
-<link rel="stylesheet" href="static/css/ui_patch.css">
+<link rel="stylesheet" href="static/css/skin.css">
 
 <style>
 .ls-overlay{position:fixed;inset:0;z-index:8800;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
@@ -36,6 +34,7 @@ body.ui-dark .ls-info span{color:#9a9aa0;}
 body.ui-dark .ls-btn{background:#2a2a30;color:#e0e0e4;}
 body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
 </style>
+<link rel="stylesheet" href="static/lib/animate.min.css">
 </head>
 <body class="game-page mode-normal">
 
@@ -57,37 +56,15 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
       <div class="san-bar"><i id="sanFill"></i></div>
       <span class="san-num" id="sanNum">0</span>
     </div>
-    <div class="san-box mem-box" title="记忆值">
-      <span class="san-label">记忆值</span>
-      <div class="san-bar mem-bar"><i id="memFill"></i></div>
-      <span class="san-num" id="memNum">100</span>
-    </div>
-    <div class="san-box stam-box" title="精力">
-      <span class="san-label">精力</span>
-      <div class="san-bar stam-bar"><i id="stamFill"></i></div>
-      <span class="san-num" id="stamNum">100</span>
-    </div>
-    <div class="time-chip" id="timeChip">上午</div>
-    <button class="topbar-btn" id="btnSettings" title="设置">设置</button>
     <button class="topbar-btn" id="btnMenu" title="菜单">菜单</button>
   </div>
 </header>
 
 <main class="dialog-wrap" id="dialogWrap">
   <div class="info-bar" id="infoBar">
-    <div class="qk-wrap">
-      <button type="button" class="qk-menu-btn" id="qkMenuBtn" aria-label="菜单">菜单</button>
-      <div class="qk-panel" id="qkPanel">
-        <button type="button" id="qkChapters">章节选择</button>
-        <button type="button" id="qkSettings">UI 设置</button>
-        <button type="button" id="qkHome">返回主页</button>
-        <button type="button" id="qkClose">继续游戏</button>
-      </div>
-    </div>
-    <button type="button" class="qk-menu-btn" id="qkMap" style="display:none;margin-left:6px">地图</button>
-        <div class="chapter-tag" id="chapterTag"></div>
+    <div class="chapter-tag" id="chapterTag"></div>
   </div>
-    <div class="speaker-bar" id="speakerBar">
+  <div class="speaker-bar" id="speakerBar">
       <span class="speaker-name" id="speakerName"></span>
     </div>
 
@@ -182,5 +159,254 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
   setTimeout(bind, 800); setTimeout(bind, 2000);
 })();
 </script>
+<script id="menu-fix">
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var menu = document.getElementById("menuOverlay");
+    var btnMenu = document.getElementById("btnMenu");
+    var btnCloseMenu = document.getElementById("btnCloseMenu");
+    var btnHome = document.getElementById("btnHome");
+    var btnChapters = document.getElementById("btnChapters");
+    var chaptersOv = document.getElementById("chaptersOverlay");
+    var chapterList = document.getElementById("chapterList");
+    var btnCloseChapters = document.getElementById("btnCloseChapters");
+
+    /* 1) 顶栏菜单按钮 → 打开菜单弹窗 */
+    if (btnMenu && menu) btnMenu.addEventListener("click", function(){ menu.classList.add("show"); });
+
+    /* 2) 菜单里「继续游戏」 → 关菜单 */
+    if (btnCloseMenu && menu) btnCloseMenu.addEventListener("click", function(){ menu.classList.remove("show"); });
+
+    /* 3) 菜单里「返回主页」 */
+    if (btnHome) btnHome.addEventListener("click", function(){ location.href = "index.html"; });
+
+    /* 4) 点遮罩关闭菜单 */
+    if (menu) menu.addEventListener("click", function(e){ if (e.target === menu) menu.classList.remove("show"); });
+
+    /* 5) 菜单里「章节选择」 → 打开章节弹窗 */
+    function loadChapters(){
+      if (!chapterList || chapterList.dataset.loaded === "1") return;
+      chapterList.dataset.loaded = "1";
+      chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">加载中…</p>';
+      var url = (window.GAME_API && window.GAME_API.chapters) || "chapters.json";
+      fetch(url).then(function(r){ return r.json(); }).then(function(d){
+        var arr = d.chapters || d || [];
+        chapterList.innerHTML = "";
+        if (!arr.length){ chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">暂无章节</p>'; return; }
+        arr.forEach(function(c){
+          var b = document.createElement("button");
+          b.className = "chapter-item";
+          b.innerHTML = '<span>' + (c.title || c.id) + '</span><span class="ch-status">' + (c.available ? "可游玩" : "敬请期待") + '</span>';
+          if (c.available){
+            b.addEventListener("click", function(){
+              location.replace("game.html?chapter=" + (c.id || "ch1") + "&t=" + Date.now());
+            });
+          } else {
+            b.classList.add("locked");
+          }
+          chapterList.appendChild(b);
+        });
+      }).catch(function(){
+        chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">加载失败</p>';
+      });
+    }
+
+    if (btnChapters) btnChapters.addEventListener("click", function(){
+      if (menu) menu.classList.remove("show");
+      if (chaptersOv) chaptersOv.classList.add("show");
+      loadChapters();
+    });
+
+    if (btnCloseChapters && chaptersOv) btnCloseChapters.addEventListener("click", function(){ chaptersOv.classList.remove("show"); });
+    if (chaptersOv) chaptersOv.addEventListener("click", function(e){ if (e.target === chaptersOv) chaptersOv.classList.remove("show"); });
+  });
+})();
+</script>
+
+<script src="static/js/anim-bridge.js"></script>
+</div>
+<button id="cheatFab" type="button" title="作弊菜单" aria-label="作弊菜单">⚙</button>
+<div id="cheatPanel">
+  <h4>作弊菜单</h4>
+  <button data-act="san-99999">恐惧值 -99999</button>
+  <button data-act="san-0">恐惧值 归零</button>
+  <button data-act="god">无敌模式 开/关</button>
+  <button data-act="ch1">跳转 第一章</button>
+  <button data-act="ch2">跳转 第二章</button>
+  <button data-act="close">收起</button>
+</div>
+<style>
+#cheatFab{
+  position:fixed;right:18px;bottom:18px;z-index:99998;
+  touch-action:none;user-select:none;-webkit-user-select:none;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,#c8102e,#5a0e18);
+  color:#fff;border:none;font-size:22px;line-height:1;
+  cursor:pointer;display:none;
+  box-shadow:0 0 0 2px rgba(200,16,46,.55),0 10px 30px rgba(200,16,46,.6);
+  animation:cheatPulse 2s ease-in-out infinite;
+  transition:transform .2s;
+}
+#cheatFab:active{transform:scale(.92)}
+@keyframes cheatPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+#cheatFab.show{display:block}
+#cheatPanel{
+  position:fixed;right:18px;bottom:84px;z-index:99999;
+  width:220px;padding:14px;
+  background:rgba(15,15,18,.98);border:1px solid rgba(200,16,46,.5);
+  border-radius:10px;display:none;flex-direction:column;gap:8px;
+  box-shadow:0 20px 60px rgba(200,16,46,.5);
+  backdrop-filter:blur(12px);
+}
+#cheatPanel.show{display:flex;animation:cpIn .25s cubic-bezier(.16,1,.3,1)}
+@keyframes cpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#cheatPanel h4{
+  margin:0 0 6px;font-size:12px;color:#e8e8ea;
+  letter-spacing:.3em;text-align:center;
+  padding-bottom:8px;border-bottom:1px solid rgba(200,16,46,.3);
+}
+#cheatPanel button{
+  border:1px solid rgba(200,16,46,.35);background:#1a0608;color:#e8e8ea;
+  padding:10px 12px;border-radius:6px;font-size:13px;
+  cursor:pointer;text-align:left;transition:all .15s;
+}
+#cheatPanel button:hover{background:#2a0a0e;border-color:#c8102e}
+#cheatPanel button[data-act="close"]{text-align:center;color:#8a8a8e}
+</style>
+<script id="cheat-hack">
+(function(){
+  var FAB = document.getElementById("cheatFab");
+  var PANEL = document.getElementById("cheatPanel");
+  if (!FAB || !PANEL) return;
+  var KEY = "ec_cheat_enabled";
+  var GOD_KEY = "ec_god_mode";
+  var POS_KEY = "ec_cheat_pos";
+
+  function isOn(){ try{ return localStorage.getItem(KEY)==="1"; }catch(e){ return false; } }
+
+  /* ---------- 位置恢复 ---------- */
+  function applyPos(){
+    try {
+      var p = JSON.parse(localStorage.getItem(POS_KEY) || "null");
+      if (p && typeof p.x === "number"){
+        FAB.style.left = p.x + "px";
+        FAB.style.top = p.y + "px";
+        FAB.style.right = "auto";
+        FAB.style.bottom = "auto";
+        return true;
+      }
+    } catch(e){}
+    return false;
+  }
+  function savePos(x, y){
+    try { localStorage.setItem(POS_KEY, JSON.stringify({x:x, y:y})); } catch(e){}
+  }
+  applyPos();
+
+  /* ---------- 显示/隐藏同步 ---------- */
+  function sync(){
+    if (isOn()) FAB.classList.add("show");
+    else { FAB.classList.remove("show"); PANEL.classList.remove("show"); }
+  }
+  sync();
+  setInterval(sync, 1000);
+
+  /* ---------- 拖拽逻辑 ---------- */
+  var dragging = false, moved = false;
+  var startX = 0, startY = 0, offsetX = 0, offsetY = 0;
+
+  function getPoint(e){
+    if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function onDown(e){
+    if (e.button && e.button !== 0) return;
+    dragging = true; moved = false;
+    var p = getPoint(e);
+    var r = FAB.getBoundingClientRect();
+    startX = p.x; startY = p.y;
+    offsetX = p.x - r.left;
+    offsetY = p.y - r.top;
+    FAB.style.transition = "none";
+    e.preventDefault && e.preventDefault();
+  }
+  function onMove(e){
+    if (!dragging) return;
+    var p = getPoint(e);
+    var dx = p.x - startX;
+    var dy = p.y - startY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    var nx = p.x - offsetX;
+    var ny = p.y - offsetY;
+    /* 限制在视口内 */
+    var maxX = window.innerWidth - FAB.offsetWidth;
+    var maxY = window.innerHeight - FAB.offsetHeight;
+    nx = Math.max(0, Math.min(maxX, nx));
+    ny = Math.max(0, Math.min(maxY, ny));
+    FAB.style.left = nx + "px";
+    FAB.style.top = ny + "px";
+    FAB.style.right = "auto";
+    FAB.style.bottom = "auto";
+    e.preventDefault && e.preventDefault();
+  }
+  function onUp(e){
+    if (!dragging) return;
+    dragging = false;
+    FAB.style.transition = "";
+    if (moved){
+      var r = FAB.getBoundingClientRect();
+      savePos(r.left, r.top);
+    } else {
+      /* 没移动 = 点击，切换面板 */
+      PANEL.classList.toggle("show");
+    }
+  }
+
+  FAB.addEventListener("mousedown", onDown);
+  FAB.addEventListener("touchstart", onDown, { passive: false });
+  document.addEventListener("mousemove", onMove);
+  document.addEventListener("touchmove", onMove, { passive: false });
+  document.addEventListener("mouseup", onUp);
+  document.addEventListener("touchend", onUp);
+
+  /* ---------- 恐惧值操作 ---------- */
+  function setSan(v){
+    if (window.__setVars) window.__setVars({ san: v });
+    var num = document.getElementById("sanNum");
+    var fill = document.getElementById("sanFill");
+    if (num) num.textContent = v;
+    if (fill) fill.style.width = (v < 0 ? 0 : Math.min(100, v)) + "%";
+  }
+
+  PANEL.addEventListener("click", function(e){
+    var t = e.target;
+    if (!t || t.tagName !== "BUTTON") return;
+    var act = t.dataset.act;
+    if (act === "san-99999") setSan(-99999);
+    else if (act === "san-0") setSan(0);
+    else if (act === "god"){
+      try {
+        if (localStorage.getItem(GOD_KEY) === "1") localStorage.removeItem(GOD_KEY);
+        else localStorage.setItem(GOD_KEY, "1");
+      } catch(e){}
+    }
+    else if (act === "ch1") location.replace("game.html?chapter=ch1&t=" + Date.now());
+    else if (act === "ch2") location.replace("game.html?chapter=ch2&t=" + Date.now());
+    else if (act === "close") PANEL.classList.remove("show");
+  });
+
+  /* 无敌：每 300ms 压回 -99999 */
+  setInterval(function(){
+    try {
+      if (localStorage.getItem(GOD_KEY) === "1" && isOn()){
+        setSan(-99999);
+      }
+    } catch(e){}
+  }, 300);
+})();
+</script>
+
 </body>
 </html>
