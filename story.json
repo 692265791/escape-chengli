@@ -1,0 +1,1513 @@
+{
+  "meta": {
+    "title": "逃离程丽",
+    "version": "1.0",
+    "start": "ch1_gate",
+    "chapter": "第一章 · 初见",
+    "vars": {
+      "san": 0,
+      "trust": 0,
+      "obey": 0
+    }
+  },
+  "nodes": {
+    "ch1_gate": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "zoom",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "转学第一天。"
+        },
+        {
+          "type": "narration",
+          "text": "九月的阳光很好，好得像是刻意摆出来的。"
+        },
+        {
+          "type": "narration",
+          "text": "我站在校门口，手里攥着那张皱巴巴的转学通知单。"
+        },
+        {
+          "type": "inner",
+          "text": "（学校的名字……我好像从来没听过。通知单上也没写。）"
+        },
+        {
+          "type": "narration",
+          "text": "铁门是开着的。里面很安静。"
+        },
+        {
+          "type": "narration",
+          "text": "安静得不像一所正在上课的学校。"
+        }
+      ],
+      "next": "ch1_board",
+      "choices": []
+    },
+    "ch1_board": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "门卫室旁边立着一块公告栏。玻璃蒙着灰，里面贴着几张泛黄的纸。"
+        },
+        {
+          "type": "narration",
+          "text": "最上面那张，是这学期的班级名单。八年级（5）班。"
+        },
+        {
+          "type": "inner",
+          "text": "（我分到的就是五班。先看看有没有认识的名字吧。）"
+        },
+        {
+          "type": "narration",
+          "text": "我从上往下看。第一个名字，第二个名字……"
+        },
+        {
+          "type": "narration",
+          "text": "第十二个。"
+        },
+        {
+          "type": "narration",
+          "text": "那是我。"
+        }
+      ],
+      "effects": {
+        "san": 2
+      },
+      "next": "ch1_board2",
+      "choices": []
+    },
+    "ch1_board2": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我的名字，工工整整地印在名单上。钢笔字，墨色很深。"
+        },
+        {
+          "type": "narration",
+          "text": "可这份名单的落款日期，是三个月前。"
+        },
+        {
+          "type": "inner",
+          "text": "（三个月前……我根本还没转学。是谁把我的名字写上去的？）"
+        },
+        {
+          "type": "narration",
+          "text": "更奇怪的是——我的名字上面，被人用红笔划了一道。"
+        },
+        {
+          "type": "narration",
+          "text": "划得很用力，纸都破了。像是要把这个名字，从名单上抹掉。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_gate_open",
+      "choices": []
+    },
+    "ch1_gate_open": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "身后传来铁门拉动的声音。我回头。"
+        },
+        {
+          "type": "narration",
+          "text": "校门不知什么时候关上了，只留一条缝。缝里没有人。"
+        },
+        {
+          "type": "narration",
+          "text": "门卫室的窗户黑着，里面好像一直就没坐过人。"
+        },
+        {
+          "type": "inner",
+          "text": "（……先进去吧。总不能第一天就站在门口。）"
+        }
+      ],
+      "next": "ch1_playground",
+      "choices": []
+    },
+    "ch1_playground": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "fade",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "穿过操场。"
+        },
+        {
+          "type": "narration",
+          "text": "红色的塑胶跑道被晒得发白，远处有几个模糊的人影在跑。"
+        },
+        {
+          "type": "narration",
+          "text": "他们跑得很慢，慢得像在水里。"
+        },
+        {
+          "type": "narration",
+          "text": "我数了数：七个。"
+        },
+        {
+          "type": "narration",
+          "text": "等我再抬头，跑道上没有人了。一个人都没有。"
+        },
+        {
+          "type": "inner",
+          "text": "（……是我看错了吗。）"
+        }
+      ],
+      "effects": {
+        "san": 2
+      },
+      "next": "ch1_corridor",
+      "choices": []
+    },
+    "ch1_corridor": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "教学楼比外面看着旧。走廊的灯只亮了一半，另一半灭了，也没人修。"
+        },
+        {
+          "type": "narration",
+          "text": "墙上的名人画像挂得歪歪扭扭。每一张脸都朝着同一个方向。"
+        },
+        {
+          "type": "narration",
+          "text": "朝着走廊尽头。"
+        },
+        {
+          "type": "inner",
+          "text": "（五班在尽头。）"
+        },
+        {
+          "type": "narration",
+          "text": "我往前走。脚步声在空走廊里被放大了好几倍。"
+        },
+        {
+          "type": "narration",
+          "text": "走到一半，我听见身后也有脚步声。"
+        },
+        {
+          "type": "narration",
+          "text": "和我同样的节奏，半步不差。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_corridor_choice",
+      "choices": []
+    },
+    "ch1_corridor_choice": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（身后有东西跟着我。怎么办？）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "猛地回头看看是谁",
+          "next": "ch1_corridor_turn",
+          "effects": {
+            "san": 4,
+            "trust": 1
+          }
+        },
+        {
+          "text": "假装没听见，加快脚步",
+          "next": "ch1_corridor_hurry",
+          "effects": {
+            "obey": 1,
+            "san": 2
+          }
+        },
+        {
+          "text": "贴着墙，屏住呼吸等它过去",
+          "next": "ch1_corridor_hide",
+          "effects": {
+            "san": 3
+          }
+        }
+      ]
+    },
+    "ch1_corridor_turn": {
+      "bg": "corridor_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我猛地回头。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊里空空的。灯管闪了一下。"
+        },
+        {
+          "type": "narration",
+          "text": "地上，就在我刚才站的位置后面两步，有一双湿脚印。"
+        },
+        {
+          "type": "narration",
+          "text": "鞋印很小，像是女老师的平底鞋。"
+        },
+        {
+          "type": "narration",
+          "text": "脚印朝着我的方向，一步，一步。"
+        },
+        {
+          "type": "narration",
+          "text": "到我脚边，断了。"
+        },
+        {
+          "type": "inner",
+          "text": "（它一直就在我背后。）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "ch1_chengli_enter",
+      "choices": []
+    },
+    "ch1_corridor_hurry": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没回头，加快脚步。"
+        },
+        {
+          "type": "narration",
+          "text": "身后的脚步声也跟着快了起来。"
+        },
+        {
+          "type": "narration",
+          "text": "我快，它快。我慢，它慢。"
+        },
+        {
+          "type": "inner",
+          "text": "（不能回头。不能回头。）"
+        },
+        {
+          "type": "narration",
+          "text": "我几乎是跑着冲到走廊尽头的。"
+        },
+        {
+          "type": "narration",
+          "text": "身后的声音，在我推开门的一瞬间，停了。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_chengli_enter",
+      "choices": []
+    },
+    "ch1_corridor_hide": {
+      "bg": "corridor_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我贴着墙，屏住呼吸。"
+        },
+        {
+          "type": "narration",
+          "text": "脚步声一点点靠近。近到我能听见——不是走路的声音。"
+        },
+        {
+          "type": "narration",
+          "text": "是鞋底在地面上，被拖着走的声音。"
+        },
+        {
+          "type": "narration",
+          "text": "它经过我身边。"
+        },
+        {
+          "type": "narration",
+          "text": "我没有看。我只看见余光里，有一截裙摆，蓝灰色的，很旧。"
+        },
+        {
+          "type": "inner",
+          "text": "（……过去了。）"
+        },
+        {
+          "type": "narration",
+          "text": "声音远去。我这才敢喘气。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "ch1_chengli_enter",
+      "choices": []
+    },
+    "ch1_chengli_enter": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我推开门。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里坐满了人，却安静得可怕。所有人低着头，没人看我。"
+        },
+        {
+          "type": "narration",
+          "text": "只有讲台边的那个人，抬起了头。"
+        },
+        {
+          "type": "narration",
+          "text": "她站在讲台边，手里夹着课本，抬头看我的那一下，很轻。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽。五班的英语老师。这是我后来才知道的名字。"
+        },
+        {
+          "type": "narration",
+          "text": "她比我想象的年轻，也比我想象的好看。二十七八，眉眼干净，头发扎得很利落。"
+        },
+        {
+          "type": "narration",
+          "text": "她看我的眼神不算冷，也没有多热情。就像在看一件刚送到的、需要登记的东西。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "哦。新来的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "后门那个空位，坐吧。"
+        },
+        {
+          "type": "narration",
+          "text": "她说完就低下头继续翻书，好像我这个人已经登记完了。"
+        },
+        {
+          "type": "inner",
+          "text": "（……就这样？没有自我介绍，没有欢迎，也没有问我的名字。）"
+        }
+      ],
+      "next": "ch1_seat",
+      "choices": []
+    },
+    "ch1_seat": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走到后排坐下。前桌的椅子空着，桌角压着一张英语卷子。"
+        },
+        {
+          "type": "narration",
+          "text": "卷子上的名字被涂黑了，只剩一个红叉。"
+        },
+        {
+          "type": "narration",
+          "text": "同桌是个女生，从我来就没抬过头。她的课本摊开在第一页，第一个词。"
+        },
+        {
+          "type": "narration",
+          "text": "Steamed chicken soup。汽锅鸡。"
+        },
+        {
+          "type": "inner",
+          "text": "（她盯着这个词已经很久了，久得像被定住了一样。）"
+        },
+        {
+          "type": "narration",
+          "text": "铃响了。程丽合上书，抬起头。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "这节课，听写。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "新同学也一起。错一个，抄五十遍。"
+        }
+      ],
+      "next": "ch1_choice1",
+      "choices": []
+    },
+    "ch1_choice1": {
+      "bg": "classroom",
+      "sprite": "chengli_ruler",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她从讲台抽屉里抽出一把红木戒尺，在掌心轻轻敲了两下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "规矩先讲清楚。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "在我的课上，我说什么，你做什么。"
+        },
+        {
+          "type": "narration",
+          "text": "她说这话的时候没看我，但我知道她在说我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "听话的孩子，我一向喜欢。"
+        },
+        {
+          "type": "inner",
+          "text": "（这句是笑着说的。可她手里的戒尺，敲得很有节奏。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "低头翻开课本，照她说的做",
+          "next": "ch1_obey_line",
+          "effects": {
+            "obey": 2,
+            "trust": 1
+          }
+        },
+        {
+          "text": "抬头直视她，问她名单的事",
+          "next": "ch1_brave_line",
+          "effects": {
+            "trust": 2,
+            "san": 3
+          }
+        },
+        {
+          "text": "假装顺从，观察班里其他人",
+          "next": "ch1_watch_line",
+          "effects": {
+            "obey": 1,
+            "san": 1
+          }
+        },
+        {
+          "text": "什么都不做，沉默地盯着戒尺",
+          "next": "ch1_silent_line",
+          "effects": {
+            "san": 2
+          }
+        }
+      ]
+    },
+    "ch1_obey_line": {
+      "bg": "classroom",
+      "sprite": "chengli_smile",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我低下头，翻开课本，把第一页摊平。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽走过来，站在我桌边，看了两秒。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "满意",
+          "text": "不错。学得快。"
+        },
+        {
+          "type": "inner",
+          "text": "（她的语气松了一点。可我不知道，这算不算好事。）"
+        },
+        {
+          "type": "narration",
+          "text": "她伸手，帮我把翘起的书角按平。指尖很凉。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "乖。"
+        }
+      ],
+      "next": "ch1_dictation",
+      "choices": []
+    },
+    "ch1_brave_line": {
+      "bg": "classroom",
+      "sprite": "chengli_angry",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我抬起头，看着她的眼睛。"
+        },
+        {
+          "type": "narration",
+          "text": "“老师，门口那份名单，为什么有我的名字？还是三个月前的。”"
+        },
+        {
+          "type": "narration",
+          "text": "教室里安静了一瞬。所有人都把头埋得更低了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "……名单？"
+        },
+        {
+          "type": "narration",
+          "text": "她笑了一下，笑意没到眼睛。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "每个转来的学生，都会问这个问题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "问完的，都留下了。"
+        },
+        {
+          "type": "inner",
+          "text": "（留下？留在哪？）"
+        }
+      ],
+      "next": "ch1_dictation",
+      "choices": []
+    },
+    "ch1_watch_line": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我点头，装作去翻书，眼睛却扫过教室。"
+        },
+        {
+          "type": "narration",
+          "text": "三十几个人，全是同一个姿势：低头，看第一页，不动。"
+        },
+        {
+          "type": "narration",
+          "text": "没有一个人翻页。没有一个人写字。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们不是在听课。他们像是在等什么。）"
+        },
+        {
+          "type": "narration",
+          "text": "同桌的课本上，那一页的边角被翻得起了毛，可页码还是 1。"
+        },
+        {
+          "type": "inner",
+          "text": "（她翻了一整个学期的第一页。）"
+        }
+      ],
+      "effects": {
+        "san": 2
+      },
+      "next": "ch1_dictation",
+      "choices": []
+    },
+    "ch1_silent_line": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没动。也没说话。只是看着那把戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "红木很旧，边上有一圈磨白了。像用了很多年。"
+        },
+        {
+          "type": "narration",
+          "text": "也像……打过很多人。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "怎么，不听话？"
+        },
+        {
+          "type": "inner",
+          "text": "（她的声音还是平的。可教室里的空气，一下子沉了。）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_dictation",
+      "choices": []
+    },
+    "ch1_dictation": {
+      "bg": "classroom",
+      "sprite": "chengli_book",
+      "spriteAnim": "approach",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她翻开书，念第一个词。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "Steamed chicken soup。"
+        },
+        {
+          "type": "narration",
+          "text": "我低头写。笔尖划过纸面，沙沙响。"
+        },
+        {
+          "type": "narration",
+          "text": "写完抬头，发现整间教室，只有我一个人在写。"
+        },
+        {
+          "type": "inner",
+          "text": "（其他人……都在看我。三十几双眼睛，一动不动。）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "写完了？那就念出来。念对了，今天放你走。"
+        }
+      ],
+      "minigame": {
+        "type": "spell",
+        "opts": {
+          "time": 25
+        },
+        "winEffects": {
+          "san": -3,
+          "trust": 1,
+          "obey": 1
+        },
+        "loseEffects": {
+          "san": 12
+        },
+        "winNext": "ch1_win",
+        "loseNext": "ch1_lose"
+      },
+      "choices": []
+    },
+    "ch1_win": {
+      "bg": "classroom",
+      "sprite": "chengli_smile",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我念对了。一个字都没错。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里的空气，好像松了一点。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "满意",
+          "text": "很好。我最喜欢的就是你这种孩子。"
+        },
+        {
+          "type": "narration",
+          "text": "她合上书，转身走回讲台。走到一半，停下来。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "明天，还要来哦。"
+        },
+        {
+          "type": "inner",
+          "text": "（这句话不是询问。是通知。）"
+        }
+      ],
+      "next": "ch1_afterclass",
+      "choices": []
+    },
+    "ch1_lose": {
+      "bg": "classroom",
+      "sprite": "chengli_ruler",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我念错了。念到第三个音节的时候，停住了。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽没有生气。她只是慢慢走过来，戒尺在掌心敲着。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "错了。错一个，抄五十遍。这是规矩。"
+        },
+        {
+          "type": "narration",
+          "text": "她伸手，把我面前那张卷子抽走，翻到背面。"
+        },
+        {
+          "type": "narration",
+          "text": "背面写着我的名字。可那字迹，不是我的。"
+        },
+        {
+          "type": "narration",
+          "text": "名字旁边，还有一个红叉。"
+        },
+        {
+          "type": "inner",
+          "text": "（这个红叉，和名单上那个……一模一样。）"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "ch1_copy_punish",
+      "choices": []
+    },
+    "ch1_copy_punish": {
+      "bg": "classroom_e",
+      "sprite": "chengli_ruler",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她推过来一沓纸，和一支笔。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "抄。抄到我满意为止。"
+        },
+        {
+          "type": "narration",
+          "text": "我拿起笔。纸上的字开始自己动。"
+        },
+        {
+          "type": "inner",
+          "text": "（……得抄完。不然今天走不了。）"
+        }
+      ],
+      "minigame": {
+        "type": "copy",
+        "opts": {
+          "time": 30,
+          "count": 2
+        },
+        "winEffects": {
+          "san": -2,
+          "obey": 2
+        },
+        "loseEffects": {
+          "san": 10
+        },
+        "winNext": "ch1_afterclass",
+        "loseNext": "ch1_afterclass"
+      },
+      "choices": []
+    },
+    "ch1_afterclass": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "fade",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "下课铃响了。"
+        },
+        {
+          "type": "narration",
+          "text": "铃声响了很久，久得不像学校该有的铃声。"
+        },
+        {
+          "type": "narration",
+          "text": "同学们一个一个站起来，往外走。没有人说话，也没有人看我。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽还站在讲台边，看着我。脸上没有表情。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "回去吧。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "明天见。"
+        },
+        {
+          "type": "inner",
+          "text": "（又是这句。明天见。）"
+        }
+      ],
+      "next": "ch1_corridor_back",
+      "choices": []
+    },
+    "ch1_corridor_back": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我收拾东西往外走。走到门口，回头看了一眼。"
+        },
+        {
+          "type": "narration",
+          "text": "教室后排，那个女生抬起头，对我张了张嘴。"
+        },
+        {
+          "type": "narration",
+          "text": "没有声音。但我看懂了她的口型。"
+        },
+        {
+          "type": "narration",
+          "text": "她说的是——"
+        },
+        {
+          "type": "narration",
+          "text": "“别回头。”"
+        },
+        {
+          "type": "inner",
+          "text": "（……我已经回头了。）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_corridor_walk",
+      "choices": []
+    },
+    "ch1_corridor_walk": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "走廊比早上更暗了。"
+        },
+        {
+          "type": "narration",
+          "text": "窗户外的天，看不出是几点。"
+        },
+        {
+          "type": "narration",
+          "text": "我往前走。路过一间间教室，每间里面都还亮着灯。"
+        },
+        {
+          "type": "narration",
+          "text": "每间里面，都有一个老师在讲课。"
+        },
+        {
+          "type": "narration",
+          "text": "每一个老师的背影，都长得一模一样。"
+        },
+        {
+          "type": "inner",
+          "text": "（……快点走。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "ch1_stairs",
+      "choices": []
+    },
+    "ch1_stairs": {
+      "bg": "corridor_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "楼梯口的灯在闪。"
+        },
+        {
+          "type": "narration",
+          "text": "我下楼。一楼，二楼……"
+        },
+        {
+          "type": "narration",
+          "text": "我数着楼层。数到第六层的时候，我停住了。"
+        },
+        {
+          "type": "narration",
+          "text": "这栋楼只有四层。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我数错了。一定是数错了。）"
+        },
+        {
+          "type": "narration",
+          "text": "我继续往下走。楼梯像是没有尽头。"
+        },
+        {
+          "type": "narration",
+          "text": "身后，传来戒尺敲击掌心的声音。"
+        },
+        {
+          "type": "narration",
+          "text": "一下。两下。"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "ch1_stairs_run",
+      "choices": []
+    },
+    "ch1_stairs_run": {
+      "bg": "corridor_e",
+      "sprite": "",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我开始跑。"
+        },
+        {
+          "type": "narration",
+          "text": "脚步声在楼梯间里回荡。"
+        },
+        {
+          "type": "narration",
+          "text": "快一点，再快一点——"
+        }
+      ],
+      "minigame": {
+        "type": "qte",
+        "opts": {
+          "time": 1.5
+        },
+        "winEffects": {
+          "san": -2,
+          "trust": 1
+        },
+        "loseEffects": {
+          "san": 9
+        },
+        "winNext": "ch1_gate_out",
+        "loseNext": "ch1_stairs_caught"
+      },
+      "choices": []
+    },
+    "ch1_stairs_caught": {
+      "bg": "corridor_e",
+      "sprite": "chengli_ruler",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我慢了半拍。"
+        },
+        {
+          "type": "narration",
+          "text": "一只手，轻轻搭上了我的肩膀。很凉。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "跑什么？"
+        },
+        {
+          "type": "narration",
+          "text": "我没有回头。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "明天还要来哦。"
+        },
+        {
+          "type": "narration",
+          "text": "那只手松开了。脚步声远去。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我喘了很久，才敢动。）"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "ch1_gate_out",
+      "choices": []
+    },
+    "ch1_gate_out": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "fade",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我冲出一楼大门。"
+        },
+        {
+          "type": "narration",
+          "text": "外面的天已经全黑了。"
+        },
+        {
+          "type": "narration",
+          "text": "操场空荡荡的。早上那些跑步的人影，一个都不在了。"
+        },
+        {
+          "type": "narration",
+          "text": "我快步走向校门。"
+        },
+        {
+          "type": "narration",
+          "text": "校门是开着的。和早上一样。"
+        },
+        {
+          "type": "narration",
+          "text": "门卫室里，还是没有人。"
+        }
+      ],
+      "next": "ch1_road",
+      "choices": []
+    },
+    "ch1_road": {
+      "bg": "playground_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "走出校门，我回头看了一眼。"
+        },
+        {
+          "type": "narration",
+          "text": "教学楼所有的窗户，都亮着灯。"
+        },
+        {
+          "type": "narration",
+          "text": "三楼最右边那扇窗后面，站着一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "看不清脸。但我知道她在看我。"
+        },
+        {
+          "type": "inner",
+          "text": "（……快回家。）"
+        },
+        {
+          "type": "narration",
+          "text": "我转身，往家的方向走。"
+        },
+        {
+          "type": "narration",
+          "text": "身后，路灯一盏一盏地，在我走过去之后熄灭。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "ch1_home",
+      "choices": []
+    },
+    "ch1_home": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "fade",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "回家要经过一条小巷。"
+        },
+        {
+          "type": "narration",
+          "text": "巷子里没有灯。我摸黑往前走。"
+        },
+        {
+          "type": "narration",
+          "text": "走到一半，我听见身后传来铃声。"
+        },
+        {
+          "type": "narration",
+          "text": "是学校的下课铃。"
+        },
+        {
+          "type": "narration",
+          "text": "可是现在，早就过了放学的时间。"
+        },
+        {
+          "type": "inner",
+          "text": "（不要回头。不要回头。）"
+        },
+        {
+          "type": "narration",
+          "text": "我没有回头。一直走到巷口，看见了自家楼下的灯光。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "ch1_home_door",
+      "choices": []
+    },
+    "ch1_home_door": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "到家了。"
+        },
+        {
+          "type": "narration",
+          "text": "钥匙插进锁孔，转动。门开了。"
+        },
+        {
+          "type": "narration",
+          "text": "客厅的灯亮着，桌上摆着饭菜，还热着。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈从厨房探出头。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "温和",
+          "text": "回来啦？第一天怎么样？"
+        },
+        {
+          "type": "inner",
+          "text": "（我该怎么回答她？）"
+        }
+      ],
+      "next": "ch1_home_choice",
+      "choices": []
+    },
+    "ch1_home_choice": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（要说实话吗。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "“挺好的。老师人不错。”",
+          "next": "ch1_home_lie",
+          "effects": {
+            "obey": 2,
+            "trust": 1
+          }
+        },
+        {
+          "text": "“妈，我们学校……有几层楼？”",
+          "next": "ch1_home_truth",
+          "effects": {
+            "trust": 2,
+            "san": 3
+          }
+        },
+        {
+          "text": "什么都不说，低头吃饭",
+          "next": "ch1_home_silent",
+          "effects": {
+            "san": 2
+          }
+        }
+      ]
+    },
+    "ch1_home_lie": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "挺好的。老师人不错。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "笑",
+          "text": "那就好。快洗手吃饭。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐下，拿起筷子。"
+        },
+        {
+          "type": "narration",
+          "text": "饭菜很香。可我吃着吃着，忽然发现——"
+        },
+        {
+          "type": "narration",
+          "text": "桌上摆了三副碗筷。"
+        },
+        {
+          "type": "narration",
+          "text": "我们家，只有两个人。"
+        },
+        {
+          "type": "inner",
+          "text": "（第三副碗筷，是谁的？）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "ch1_home_end",
+      "choices": []
+    },
+    "ch1_home_truth": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "迟疑",
+          "text": "妈，我们学校……有几层楼？"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈切菜的手停了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "平淡",
+          "text": "四层啊。怎么了？"
+        },
+        {
+          "type": "narration",
+          "text": "我看着她的背影。"
+        },
+        {
+          "type": "narration",
+          "text": "她一直没有回头。"
+        },
+        {
+          "type": "narration",
+          "text": "从进门到现在，她一次都没有回头看我。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她的声音，是从哪来的？）"
+        }
+      ],
+      "effects": {
+        "san": 7
+      },
+      "next": "ch1_home_end",
+      "choices": []
+    },
+    "ch1_home_silent": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没说话，坐下吃饭。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈也没再问。"
+        },
+        {
+          "type": "narration",
+          "text": "饭桌上很安静。只有筷子碰碗的声音。"
+        },
+        {
+          "type": "narration",
+          "text": "吃到一半，我抬头。"
+        },
+        {
+          "type": "narration",
+          "text": "对面的椅子上，坐着一个穿蓝灰色裙子的女人。"
+        },
+        {
+          "type": "narration",
+          "text": "她也在吃饭。动作很慢，很安静。"
+        },
+        {
+          "type": "narration",
+          "text": "她抬起头，对我笑了一下。"
+        },
+        {
+          "type": "inner",
+          "text": "（程、程老师……？）"
+        }
+      ],
+      "effects": {
+        "san": 9
+      },
+      "next": "ch1_home_end",
+      "choices": []
+    },
+    "ch1_home_end": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "blackout",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "那天晚上，我做了个梦。"
+        },
+        {
+          "type": "narration",
+          "text": "梦里我坐在教室里，桌上摊着一本英语书。"
+        },
+        {
+          "type": "narration",
+          "text": "书翻在第一页，第一个词。"
+        },
+        {
+          "type": "narration",
+          "text": "Steamed chicken soup。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬起头。讲台边的程丽，也在看我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "明天见。"
+        },
+        {
+          "type": "narration",
+          "text": "闹钟响了。我睁开眼，天亮了。"
+        },
+        {
+          "type": "narration",
+          "text": "书包就放在床头，装着昨天的作业。"
+        },
+        {
+          "type": "inner",
+          "text": "（今天还得去学校。）"
+        },
+        {
+          "type": "narration",
+          "text": "我伸手去拉书包拉链——里面多了一样东西。"
+        },
+        {
+          "type": "narration",
+          "text": "一张对折的纸。展开，是那份班级名单。"
+        },
+        {
+          "type": "narration",
+          "text": "我的名字还在第十二个。红笔那道划痕，比昨天长了一截。"
+        },
+        {
+          "type": "narration",
+          "text": "纸的背面，用铅笔写着一行小字："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "",
+          "emo": "",
+          "text": "“明天，别忘了带笔。”"
+        },
+        {
+          "type": "narration",
+          "text": "笔迹很轻，像是怕被人看见。"
+        },
+        {
+          "type": "narration",
+          "text": "第一章 · 完"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "ch1_end",
+        "title": "第一章 · 结局 · 明天见",
+        "desc": "梦里，程丽对你说：「明天见。」闹钟响，天亮了。书包里多了一张名单，红笔划痕比昨天更长，背面写着——「明天，别忘了带笔。」\n\n【本作第 1 个结局 · 收集成功】\n第二章「回声」等待着你。"
+      }
+    }
+  }
+}

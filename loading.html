@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#fafafa">
+<title>正在进入 · 逃离程丽</title>
+<link rel="stylesheet" href="static/css/apple.css">
+<style>
+.load-stage{max-width:420px;margin:0 auto;padding:0 24px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;}
+.load-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;}
+.load-sub{font-size:14px;color:var(--sub);margin-bottom:44px;}
+.bar{height:4px;border-radius:4px;background:#ececee;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:#1d1d1f;border-radius:4px;transition:width .2s ease;}
+.pct{margin-top:12px;font-size:13px;color:#a1a1a6;}
+.loadingname{margin-top:20px;font-size:12.5px;color:#a1a1a6;min-height:18px;}
+.tip{margin-top:30px;font-size:14px;color:var(--sub);min-height:22px;transition:opacity .3s;}
+</style>
+</head>
+<body class="min">
+
+<div class="load-stage">
+  <h1 class="load-title">逃离程丽</h1>
+  <p class="load-sub">v2.0</p>
+
+  <div class="bar"><i id="fill"></i></div>
+  <div class="pct" id="pct">0%</div>
+  <div class="loadingname" id="loadingName">准备中…</div>
+
+  <p class="tip" id="tip">正在推开那扇铁门。</p>
+</div>
+
+<script>
+(function(){
+  var fill=document.getElementById("fill"),pct=document.getElementById("pct");
+  var lname=document.getElementById("loadingName"),tip=document.getElementById("tip");
+  var tips=["正在推开那扇铁门。","名单上，第十二个名字。","走廊的灯，只亮了一半。","身后，有脚步声。","五班到了。"];
+
+  // 预缓存：正常背景 7 张（全）+ 诡异背景 4 张（一半）。其余交给 game.js 边玩边预热。
+  var N="static/img/场景背景（正常）/";
+  var E="static/img/场景背景（诡异悲凉）/";
+  var PRE=[
+    // 正常 7
+    ["操场",N+"操场全貌.webp"],
+    ["操场台",N+"操场台子.webp"],
+    ["教学楼",N+"教学楼一楼门口.webp"],
+    ["篮球场",N+"教学楼篮球场一带.webp"],
+    ["教室",N+"教室.webp"],
+    ["教室后门",N+"教室后门.webp"],
+    ["楼道",N+"楼道.webp"],
+    // 诡异 4（一半）
+    ["诡异·教室",E+"教室.webp"],
+    ["诡异·楼道",E+"楼道.webp"],
+    ["诡异·教学楼",E+"教学楼一楼门口.webp"],
+    ["诡异·操场",E+"操场全貌.webp"]
+  ];
+  var total=PRE.length+1;
+  var done=0;
+
+  function bump(name){
+    done++;
+    var p=Math.round(done/total*100);
+    fill.style.width=p+"%"; pct.textContent=p+"%";
+    if(name) lname.textContent="正在加载："+name;
+  }
+  function preloadImg(src){
+    return new Promise(function(res){
+      var im=new Image();
+      var fin=false;
+      function done(){ if(fin) return; fin=true; res(); }
+      im.onload=done; im.onerror=done;
+      setTimeout(done, 2500);   // 单张最多等 2.5 秒
+      im.src=encodeURI(src);
+    });
+  }
+
+  var chain=Promise.resolve();
+  PRE.forEach(function(it){
+    chain=chain.then(function(){ return preloadImg(it[1]).then(function(){ bump(it[0]); }); });
+  });
+  chain=chain.then(function(){
+    lname.textContent="正在加载：剧情数据";
+    return fetch("story.json").then(function(){ bump("剧情数据"); }).catch(function(){ bump("剧情数据"); });
+  });
+  chain.then(function(){
+    lname.textContent="准备就绪";
+    tip.textContent="进入中…";
+    var _ch=new URLSearchParams(location.search).get("ch");
+    setTimeout(function(){ window.__ENTERED=true; location.href="game.html"+(_ch?("?chapter="+_ch):""); }, 300);
+  });
+
+  var ti=0;
+  setInterval(function(){
+    if(done>=total) return;
+    ti=(ti+1)%tips.length; tip.style.opacity=0;
+    setTimeout(function(){ tip.textContent=tips[ti]; tip.style.opacity=1; },300);
+  },1600);
+
+  // 保险：无论加载如何，最多 6 秒后强制进入
+  var _ch2=new URLSearchParams(location.search).get("ch");
+  window.__ENTERED=false;
+  setTimeout(function(){ if(!window.__ENTERED){ window.__ENTERED=true; location.href="game.html"+(_ch2?("?chapter="+_ch2):""); } }, 6000);
+})();
+</script>
+</body>
+</html>

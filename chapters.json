@@ -1,0 +1,18 @@
+{
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "第一章 · 初见",
+      "start": "ch1_gate",
+      "available": true,
+      "updated": "已更新"
+    },
+    {
+      "id": "ch2",
+      "title": "第二章 · 混乱",
+      "start": "c2_b1",
+      "available": true,
+      "updated": "已更新"
+    }
+  ]
+}

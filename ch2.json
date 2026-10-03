@@ -1,0 +1,2096 @@
+{
+  "meta": {
+    "chapter": "第二章 · 混乱",
+    "start": "c2_b1",
+    "vars": {
+      "memory": 100,
+      "stamina": 100,
+      "trust": 0,
+      "san": 0,
+      "obey": 0,
+      "clue": 0
+    }
+  },
+  "nodes": {
+    "c2_b1": {
+      "bg": "classroom_e",
+      "anim": "blackout",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "闹钟响的时候，我以为是周一。"
+        },
+        {
+          "type": "narration",
+          "text": "可手机屏幕上，日期还停在昨天。时间，一分钟都没往前走。"
+        },
+        {
+          "type": "inner",
+          "text": "（……怎么回事？）"
+        },
+        {
+          "type": "narration",
+          "text": "书包还在床头，那张写着名字的名单，又出现了。"
+        },
+        {
+          "type": "narration",
+          "text": "红笔划痕比昨天更长，背面那行小字还在——「明天，别忘了带笔。」"
+        },
+        {
+          "type": "narration",
+          "text": "我盯着那行字，盯了很久。窗外是灰的，一片云都不动。"
+        },
+        {
+          "type": "narration",
+          "text": "第二章 · 混乱"
+        }
+      ],
+      "next": "c2_pressure",
+      "fx": [
+        {
+          "type": "overlay",
+          "text": "第 二 章",
+          "x": 50,
+          "y": 40,
+          "size": 30,
+          "hold": 1800
+        }
+      ]
+    },
+    "c2_pressure": {
+      "bg": "classroom_e",
+      "anim": "heartbeat",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "vignette",
+          "dur": 2000
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我坐起来，头很沉。像有个人在脑子里，用指节一下一下敲。"
+        },
+        {
+          "type": "inner",
+          "text": "（昨天那些事……名单、程老师、梦里那句“明天见”……）"
+        },
+        {
+          "type": "inner",
+          "text": "（想不清楚。越想，越乱。）"
+        },
+        {
+          "type": "narration",
+          "text": "我扶着墙站起来。手在抖，不知道是冷，还是别的什么。"
+        },
+        {
+          "type": "narration",
+          "text": "压力太大了。大到连呼吸，都得提醒自己一下一下来。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c2_hallucination1"
+    },
+    "c2_hallucination1": {
+      "bg": "corridor_e",
+      "sprite": "chengli_normal",
+      "anim": "flicker",
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "vignette",
+          "dur": 1800
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我拉开房门。走廊尽头，站着一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "蓝灰色裙子，背对着我，站在光里。"
+        },
+        {
+          "type": "inner",
+          "text": "（程……程老师？）"
+        },
+        {
+          "type": "narration",
+          "text": "她慢慢转过身。是程丽。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你醒了。"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c2_hallucination2"
+    },
+    "c2_hallucination2": {
+      "bg": "corridor_e",
+      "sprite": "chengli_smile",
+      "anim": "glitch",
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "shake"
+        },
+        {
+          "type": "invert",
+          "dur": 200
+        },
+        {
+          "type": "spriteShake",
+          "dur": 700
+        },
+        {
+          "type": "spriteGlitch",
+          "dur": 700
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我还没来得及说话，她的脸——闪了一下。"
+        },
+        {
+          "type": "narration",
+          "text": "像老式电视的信号不好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "裂",
+          "text": "你 又 忘 了 。"
+        },
+        {
+          "type": "narration",
+          "text": "她的身影在走廊里疯狂闪烁，一会儿近，一会儿远。"
+        },
+        {
+          "type": "narration",
+          "text": "蓝灰色的裙子，一会儿是干净的颜色，一会儿染着暗红。"
+        },
+        {
+          "type": "inner",
+          "text": "（不对……这不是真的。这不是真的——）"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "c2_hallucination3"
+    },
+    "c2_hallucination3": {
+      "bg": "corridor_e",
+      "sprite": "chengli_angry",
+      "anim": "shake",
+      "fx": [
+        {
+          "type": "glitch",
+          "dur": 900
+        },
+        {
+          "type": "flashword",
+          "text": "明 天 见",
+          "x": 50,
+          "y": 34,
+          "size": 34
+        },
+        {
+          "type": "shake"
+        },
+        {
+          "type": "spriteGlitch",
+          "dur": 900
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她朝我走近。一步，两步。每一步，身影都在抖。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "失真",
+          "text": "明天见。明天见。明天——"
+        },
+        {
+          "type": "narration",
+          "text": "声音叠在一起，一层压着一层，像有很多个她同时在说话。"
+        },
+        {
+          "type": "inner",
+          "text": "（我捂住了耳朵。）"
+        },
+        {
+          "type": "narration",
+          "text": "再抬头的时候——"
+        },
+        {
+          "type": "narration",
+          "text": "走廊空了。"
+        }
+      ],
+      "effects": {
+        "san": 10
+      },
+      "next": "c2_hallucination4"
+    },
+    "c2_hallucination4": {
+      "bg": "corridor_e",
+      "sprite": "",
+      "anim": "blackout",
+      "fx": [
+        {
+          "type": "whisper",
+          "lines": [
+            "这 不 是 真 的",
+            "这 不 是 真 的",
+            "这 不 是 真 的"
+          ],
+          "gap": 600
+        },
+        {
+          "type": "vignette",
+          "dur": 2200
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我靠着墙，喘气。走廊的灯，一下一下地亮。"
+        },
+        {
+          "type": "narration",
+          "text": "哪里还有什么程丽。从头到尾，只有我一个人站在这儿。"
+        },
+        {
+          "type": "inner",
+          "text": "（……是我自己看见的。）"
+        },
+        {
+          "type": "inner",
+          "text": "（压力太大，出现幻觉了。）"
+        },
+        {
+          "type": "narration",
+          "text": "我低下头。手心里，全是汗。"
+        },
+        {
+          "type": "narration",
+          "text": "可就在手心的汗里，我摸到了一样东西——一支笔。"
+        },
+        {
+          "type": "narration",
+          "text": "黑色的，笔身上刻着一行小字：「别忘了带笔。」"
+        },
+        {
+          "type": "inner",
+          "text": "（我……什么时候拿的这支笔？）"
+        }
+      ],
+      "effects": {
+        "san": 6,
+        "clue": 1
+      },
+      "next": "c2_after_hallu"
+    },
+    "c2_after_hallu": {
+      "bg": "corridor_e",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我攥着那支笔，站了很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（幻觉也好，真的也好。今天，我还得去学校。）"
+        },
+        {
+          "type": "narration",
+          "text": "我背起书包，推开门。"
+        },
+        {
+          "type": "narration",
+          "text": "门外，是天亮。"
+        }
+      ],
+      "next": "c2_road"
+    },
+    "c2_road": {
+      "bg": "school_gate_e",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "上学路安静得过分。"
+        },
+        {
+          "type": "narration",
+          "text": "路边的早点摊没开，公交站没有人，连鸟叫都没有。"
+        },
+        {
+          "type": "inner",
+          "text": "（像全世界都被按了暂停，只有我一个人在走。）"
+        },
+        {
+          "type": "narration",
+          "text": "我摸了摸口袋。那支笔还在。"
+        }
+      ],
+      "next": "c2_enter_school"
+    },
+    "c2_enter_school": {
+      "bg": "school_gate_e",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "校门口的大铁门开着。"
+        },
+        {
+          "type": "narration",
+          "text": "今天有学生了。三三两两，低着头往里走。"
+        },
+        {
+          "type": "narration",
+          "text": "没有人说话。脚步声齐齐的，像被谁数着拍子。"
+        },
+        {
+          "type": "inner",
+          "text": "（昨天……他们也这样吗？）"
+        },
+        {
+          "type": "narration",
+          "text": "我跟着人群往里走。公告栏上那张名单还在，我的名字还在第十二个。"
+        },
+        {
+          "type": "narration",
+          "text": "红笔的划痕，又长了一点。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c2_class_enter"
+    },
+    "c2_class_enter": {
+      "bg": "classroom_e",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我推开教室的门。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里的光很暗。窗帘拉着，只有讲台上方亮着一盏灯。"
+        },
+        {
+          "type": "narration",
+          "text": "班里坐满了人。我们班的同学，一个不少，全在。"
+        },
+        {
+          "type": "narration",
+          "text": "可没有一个人抬头。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们的脸……）"
+        },
+        {
+          "type": "narration",
+          "text": "每一张脸都木着。眼睛睁着，却像蒙了层灰。"
+        },
+        {
+          "type": "narration",
+          "text": "我同桌，还是那个盯着课本第一页的女生。"
+        },
+        {
+          "type": "narration",
+          "text": "Steamed chicken soup。还是那个词。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们好像……被什么东西定住了。跟昨天一模一样。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c2_take_seat"
+    },
+    "c2_take_seat": {
+      "bg": "classroom_e",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走到自己的座位坐下。"
+        },
+        {
+          "type": "narration",
+          "text": "椅子的温度是凉的。桌面上那道刻痕还在——「别回头。回头就出不去了。」"
+        },
+        {
+          "type": "inner",
+          "text": "（……是我自己刻的？）"
+        },
+        {
+          "type": "narration",
+          "text": "我抬起头。"
+        },
+        {
+          "type": "narration",
+          "text": "讲台前，站着一个人。"
+        }
+      ],
+      "choices": [
+        {
+          "text": "看讲台上是谁",
+          "next": "c2_chengli_appear",
+          "effects": {}
+        }
+      ]
+    },
+    "c2_chengli_appear": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "heartbeat",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "vignette",
+          "dur": 1800
+        },
+        {
+          "type": "spriteZoom",
+          "dur": 900
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "是程丽。"
+        },
+        {
+          "type": "narration",
+          "text": "蓝灰色裙子，站在讲台边。她手里，拿着那把红木戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "她看着全班，慢慢地，把戒尺在掌心敲了两下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "开学了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "老规矩，开学第一件事——考试。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里没有人出声。连呼吸都轻得像没有。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c2_exam_notice"
+    },
+    "c2_exam_notice": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "卷子我不发了。今天考的是听写。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我说一个词，你们写一个词。"
+        },
+        {
+          "type": "narration",
+          "text": "她顿了顿，目光扫过全班。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "写不出来的，错一个，抄五十遍。"
+        },
+        {
+          "type": "narration",
+          "text": "全班还是没有人动。像这句话，说了很多遍。"
+        },
+        {
+          "type": "narration",
+          "text": "然后，她补了一句——"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "对了，考试，要带笔。"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c2_pen_os"
+    },
+    "c2_pen_os": {
+      "bg": "classroom_e",
+      "anim": "flicker",
+      "fx": [
+        {
+          "type": "flashword",
+          "text": "带 笔",
+          "x": 50,
+          "y": 32,
+          "size": 32
+        },
+        {
+          "type": "glitch"
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "「要带笔。」"
+        },
+        {
+          "type": "narration",
+          "text": "这四个字，像针一样扎进我脑子里。"
+        },
+        {
+          "type": "inner",
+          "text": "（笔……笔！）"
+        },
+        {
+          "type": "narration",
+          "text": "我摸向口袋。那支黑色的笔，还在。刻着「别忘了带笔」的那支。"
+        },
+        {
+          "type": "inner",
+          "text": "（还好。还好我带了。）"
+        },
+        {
+          "type": "narration",
+          "text": "我把笔攥在手里。掌心全是汗。"
+        }
+      ],
+      "effects": {
+        "san": 2,
+        "clue": 1
+      },
+      "next": "c2_pen_think"
+    },
+    "c2_pen_think": {
+      "bg": "classroom_e",
+      "anim": "heartbeat",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "要 是 没 带 呢",
+            "要 是 没 带 呢"
+          ],
+          "gap": 700
+        },
+        {
+          "type": "overlay",
+          "text": "没 带 笔 呢",
+          "x": 50,
+          "y": 30,
+          "size": 26,
+          "hold": 1800
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我握着笔，脑子里冒出一个念头。"
+        },
+        {
+          "type": "inner",
+          "text": "（为什么……偏偏提醒我带笔？）"
+        },
+        {
+          "type": "inner",
+          "text": "（如果我没带笔，今天会怎么样？）"
+        },
+        {
+          "type": "inner",
+          "text": "（是不是没带笔，今天就……不会死？）"
+        },
+        {
+          "type": "narration",
+          "text": "这个念头一冒出来，后脖颈就凉了。"
+        },
+        {
+          "type": "inner",
+          "text": "（不。别想。想了也没用。笔在我手上。）"
+        },
+        {
+          "type": "narration",
+          "text": "我把笔尖对准纸面。手，有一点抖。"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c2_exam_start"
+    },
+    "c2_exam_start": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "好，开始。"
+        },
+        {
+          "type": "narration",
+          "text": "她翻开书，念第一个词。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "",
+          "text": "Steamed chicken soup。"
+        },
+        {
+          "type": "narration",
+          "text": "汽锅鸡。"
+        },
+        {
+          "type": "narration",
+          "text": "我低头，写下这三个词。笔尖划过纸面，沙沙响。"
+        },
+        {
+          "type": "narration",
+          "text": "写完抬头——"
+        },
+        {
+          "type": "narration",
+          "text": "整间教室，只有我一个人在写。"
+        },
+        {
+          "type": "inner",
+          "text": "（其他人……全都停着。笔都没拿。三十几个人，一动不动，看着我。）"
+        },
+        {
+          "type": "narration",
+          "text": "他们的眼睛，还是蒙着那层灰。可这一次，全都朝着我。"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "choices": [
+        {
+          "text": "不管他们，继续写",
+          "next": "c2_exam_continue",
+          "effects": {
+            "obey": 1
+          }
+        },
+        {
+          "text": "停下来，看他们",
+          "next": "c2_exam_watch",
+          "effects": {
+            "san": 3
+          }
+        },
+        {
+          "text": "抬头问程丽：他们为什么不写",
+          "next": "c2_exam_ask",
+          "effects": {
+            "trust": 1,
+            "san": 2
+          }
+        }
+      ],
+      "fx": [
+        {
+          "type": "overlay",
+          "text": "只 有 我 在 写",
+          "x": 50,
+          "y": 30,
+          "size": 24,
+          "hold": 1800
+        }
+      ]
+    },
+    "c2_exam_continue": {
+      "bg": "classroom_e",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没理他们，低着头，一个词一个词写下去。"
+        },
+        {
+          "type": "narration",
+          "text": "笔尖沙沙响。教室里，只有这一个声音。"
+        },
+        {
+          "type": "inner",
+          "text": "（写。只管写。写完今天就能过去。）"
+        }
+      ],
+      "next": "c2_exam_more"
+    },
+    "c2_exam_watch": {
+      "bg": "classroom_e",
+      "anim": "glitch",
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "static",
+          "dur": 700
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我停了笔，抬头看他们。"
+        },
+        {
+          "type": "narration",
+          "text": "三十几张脸，齐刷刷对着我。"
+        },
+        {
+          "type": "narration",
+          "text": "没有表情，没有眨眼。就那么看着。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们……在等我写错？）"
+        },
+        {
+          "type": "narration",
+          "text": "我后背发麻，赶紧低下头，继续写。"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c2_exam_more"
+    },
+    "c2_exam_ask": {
+      "bg": "classroom_e",
+      "sprite": "chengli_smile",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我举起手：「老师，他们为什么都不写？」"
+        },
+        {
+          "type": "narration",
+          "text": "程丽停了下来，看着我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "因为他们不用写。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平静",
+          "text": "他们早就写完了。写完了的人，就不用再写。"
+        },
+        {
+          "type": "inner",
+          "text": "（写完了……是什么意思？）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "笑",
+          "text": "只有你，还在写。"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c2_exam_more"
+    },
+    "c2_exam_more": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "下一个词。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "",
+          "text": "名单。"
+        },
+        {
+          "type": "narration",
+          "text": "名单。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她念的是「名单」。）"
+        },
+        {
+          "type": "narration",
+          "text": "我的笔停了一下。手心里那支笔，忽然变得很沉。"
+        },
+        {
+          "type": "narration",
+          "text": "我写下这两个字。写完，纸上的「名单」两个字，好像比别的字深了一点。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c2_exam_end_scene"
+    },
+    "c2_exam_end_scene": {
+      "bg": "classroom_e",
+      "anim": "blackout",
+      "fx": [
+        {
+          "type": "vignette",
+          "dur": 2000
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "写 完 了",
+            "就 不 用 再 写"
+          ],
+          "gap": 800
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "听写还在继续。一个词，又一个词。"
+        },
+        {
+          "type": "narration",
+          "text": "我写了很久。久到手指发酸，久到窗外的光，一点一点暗下去。"
+        },
+        {
+          "type": "narration",
+          "text": "最后，程丽合上了书。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "时间到。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "明天，把笔带上。"
+        },
+        {
+          "type": "inner",
+          "text": "（又是明天。）"
+        },
+        {
+          "type": "narration",
+          "text": "铃响了。教室里的人，齐刷刷站起来，像被同一根线牵着，往外走。"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c2_out_hall"
+    },
+    "c2_out_hall": {
+      "bg": "corridor_e",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我顺着走廊往外走。"
+        },
+        {
+          "type": "narration",
+          "text": "走到楼梯拐角的时候——"
+        },
+        {
+          "type": "narration",
+          "text": "有个人，从墙后面走出来，跟我撞了个满怀。"
+        },
+        {
+          "type": "narration",
+          "text": "书掉了一地。"
+        }
+      ],
+      "next": "c2_yu_bump"
+    },
+    "c2_yu_bump": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我抬头。是个男生。灰色卫衣，头发有点乱，脸很白。"
+        },
+        {
+          "type": "narration",
+          "text": "他蹲下去捡书，动作很慢，像是很久没做过这个动作。"
+        },
+        {
+          "type": "inner",
+          "text": "（……这个人是谁？）"
+        },
+        {
+          "type": "inner",
+          "text": "（我们班的脸，我差不多都记熟了。可这张脸，我一点印象都没有。）"
+        },
+        {
+          "type": "narration",
+          "text": "他捡起最后一本书，站起来，看着我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "……你也是五班的？"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c2_yu_talk"
+    },
+    "c2_yu_talk": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "我叫于硕。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "……你应该不记得我。"
+        },
+        {
+          "type": "inner",
+          "text": "（于硕？）"
+        },
+        {
+          "type": "inner",
+          "text": "（我在脑子里翻了一遍全班的名字。名单上、座位上、点名的时候……都没有这个人。）"
+        },
+        {
+          "type": "inner",
+          "text": "（他根本不该在这儿。）"
+        }
+      ],
+      "choices": [
+        {
+          "text": "你叫什么？我好像没见过你",
+          "next": "c2_yu_never",
+          "effects": {
+            "trust": 1
+          }
+        },
+        {
+          "text": "你也是五班的？我怎么不记得",
+          "next": "c2_yu_never",
+          "effects": {
+            "trust": 1
+          }
+        },
+        {
+          "text": "警惕地后退一步",
+          "next": "c2_yu_wary",
+          "effects": {
+            "san": 2
+          }
+        },
+        {
+          "text": "盯着他看，不说话",
+          "next": "c2_yu_stare",
+          "effects": {
+            "san": 2
+          }
+        }
+      ]
+    },
+    "c2_yu_never": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_watch",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "你",
+          "emo": "迟疑",
+          "text": "你也是五班的？我怎么……好像没见过你。"
+        },
+        {
+          "type": "narration",
+          "text": "他愣了一下。然后，很轻地笑了一下。那个笑，说不上高兴，倒像是松了口气。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "对。你没见过我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "因为我今天，才‘出现’。"
+        },
+        {
+          "type": "inner",
+          "text": "（……今天才出现？）"
+        }
+      ],
+      "effects": {
+        "trust": 2
+      },
+      "next": "c2_yu_reason"
+    },
+    "c2_yu_wary": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我后退了半步。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "怕什么。我又不是来抓你的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "恰恰相反。我是……刚醒过来的人。"
+        },
+        {
+          "type": "inner",
+          "text": "（醒过来？）"
+        }
+      ],
+      "effects": {
+        "trust": 1
+      },
+      "next": "c2_yu_reason"
+    },
+    "c2_yu_stare": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_watch",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没说话，盯着他。"
+        },
+        {
+          "type": "narration",
+          "text": "他也看着我，眼睛很亮。在整条走廊麻木的人里，这双眼睛亮得不正常。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "你在想，我是谁，为什么会在这儿，对不对。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "我也在想同样的问题。"
+        },
+        {
+          "type": "inner",
+          "text": "（他知道我在想什么。）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c2_yu_reason"
+    },
+    "c2_yu_reason": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_watch",
+      "anim": "none",
+      "fx": [
+        {
+          "type": "vignette",
+          "dur": 1800
+        }
+      ],
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "我是五班的。成绩很差的那种。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "差到……名单上都快没我这个人了。"
+        },
+        {
+          "type": "inner",
+          "text": "（成绩差、五班、名单上快没他……可我怎么一点印象都没有？）"
+        },
+        {
+          "type": "narration",
+          "text": "他像是看穿了我的疑惑，顿了顿。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "沉默",
+          "text": "你应该想不起来我的。因为在你原来的记忆里，根本没有我。"
+        },
+        {
+          "type": "inner",
+          "text": "（……什么意思。）"
+        }
+      ],
+      "effects": {
+        "san": 3,
+        "memory": 5
+      },
+      "next": "c2_yu_theory"
+    },
+    "c2_yu_theory": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "我本来……是不动的。跟他们一样。"
+        },
+        {
+          "type": "narration",
+          "text": "他抬了抬下巴，示意走廊里那些低着头走过的学生。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "像被定住。每天走同一条路，做同一件事。什么都不想。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "顿",
+          "text": "可是今天——我忽然想起来了。"
+        },
+        {
+          "type": "inner",
+          "text": "（想起来了？）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "低",
+          "text": "想起我叫于硕。想起我是五班的。想起我……不想再这样下去了。"
+        }
+      ],
+      "effects": {
+        "san": 4,
+        "trust": 2
+      },
+      "next": "c2_yu_butterfly"
+    },
+    "c2_yu_butterfly": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_watch",
+      "anim": "heartbeat",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "flashword",
+          "text": "蝴 蝶 效 应",
+          "x": 50,
+          "y": 30,
+          "size": 28
+        }
+      ],
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "我猜，是因为你。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我？）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "你昨天，是不是做了什么？打破了什么？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "这所学校是有规则的。谁该说话，谁该沉默，谁该被写进名单，都定死了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "顿",
+          "text": "可规则也有裂缝。你那一动，像往水里扔了块石头——"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "涟漪荡到我这儿，我就醒了。"
+        },
+        {
+          "type": "inner",
+          "text": "（蝴蝶效应……我昨天的一个举动，把他从‘定住’里摇醒了？）"
+        }
+      ],
+      "effects": {
+        "san": 4,
+        "clue": 1
+      },
+      "next": "c2_yu_ask"
+    },
+    "c2_yu_ask": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "你叫什么名字？"
+        },
+        {
+          "type": "narration",
+          "text": "我报了自己的名字。"
+        },
+        {
+          "type": "narration",
+          "text": "他点点头，像是把那几个字，在心里过了一遍。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "记住了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "从现在起，我们两个，是这学校里唯一还记得自己在活着的人。"
+        }
+      ],
+      "choices": [
+        {
+          "text": "问他：那我们能出去吗",
+          "next": "c2_yu_out",
+          "effects": {
+            "trust": 2
+          }
+        },
+        {
+          "text": "问他：你为什么要帮我",
+          "next": "c2_yu_why",
+          "effects": {
+            "trust": 1
+          }
+        },
+        {
+          "text": "不说话，看着他",
+          "next": "c2_yu_meet_end",
+          "effects": {
+            "san": 2
+          }
+        }
+      ]
+    },
+    "c2_yu_out": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_watch",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "你",
+          "emo": "问",
+          "text": "那我们……能出去吗？"
+        },
+        {
+          "type": "narration",
+          "text": "他沉默了一会儿。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "能。但不是现在。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "光靠一个人醒，是出不去的。要有人一起，把规则里的裂缝，撬大一点。"
+        },
+        {
+          "type": "inner",
+          "text": "（撬大裂缝……）"
+        }
+      ],
+      "effects": {
+        "clue": 1
+      },
+      "next": "c2_yu_meet_end"
+    },
+    "c2_yu_why": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "你",
+          "emo": "问",
+          "text": "你为什么要帮我？"
+        },
+        {
+          "type": "narration",
+          "text": "他笑了笑，那个笑有点苦。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "因为我不想再当名单上被划掉的那一个。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "认真",
+          "text": "帮你，也是帮我自己。"
+        }
+      ],
+      "effects": {
+        "trust": 2
+      },
+      "next": "c2_yu_meet_end"
+    },
+    "c2_yu_meet_end": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "走廊尽头，放学的铃声响了。"
+        },
+        {
+          "type": "narration",
+          "text": "那些麻木的学生，齐刷刷往校门口走。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "平淡",
+          "text": "走吧。今天先这样。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "于硕",
+          "emo": "轻",
+          "text": "明天……别忘了带笔。"
+        },
+        {
+          "type": "inner",
+          "text": "（又是这句话。）"
+        }
+      ],
+      "next": "c2_os_tomorrow"
+    },
+    "c2_os_tomorrow": {
+      "bg": "corridor_e",
+      "anim": "flicker",
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "明 天",
+            "又 是 明 天",
+            "又 是 明 天"
+          ],
+          "gap": 650
+        },
+        {
+          "type": "shake"
+        },
+        {
+          "type": "invert",
+          "dur": 220
+        },
+        {
+          "type": "vignette",
+          "dur": 1800
+        },
+        {
+          "type": "flashword",
+          "text": "循 环 ？",
+          "x": 50,
+          "y": 30,
+          "size": 30
+        }
+      ],
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（为什么……又是「明天」？）"
+        },
+        {
+          "type": "inner",
+          "text": "（从昨天开始，所有人都在跟我说「明天」。）"
+        },
+        {
+          "type": "inner",
+          "text": "（明天见。明天带笔。明天再来。明天、明天、明天——）"
+        },
+        {
+          "type": "narration",
+          "text": "我的太阳穴一跳一跳地疼。"
+        },
+        {
+          "type": "inner",
+          "text": "（难道……我陷入了循环？）"
+        },
+        {
+          "type": "narration",
+          "text": "这个念头刚冒出来，我立刻否定了它。"
+        },
+        {
+          "type": "inner",
+          "text": "（不。不对。不可能的。）"
+        },
+        {
+          "type": "inner",
+          "text": "（哪有什么循环。是我太累了。是我精神出问题了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（幻觉、幻听、记性变差……这些，都是我自己吓自己。）"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c2_deny"
+    },
+    "c2_deny": {
+      "bg": "corridor_e",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我深吸一口气，逼自己冷静。"
+        },
+        {
+          "type": "inner",
+          "text": "（对，就是压力太大。昨天考听写，今天又考。换谁都受不了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（只要好好睡一觉，明天就正常了。）"
+        },
+        {
+          "type": "narration",
+          "text": "我抬起头，想跟于硕说句话，缓一缓。"
+        },
+        {
+          "type": "narration",
+          "text": "「于硕，你——」"
+        },
+        {
+          "type": "narration",
+          "text": "话说到一半，停住了。"
+        }
+      ],
+      "next": "c2_yu_vanish",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "vignette",
+          "dur": 1600
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "不 是 循 环",
+            "是 我 疯 了"
+          ],
+          "gap": 700
+        }
+      ]
+    },
+    "c2_yu_vanish": {
+      "bg": "corridor_e",
+      "sprite": "yushuo_normal",
+      "anim": "glitch",
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "invert",
+          "dur": 200
+        },
+        {
+          "type": "shake"
+        },
+        {
+          "type": "spriteGlitch",
+          "dur": 800
+        },
+        {
+          "type": "flash",
+          "dur": 420
+        },
+        {
+          "type": "spriteShake",
+          "dur": 600
+        },
+        {
+          "type": "spriteGlitch",
+          "dur": 900
+        },
+        {
+          "type": "glitch",
+          "dur": 900
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "于硕不见了。"
+        },
+        {
+          "type": "narration",
+          "text": "就在我转头的那一秒。前一秒他还站在我旁边。"
+        },
+        {
+          "type": "narration",
+          "text": "灰卫衣，白脸，亮眼睛——全没了。"
+        },
+        {
+          "type": "narration",
+          "text": "像从来没有过这个人。"
+        },
+        {
+          "type": "inner",
+          "text": "（……于硕？）"
+        },
+        {
+          "type": "narration",
+          "text": "我原地转了一圈。走廊里只有那些低头走路的学生，没有一个回头。"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "c2_yu_vanish2",
+      "spriteAnim": "leave"
+    },
+    "c2_yu_vanish2": {
+      "bg": "corridor_e",
+      "anim": "flicker",
+      "fx": [
+        {
+          "type": "static",
+          "dur": 900
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "于 硕 是 谁",
+            "你 见 过 他 吗"
+          ],
+          "gap": 700
+        },
+        {
+          "type": "zoom",
+          "dur": 700
+        },
+        {
+          "type": "static",
+          "dur": 1100
+        },
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "vignette",
+          "dur": 1800
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "他 去 哪 了",
+            "他 去 哪 了",
+            "他 去 哪 了"
+          ],
+          "gap": 600
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我抓住一个路过的同学：「刚才站这儿的那个男生呢？」"
+        },
+        {
+          "type": "narration",
+          "text": "那同学停下，慢慢抬起头。脸上还是没有表情。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "同学",
+          "emo": "木然",
+          "text": "……谁？"
+        },
+        {
+          "type": "narration",
+          "text": "「于硕。五班的。灰色卫衣。」"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "同学",
+          "emo": "木然",
+          "text": "五班没有这个人。"
+        },
+        {
+          "type": "narration",
+          "text": "他说完，低下头，继续往前走。"
+        },
+        {
+          "type": "inner",
+          "text": "（没有这个人……）"
+        },
+        {
+          "type": "inner",
+          "text": "（可我刚刚还在跟他说话。他的声音、他的脸，我都记得。）"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "c2_search_yu"
+    },
+    "c2_search_yu": {
+      "bg": "classroom_e",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我回到教室，跑到讲台前，翻那本点名册。"
+        },
+        {
+          "type": "narration",
+          "text": "一页，一页，一页。"
+        },
+        {
+          "type": "narration",
+          "text": "三十七个名字。没有「于硕」。"
+        },
+        {
+          "type": "narration",
+          "text": "我把整本册子从头翻到尾。"
+        },
+        {
+          "type": "narration",
+          "text": "没有。哪里都没有。"
+        },
+        {
+          "type": "inner",
+          "text": "（可是……他明明说过，他是五班的。）"
+        }
+      ],
+      "effects": {
+        "san": 7
+      },
+      "choices": [
+        {
+          "text": "再翻一遍，不信找不到",
+          "next": "c2_search_again",
+          "effects": {
+            "san": 3
+          }
+        },
+        {
+          "text": "合上册子，坐下",
+          "next": "c2_sit_down",
+          "effects": {}
+        }
+      ],
+      "fx": [
+        {
+          "type": "vignette",
+          "dur": 1500
+        },
+        {
+          "type": "blur",
+          "dur": 700
+        }
+      ]
+    },
+    "c2_search_again": {
+      "bg": "classroom_e",
+      "anim": "heartbeat",
+      "fx": [
+        {
+          "type": "heartbeat"
+        },
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "flashword",
+          "text": "已 划 去",
+          "x": 50,
+          "y": 32,
+          "size": 30
+        },
+        {
+          "type": "shake"
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我不信，又从头翻了一遍。"
+        },
+        {
+          "type": "narration",
+          "text": "这一次，在最后一页的夹缝里，我看到了一行极淡的铅笔字。"
+        },
+        {
+          "type": "narration",
+          "text": "被涂改过很多次，几乎看不清。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "",
+          "emo": "",
+          "text": "『于 硕 —— 已 划 去』"
+        },
+        {
+          "type": "inner",
+          "text": "（已划去？）"
+        },
+        {
+          "type": "inner",
+          "text": "（他的名字，被划掉过？那他现在……是回来了，还是本来就不该有？）"
+        }
+      ],
+      "effects": {
+        "san": 6,
+        "clue": 1
+      },
+      "next": "c2_sit_down"
+    },
+    "c2_sit_down": {
+      "bg": "classroom_e",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我坐下来，盯着桌面。"
+        },
+        {
+          "type": "narration",
+          "text": "不知道过了多久，教室里的人，陆陆续续走光了。"
+        },
+        {
+          "type": "narration",
+          "text": "最后只剩我一个。"
+        },
+        {
+          "type": "inner",
+          "text": "（今天……到底发生了什么。）"
+        },
+        {
+          "type": "inner",
+          "text": "（幻觉、考试、于硕。全都像梦，可我又记得那么清楚。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c2_go_home",
+      "fx": [
+        {
+          "type": "blur",
+          "dur": 900
+        },
+        {
+          "type": "vignette",
+          "dur": 2000
+        }
+      ]
+    },
+    "c2_go_home": {
+      "bg": "school_gate_e",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "天黑了。我背着书包，走出校门。"
+        },
+        {
+          "type": "narration",
+          "text": "身后的大铁门，慢慢合上，发出很轻的一声响。"
+        },
+        {
+          "type": "narration",
+          "text": "回家路上，我一直摸着口袋里那支笔。"
+        },
+        {
+          "type": "narration",
+          "text": "笔身那行字，被我摸得发亮——「别忘了带笔。」"
+        }
+      ],
+      "next": "c2_home_night"
+    },
+    "c2_home_night": {
+      "bg": "classroom_e",
+      "anim": "flicker",
+      "fx": [
+        {
+          "type": "vignette",
+          "dur": 2000
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "回到家。饭桌上没人，妈妈留了张字条，说加班。"
+        },
+        {
+          "type": "narration",
+          "text": "我胡乱吃了两口，躺到床上。"
+        },
+        {
+          "type": "narration",
+          "text": "闭眼前，我又看了一眼那支笔。"
+        },
+        {
+          "type": "inner",
+          "text": "（睡吧。明天，就正常了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（一定是这样的。）"
+        }
+      ],
+      "next": "c2_sleep"
+    },
+    "c2_sleep": {
+      "bg": "classroom_e",
+      "anim": "blackout",
+      "page": true,
+      "fx": [
+        {
+          "type": "blur",
+          "dur": 900
+        },
+        {
+          "type": "whisper",
+          "lines": [
+            "明 天",
+            "就 正 常 了"
+          ],
+          "gap": 900
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "黑暗里，我听见自己的心跳。"
+        },
+        {
+          "type": "narration",
+          "text": "一下，一下。数着数着，就睡着了。"
+        },
+        {
+          "type": "narration",
+          "text": "——这一天，就这样过去了。"
+        }
+      ],
+      "next": "c2_wake_again"
+    },
+    "c2_wake_again": {
+      "bg": "classroom_e",
+      "anim": "blackout",
+      "page": true,
+      "fx": [
+        {
+          "type": "glitch"
+        },
+        {
+          "type": "flashword",
+          "text": "周 一",
+          "x": 50,
+          "y": 34,
+          "size": 36
+        },
+        {
+          "type": "overlay",
+          "text": "又 是 周 一",
+          "x": 50,
+          "y": 40,
+          "size": 30,
+          "hold": 2200
+        },
+        {
+          "type": "invert",
+          "dur": 260
+        }
+      ],
+      "lines": [
+        {
+          "type": "narration",
+          "text": "闹钟响的时候，我以为是周二。"
+        },
+        {
+          "type": "narration",
+          "text": "手机屏幕亮起来。"
+        },
+        {
+          "type": "narration",
+          "text": "日期，还是那个周一。"
+        },
+        {
+          "type": "narration",
+          "text": "一分钟，都没往前走。"
+        },
+        {
+          "type": "inner",
+          "text": "（……）"
+        },
+        {
+          "type": "narration",
+          "text": "第二章 · 结束"
+        },
+        {
+          "type": "narration",
+          "text": "【第三章 · 待续】"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c2_final_todo"
+    },
+    "c2_final_todo": {
+      "bg": "school_gate_e",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "【第二章 · 完 · 承上启下】"
+        },
+        {
+          "type": "narration",
+          "text": "主角醒来，又是周一。于硕是否还存在？规则裂缝是什么？等第三章。"
+        }
+      ],
+      "choices": [
+        {
+          "text": "（回主页）",
+          "next": "c2_final_todo"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "playground": "static/img/场景背景（正常）/操场全貌.webp",
+  "playground_stage": "static/img/场景背景（正常）/操场台子.webp",
+  "school_gate": "static/img/场景背景（正常）/教学楼一楼门口.webp",
+  "basketball": "static/img/场景背景（正常）/教学楼篮球场一带.webp",
+  "classroom": "static/img/场景背景（正常）/教室.webp",
+  "classroom_backdoor": "static/img/场景背景（正常）/教室后门.webp",
+  "corridor": "static/img/场景背景（正常）/楼道.webp",
+  "playground_e": "static/img/场景背景（诡异悲凉）/操场全貌.webp",
+  "playground_stage_e": "static/img/场景背景（诡异悲凉）/操场台子.webp",
+  "school_gate_e": "static/img/场景背景（诡异悲凉）/教学楼一楼门口.webp",
+  "basketball_e": "static/img/场景背景（诡异悲凉）/教学楼篮球场一带.webp",
+  "classroom_e": "static/img/场景背景（诡异悲凉）/教室.webp",
+  "classroom_backdoor_e": "static/img/场景背景（诡异悲凉）/教室后门.webp",
+  "corridor_e": "static/img/场景背景（诡异悲凉）/楼道.webp",
+  "chengli_normal": "static/img/程丽立绘/正常.webp",
+  "chengli_smile": "static/img/程丽立绘/微笑或鬼笑.webp",
+  "chengli_ruler": "static/img/程丽立绘/拿着红木戒尺.webp",
+  "chengli_book": "static/img/程丽立绘/拿着语文书.webp",
+  "chengli_angry": "static/img/程丽立绘/气愤或愤怒.webp",
+  "yushuo_normal": "static/img/npc/yu冷漠严峻.webp",
+  "yushuo_watch": "static/img/npc/yu看着你.webp"
+}

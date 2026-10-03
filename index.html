@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#fafafa">
+<title>逃离 叶·程丽</title>
+<link rel="stylesheet" href="static/css/index3.css">
+</head>
+<body class="min">
+
+<header class="nav">
+  <a class="brand" href="index.html">逃离 叶·程丽</a>
+  <div class="right">
+    <span class="user" id="navUser"></span>
+      
+  </div>
+</header>
+
+<main>
+
+
+  <section class="hero">
+    <h1>逃离 叶·程丽</h1>
+    <p class="lead">叶·程丽官方认证<br>耍起嘛耍起嘛</p>
+    <p class="lead" style="font-size:15px;margin-top:14px">作者太懒了 鸽一段时间更新🌚</p>
+    <div class="acts">
+      <a class="btn dark" href="loading.html" id="btnStart" onclick="location.href='disclaimer.html'">游戏耍起</a>
+      <a class="btn plain" href="#about">了解更多</a>
+    </div>
+  </section>
+
+  <a class="notice" href="#">
+    <span class="notice-tag">公告</span>
+    <span class="notice-text">点击查看最新重要公告</span>
+    <span class="notice-arrow">→</span>
+  </a>
+
+
+
+
+  <section class="block" id="about">
+  <section class="hero-mods">
+    <a class="hm-card hm-ch2" href="loading.html?ch=ch2">
+      <span class="hm-badge">NEW</span>
+      <div class="hm-body">
+        <h3>第二章 · 混乱 已更新</h3>
+        <p>闹钟响时，我以为是周一。可日期还停在昨天。走廊尽头，站着一个不该存在的人。</p>
+      </div>
+      <span class="hm-arrow">→</span>
+    </a>
+    <a class="hm-hint" href="loading.html?ch=ch1">没玩过第一章？先试试「初见」吧 →</a>
+  </section>
+
+  <!-- 叶程丽精选 · 弹力球小游戏 -->
+  
+
+  <section class="sponsor" id="sponsor">
+    <div class="sponsor-inner">
+      <div class="sponsor-text">
+        <h2>赞助作者</h2>
+        <p>本作为个人非商业作品，服务器与开发均由作者自费维持。<br>如果它曾让你感到一丝有趣，欢迎请作者喝杯咖啡。</p>
+      </div>
+      <button class="sponsor-btn" id="sponsorBtn" type="button"><span class="heart">&#10084;</span> 赞助 <span class="arrow">&#8594;</span></button>
+    </div>
+  </section>
+    <h2>关于本作</h2>
+    <p>恐怖校园题材文字冒险。打字机对白、分支选项、恐惧值驱动，第一章「初见」完整可玩。</p>
+    <div class="cards">
+      <div class="c"><h3>沉浸剧情</h3><p>名单上为什么有你的名字，落款却在三个月前。选择会推动故事走向。</p></div>
+      <div class="c"><h3>恐惧值</h3><p>每一次遭遇都会累积恐惧值。当恐惧值满了，就会触发「迷失」结局——再也走不出这所学校。</p></div>
+      <div class="c"><h3>云存档</h3><p>输入一个名字即可获取云存档。换个设备，输入同样的名字，就能接着上次的进度继续。</p></div>
+      <div class="c"><h3>多结局</h3><p>顺从、反抗、沉默，不同的选择通向不同的结局。</p></div>
+    </div>
+  </section>
+
+
+  <section class="block" id="galleryBlock">
+    <h2>收集进度</h2>
+    <p style="color:#6e6e73;font-size:13.5px;margin-bottom:18px">玩到结局、拿到线索会自动记录到你的云存档。换个设备，输入同样的名字，进度还在。</p>
+    <div class="gwrap">
+      <div class="gcol">
+        <h3>结局 <span id="gEndCount">0 / 0</span></h3>
+        <div class="glist" id="gEndList"><p class="gtip">加载中…</p></div>
+      </div>
+      <div class="gcol">
+        <h3>线索 <span id="gClueCount">0 / 0</span></h3>
+        <div class="glist" id="gClueList"><p class="gtip">加载中…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="log">
+    <h2>更新日志</h2>
+    <div class="log">
+      <div class="ver">
+        <div class="vhead"><b>v2.0</b><span>最新</span></div>
+        <ul>
+          <li>全站极简黑白改版</li>
+          <li>免责声明改为长条款，必须输入 yes 同意</li>
+          <li>云存档：输入名字即可获取，跨设备续玩</li>
+          <li>第一章改名「初见」</li>
+          <li>主线剧情衔接优化</li>
+        </ul>
+      </div>
+      <div class="ver">
+        <div class="vhead"><b>v1.0</b><span>已发布</span></div>
+        <ul>
+          <li>第一章「名单」完整可玩</li>
+          <li>打字机 / 分支 / 存读档</li>
+          <li>拼写 / 听写 / 抄写 / QTE 小游戏</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>特别鸣谢</h2>
+    <div class="thanks">
+      <a href="https://www.deepseek.com" target="_blank" rel="noopener">
+        <img src="static/img/特别鸣谢/DeepSeek.ico" alt="DeepSeek">
+        <b>DeepSeek</b><span>剧情 · 代码</span>
+      </a>
+      <a href="https://www.doubao.com" target="_blank" rel="noopener">
+        <img src="static/img/特别鸣谢/豆包.png" alt="豆包">
+        <b>豆包</b><span>图片素材</span>
+      </a>
+      <a href="https://termux.dev" target="_blank" rel="noopener">
+        <img src="static/img/特别鸣谢/ter.png" alt="Termux">
+        <b>Termux</b><span>运行环境</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<div class="sponsor-mask" id="sponsorMask">
+  <div class="sponsor-box">
+    <button class="sponsor-close" id="sponsorClose" type="button" aria-label="close">&#215;</button>
+    <h3>感谢您的支持</h3>
+    <img src="static/img/赞助作者/赞助.png" alt="赞助作者">
+    <p class="sponsor-tip">扫码赞助 · 金额随意</p>
+  </div>
+</div>
+
+<style>
+.sponsor{margin:0 auto 30px;max-width:960px;}
+.sponsor-inner{display:flex;align-items:center;gap:24px;padding:26px 30px;background:linear-gradient(135deg,#1d1d1f 0%,#3a3a3d 100%);border-radius:18px;box-shadow:0 10px 34px rgba(0,0,0,.22);position:relative;overflow:hidden;}
+.sponsor-inner:before{content:"";position:absolute;top:-50%;right:-8%;width:220px;height:220px;background:radial-gradient(circle,rgba(255,215,120,.35),transparent 70%);pointer-events:none;}
+.sponsor-text{flex:1;color:#fff;}
+.sponsor-text h2{font-size:22px;font-weight:700;margin-bottom:8px;letter-spacing:1px;}
+.sponsor-text p{font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.72);}
+.sponsor-btn{flex:none;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ffb347,#ff8c42);color:#fff;border:none;padding:15px 30px;font-size:16px;font-weight:700;border-radius:999px;cursor:pointer;box-shadow:0 6px 20px rgba(255,140,66,.45);transition:transform .15s,box-shadow .2s;animation:sponsorPulse 2.2s infinite;}
+.sponsor-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 28px rgba(255,140,66,.6);}
+.sponsor-btn .heart{animation:beat 1.3s infinite;}
+@keyframes sponsorPulse{0%,100%{box-shadow:0 6px 20px rgba(255,140,66,.45);}50%{box-shadow:0 6px 30px rgba(255,140,66,.85);}}
+@keyframes beat{0%,100%{transform:scale(1);}25%{transform:scale(1.25);}50%{transform:scale(1);}}
+@media (max-width:640px){.sponsor-inner{flex-direction:column;text-align:center;padding:24px 20px;}.sponsor-btn{width:100%;justify-content:center;}}
+.sponsor-mask{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:300;padding:24px;backdrop-filter:blur(6px);}
+.sponsor-mask.on{display:flex;}
+.sponsor-box{background:#fff;border-radius:20px;padding:28px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:pop .25s ease;}
+@keyframes pop{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.sponsor-box h3{font-size:19px;font-weight:700;margin-bottom:16px;}
+.sponsor-box img{width:100%;max-width:280px;border-radius:14px;display:block;margin:0 auto;}
+.sponsor-tip{font-size:13px;color:#6e6e73;margin-top:14px;}
+.sponsor-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:26px;line-height:1;color:#8e8e93;cursor:pointer;}
+.sponsor-close:hover{color:#1d1d1f;}
+</style>
+
+
+<style>
+/* 赞助区域可见性修复：避免外部 CSS 在电脑端把按钮隐藏 */
+#sponsor.sponsor{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+#sponsor .sponsor-inner{
+  display:flex !important;
+  visibility:visible !important;
+}
+#sponsor .sponsor-btn{
+  display:inline-flex !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+</style>
+
+<script>
+(function(){
+  var btn=document.getElementById("sponsorBtn"),
+      mask=document.getElementById("sponsorMask"),
+      close=document.getElementById("sponsorClose");
+  if(!btn||!mask) return;
+  function open(){ mask.classList.add("on"); }
+  function shut(){ mask.classList.remove("on"); }
+  btn.addEventListener("click",open);
+  close.addEventListener("click",shut);
+  mask.addEventListener("click",function(e){ if(e.target===mask) shut(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") shut(); });
+})();
+</script>
+
+<footer class="foot">
+  <div class="foot-links">
+    <a href="index.html">首页</a><span>·</span>
+    <a href="#">公告</a><span>·</span>
+    <a href="#about">关于</a><span>·</span>
+    <a href="#log">更新日志</a>
+  </div>
+  <div class="foot-info">
+    <span class="foot-name">逃离程丽 ESCAPE CHENGLI</span>
+    <span class="foot-slogan">个人非商业 · 恐怖校园文字冒险</span>
+  </div>
+  <div class="foot-icp">
+    <a class="icp-item" href="https://beian.miit.gov.cn" target="_blank" rel="noopener">
+      <img class="emblem" src="static/img/国徽.png" alt="">
+      <span>川ICP备2026034871号-1</span>
+    </a>
+    <span class="sep"></span>
+    <a class="icp-item" href="https://beian.mps.gov.cn" target="_blank" rel="noopener">
+      <img class="emblem" src="static/img/警徽.png" alt="">
+      <span>川公网安备51172302615284号</span>
+    </a>
+  </div>
+  <div class="foot-copy">© 2026 逃离程丽 · 保留所有权利</div>
+</footer>
+
+
+</div>
+
+<style>
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.32);display:none;align-items:center;justify-content:center;z-index:200;padding:24px;backdrop-filter:blur(4px);}
+.mask.on{display:flex;}
+.dialog{background:#fff;border-radius:20px;padding:32px 28px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.2);}
+.dialog h3{font-size:22px;font-weight:700;margin-bottom:8px;}
+.dialog p{font-size:13.5px;color:#6e6e73;line-height:1.6;margin-bottom:18px;}
+.dialog p b{color:#1d1d1f;}
+.dialog input{width:100%;padding:14px 16px;font-size:16px;background:#f5f5f7;border:1px solid transparent;border-radius:12px;outline:none;margin-bottom:8px;}
+.dialog input:focus{background:#fff;border-color:#0071e3;}
+.derr{color:#ff3b30;font-size:13px;min-height:18px;margin-bottom:8px;}
+.dacts{display:flex;gap:10px;}
+.dacts .btn{flex:1;text-align:center;padding:13px;border-radius:12px;font-size:15px;border:none;cursor:pointer;}
+.dacts .btn.plain{background:#f5f5f7;color:#1d1d1f;}
+.dacts .btn.dark{background:#1d1d1f;color:#fff;}
+.notice{display:flex;align-items:center;gap:14px;margin:0 auto 30px;max-width:960px;padding:18px 24px;background:#1d1d1f;border-radius:16px;text-decoration:none;color:#fff;transition:transform .15s,opacity .2s;box-shadow:0 6px 24px rgba(0,0,0,.12);}
+.notice:hover{transform:translateY(-2px);opacity:.94;}
+.notice-tag{flex:none;font-size:12px;font-weight:700;color:#1d1d1f;background:#fff;padding:4px 12px;border-radius:999px;letter-spacing:2px;}
+.notice-text{flex:1;font-size:15px;font-weight:500;letter-spacing:.5px;}
+.notice-arrow{flex:none;font-size:18px;}
+.userbar{max-width:960px;margin:0 auto 26px;display:flex;align-items:center;justify-content:space-between;padding:0 4px;font-size:13.5px;color:var(--sub);}
+.userbar b{color:var(--ink);font-weight:600;}
+.ub-link{color:var(--ink);border-bottom:1px solid var(--line2);padding-bottom:1px;}
+.ub-link:hover{border-color:var(--ink);}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:rgba(250,250,250,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.brand{font-size:16px;font-weight:600;letter-spacing:.5px;}
+.nav .right{display:flex;align-items:center;gap:14px;font-size:14px;}
+.nav .user{color:var(--sub);}
+.nav .mini{color:var(--ink);border:1px solid var(--line);padding:6px 16px;border-radius:999px;transition:background .2s;}
+.nav .mini:hover{background:#f0f0f2;}
+@media (max-width:640px){ .nav{padding:12px 16px;} .brand{font-size:15px;} }
+</style>
+
+<script src="static/js/index2.js"></script>
+<script>
+</script>
+
+<style>
+.hero-mods{margin:0 auto 26px;max-width:960px;display:flex;flex-direction:column;gap:10px;}
+.hm-card{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(135deg,#1d1d1f,#3a3a3d);border-radius:16px;text-decoration:none;color:#fff;position:relative;overflow:hidden;box-shadow:0 8px 26px rgba(0,0,0,.18);transition:transform .15s,box-shadow .2s;}
+.hm-card:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,.26);}
+.hm-card:before{content:"";position:absolute;top:-60%;right:-6%;width:200px;height:200px;background:radial-gradient(circle,rgba(192,57,43,.4),transparent 70%);pointer-events:none;}
+.hm-badge{flex:none;font-size:11px;font-weight:800;letter-spacing:1px;color:#1d1d1f;background:#ffb347;padding:3px 9px;border-radius:999px;}
+.hm-body{flex:1;min-width:0;}
+.hm-body h3{font-size:17px;font-weight:700;margin-bottom:4px;color:#fff;}
+.hm-body p{font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);}
+.hm-arrow{flex:none;font-size:20px;color:rgba(255,255,255,.8);}
+.hm-hint{display:block;text-align:center;font-size:13px;color:#8e8e93;text-decoration:none;padding:4px;transition:color .15s;}
+.hm-hint:hover{color:#1d1d1f;}
+@media (max-width:640px){.hm-card{padding:16px 16px;gap:12px;}.hm-body h3{font-size:15px;}.hm-body p{font-size:12px;}}
+</style>
+
+<style>
+.gwrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media(max-width:640px){.gwrap{grid-template-columns:1fr;}}
+.gcol h3{font-size:15px;margin-bottom:10px;font-weight:600;}
+.gcol h3 span{color:#8e8e93;font-size:13px;font-weight:400;margin-left:6px;}
+.glist{display:flex;flex-direction:column;gap:8px;}
+.gitem{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;background:#f5f5f7;font-size:13.5px;}
+.gitem.locked{color:#b0b0b5;}
+.gitem .gdot{flex:none;width:8px;height:8px;border-radius:50%;background:#c7c7cc;}
+.gitem.got .gdot{background:#2f8f5b;box-shadow:0 0 8px rgba(47,143,91,.5);}
+.gitem.got{background:#eef7f1;color:#1d3b2a;}
+.gtip{color:#8e8e93;font-size:13px;}
+</style>
+
+<script>
+(function(){
+  var elEnd=document.getElementById("gEndList"), elClue=document.getElementById("gClueList");
+  if(!elEnd||!elClue) return;
+  function esc(x){return String(x||"").replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  Promise.all([
+    fetch("/api/gallery").then(function(r){return r.json();}).catch(function(){return null;}),
+    fetch("/api/collectibles").then(function(r){return r.json();}).catch(function(){return null;})
+  ]).then(function(res){
+    var gal=res[0], col=res[1];
+    var gotE={}, gotC={};
+    if(col&&col.ok){ (col.collected.ending||[]).forEach(function(x){gotE[x.item_id]=x;}); (col.collected.clue||[]).forEach(function(x){gotC[x.item_id]=x;}); }
+    // 结局
+    if(gal&&gal.ok&&gal.endings&&gal.endings.length){
+      var g=gal.endings, cnt=0;
+      elEnd.innerHTML="";
+      g.forEach(function(e){
+        var got=!!gotE[e.id]; if(got)cnt++;
+        var d=document.createElement("div");
+        d.className="gitem "+(got?"got":"locked");
+        d.innerHTML='<span class="gdot"></span>'+(got?esc(e.title):"？？？ · 未解锁");
+        elEnd.appendChild(d);
+      });
+      var c1=document.getElementById("gEndCount"); if(c1) c1.textContent=cnt+" / "+g.length;
+    } else { elEnd.innerHTML='<p class="gtip">暂无可收集结局</p>'; }
+    // 线索
+    if(gal&&gal.ok&&gal.clues&&gal.clues.length){
+      var cl=gal.clues, cnt2=0;
+      elClue.innerHTML="";
+      cl.forEach(function(c,i){
+        var got=!!gotC[c.id]; if(got)cnt2++;
+        var d=document.createElement("div");
+        d.className="gitem "+(got?"got":"locked");
+        var label= got ? ("线索 · "+esc(gotC[c.id].title||c.id)) : ("？？？ · 线索 "+(i+1));
+        d.innerHTML='<span class="gdot"></span>'+label;
+        elClue.appendChild(d);
+      });
+      var c2=document.getElementById("gClueCount"); if(c2) c2.textContent=cnt2+" / "+cl.length;
+    } else { elClue.innerHTML='<p class="gtip">暂无可收集线索</p>'; }
+  });
+})();
+</script>
+</body>
+</html>

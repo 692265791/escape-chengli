@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f2f2f4">
+<title>逃离程丽</title>
+<link rel="stylesheet" href="static/css/game-all.min.css">
+<link rel="stylesheet" href="static/css/fx.css">
+<link rel="stylesheet" href="static/css/ui_patch.css">
+
+<style>
+.ls-overlay{position:fixed;inset:0;z-index:8800;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+.ls-overlay.show{display:flex;}
+.ls-card{width:min(440px,94vw);max-height:82vh;overflow-y:auto;background:rgba(252,252,253,.98);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);padding:22px 20px;}
+.ls-card h3{font-size:17px;font-weight:700;margin-bottom:16px;color:#1d1d1f;}
+.ls-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.ls-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;background:#f5f5f7;border-radius:12px;}
+.ls-row.has{background:#eef4fb;}
+.ls-info{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.ls-info b{font-size:14px;color:#1d1d1f;}
+.ls-info span{font-size:12px;color:#6e6e73;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ls-info .empty{color:#b0b0b5;}
+.ls-btns{display:flex;gap:6px;flex:none;}
+.ls-btn{appearance:none;border:none;padding:8px 12px;font-size:13px;border-radius:9px;background:#e6e6ea;color:#1d1d1f;cursor:pointer;white-space:nowrap;}
+.ls-btn.main{background:#1d1d1f;color:#fff;}
+.ls-btn:active{opacity:.8;}
+.ls-actions{display:flex;}
+.ls-actions button{flex:1;padding:12px;font-size:15px;border:none;border-radius:11px;background:#1d1d1f;color:#fff;cursor:pointer;}
+body.ui-dark .ls-card{background:rgba(24,24,28,.98);}
+body.ui-dark .ls-card h3{color:#e8e8ea;}
+body.ui-dark .ls-row{background:#1c1c22;}
+body.ui-dark .ls-row.has{background:#1a2634;}
+body.ui-dark .ls-info b{color:#e0e0e4;}
+body.ui-dark .ls-info span{color:#9a9aa0;}
+body.ui-dark .ls-btn{background:#2a2a30;color:#e0e0e4;}
+body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
+</style>
+</head>
+<body class="game-page mode-normal">
+
+<div class="bg-layer" id="bgLayer"></div>
+<div class="bg-layer bg-next" id="bgNext"></div>
+
+<div class="sprite-layer" id="spriteLayer"></div>
+
+<div class="campus-tint" id="campusTint"></div>
+
+<div class="flicker-layer" id="flickerLayer"></div>
+<div class="flash-layer" id="flashLayer"></div>
+
+<header class="topbar">
+  <span class="topbar-title"><span class="t-esc" data-text="逃离">逃离</span><span class="t-name" data-text="程丽">程丽</span></span>
+  <div class="topbar-right">
+    <div class="san-box" title="恐惧值">
+      <span class="san-label">恐惧值</span>
+      <div class="san-bar"><i id="sanFill"></i></div>
+      <span class="san-num" id="sanNum">0</span>
+    </div>
+    <div class="san-box mem-box" title="记忆值">
+      <span class="san-label">记忆值</span>
+      <div class="san-bar mem-bar"><i id="memFill"></i></div>
+      <span class="san-num" id="memNum">100</span>
+    </div>
+    <div class="san-box stam-box" title="精力">
+      <span class="san-label">精力</span>
+      <div class="san-bar stam-bar"><i id="stamFill"></i></div>
+      <span class="san-num" id="stamNum">100</span>
+    </div>
+    <div class="time-chip" id="timeChip">上午</div>
+    <button class="topbar-btn" id="btnSettings" title="设置">设置</button>
+    <button class="topbar-btn" id="btnMenu" title="菜单">菜单</button>
+  </div>
+</header>
+
+<main class="dialog-wrap" id="dialogWrap">
+  <div class="info-bar" id="infoBar">
+    <div class="qk-wrap">
+      <button type="button" class="qk-menu-btn" id="qkMenuBtn" aria-label="菜单">菜单</button>
+      <div class="qk-panel" id="qkPanel">
+        <button type="button" id="qkChapters">章节选择</button>
+        <button type="button" id="qkSettings">UI 设置</button>
+        <button type="button" id="qkHome">返回主页</button>
+        <button type="button" id="qkClose">继续游戏</button>
+      </div>
+    </div>
+    <button type="button" class="qk-menu-btn" id="qkMap" style="display:none;margin-left:6px">地图</button>
+        <div class="chapter-tag" id="chapterTag"></div>
+  </div>
+    <div class="speaker-bar" id="speakerBar">
+      <span class="speaker-name" id="speakerName"></span>
+    </div>
+
+  <div class="text-box" id="textBox">
+    <p class="dialog-text" id="dialogText"></p>
+    <div class="next-hint" id="nextHint">点击继续</div>
+  </div>
+
+  <div class="choices" id="choicesBox"></div>
+</main>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-card">
+    <h3>菜单</h3>
+    <button id="btnChapters">章节选择</button>
+    <button id="btnHome">返回主页</button>
+    <button id="btnCloseMenu">继续游戏</button>
+    <p class="menu-tip" id="menuTip"></p>
+  </div>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-card">
+    <h3>UI 设置</h3>
+    <div class="set-row"><label>字体大小</label><input type="range" id="setFont" min="80" max="160" value="100"><span class="set-val" id="setFontVal">100%</span></div>
+    <div class="set-row"><label>文字速度</label><input type="range" id="setSpeed" min="0" max="100" value="60"><span class="set-val" id="setSpeedVal">60</span></div>
+    <div class="set-row"><label>圆角大小</label><input type="range" id="setRadius" min="0" max="24" value="12"><span class="set-val" id="setRadiusVal">12</span></div>
+    <div class="set-row"><label>深色主题</label><label class="switch"><input type="checkbox" id="setDark" checked><i></i></label></div>
+    <div class="set-row"><label>过渡动画</label><label class="switch"><input type="checkbox" id="setAnim" checked><i></i></label></div>
+    <div class="set-row"><label>界面动效</label><label class="switch"><input type="checkbox" id="setHorror" checked><i></i></label></div>
+    <div class="set-row"><label>暗角强度</label><input type="range" id="setNoise" min="0" max="100" value="50"><span class="set-val" id="setNoiseVal">50</span></div>
+    <button class="set-close" id="btnResetSettings">恢复默认</button>
+    <button class="set-close" id="btnCloseSettings">关闭</button>
+  </div>
+</div>
+
+<div class="chapters-overlay" id="chaptersOverlay">
+  <div class="chapters-card">
+    <h3>章节</h3>
+    <div class="chapter-list" id="chapterList"></div>
+    <button class="set-close" id="btnCloseChapters">关闭</button>
+  </div>
+</div>
+
+
+
+<div class="ending-overlay" id="endingOverlay">
+  <div class="ending-card">
+    <h2 class="ending-title" id="endingTitle"></h2>
+    <p class="ending-desc" id="endingDesc"></p>
+    <button id="btnRestart">重新开始</button>
+    <button id="btnEndHome">返回主页</button>
+  </div>
+</div>
+
+<script>
+  window.GAME_API = {
+    story: "story.json",
+    save: null,
+    load: null,
+    chapters: "chapters.json",
+    saves: null
+  };
+</script>
+<script src="static/js/minigames.js"></script>
+<script src="static/js/puzzle.js"></script>
+<script src="static/js/settings.js"></script>
+<script src="static/js/adaptive.js"></script>
+<script src="static/js/time.js"></script>
+<script src="static/js/fx.js"></script>
+<script src="static/js/game.js"></script>
+<script src="static/js/transform.js"></script>
+<script src="static/js/ui_patch.js"></script>
+
+<script>
+(function(){
+  function bind(){
+    var s=document.getElementById("qkSave"), l=document.getElementById("qkLoad");
+    if(!s||!l||!window.__SAVE_UI) return;
+    function intercept(btn, mode){
+      if (btn.__lsBound) return; btn.__lsBound = true;
+      btn.addEventListener("click", function(e){
+        if (window.__SAVE_UI && window.__SAVE_UI.open){
+          e.stopImmediatePropagation(); e.preventDefault();
+          var p=document.getElementById("qkPanel"); if(p) p.classList.remove("on");
+          window.__SAVE_UI.open(mode);
+        }
+      }, true);
+    }
+    intercept(s,"save"); intercept(l,"load");
+  }
+  setTimeout(bind, 800); setTimeout(bind, 2000);
+})();
+</script>
+</body>
+</html>
