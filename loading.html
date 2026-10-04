@@ -18,6 +18,38 @@
 .loadingname{margin-top:20px;font-size:12.5px;color:#a1a1a6;min-height:18px;}
 .tip{margin-top:30px;font-size:14px;color:var(--sub);min-height:22px;transition:opacity .3s;}
 </style>
+<style>
+/* ===== 彻底杀掉点击填充块 / 蓝色高亮 / focus 框 ===== */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+*:active, *:focus, *:focus-visible, *:focus-within,
+button:active, button:focus, button:focus-visible,
+a:active, a:focus, a:focus-visible,
+.btn:active, .btn:focus, [role="button"]:active, [role="button"]:focus,
+img:active, img:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  border-color: transparent !important;
+}
+button:active, a:active, .btn:active, [role="button"]:active {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+img, a, button, .btn, [role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent !important;
+}
+</style>
 </head>
 <body class="min">
 

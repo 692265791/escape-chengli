@@ -1,3 +1,10 @@
+:root{
+}
+/* 大部分元素继承 */
+a, p, span, div, h1, h2, h3, h4, h5, h6, li, button, input, textarea{
+  font-family: inherit;
+}
+
 /* ============================================================
    逃离程丽 · 主页 恐怖血腥皮肤
    ============================================================ */
@@ -13,16 +20,6 @@
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
 *{box-sizing:border-box}
-html,body{
-  margin:0;padding:0;
-  font-family:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
-  background:#08080a;
-  color:var(--ink);
-  letter-spacing:.02em;
-  -webkit-tap-highlight-color:transparent;
-  min-height:100vh;
-  overflow-x:hidden;
-}
 a{color:inherit;text-decoration:none}
 
 /* ============ 全局噪点层 ============ */
@@ -482,7 +479,6 @@ body::before{
   body::before{display:none}
 }
 
-
 /* ============================================================
    结局收集
    ============================================================ */
@@ -547,7 +543,6 @@ body::before{
   min-height:20px;
 }
 
-
 /* ============================================================
    更新日志
    ============================================================ */
@@ -592,9 +587,6 @@ body::before{
 .log-ver li b{
   color:#e8e8ea;font-weight:700;
 }
-
-
-
 
 /* ============================================================
    开发者入口 —— 亮色荧光按钮
@@ -686,7 +678,6 @@ body::before{
   transform:translateX(6px);
 }
 
-
 /* ============================================================
    联系作者
    ============================================================ */
@@ -752,7 +743,6 @@ body::before{
   transform:translateX(4px);
 }
 
-
 /* 调试面板分组标题 */
 .dbg-group-title{
   font-size:11px;
@@ -765,7 +755,6 @@ body::before{
   background:linear-gradient(90deg,rgba(255,122,0,.08),transparent);
 }
 .dbg-group-title:first-child{margin-top:0}
-
 
 /* 下载源码按钮 */
 #dlSrc{
@@ -781,7 +770,6 @@ body::before{
 #dlSrc:hover{transform:translateY(-2px) scale(1.03)}
 #dlSrc:active{transform:scale(.97)}
 #dlSrc:disabled{opacity:.5;cursor:not-allowed}
-
 
 .contact-icon img{
   width:100%;
@@ -1005,3 +993,61 @@ source,
     -webkit-forced-color-adjust: none !important;
   }
 }
+
+/* 强制全站字体 */
+html, body, html *:not(code):not(pre){
+}
+
+/* ===== 全局去除点击蓝色高亮 / 长按选择（TERMU X 修复） ===== */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
+html, body, a, button, img, .btn, [role="button"], input, textarea, select {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  outline: none !important;
+}
+img, a, button, .btn, [role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+button:focus, a:focus, img:focus, input:focus, textarea:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+/* ===== 彻底杀掉点击填充块 / 蓝色高亮 / focus 框 ===== */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+*:active, *:focus, *:focus-visible, *:focus-within,
+button:active, button:focus, button:focus-visible,
+a:active, a:focus, a:focus-visible,
+.btn:active, .btn:focus, [role="button"]:active, [role="button"]:focus,
+img:active, img:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  border-color: transparent !important;
+}
+button:active, a:active, .btn:active, [role="button"]:active {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+img, a, button, .btn, [role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent !important;
+}
+

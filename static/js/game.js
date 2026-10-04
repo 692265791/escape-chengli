@@ -30,10 +30,6 @@
   var $textBox = document.getElementById("textBox");
   var $sanFill = document.getElementById("sanFill");
   var $sanNum  = document.getElementById("sanNum");
-  var $memFill = document.getElementById("memFill");
-  var $memNum  = document.getElementById("memNum");
-  var $stamFill = document.getElementById("stamFill");
-  var $stamNum  = document.getElementById("stamNum");
   var $flicker = document.getElementById("flickerLayer");
   var $flash   = document.getElementById("flashLayer");
 
@@ -507,14 +503,10 @@
 
   function updateSan() {
     var m = (vars.memory==null?100:Math.max(0,Math.min(100,vars.memory)));
-    if ($memFill) $memFill.style.width=m+"%";
-    if ($memNum) $memNum.textContent=Math.round(m);
     var s = Math.max(0, Math.min(100, vars.san || 0));
     $sanFill.style.width = s + "%";
     $sanNum.textContent = s;
     var st = (vars.stamina==null?100:Math.max(0,Math.min(100,vars.stamina)));
-    if ($stamFill) $stamFill.style.width = st + "%";
-    if ($stamNum) $stamNum.textContent = Math.round(st);
     var noiseEl = document.querySelector(".noise");
     if (noiseEl && !document.body.classList.contains("no-horror")) {
       var base = (window.__getSettings ? window.__getSettings().noise : 50) / 100 * 0.28;

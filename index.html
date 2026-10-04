@@ -8,6 +8,14 @@
 <meta name="theme-color" content="#08080a">
 <title>逃离程丽 · 选择线路</title>
 <style>
+* { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; }
+html,body,a,button,img,.btn,[role="button"],input,textarea,select { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; outline: none !important; }
+img,a,button,.btn,[role="button"] { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; -webkit-user-drag:none; }
+button:focus,a:focus,img:focus,input:focus,textarea:focus { outline: none !important; box-shadow: none; }
+* { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; }
+html,body,a,button,img,.btn,[role="button"],input,textarea,select { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; outline: none !important; }
+img,a,button,.btn,[role="button"] { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; -webkit-user-drag:none; }
+button:focus,a:focus,img:focus,input:focus,textarea:focus { outline: none !important; box-shadow: none; }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   background:#08080a;color:#e8e8ea;
@@ -59,6 +67,38 @@ button{
 .tip{
   margin-top:20px;font-size:11px;color:#3a3a3c;
   text-align:center;letter-spacing:.1em;line-height:1.8;
+}
+</style>
+<style>
+/* ===== 彻底杀掉点击填充块 / 蓝色高亮 / focus 框 ===== */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+*:active, *:focus, *:focus-visible, *:focus-within,
+button:active, button:focus, button:focus-visible,
+a:active, a:focus, a:focus-visible,
+.btn:active, .btn:focus, [role="button"]:active, [role="button"]:focus,
+img:active, img:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  border-color: transparent !important;
+}
+button:active, a:active, .btn:active, [role="button"]:active {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+img, a, button, .btn, [role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent !important;
 }
 </style>
 </head>

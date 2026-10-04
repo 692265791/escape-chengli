@@ -10,7 +10,6 @@ var st={phase:1, stamina:100, day:1};
 function chip(){ return document.getElementById("timeChip"); }
 function render(){
   var c=chip(); if(c) c.textContent=PHASES[st.phase]+" · 第"+st.day+"天";
-  var f=document.getElementById("stamFill"), n=document.getElementById("stamNum");
   if(f) f.style.width=Math.max(0,st.stamina)+"%";
   if(n) n.textContent=Math.round(st.stamina);
 }

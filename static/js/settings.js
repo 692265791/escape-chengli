@@ -81,9 +81,6 @@
     $noise.value = cfg.noise;    $noiseVal.textContent = cfg.noise;
 
     // 打开 / 关闭
-    document.getElementById("btnSettings").addEventListener("click", function () {
-      $set.classList.add("show");
-    });
     document.getElementById("btnCloseSettings").addEventListener("click", function () {
       $set.classList.remove("show");
     });

@@ -1,0 +1,5 @@
+*.bak
+*.bak2
+*.tmp
+static/css/_bak/
+static/js.bak/

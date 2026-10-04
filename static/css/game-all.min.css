@@ -1717,3 +1717,34 @@ input[type=range]::-webkit-slider-thumb{
 .ending-card{ border:none !important; }
 /* 顶栏底边换成极淡 */
 .topbar{ border-bottom:1px solid rgba(0,0,0,.06) !important; }
+/* ===== 彻底杀掉点击填充块 / 蓝色高亮 / focus 框 ===== */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+*:active, *:focus, *:focus-visible, *:focus-within,
+button:active, button:focus, button:focus-visible,
+a:active, a:focus, a:focus-visible,
+.btn:active, .btn:focus, [role="button"]:active, [role="button"]:focus,
+img:active, img:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  border-color: transparent !important;
+}
+button:active, a:active, .btn:active, [role="button"]:active {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+img, a, button, .btn, [role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
