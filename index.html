@@ -129,63 +129,27 @@ button{
     go(TARGETS[0].url);
   });
 
-  /* ---------- 真实下载测速 ---------- */
-  /* 单次测速：下载 probe.bin，返回 { ms, kbps } */
-  function downloadTest(baseUrl, timeoutMs){
-    return new Promise(function(resolve){
-      var url = baseUrl + "/probe.bin?t=" + Date.now() + "_" + Math.random();
-      var start = performance.now();
-      var xhr = new XMLHttpRequest();
-      var done = false;
-
-      function finish(ok, bytes){
-        if (done) return; done = true;
-        var ms = performance.now() - start;
-        if (!ok){ resolve({ ok: false, ms: 99999, kbps: 0 }); return; }
-        var kbps = bytes && ms > 0 ? (bytes * 8) / ms : 0;   // 千比特/秒
-        resolve({ ok: true, ms: Math.round(ms), kbps: Math.round(kbps) });
-      }
-
-      xhr.open("GET", url, true);
-      xhr.responseType = "arraybuffer";
-      xhr.timeout = timeoutMs;
-
-      xhr.onload = function(){
-        if (xhr.status >= 200 && xhr.status < 400){
-          finish(true, (xhr.response && xhr.response.byteLength) || 0);
-        } else {
-          finish(false);
-        }
-      };
-      xhr.onerror = function(){ finish(false); };
-      xhr.ontimeout = function(){ finish(false); };
-
-      xhr.send();
-    });
-  }
-
-  /* 两次测速取优（第 2 次避开 DNS/TLS 冷启动） */
-  function measure(baseUrl){
-    return new Promise(function(resolve){
-      downloadTest(baseUrl, 5000).then(function(r1){
-        /* 第一次即使失败也继续测第二次 */
-        downloadTest(baseUrl, 5000).then(function(r2){
-          var best = null;
-          if (r1.ok && r2.ok) best = r1.kbps > r2.kbps ? r1 : r2;
-          else if (r1.ok) best = r1;
-          else if (r2.ok) best = r2;
-          resolve(best || { ok: false, ms: 99999, kbps: 0 });
-        });
-      });
-    });
+  /* 单次测速：用 favicon 加载时间 */
+  function ping(t, i, cb){
+    var start = Date.now();
+    var img = new Image();
+    var fin = false;
+    function done_(ok){
+      if (fin) return; fin = true;
+      var ms = Date.now() - start;
+      cb(ok ? ms : 99999);
+    }
+    img.onload = function(){ done_(true); };
+    img.onerror = function(){ done_(true); };   /* 能连上就算成功 */
+    setTimeout(function(){ done_(false); }, 4000);
+    img.src = t.url + "/favicon.ico?t=" + Date.now() + "_" + i;
   }
 
   btnTest.addEventListener("click", function(){
     btnTest.disabled = true;
     btnTest.textContent = "测速中…";
 
-    /* 重置 */
-    rows.forEach(function(row, i){
+    rows.forEach(function(row){
       row.classList.remove("best", "bad");
       row.querySelector(".dot").className = "dot test";
       row.querySelector(".meta").textContent = "测速中…";
@@ -193,36 +157,35 @@ button{
 
     var results = [];
     var done = 0;
+    var bestMs = 99999;
     var bestIdx = -1;
-    var bestKbps = 0;
 
     TARGETS.forEach(function(t, i){
-      measure(t.url).then(function(r){
-        results.push({ idx: i, r: r });
+      ping(t, i, function(ms){
+        results.push({ idx: i, ms: ms });
         done++;
         var row = rows[i];
         var dot = row.querySelector(".dot");
         var meta = row.querySelector(".meta");
 
-        if (r.ok){
-          dot.className = "dot ok";
-          meta.textContent = r.ms + " ms";
-          if (r.kbps > bestKbps){ bestKbps = r.kbps; bestIdx = i; }
-        } else {
+        if (ms >= 99999){
           dot.className = "dot bad";
-          meta.textContent = "超时 / 失败";
+          meta.textContent = "超时";
           row.classList.add("bad");
+        } else {
+          dot.className = "dot ok";
+          meta.textContent = ms + " ms";
+          if (ms < bestMs){ bestMs = ms; bestIdx = i; }
         }
 
         if (done === TARGETS.length){
           if (bestIdx >= 0){
             rows[bestIdx].classList.add("best");
-            var name = TARGETS[bestIdx].name;
-            btnTest.textContent = "去 " + name;
+            btnTest.textContent = "去 " + TARGETS[bestIdx].name;
             btnTest.disabled = false;
             btnTest.onclick = function(){ go(TARGETS[bestIdx].url); };
           } else {
-            btnTest.textContent = "全部失败";
+            btnTest.textContent = "全部超时";
             btnTest.disabled = false;
             btnTest.onclick = function(){ go(TARGETS[0].url); };
           }
@@ -232,5 +195,19 @@ button{
   });
 })();
 </script>
+<script>
+(function(){
+  var btn = document.getElementById("btnStart");
+  if (!btn) return;
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    var skip = false;
+    try { skip = localStorage.getItem("ec_skip_disclaimer") === "1"; } catch(e){}
+    if (skip) location.href = "loading.html?ch=ch1";
+    else location.href = "disclaimer.html";
+  });
+})();
+</script>
+
 </body>
 </html>

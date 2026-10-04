@@ -3,41 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#fafafa">
+<meta name="theme-color" content="#08080a">
 <title>免责声明 · 逃离程丽</title>
-<link rel="stylesheet" href="static/css/apple.css">
+<link rel="stylesheet" href="static/css/skin-page.css">
+<style>
+.skip-box{
+  display:flex;align-items:center;gap:10px;
+  margin:0 0 14px;font-size:13px;color:#8a8a8e;
+  cursor:pointer;user-select:none;
+}
+.skip-box input{
+  width:18px;height:18px;flex:none;
+  accent-color:#c8102e;cursor:pointer;
+}
+.skip-box label{cursor:pointer;letter-spacing:.05em}
+</style>
 </head>
-<body class="min">
-<script>
-(function(){
-  try {
-    if (localStorage.getItem("ec_agreed") === "1"){
-      location.replace("loading.html?ch=ch1");
-      return;
-    }
-  } catch(e){}
-})();
-</script>
-
-<main class="stage" style="max-width:560px">
+<body>
+<main class="stage">
 
   <div class="card">
     <h1 class="title">免责声明</h1>
-    <p class="sub">请仔细阅读以下全部条款，输入 <b>yes</b> 后方可进入。</p>
+    <p class="sub">请阅读以下条款，输入 <b>yes</b> 后进入。</p>
 
     <div class="terms">
       <p><b>一、作品性质</b><br>本作品为个人非商业性质的同人创作，仅供交流娱乐，不用于任何盈利目的。</p>
-      <p><b>二、人物虚构</b><br>作品中出现的任何人物姓名、角色、称谓、身份、经历、对话、行为，均为虚构创作，与现实中的任何自然人、法人、组织、团体无任何关联。「程丽」并非指代任何真实人物。</p>
-      <p><b>三、如有雷同，纯属巧合</b><br>若本作品中的名称、情节与现实中的某位教师、某个班级、某所学校、某个人物存在雷同，纯属巧合。作者绝无影射、指代、贬损、侮辱、诽谤之意图，亦不承担由此产生的任何责任。</p>
+      <p><b>二、人物虚构</b><br>作品中出现的任何人物姓名、角色、称谓、身份、经历、对话、行为，均为虚构创作，与现实中的任何自然人、法人、组织、团体无任何关联。</p>
+      <p><b>三、如有雷同，纯属巧合</b><br>若本作品中的名称、情节与现实中的某位教师、某个班级、某所学校、某个人物存在雷同，纯属巧合。作者绝无影射、指代、贬损、侮辱、诽谤之意图。</p>
       <p><b>四、恐怖内容提示</b><br>本作品含有恐怖、惊悚、黑暗、压抑、闪烁画面、突发音效等内容，可能引起不适。请自行判断是否适合游玩。</p>
-      <p><b>五、不适宜人群</b><br>若你患有心脏病、高血压、癫痫、光敏性癫痫、焦虑症、抑郁症、恐慌症、创伤后应激障碍等疾病，或对恐怖内容敏感、易受惊吓，或为孕妇、情绪不稳定者，请立即退出，不要继续浏览。</p>
-      <p><b>六、自愿原则</b><br>继续操作即代表你已年满 12 周岁，自愿承担浏览本内容的一切后果。作者不对任何因游玩产生的联想、情绪或争议负责。</p>
-      <p><b>七、版权声明</b><br>本作品为闭源项目，未经作者许可，不得复制、分发、修改或二次发布其源码与素材。</p>
+      <p><b>五、不适宜人群</b><br>若你患有心脏病、高血压、癫痫、光敏性癫痫、焦虑症、抑郁症、恐慌症、创伤后应激障碍等疾病，或对恐怖内容敏感，请立即退出。</p>
+      <p><b>六、自愿原则</b><br>继续操作即代表你已年满 12 周岁，自愿承担浏览本内容的一切后果。</p>
+      <p><b>七、版权声明</b><br>本作品采用 CC BY 4.0 协议，可自由使用、改编、商用，唯一条件为保留原作者署名「叶程丽」。</p>
     </div>
 
     <div class="yesbox">
       <label>请输入 <b>yes</b> 表示同意：</label>
-      <input type="text" id="yesInput" placeholder="yes" autocomplete="off" autocomplete="off">
+      <input type="text" id="yesInput" placeholder="yes" autocomplete="off">
+      <div class="skip-box">
+        <input type="checkbox" id="skipCheck">
+        <label for="skipCheck">不再提示（下次直接进入游戏）</label>
+      </div>
       <button class="btn" id="agreeBtn">进入游戏</button>
       <p class="hint" id="errTip"></p>
     </div>
@@ -45,35 +50,44 @@
 
 </main>
 
-<style>
-.terms{text-align:left;font-size:13.5px;color:var(--sub);line-height:1.8;margin:10px 0 26px;max-height:46vh;overflow-y:auto;padding-right:6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 4px;}
-.terms p{margin-bottom:14px;}
-.terms b{color:var(--ink);font-weight:600;}
-.yesbox{text-align:left;}
-.yesbox label{font-size:13.5px;color:var(--sub);display:block;margin-bottom:8px;}
-.yesbox label b{color:var(--ink);}
-.yesbox input{width:100%;padding:14px 16px;font-size:16px;background:#f5f5f7;border:1px solid transparent;border-radius:12px;outline:none;margin-bottom:12px;}
-.yesbox input:focus{background:#fff;border-color:var(--accent);}
-.yesbox .btn{width:100%;background:var(--ink);color:#fff;border-radius:12px;padding:14px;font-size:15px;letter-spacing:2px;border:none;cursor:pointer;}
-.yesbox .btn:disabled{opacity:.4;cursor:not-allowed;}
-.hint{color:var(--danger);font-size:13px;margin-top:10px;text-align:center;min-height:18px;}
-</style>
-
 <script>
 (function(){
-  var inp=document.getElementById("yesInput"),
-      btn=document.getElementById("agreeBtn"),
-      err=document.getElementById("errTip");
-  inp.addEventListener("input",function(){
+  /* ---------- 1. 检查是否已经勾选过"不再提示" ---------- */
+  try {
+    if (localStorage.getItem("ec_skip_disclaimer") === "1"){
+      location.replace("loading.html?ch=ch1");
+      return;
+    }
+  } catch(e){}
+
+  var inp = document.getElementById("yesInput");
+  var btn = document.getElementById("agreeBtn");
+  var err = document.getElementById("errTip");
+  var skipCheck = document.getElementById("skipCheck");
+  if (!inp || !btn) return;
+
+  btn.disabled = true;
+
+  inp.addEventListener("input", function(){
     btn.disabled = inp.value.trim().toLowerCase() !== "yes";
-    err.textContent="";
+    if (err) err.textContent = "";
   });
-  btn.disabled=true;
-  btn.addEventListener("click",function(){
-    if(inp.value.trim().toLowerCase()!=="yes"){err.textContent="请输入 yes";return;}
-    try { localStorage.setItem('ec_agreed','1'); } catch(e){} location.href='loading.html?ch=ch1';
+
+  btn.addEventListener("click", function(){
+    if (inp.value.trim().toLowerCase() !== "yes"){
+      if (err) err.textContent = "请输入 yes";
+      return;
+    }
+    /* 勾了"不再提示"就永久跳过 */
+    if (skipCheck && skipCheck.checked){
+      try { localStorage.setItem("ec_skip_disclaimer", "1"); } catch(e){}
+    }
+    location.href = "loading.html?ch=ch1";
   });
-  inp.addEventListener("keydown",function(e){ if(e.key==="Enter" && !btn.disabled) btn.click(); });
+
+  inp.addEventListener("keydown", function(e){
+    if (e.key === "Enter" && !btn.disabled) btn.click();
+  });
 })();
 </script>
 </body>
