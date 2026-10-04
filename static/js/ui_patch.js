@@ -181,9 +181,6 @@
   if (btn){
     btn.addEventListener("click", function(){
       var p = $("qkPanel"); if (p) p.classList.remove("on");
-      if (false) {
-        if (place && place.next && window.__goto) window.__goto(place.next);
-      });
     });
   }
 })();

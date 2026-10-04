@@ -8,6 +8,17 @@
 <link rel="stylesheet" href="static/css/apple.css">
 </head>
 <body class="min">
+<script>
+(function(){
+  try {
+    if (localStorage.getItem("ec_agreed") === "1"){
+      location.replace("loading.html?ch=ch1");
+      return;
+    }
+  } catch(e){}
+})();
+</script>
+
 <main class="stage" style="max-width:560px">
 
   <div class="card">
@@ -60,7 +71,7 @@
   btn.disabled=true;
   btn.addEventListener("click",function(){
     if(inp.value.trim().toLowerCase()!=="yes"){err.textContent="请输入 yes";return;}
-    document.cookie = 'ec_agreed=1; max-age=31536000; path=/'; location.href='loading.html?ch=ch1';
+    try { localStorage.setItem('ec_agreed','1'); } catch(e){} location.href='loading.html?ch=ch1';
   });
   inp.addEventListener("keydown",function(e){ if(e.key==="Enter" && !btn.disabled) btn.click(); });
 })();

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#08080a">
+<title>逃离 叶·程丽</title>
+<link rel="stylesheet" href="static/css/skin-page.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="home.html">逃离 叶·程丽</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 data-text="逃离 叶·程丽">逃离 叶·程丽</h1>
+    <p class="lead">叶·程丽官方认证<br>耍起嘛耍起嘛</p>
+    <p class="lead">作者太懒了 鸽一段时间更新🌚</p>
+    <div class="acts">
+      <a class="btn dark" href="disclaimer.html" id="btnStart">游戏耍起</a>
+      <a class="btn plain" href="#about">了解更多</a>
+    </div>
+  </section>
+
+  <a class="notice" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">
+    <span class="notice-tag">公告</span>
+    <span class="notice-text">本作已开源 · 点击查看 GitHub 仓库</span>
+    <span class="notice-arrow">→</span>
+  </a>
+
+  <section class="hero-mods">
+    <a class="hm-card" href="loading.html?ch=ch2">
+      <span class="hm-badge">NEW</span>
+      <div class="hm-body">
+        <h3>第二章 · 混乱 已更新</h3>
+        <p>闹钟响时，我以为是周一。可日期还停在昨天。走廊尽头，站着一个不该存在的人。</p>
+      </div>
+      <span class="hm-arrow">→</span>
+    </a>
+    <a class="hm-hint" href="loading.html?ch=ch1">没玩过第一章？先试试「初见」吧 →</a>
+  </section>
+
+  <section class="sponsor" id="sponsor">
+    <div class="sponsor-inner">
+      <div class="sponsor-text">
+        <h2>赞助作者</h2>
+        <p>本作为个人非商业作品，服务器与开发均由作者自费维持。<br>如果它曾让你感到一丝有趣，欢迎请作者喝杯咖啡。</p>
+      </div>
+      <button class="sponsor-btn" id="sponsorBtn" type="button">❤ 赞助 →</button>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <h2>关于本作</h2>
+    <p>恐怖校园题材文字冒险。打字机对白、分支选项、恐惧值驱动，第一章「初见」完整可玩。</p>
+    <div class="cards">
+      <div class="c"><h3>沉浸剧情</h3><p>名单上为什么有你的名字，落款却在三个月前。选择会推动故事走向。</p></div>
+      <div class="c"><h3>恐惧值</h3><p>每一次遭遇都会累积恐惧值。当恐惧值满了，就会触发「迷失」结局——再也走不出这所学校。</p></div>
+      <div class="c"><h3>多结局</h3><p>顺从、反抗、沉默，不同的选择通向不同的结局。</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="log">
+    <h2>更新日志</h2>
+    <p><b>v2.0</b> · 全站暗黑改版，第一章改名「初见」，主线衔接优化。</p>
+    <p><b>v1.0</b> · 第一章「名单」完整可玩，打字机 / 分支 / 小游戏。</p>
+  </section>
+
+  <section class="block">
+    <h2>特别鸣谢</h2>
+    <div class="cards">
+      <a class="c" href="https://www.deepseek.com" target="_blank" rel="noopener"><h3>DeepSeek</h3><p>剧情 · 代码</p></a>
+      <a class="c" href="https://www.doubao.com" target="_blank" rel="noopener"><h3>豆包</h3><p>图片素材</p></a>
+      <a class="c" href="https://github.com/animate-css/animate.css" target="_blank" rel="noopener"><h3>Animate.css</h3><p>UI 动画库 · GitHub</p></a>
+    </div>
+  </section>
+</main>
+
+<div class="sponsor-mask" id="sponsorMask">
+  <div class="sponsor-box">
+    <button class="sponsor-close" id="sponsorClose" type="button">×</button>
+    <h3>感谢您的支持</h3>
+    <img src="static/img/赞助作者/赞助.png" alt="赞助作者">
+    <p class="sponsor-tip">扫码赞助 · 金额随意</p>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="foot-links">
+    <a href="home.html">首页</a> ·
+    <a href="#about">关于</a> ·
+    <a href="#log">更新日志</a>
+  </div>
+  <div class="foot-info">
+    <span class="foot-name">逃离程丽 ESCAPE CHENGLI</span>
+    <span class="foot-slogan">个人非商业 · 恐怖校园文字冒险</span>
+  </div>
+  <div class="foot-copy">© 2026 逃离程丽 · 保留所有权利</div>
+</footer>
+
+<!-- 全屏血字乱闪 -->
+<div id="ghostField" aria-hidden="true"></div>
+<style>
+#ghostField{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden}
+#ghostField .g{
+  position:absolute;font-weight:900;letter-spacing:.2em;
+  opacity:0;will-change:opacity,transform;white-space:nowrap;
+  font-family:"Courier New","Consolas",monospace;
+}
+#ghostField .g.red{color:#c8102e;text-shadow:0 0 8px rgba(200,16,46,.6)}
+#ghostField .g.black{color:#0a0a0c;text-shadow:0 0 3px rgba(200,16,46,.4)}
+#ghostField .g.darkred{color:#5a0e18;text-shadow:0 0 6px rgba(90,14,24,.6)}
+#ghostField .g.gray{color:#3a3a3c;text-shadow:0 0 2px rgba(0,0,0,.5)}
+@keyframes tw1{0%{opacity:0;transform:translate(0,0) skewX(0)}8%{opacity:1;transform:translate(-3px,2px) skewX(-6deg)}12%{opacity:0}18%{opacity:1;transform:translate(5px,-3px) skewX(9deg)}24%{opacity:.2}30%{opacity:1;transform:translate(-8px,0) skewX(0)}40%{opacity:0;transform:translate(-4px,2px)}55%{opacity:1;transform:translate(2px,-4px) skewX(-12deg)}70%{opacity:.1}82%{opacity:1;transform:translate(-6px,3px)}100%{opacity:0}}
+@keyframes tw2{0%{opacity:0;transform:translate(0,0) scale(1)}10%{opacity:1;transform:translate(0,-5px) scale(1.02)}20%{opacity:0}35%{opacity:1;transform:translate(-6px,3px) scale(.98)}42%{opacity:.15}50%{opacity:1;transform:translate(7px,-2px) scale(1.05)}68%{opacity:0}80%{opacity:1;transform:translate(-3px,4px) scale(1)}100%{opacity:0}}
+@keyframes tw3{0%,100%{opacity:0;transform:translate(0,0)}6%{opacity:1;transform:translate(-2px,0) rotate(-1deg)}14%{opacity:0}22%{opacity:1;transform:translate(4px,2px) rotate(1deg)}30%{opacity:0}44%{opacity:1;transform:translate(-5px,-3px) rotate(-2deg)}58%{opacity:0}72%{opacity:1;transform:translate(3px,3px) rotate(2deg)}88%{opacity:0}}
+@keyframes tw4{0%,100%{opacity:0}12%{opacity:.9;transform:translate(0,0)}20%{opacity:.05}28%{opacity:1;transform:translate(0,-6px) skewY(4deg)}44%{opacity:0}60%{opacity:.95;transform:translate(-5px,5px) skewY(-6deg)}76%{opacity:.1}84%{opacity:1;transform:translate(4px,-3px) skewY(2deg)}}
+</style>
+<script>
+(function(){
+  var field = document.getElementById("ghostField");
+  if (!field) return;
+  var TEXTS = ["死","死","死","杀","杀","无","404","303","ERROR","NOT FOUND","NULL","0x00","?????","程丽","程丽","她 来 了","你 逃 不 掉","明 天 见","别 回 头"];
+  var COLORS = ["red","red","black","black","darkred","gray"];
+  var ATTRS = ["tw1","tw2","tw3","tw4"];
+  function rand(a,b){ return a + Math.random()*(b-a); }
+  function spawn(){
+    var el = document.createElement("span");
+    var c = COLORS[Math.floor(Math.random()*COLORS.length)];
+    el.className = "g " + c;
+    el.textContent = TEXTS[Math.floor(Math.random()*TEXTS.length)];
+    var fs = (Math.random() < 0.25) ? rand(52,90) : rand(16,40);
+    el.style.fontSize = fs + "px";
+    el.style.left = rand(-6,94) + "%";
+    el.style.top  = rand(-4,94) + "%";
+    var a = ATTRS[Math.floor(Math.random()*ATTRS.length)];
+    var d = rand(1.4, 2.6);
+    el.style.animation = a + " " + d + "s steps(1) 1 forwards";
+    field.appendChild(el);
+    setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, d*1000+100);
+  }
+  var TOTAL = 40, i = 0;
+  function loop(){ if (i>=TOTAL) return; i++; spawn(); setTimeout(loop, rand(100,240)); }
+  setTimeout(loop, 400);
+  setTimeout(function(){
+    var t = setInterval(spawn, 380);
+    setTimeout(function(){ clearInterval(t); }, 12000);
+  }, 14000);
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById("sponsorBtn"),
+      mask = document.getElementById("sponsorMask"),
+      close = document.getElementById("sponsorClose");
+  if (!btn || !mask) return;
+  btn.addEventListener("click", function(){ mask.classList.add("on"); });
+  close.addEventListener("click", function(){ mask.classList.remove("on"); });
+  mask.addEventListener("click", function(e){ if (e.target === mask) mask.classList.remove("on"); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") mask.classList.remove("on"); });
+})();
+</script>
+</div>
+</div>
+</div>
+<div id="redeemZone">
+  <button id="redeemEntry" type="button">兑换</button>
+</div>
+<div id="redeemModal">
+  <div id="redeemModalBox">
+    <h4>兑换码</h4>
+    <input id="redeemCode" type="text" placeholder="输入兑换码" maxlength="16" autocomplete="off">
+    <p id="redeemMsg"></p>
+    <div class="rd-acts">
+      <button id="rdCancel">取消</button>
+      <button id="rdOk">确认</button>
+    </div>
+  </div>
+</div>
+<style>
+#redeemZone{position:relative;z-index:5;max-width:900px;margin:20px auto 40px;padding:0 24px;text-align:center}
+#redeemEntry{
+  padding:8px 22px;border-radius:2px;
+  background:transparent;color:#3a3a3c;
+  border:1px solid #1e1e22;
+  font-size:12px;font-weight:600;letter-spacing:.4em;
+  cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);
+  opacity:.5;
+}
+#redeemEntry:hover{opacity:1;color:#c8102e;border-color:rgba(200,16,46,.5)}
+#redeemEntry.on{
+  opacity:1;color:#c8102e;border-color:rgba(200,16,46,.6);
+  background:rgba(200,16,46,.05);
+}
+#redeemModal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px}
+#redeemModal.show{display:flex}
+#redeemModalBox{width:min(340px,92vw);background:#0f0f12;border:1px solid rgba(200,16,46,.5);border-radius:8px;padding:26px 22px;box-shadow:0 30px 80px rgba(200,16,46,.5);animation:rdIn .3s cubic-bezier(.16,1,.3,1)}
+@keyframes rdIn{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:none}}
+#redeemModalBox h4{margin:0 0 18px;font-size:14px;color:#e8e8ea;letter-spacing:.3em;text-align:center;font-weight:700}
+#redeemCode{width:100%;padding:14px 16px;font-size:16px;background:#08080a;color:#e8e8ea;border:1px solid rgba(200,16,46,.3);border-radius:4px;outline:none;margin-bottom:10px;text-align:center;letter-spacing:.5em;font-family:monospace}
+#redeemCode:focus{border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
+#redeemMsg{margin:0 0 14px;font-size:12.5px;text-align:center;color:#c8102e;min-height:18px}
+.rd-acts{display:flex;gap:10px}
+.rd-acts button{flex:1;padding:12px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;border:none;letter-spacing:.1em}
+#rdCancel{background:#1a0608;color:#8a8a8e;border:1px solid rgba(200,16,46,.3)}
+#rdOk{background:linear-gradient(135deg,#c8102e,#5a0e18);color:#fff}
+</style>
+<script id="redeem-index">
+(function(){
+  var KEY = "ec_cheat_enabled";
+  var entry = document.getElementById("redeemEntry");
+  var modal = document.getElementById("redeemModal");
+  var codeEl = document.getElementById("redeemCode");
+  var msgEl = document.getElementById("redeemMsg");
+  if (!entry || !modal) return;
+
+  function isOn(){ try{ return localStorage.getItem(KEY)==="1"; }catch(e){ return false; } }
+  function setOn(v){ try{ if(v) localStorage.setItem(KEY,"1"); else localStorage.removeItem(KEY); }catch(e){} }
+
+  function sync(){
+    var on = isOn();
+    entry.textContent = on ? "作弊已开启" : "兑换";
+    entry.classList.toggle("on", on);
+  }
+  sync();
+
+  entry.addEventListener("click", function(){
+    if (isOn()){
+      // 已开启：再点一次 = 关闭
+      if (confirm("关闭作弊模式？")){ setOn(false); sync(); }
+      return;
+    }
+    modal.classList.add("show");
+    codeEl.value = "";
+    msgEl.textContent = "";
+    setTimeout(function(){ codeEl.focus(); }, 80);
+  });
+
+  document.getElementById("rdCancel").addEventListener("click", function(){ modal.classList.remove("show"); });
+  modal.addEventListener("click", function(e){ if (e.target === modal) modal.classList.remove("show"); });
+
+  document.getElementById("rdOk").addEventListener("click", function(){
+    if ((codeEl.value||"").trim() === "6767"){
+      setOn(true); sync(); modal.classList.remove("show");
+    } else {
+      msgEl.textContent = "兑换码错误";
+    }
+  });
+  codeEl.addEventListener("keydown", function(e){ if (e.key === "Enter") document.getElementById("rdOk").click(); });
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById("btnStart");
+  if (!btn) return;
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    var agreed = false;
+    try { agreed = localStorage.getItem("ec_agreed") === "1"; } catch(e){}
+    if (agreed) location.href = "loading.html?ch=ch1";
+    else location.href = "disclaimer.html";
+  });
+})();
+</script>
+
+</body>
+</html>
