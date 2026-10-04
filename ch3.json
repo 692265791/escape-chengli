@@ -1,0 +1,6417 @@
+{
+  "meta": {
+    "chapter": "第十章 · 放假",
+    "start": "c3_start",
+    "vars": {
+      "san": 0,
+      "memory": 100,
+      "trust": 0,
+      "obey": 0,
+      "stamina": 100,
+      "clue": 0
+    }
+  },
+  "nodes": {
+    "c3_start": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "下课铃响了。"
+        },
+        {
+          "type": "narration",
+          "text": "但今天不一样。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽没有说「明天见」。"
+        },
+        {
+          "type": "narration",
+          "text": "她合上书，站在讲台边。看了我们很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（她在看什么。）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "放假了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "走吧。"
+        }
+      ],
+      "next": "c3_start2",
+      "choices": []
+    },
+    "c3_start2": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "教室里没人动。"
+        },
+        {
+          "type": "narration",
+          "text": "所有人都在看她。"
+        },
+        {
+          "type": "narration",
+          "text": "像是不敢相信。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "我说，走。"
+        }
+      ],
+      "next": "c3_start3",
+      "choices": []
+    },
+    "c3_start3": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "shake",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她的声音，第一次不像念课文。"
+        },
+        {
+          "type": "narration",
+          "text": "有点……颤。"
+        },
+        {
+          "type": "inner",
+          "text": "（她的手在抖。）"
+        },
+        {
+          "type": "inner",
+          "text": "（她拿着戒尺的那只手，在抖。）"
+        }
+      ],
+      "next": "c3_start4",
+      "choices": []
+    },
+    "c3_start4": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "page": true,
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "第十章"
+        },
+        {
+          "type": "narration",
+          "text": "放假"
+        }
+      ],
+      "next": "c3_start5",
+      "choices": []
+    },
+    "c3_start5": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我站起来。"
+        },
+        {
+          "type": "narration",
+          "text": "椅子往后一推，在地板上划出很长的一声。"
+        },
+        {
+          "type": "narration",
+          "text": "全班都没动。"
+        },
+        {
+          "type": "narration",
+          "text": "只有我。"
+        },
+        {
+          "type": "inner",
+          "text": "（为什么只有我？）"
+        }
+      ],
+      "next": "c3_start6",
+      "choices": []
+    },
+    "c3_start6": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走到门口，回头看了一眼。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽站在讲台上，没有看我。"
+        },
+        {
+          "type": "narration",
+          "text": "她的目光落在教室最后一排。"
+        },
+        {
+          "type": "narration",
+          "text": "落在我刚才坐的那个位置。"
+        },
+        {
+          "type": "inner",
+          "text": "（她在看什么。）"
+        }
+      ],
+      "next": "c3_start7",
+      "choices": []
+    },
+    "c3_start7": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她手里，还是那把红木戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "但她没有敲。"
+        },
+        {
+          "type": "narration",
+          "text": "她只是站着。"
+        },
+        {
+          "type": "narration",
+          "text": "像是在等什么。"
+        },
+        {
+          "type": "inner",
+          "text": "（她在等谁？）"
+        }
+      ],
+      "next": "c3_start8",
+      "choices": []
+    },
+    "c3_start8": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有再看她。"
+        },
+        {
+          "type": "narration",
+          "text": "我走出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "门在身后关上。"
+        },
+        {
+          "type": "narration",
+          "text": "很轻。"
+        },
+        {
+          "type": "narration",
+          "text": "轻得像有人用手扶着，怕发出声音。"
+        }
+      ],
+      "next": "c3_corridor",
+      "choices": []
+    },
+    "c3_corridor": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "走廊和平时不一样。"
+        },
+        {
+          "type": "narration",
+          "text": "灯全亮着。"
+        },
+        {
+          "type": "narration",
+          "text": "一盏都没灭。"
+        },
+        {
+          "type": "narration",
+          "text": "早上我进来的时候，还只亮了一半。"
+        },
+        {
+          "type": "inner",
+          "text": "（谁开的灯。）"
+        }
+      ],
+      "next": "c3_corridor2",
+      "choices": []
+    },
+    "c3_corridor2": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我往前走。"
+        },
+        {
+          "type": "narration",
+          "text": "路过一间间教室。"
+        },
+        {
+          "type": "narration",
+          "text": "每间里面都有人。"
+        },
+        {
+          "type": "narration",
+          "text": "都坐在座位上。"
+        },
+        {
+          "type": "narration",
+          "text": "都没动。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们……在等我走吗。）"
+        }
+      ],
+      "next": "c3_corridor3",
+      "choices": []
+    },
+    "c3_corridor3": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "走到楼梯口。"
+        },
+        {
+          "type": "narration",
+          "text": "灯闪了一下。"
+        },
+        {
+          "type": "narration",
+          "text": "我停下来。"
+        },
+        {
+          "type": "inner",
+          "text": "（会不会又变成六层？）"
+        },
+        {
+          "type": "narration",
+          "text": "我数着楼层往下走。"
+        },
+        {
+          "type": "narration",
+          "text": "一楼。"
+        },
+        {
+          "type": "narration",
+          "text": "……到了。"
+        }
+      ],
+      "next": "c3_corridor4",
+      "choices": []
+    },
+    "c3_corridor4": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "一楼。"
+        },
+        {
+          "type": "narration",
+          "text": "真的只有一楼。"
+        },
+        {
+          "type": "narration",
+          "text": "楼梯没有变长。"
+        },
+        {
+          "type": "narration",
+          "text": "楼道口的门，是开的。"
+        },
+        {
+          "type": "inner",
+          "text": "（之前那次，楼梯数不完。）"
+        },
+        {
+          "type": "inner",
+          "text": "（这次，一步就到了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（……为什么？）"
+        }
+      ],
+      "next": "c3_gate",
+      "choices": []
+    },
+    "c3_gate": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走出教学楼。"
+        },
+        {
+          "type": "narration",
+          "text": "校门口在五十米外。"
+        },
+        {
+          "type": "narration",
+          "text": "铁门开着。"
+        },
+        {
+          "type": "narration",
+          "text": "和第一章第一天一样。"
+        },
+        {
+          "type": "inner",
+          "text": "（上次我走出去，第二天醒来还是在教室。）"
+        },
+        {
+          "type": "inner",
+          "text": "（这次……会不会也一样？）"
+        }
+      ],
+      "next": "c3_gate_choice",
+      "choices": []
+    },
+    "c3_gate_choice": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（走，还是不走。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "直接走出去",
+          "next": "c3_gate_out",
+          "effects": {
+            "trust": 2,
+            "san": 2
+          }
+        },
+        {
+          "text": "先在门口站一会儿",
+          "next": "c3_gate_wait",
+          "effects": {
+            "san": 3
+          }
+        },
+        {
+          "text": "回头看一眼教学楼",
+          "next": "c3_gate_look",
+          "effects": {
+            "san": 4,
+            "clue": 1
+          }
+        }
+      ]
+    },
+    "c3_gate_out": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有犹豫。"
+        },
+        {
+          "type": "narration",
+          "text": "我走了出去。"
+        },
+        {
+          "type": "narration",
+          "text": "脚跨过校门的那一刻。"
+        },
+        {
+          "type": "narration",
+          "text": "身后的风，忽然停了。"
+        },
+        {
+          "type": "inner",
+          "text": "（风……停了？）"
+        }
+      ],
+      "next": "c3_outside",
+      "choices": []
+    },
+    "c3_gate_wait": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我在校门口站了一会儿。"
+        },
+        {
+          "type": "narration",
+          "text": "看了看天。"
+        },
+        {
+          "type": "narration",
+          "text": "天是蓝的。"
+        },
+        {
+          "type": "narration",
+          "text": "我从来没有在这个角度看过天。"
+        },
+        {
+          "type": "narration",
+          "text": "以前每次看，都是灰的。"
+        },
+        {
+          "type": "inner",
+          "text": "（今天为什么是蓝的。）"
+        },
+        {
+          "type": "narration",
+          "text": "我没有答案。"
+        },
+        {
+          "type": "narration",
+          "text": "我走了出去。"
+        }
+      ],
+      "next": "c3_outside",
+      "choices": []
+    },
+    "c3_gate_look": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我回头看了一眼教学楼。"
+        },
+        {
+          "type": "narration",
+          "text": "三楼的窗户上，站着一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "蓝灰色的裙子。"
+        },
+        {
+          "type": "narration",
+          "text": "是程丽。"
+        },
+        {
+          "type": "narration",
+          "text": "她没有动。"
+        },
+        {
+          "type": "narration",
+          "text": "就站在窗后，看着我。"
+        },
+        {
+          "type": "inner",
+          "text": "（她在送我。）"
+        },
+        {
+          "type": "inner",
+          "text": "（还是在看我走？）"
+        }
+      ],
+      "effects": {
+        "clue": 1
+      },
+      "next": "c3_outside",
+      "choices": []
+    },
+    "c3_outside": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我推开校门。"
+        },
+        {
+          "type": "narration",
+          "text": "外面的天，是蓝的。"
+        },
+        {
+          "type": "narration",
+          "text": "真正的蓝。"
+        },
+        {
+          "type": "narration",
+          "text": "不是诡异悲凉的那种灰。"
+        },
+        {
+          "type": "narration",
+          "text": "是十月一日，国庆的蓝。"
+        }
+      ],
+      "next": "c3_outside2",
+      "choices": []
+    },
+    "c3_outside2": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "街上有人。"
+        },
+        {
+          "type": "narration",
+          "text": "有车。"
+        },
+        {
+          "type": "narration",
+          "text": "有人在贴国旗。"
+        },
+        {
+          "type": "narration",
+          "text": "一个小女孩手里拿着气球，从我身边跑过去。"
+        },
+        {
+          "type": "narration",
+          "text": "气球是红的。"
+        },
+        {
+          "type": "narration",
+          "text": "红得刺眼。"
+        },
+        {
+          "type": "inner",
+          "text": "（红笔。）"
+        },
+        {
+          "type": "inner",
+          "text": "（……不要想那个。）"
+        }
+      ],
+      "next": "c3_outside3",
+      "choices": []
+    },
+    "c3_outside3": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "但没关系了。"
+        },
+        {
+          "type": "narration",
+          "text": "我出来了。"
+        },
+        {
+          "type": "narration",
+          "text": "这一次，是真的出来了。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬头看天。"
+        },
+        {
+          "type": "narration",
+          "text": "天很高。"
+        },
+        {
+          "type": "narration",
+          "text": "我第一次觉得，天是可以装下我的。"
+        },
+        {
+          "type": "inner",
+          "text": "（回家。）"
+        }
+      ],
+      "next": "c3_home",
+      "choices": []
+    },
+    "c3_day1": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月一日。"
+        },
+        {
+          "type": "narration",
+          "text": "国庆第一天。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 7 天。"
+        }
+      ],
+      "next": "c3_day1b",
+      "choices": []
+    },
+    "c3_day1b": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我在街上逛了一整天。"
+        },
+        {
+          "type": "narration",
+          "text": "吃了烤肠，喝了汽水。"
+        },
+        {
+          "type": "narration",
+          "text": "看了半天街上的国旗。"
+        },
+        {
+          "type": "narration",
+          "text": "有个小孩踩到了我的鞋，他妈妈向我道歉。"
+        },
+        {
+          "type": "narration",
+          "text": "我说没事。"
+        },
+        {
+          "type": "inner",
+          "text": "（这种感觉……好陌生。）"
+        },
+        {
+          "type": "inner",
+          "text": "（正常人的一天。）"
+        }
+      ],
+      "next": "c3_day1_night",
+      "choices": []
+    },
+    "c3_day1_night": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "天黑了，我回家。"
+        },
+        {
+          "type": "narration",
+          "text": "躺在床上，我想起一件事——"
+        },
+        {
+          "type": "narration",
+          "text": "今天，程丽没有出现。"
+        },
+        {
+          "type": "narration",
+          "text": "一次都没有。"
+        },
+        {
+          "type": "narration",
+          "text": "我笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "真的笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "这是我这几天来，第一次笑。"
+        }
+      ],
+      "next": "c3_day1_end",
+      "choices": []
+    },
+    "c3_day1_end": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "闭眼前，我看了一眼手机。"
+        },
+        {
+          "type": "narration",
+          "text": "10 月 1 日，23:59。"
+        },
+        {
+          "type": "narration",
+          "text": "还有一分钟到明天。"
+        },
+        {
+          "type": "inner",
+          "text": "（明天会变成 2 号吗？）"
+        },
+        {
+          "type": "inner",
+          "text": "（还是……又回到 1 号？）"
+        },
+        {
+          "type": "narration",
+          "text": "我盯着屏幕。"
+        },
+        {
+          "type": "narration",
+          "text": "23:59 → 00:00。"
+        },
+        {
+          "type": "narration",
+          "text": "10 月 2 日。"
+        },
+        {
+          "type": "inner",
+          "text": "（……走了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（时间真的走了。）"
+        }
+      ],
+      "next": "c3_day2",
+      "choices": []
+    },
+    "c3_day2": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月二日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 6 天。"
+        }
+      ],
+      "next": "c3_day2_msg",
+      "choices": []
+    },
+    "c3_day2_msg": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "早上，手机响了一下。"
+        },
+        {
+          "type": "narration",
+          "text": "班级群消息。"
+        },
+        {
+          "type": "narration",
+          "text": "我点开。"
+        },
+        {
+          "type": "narration",
+          "text": "发消息的人叫——"
+        },
+        {
+          "type": "narration",
+          "text": "「彭梦玲老师」。"
+        },
+        {
+          "type": "inner",
+          "text": "（彭梦玲？）"
+        },
+        {
+          "type": "inner",
+          "text": "（我不认识这个名字。）"
+        }
+      ],
+      "next": "c3_day2_msg2",
+      "choices": []
+    },
+    "c3_day2_msg2": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "消息内容："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "各位同学，国庆假期作业："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "英语一到三单元，单词每个抄二十遍。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "这是程老师布置的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "请按时完成。"
+        },
+        {
+          "type": "inner",
+          "text": "（语文老师……布置英语作业？）"
+        },
+        {
+          "type": "inner",
+          "text": "（而且是程丽交代的？）"
+        }
+      ],
+      "next": "c3_day2_think",
+      "choices": []
+    },
+    "c3_day2_think": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我盯着屏幕看了很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（彭梦玲。）"
+        },
+        {
+          "type": "inner",
+          "text": "（第一章没有这个人。）"
+        },
+        {
+          "type": "inner",
+          "text": "（第二章也没有。）"
+        },
+        {
+          "type": "inner",
+          "text": "（名单上也没有。）"
+        },
+        {
+          "type": "inner",
+          "text": "（她是……谁？）"
+        }
+      ],
+      "next": "c3_day2_choice",
+      "choices": []
+    },
+    "c3_day2_choice": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（我该怎么做。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "回复「收到」",
+          "next": "c3_day2_reply",
+          "effects": {
+            "obey": 2,
+            "trust": 1
+          }
+        },
+        {
+          "text": "翻出名单，找彭梦玲",
+          "next": "c3_day2_check",
+          "effects": {
+            "trust": 2,
+            "clue": 1,
+            "san": 3
+          }
+        },
+        {
+          "text": "什么都不回，删掉消息",
+          "next": "c3_day2_delete",
+          "effects": {
+            "san": 4
+          }
+        }
+      ]
+    },
+    "c3_day2_reply": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我打了「收到」。"
+        },
+        {
+          "type": "narration",
+          "text": "发出去的瞬间。"
+        },
+        {
+          "type": "narration",
+          "text": "群里**其他人**同时冒出一排「收到」。"
+        },
+        {
+          "type": "narration",
+          "text": "五十四个。"
+        },
+        {
+          "type": "narration",
+          "text": "和名单的人数一模一样。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们……都在线？）"
+        },
+        {
+          "type": "inner",
+          "text": "（国庆放假了，都在家？）"
+        },
+        {
+          "type": "inner",
+          "text": "（他们能回家吗？）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c3_day2_copy",
+      "choices": []
+    },
+    "c3_day2_check": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我从书包里翻出那张名单。"
+        },
+        {
+          "type": "narration",
+          "text": "从上往下看。"
+        },
+        {
+          "type": "narration",
+          "text": "第一个，第二个……"
+        },
+        {
+          "type": "narration",
+          "text": "第十二个是我。"
+        },
+        {
+          "type": "narration",
+          "text": "我把整张名单翻了一遍。"
+        },
+        {
+          "type": "narration",
+          "text": "**没有彭梦玲。**"
+        },
+        {
+          "type": "narration",
+          "text": "但名单的**背面**，有一行很浅的铅笔字。"
+        },
+        {
+          "type": "narration",
+          "text": "「**彭梦玲 —— 已划去**」"
+        },
+        {
+          "type": "inner",
+          "text": "（……跟于硕一样。）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 3
+      },
+      "next": "c3_day2_copy",
+      "choices": []
+    },
+    "c3_day2_delete": {
+      "bg": "classroom_e",
+      "sprite": "peng_silhouette",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我长按消息，点了「删除」。"
+        },
+        {
+          "type": "narration",
+          "text": "对话框消失了。"
+        },
+        {
+          "type": "narration",
+          "text": "手机安静了三秒。"
+        },
+        {
+          "type": "narration",
+          "text": "然后——"
+        },
+        {
+          "type": "narration",
+          "text": "**又弹出来一条新的。**"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "冷",
+          "text": "别删。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "冷",
+          "text": "删了也是你的。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她怎么知道。）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day2_copy",
+      "choices": []
+    },
+    "c3_day2_copy": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "晚上，我拿出本子。"
+        },
+        {
+          "type": "narration",
+          "text": "英语一到三单元，单词每个二十遍。"
+        },
+        {
+          "type": "narration",
+          "text": "我抄第一个词。"
+        },
+        {
+          "type": "narration",
+          "text": "ancient。"
+        },
+        {
+          "type": "narration",
+          "text": "古代。"
+        },
+        {
+          "type": "narration",
+          "text": "抄到第十遍的时候，我发现——"
+        },
+        {
+          "type": "narration",
+          "text": "**本子上的字，变了。**"
+        },
+        {
+          "type": "narration",
+          "text": "「ancient」变成了「**名字**」。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我抄错了？）"
+        },
+        {
+          "type": "narration",
+          "text": "我继续抄第二个词。"
+        },
+        {
+          "type": "narration",
+          "text": "camp。"
+        },
+        {
+          "type": "narration",
+          "text": "本子上出现的是：「**第十二个**」。"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day2_copy2",
+      "choices": []
+    },
+    "c3_day2_copy2": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我停笔。"
+        },
+        {
+          "type": "narration",
+          "text": "心跳很快。"
+        },
+        {
+          "type": "narration",
+          "text": "我把本子翻到封面。"
+        },
+        {
+          "type": "narration",
+          "text": "上面不是我的名字。"
+        },
+        {
+          "type": "narration",
+          "text": "写的是——"
+        },
+        {
+          "type": "narration",
+          "text": "「**程丽**」。"
+        },
+        {
+          "type": "inner",
+          "text": "（……这是程丽的本子。）"
+        },
+        {
+          "type": "inner",
+          "text": "（什么时候，她的本子到我这儿的？）"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c3_day2_end",
+      "choices": []
+    },
+    "c3_day2_end": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把本子扔进抽屉。"
+        },
+        {
+          "type": "narration",
+          "text": "倒在床上。"
+        },
+        {
+          "type": "narration",
+          "text": "闭眼前，我又看了一眼手机。"
+        },
+        {
+          "type": "narration",
+          "text": "**10 月 2 日，23:59。**"
+        },
+        {
+          "type": "narration",
+          "text": "我盯着看。"
+        },
+        {
+          "type": "narration",
+          "text": "**00:00 → 10 月 3 日。**"
+        },
+        {
+          "type": "inner",
+          "text": "（又走了一天。）"
+        },
+        {
+          "type": "inner",
+          "text": "（还有六天。）"
+        }
+      ],
+      "next": "c3_day3",
+      "choices": []
+    },
+    "c3_day3": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月三日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 5 天。"
+        },
+        {
+          "type": "narration",
+          "text": "今天下雨了。"
+        }
+      ],
+      "next": "c3_day3_rain",
+      "choices": []
+    },
+    "c3_day3_rain": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "雨不大，但是密。"
+        },
+        {
+          "type": "narration",
+          "text": "窗玻璃上全是水痕。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐在窗前看雨。"
+        },
+        {
+          "type": "narration",
+          "text": "看着看着，我发现——"
+        },
+        {
+          "type": "narration",
+          "text": "雨的方向**不对**。"
+        },
+        {
+          "type": "narration",
+          "text": "是从地上**往天上**落的。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我眼花了吗。）"
+        }
+      ],
+      "next": "c3_day3_rain2",
+      "choices": []
+    },
+    "c3_day3_rain2": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我揉了揉眼睛。"
+        },
+        {
+          "type": "narration",
+          "text": "再看。"
+        },
+        {
+          "type": "narration",
+          "text": "雨**正常了**。"
+        },
+        {
+          "type": "narration",
+          "text": "是从天上往下落。"
+        },
+        {
+          "type": "narration",
+          "text": "我松了口气。"
+        },
+        {
+          "type": "inner",
+          "text": "（是我太紧张了。）"
+        }
+      ],
+      "next": "c3_day3_plan",
+      "choices": []
+    },
+    "c3_day3_plan": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "手机又响了。"
+        },
+        {
+          "type": "narration",
+          "text": "班级群。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "各位同学："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "放假不能光玩。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "请回校一趟。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "领一份知识点。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "从校门口取，不用进教室。"
+        },
+        {
+          "type": "inner",
+          "text": "（放假回校？）"
+        },
+        {
+          "type": "inner",
+          "text": "（……去吧。）"
+        }
+      ],
+      "next": "c3_day3_choice",
+      "choices": []
+    },
+    "c3_day3_choice": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（去，还是不去。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "去学校",
+          "next": "c3_day3_go",
+          "effects": {
+            "trust": 2,
+            "obey": 1
+          }
+        },
+        {
+          "text": "不去，在家抄",
+          "next": "c3_day3_stay",
+          "effects": {
+            "san": 3,
+            "trust": -1
+          }
+        },
+        {
+          "text": "去，但只在校门外看",
+          "next": "c3_day3_peek",
+          "effects": {
+            "trust": 1,
+            "clue": 1,
+            "san": 2
+          }
+        }
+      ]
+    },
+    "c3_day3_go": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我打了伞，出门。"
+        },
+        {
+          "type": "narration",
+          "text": "走到学校，用了二十分钟。"
+        },
+        {
+          "type": "narration",
+          "text": "奇怪的是——"
+        },
+        {
+          "type": "narration",
+          "text": "**路上一个人都没有。**"
+        },
+        {
+          "type": "narration",
+          "text": "国庆假期的街，安静得像一条空管。"
+        },
+        {
+          "type": "inner",
+          "text": "（人都去哪儿了。）"
+        }
+      ],
+      "next": "c3_day3_gate",
+      "choices": []
+    },
+    "c3_day3_stay": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没去。"
+        },
+        {
+          "type": "narration",
+          "text": "我在家抄了一上午。"
+        },
+        {
+          "type": "narration",
+          "text": "中午的时候，有人敲门。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开门。"
+        },
+        {
+          "type": "narration",
+          "text": "门外没有人。"
+        },
+        {
+          "type": "narration",
+          "text": "地板上放着一张纸。"
+        },
+        {
+          "type": "narration",
+          "text": "纸上写着："
+        },
+        {
+          "type": "narration",
+          "text": "「**你没来。我知道了。**」"
+        },
+        {
+          "type": "inner",
+          "text": "（……彭梦玲？）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day3_gate",
+      "choices": []
+    },
+    "c3_day3_peek": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我去了学校，但没进去。"
+        },
+        {
+          "type": "narration",
+          "text": "站在校门对面的树下。"
+        },
+        {
+          "type": "narration",
+          "text": "看了一会儿。"
+        },
+        {
+          "type": "narration",
+          "text": "校门口没有人。"
+        },
+        {
+          "type": "narration",
+          "text": "但是——"
+        },
+        {
+          "type": "narration",
+          "text": "门卫室的窗户上，**有个人影**。"
+        },
+        {
+          "type": "narration",
+          "text": "在看着我。"
+        },
+        {
+          "type": "inner",
+          "text": "（谁？）"
+        },
+        {
+          "type": "inner",
+          "text": "（门卫室的窗户，第一章就是黑的。）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 3
+      },
+      "next": "c3_day3_gate",
+      "choices": []
+    },
+    "c3_day3_gate": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走到校门口。"
+        },
+        {
+          "type": "narration",
+          "text": "铁门上贴着一张纸。"
+        },
+        {
+          "type": "narration",
+          "text": "A4 大小，白纸黑字。"
+        },
+        {
+          "type": "narration",
+          "text": "标题是："
+        },
+        {
+          "type": "narration",
+          "text": "「**国庆英语知识点**」"
+        },
+        {
+          "type": "narration",
+          "text": "下面是一行行的英文。"
+        },
+        {
+          "type": "narration",
+          "text": "我撕下来，拿在手里。"
+        },
+        {
+          "type": "inner",
+          "text": "（挺正常的。）"
+        }
+      ],
+      "next": "c3_day3_read",
+      "choices": []
+    },
+    "c3_day3_read": {
+      "bg": "school_gate",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我低头看纸。"
+        },
+        {
+          "type": "narration",
+          "text": "第一行："
+        },
+        {
+          "type": "narration",
+          "text": "「**Unit 1: ancient, camp, landscape...**」"
+        },
+        {
+          "type": "narration",
+          "text": "第二行："
+        },
+        {
+          "type": "narration",
+          "text": "「**Unit 2: 名单上的第十二个**」"
+        },
+        {
+          "type": "inner",
+          "text": "（……什么？）"
+        },
+        {
+          "type": "narration",
+          "text": "我用力看。"
+        },
+        {
+          "type": "narration",
+          "text": "第三行："
+        },
+        {
+          "type": "narration",
+          "text": "「**Unit 3: 明天，别忘了带笔。**」"
+        }
+      ],
+      "effects": {
+        "san": 5,
+        "clue": 1
+      },
+      "next": "c3_day3_read2",
+      "choices": []
+    },
+    "c3_day3_read2": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把纸翻过来。"
+        },
+        {
+          "type": "narration",
+          "text": "背面什么都没有。"
+        },
+        {
+          "type": "narration",
+          "text": "我再翻回来。"
+        },
+        {
+          "type": "narration",
+          "text": "纸上的字**变了**。"
+        },
+        {
+          "type": "narration",
+          "text": "不是英语。"
+        },
+        {
+          "type": "narration",
+          "text": "是**一份名单**。"
+        },
+        {
+          "type": "narration",
+          "text": "我数了数。"
+        },
+        {
+          "type": "narration",
+          "text": "**五十四个名字。**"
+        },
+        {
+          "type": "narration",
+          "text": "第十二个是我。"
+        },
+        {
+          "type": "narration",
+          "text": "名字上面，被人**用红笔划了一道**。"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c3_day3_end",
+      "choices": []
+    },
+    "c3_day3_end": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把纸塞进兜里。"
+        },
+        {
+          "type": "narration",
+          "text": "转身要走。"
+        },
+        {
+          "type": "narration",
+          "text": "身后，铁门**吱呀**响了一下。"
+        },
+        {
+          "type": "narration",
+          "text": "我回头。"
+        },
+        {
+          "type": "narration",
+          "text": "铁门**关上了**。"
+        },
+        {
+          "type": "narration",
+          "text": "就像第一章第一天。"
+        },
+        {
+          "type": "inner",
+          "text": "（……它认识我。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c3_day3_home",
+      "choices": []
+    },
+    "c3_day3_home": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "回到家，我把纸摊开。"
+        },
+        {
+          "type": "narration",
+          "text": "拿出本子，开始抄。"
+        },
+        {
+          "type": "narration",
+          "text": "抄第一遍，正常。"
+        },
+        {
+          "type": "narration",
+          "text": "抄第二遍，正常。"
+        },
+        {
+          "type": "narration",
+          "text": "抄到第三遍的时候——"
+        },
+        {
+          "type": "narration",
+          "text": "**字迹开始变。**"
+        },
+        {
+          "type": "narration",
+          "text": "「ancient」变成「**留 下**」"
+        },
+        {
+          "type": "narration",
+          "text": "「camp」变成「**逃 出**」"
+        },
+        {
+          "type": "narration",
+          "text": "「landscape」变成「**同 名**」"
+        }
+      ],
+      "effects": {
+        "san": 5,
+        "clue": 1
+      },
+      "next": "c3_day3_end2",
+      "choices": []
+    },
+    "c3_day3_end2": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我停下笔。"
+        },
+        {
+          "type": "narration",
+          "text": "我意识到这些词——"
+        },
+        {
+          "type": "narration",
+          "text": "**是结局的名字。**"
+        },
+        {
+          "type": "narration",
+          "text": "「留下」"
+        },
+        {
+          "type": "narration",
+          "text": "「逃出」"
+        },
+        {
+          "type": "narration",
+          "text": "「同名」"
+        },
+        {
+          "type": "narration",
+          "text": "「放假」"
+        },
+        {
+          "type": "narration",
+          "text": "「返校」"
+        },
+        {
+          "type": "narration",
+          "text": "「程丽」"
+        },
+        {
+          "type": "inner",
+          "text": "（……有人已经走过这些路了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（不是我。）"
+        }
+      ],
+      "effects": {
+        "san": 7
+      },
+      "next": "c3_day3_sleep",
+      "choices": []
+    },
+    "c3_day3_sleep": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我合上本子。"
+        },
+        {
+          "type": "narration",
+          "text": "关灯，躺在床上。"
+        },
+        {
+          "type": "narration",
+          "text": "闭眼前看了一眼手机。"
+        },
+        {
+          "type": "narration",
+          "text": "**10 月 3 日，23:59。**"
+        },
+        {
+          "type": "narration",
+          "text": "**→ 10 月 4 日。**"
+        },
+        {
+          "type": "inner",
+          "text": "（还有四天。）"
+        },
+        {
+          "type": "inner",
+          "text": "（然后就是返校。）"
+        }
+      ],
+      "next": "c3_day4",
+      "choices": []
+    },
+    "c3_day4": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月四日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 4 天。"
+        },
+        {
+          "type": "narration",
+          "text": "今天有人敲门。"
+        }
+      ],
+      "next": "c3_day4_knock",
+      "choices": []
+    },
+    "c3_day4_knock": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "咚、咚、咚。"
+        },
+        {
+          "type": "narration",
+          "text": "三下。"
+        },
+        {
+          "type": "narration",
+          "text": "不快不慢。"
+        },
+        {
+          "type": "narration",
+          "text": "我以为是妈妈回来了。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开门。"
+        }
+      ],
+      "next": "c3_day4_peng",
+      "choices": []
+    },
+    "c3_day4_peng": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "门口站着一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "看不清脸。"
+        },
+        {
+          "type": "narration",
+          "text": "逆光。"
+        },
+        {
+          "type": "narration",
+          "text": "只能看出，是个**女人**。"
+        },
+        {
+          "type": "narration",
+          "text": "穿长裙，头发披着。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "你好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "我是彭梦玲。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "五班的语文老师。"
+        }
+      ],
+      "next": "c3_day4_talk",
+      "choices": []
+    },
+    "c3_day4_talk": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（语文老师……）"
+        },
+        {
+          "type": "inner",
+          "text": "（可是五班的语文课，第一章里从来没上过。）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "知识点抄了吗？"
+        },
+        {
+          "type": "narration",
+          "text": "我点头。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "抄了几遍？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "迟疑",
+          "text": "……三遍。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "不够。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "抄到二十遍。"
+        }
+      ],
+      "next": "c3_day4_ask",
+      "choices": []
+    },
+    "c3_day4_ask": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（我想问一个问题。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "「程丽老师知道你来吗？」",
+          "next": "c3_day4_q1",
+          "effects": {
+            "clue": 1,
+            "trust": 1
+          }
+        },
+        {
+          "text": "「名单上为什么没有你？」",
+          "next": "c3_day4_q2",
+          "effects": {
+            "clue": 1,
+            "san": 2
+          }
+        },
+        {
+          "text": "「为什么是语文老师布置英语作业？」",
+          "next": "c3_day4_q3",
+          "effects": {
+            "trust": 1
+          }
+        },
+        {
+          "text": "什么都不问，低头",
+          "next": "c3_day4_q4",
+          "effects": {
+            "obey": 2,
+            "san": 1
+          }
+        }
+      ]
+    },
+    "c3_day4_q1": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "程丽老师知道你来吗？"
+        },
+        {
+          "type": "narration",
+          "text": "她沉默了一会儿。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "她知道。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "这作业就是她让布置的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "她自己为什么不布置？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "沉默",
+          "text": "……"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "沉默",
+          "text": "她出不来。"
+        },
+        {
+          "type": "inner",
+          "text": "（出不来？）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 3
+      },
+      "next": "c3_day4_after",
+      "choices": []
+    },
+    "c3_day4_q2": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "名单上为什么没有你？"
+        },
+        {
+          "type": "narration",
+          "text": "她的身体**晃了一下**。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "沉默",
+          "text": "你翻过背面了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "顿",
+          "text": "……翻过了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "那你该知道。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "我早就被划掉了。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她和于硕一样。）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 4
+      },
+      "next": "c3_day4_after",
+      "choices": []
+    },
+    "c3_day4_q3": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "为什么语文老师布置英语作业？"
+        },
+        {
+          "type": "narration",
+          "text": "她笑了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "笑",
+          "text": "因为英语老师今天不方便。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "……她怎么了？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "她在等一个人。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "等了很久了。"
+        }
+      ],
+      "effects": {
+        "clue": 1
+      },
+      "next": "c3_day4_after",
+      "choices": []
+    },
+    "c3_day4_q4": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有问。"
+        },
+        {
+          "type": "narration",
+          "text": "我低下头。"
+        },
+        {
+          "type": "narration",
+          "text": "她看着我，笑了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "满意",
+          "text": "很好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "满意",
+          "text": "听话的孩子。"
+        },
+        {
+          "type": "narration",
+          "text": "这句话——"
+        },
+        {
+          "type": "narration",
+          "text": "**程丽也说过。**"
+        },
+        {
+          "type": "inner",
+          "text": "（……她们。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c3_day4_after",
+      "choices": []
+    },
+    "c3_day4_after": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "好了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "抄到二十遍。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "抄完之前，别出门。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "外面……不安全。"
+        },
+        {
+          "type": "narration",
+          "text": "她转身走了。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊里，脚步声慢慢远去。"
+        },
+        {
+          "type": "inner",
+          "text": "（外面不安全。）"
+        },
+        {
+          "type": "inner",
+          "text": "（她说的是哪边。）"
+        }
+      ],
+      "effects": {
+        "clue": 1
+      },
+      "next": "c3_day4_copy",
+      "choices": []
+    },
+    "c3_day4_copy": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我坐回书桌前。"
+        },
+        {
+          "type": "narration",
+          "text": "拿出本子，继续抄。"
+        },
+        {
+          "type": "narration",
+          "text": "第四遍。"
+        },
+        {
+          "type": "narration",
+          "text": "第五遍。"
+        },
+        {
+          "type": "narration",
+          "text": "第六遍。"
+        },
+        {
+          "type": "narration",
+          "text": "抄到第十遍的时候——"
+        },
+        {
+          "type": "narration",
+          "text": "**我听见有人在哭。**"
+        },
+        {
+          "type": "narration",
+          "text": "声音很小。"
+        },
+        {
+          "type": "narration",
+          "text": "像是从本子里发出来的。"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c3_day4_cry",
+      "choices": []
+    },
+    "c3_day4_cry": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "vignette",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我停下笔。"
+        },
+        {
+          "type": "narration",
+          "text": "哭声也停了。"
+        },
+        {
+          "type": "narration",
+          "text": "我再拿起笔。"
+        },
+        {
+          "type": "narration",
+          "text": "哭声又起。"
+        },
+        {
+          "type": "narration",
+          "text": "我放下笔。"
+        },
+        {
+          "type": "narration",
+          "text": "哭声响了一点。"
+        },
+        {
+          "type": "narration",
+          "text": "不是从本子里。"
+        },
+        {
+          "type": "narration",
+          "text": "是从**抽屉里**。"
+        },
+        {
+          "type": "inner",
+          "text": "（……抽屉。）"
+        },
+        {
+          "type": "inner",
+          "text": "（那个程丽的本子。）"
+        }
+      ],
+      "effects": {
+        "san": 7,
+        "clue": 1
+      },
+      "next": "c3_day4_open",
+      "choices": []
+    },
+    "c3_day4_open": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我拉开抽屉。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽的本子还在。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开它。"
+        },
+        {
+          "type": "narration",
+          "text": "第一页。"
+        },
+        {
+          "type": "narration",
+          "text": "上面写着一行字。"
+        },
+        {
+          "type": "narration",
+          "text": "不是英语。"
+        },
+        {
+          "type": "narration",
+          "text": "是中文："
+        },
+        {
+          "type": "narration",
+          "text": "「**我是第 3 个。**」"
+        },
+        {
+          "type": "narration",
+          "text": "翻到第二页。"
+        },
+        {
+          "type": "narration",
+          "text": "「**你是第 4 个。**」"
+        }
+      ],
+      "effects": {
+        "san": 8
+      },
+      "next": "c3_day4_open2",
+      "choices": []
+    },
+    "c3_day4_open2": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "第三页。"
+        },
+        {
+          "type": "narration",
+          "text": "「**彭梦玲是第 2 个。**」"
+        },
+        {
+          "type": "narration",
+          "text": "第四页。"
+        },
+        {
+          "type": "narration",
+          "text": "「**于硕是第 5 个。**」"
+        },
+        {
+          "type": "narration",
+          "text": "第五页。"
+        },
+        {
+          "type": "narration",
+          "text": "「**你之后还有。**」"
+        },
+        {
+          "type": "narration",
+          "text": "第六页。"
+        },
+        {
+          "type": "narration",
+          "text": "「**没有最后一个。**」"
+        },
+        {
+          "type": "inner",
+          "text": "（……他们在排序。）"
+        },
+        {
+          "type": "inner",
+          "text": "（排什么序？）"
+        }
+      ],
+      "effects": {
+        "san": 7,
+        "clue": 1
+      },
+      "next": "c3_day4_end",
+      "choices": []
+    },
+    "c3_day4_end": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把本子合上。"
+        },
+        {
+          "type": "narration",
+          "text": "放回抽屉。"
+        },
+        {
+          "type": "narration",
+          "text": "窗外，雨又下起来了。"
+        },
+        {
+          "type": "narration",
+          "text": "这一次，是从地上往上落的。"
+        },
+        {
+          "type": "narration",
+          "text": "我没有再擦眼睛。"
+        },
+        {
+          "type": "narration",
+          "text": "我知道，那是真的。"
+        },
+        {
+          "type": "narration",
+          "text": "**10 月 4 日，23:59。**"
+        },
+        {
+          "type": "narration",
+          "text": "**→ 10 月 5 日。**"
+        },
+        {
+          "type": "inner",
+          "text": "（还有三天。）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day5",
+      "choices": []
+    },
+    "c3_day5": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月五日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 3 天。"
+        },
+        {
+          "type": "narration",
+          "text": "今天没有雨。"
+        },
+        {
+          "type": "narration",
+          "text": "但天是灰的。"
+        }
+      ],
+      "next": "c3_day5_morning",
+      "choices": []
+    },
+    "c3_day5_morning": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我醒得很早。"
+        },
+        {
+          "type": "narration",
+          "text": "天还没亮。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开抽屉。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽的本子还在。"
+        },
+        {
+          "type": "narration",
+          "text": "我翻开。"
+        },
+        {
+          "type": "narration",
+          "text": "多了几页。"
+        },
+        {
+          "type": "inner",
+          "text": "（昨天只有六页。）"
+        },
+        {
+          "type": "inner",
+          "text": "（今天多了三页。）"
+        }
+      ],
+      "effects": {
+        "san": 4,
+        "clue": 1
+      },
+      "next": "c3_day5_read",
+      "choices": []
+    },
+    "c3_day5_read": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "第七页。"
+        },
+        {
+          "type": "narration",
+          "text": "「第 1 个——我不知道名字。」"
+        },
+        {
+          "type": "narration",
+          "text": "第八页。"
+        },
+        {
+          "type": "narration",
+          "text": "「第 1 个是这所学校的第一位老师。」"
+        },
+        {
+          "type": "narration",
+          "text": "第九页。"
+        },
+        {
+          "type": "narration",
+          "text": "「她把自己留在了学校里。」"
+        },
+        {
+          "type": "narration",
+          "text": "「所以我们才能一直进来。」"
+        },
+        {
+          "type": "inner",
+          "text": "（第 1 个……是第 1 个老师？）"
+        },
+        {
+          "type": "inner",
+          "text": "（她把自己留在了这儿？）"
+        }
+      ],
+      "effects": {
+        "san": 6,
+        "clue": 1
+      },
+      "next": "c3_day5_think",
+      "choices": []
+    },
+    "c3_day5_think": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我合上本子。"
+        },
+        {
+          "type": "narration",
+          "text": "想了很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（第 1 个是老师。）"
+        },
+        {
+          "type": "inner",
+          "text": "（第 2 个是彭梦玲，也是老师。）"
+        },
+        {
+          "type": "inner",
+          "text": "（第 3 个是程丽，也是老师。）"
+        },
+        {
+          "type": "inner",
+          "text": "（那第 4 个……是我。）"
+        },
+        {
+          "type": "inner",
+          "text": "（我又不是老师。）"
+        },
+        {
+          "type": "inner",
+          "text": "（……是吗？）"
+        }
+      ],
+      "effects": {
+        "san": 5,
+        "clue": 1
+      },
+      "next": "c3_day5_msg",
+      "choices": []
+    },
+    "c3_day5_msg": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "手机响了。"
+        },
+        {
+          "type": "narration",
+          "text": "班级群。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "同学们："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "明天天气好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "谁想回校看看？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "校门，明天开。"
+        },
+        {
+          "type": "inner",
+          "text": "（明天……5 号。）"
+        },
+        {
+          "type": "inner",
+          "text": "（校门要开？）"
+        }
+      ],
+      "next": "c3_day5_choice",
+      "choices": []
+    },
+    "c3_day5_choice": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（去，还是不去。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "回「我去」",
+          "next": "c3_day5_yes",
+          "effects": {
+            "trust": 2
+          }
+        },
+        {
+          "text": "不回，装作没看到",
+          "next": "c3_day5_no",
+          "effects": {
+            "san": 3,
+            "obey": -1
+          }
+        },
+        {
+          "text": "回「什么时候开」",
+          "next": "c3_day5_when",
+          "effects": {
+            "clue": 1
+          }
+        }
+      ]
+    },
+    "c3_day5_yes": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我打了「我去」。"
+        },
+        {
+          "type": "narration",
+          "text": "一秒后。"
+        },
+        {
+          "type": "narration",
+          "text": "彭梦玲回了一个笑脸。"
+        },
+        {
+          "type": "narration",
+          "text": "然后撤回。"
+        },
+        {
+          "type": "narration",
+          "text": "又发了一条："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "明天见。"
+        },
+        {
+          "type": "inner",
+          "text": "（「明天见」。）"
+        },
+        {
+          "type": "inner",
+          "text": "（程丽最爱说这句。）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c3_day5_end",
+      "choices": []
+    },
+    "c3_day5_no": {
+      "bg": "classroom_e",
+      "sprite": "peng_silhouette",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没回。"
+        },
+        {
+          "type": "narration",
+          "text": "手机暗了下去。"
+        },
+        {
+          "type": "narration",
+          "text": "过了十分钟。"
+        },
+        {
+          "type": "narration",
+          "text": "屏幕自己亮了。"
+        },
+        {
+          "type": "narration",
+          "text": "彭梦玲的消息："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "冷",
+          "text": "我知道你没睡。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "冷",
+          "text": "别想躲。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她一直在看。）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day5_end",
+      "choices": []
+    },
+    "c3_day5_when": {
+      "bg": "classroom",
+      "sprite": "peng_silhouette",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我打了「什么时候开」。"
+        },
+        {
+          "type": "narration",
+          "text": "彭梦玲沉默了很久。"
+        },
+        {
+          "type": "narration",
+          "text": "然后回："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "沉默",
+          "text": "它一直在。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "只是你没看见。"
+        },
+        {
+          "type": "inner",
+          "text": "（……什么？）"
+        },
+        {
+          "type": "inner",
+          "text": "（校门一直都在？）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 3
+      },
+      "next": "c3_day5_end",
+      "choices": []
+    },
+    "c3_day5_end": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "晚上。"
+        },
+        {
+          "type": "narration",
+          "text": "我把本子放在床头。"
+        },
+        {
+          "type": "narration",
+          "text": "闭眼前，我又看了一眼手机。"
+        },
+        {
+          "type": "narration",
+          "text": "10 月 5 日，23:59。"
+        },
+        {
+          "type": "narration",
+          "text": "→ 10 月 6 日。"
+        },
+        {
+          "type": "inner",
+          "text": "（还有两天。）"
+        }
+      ],
+      "next": "c3_day6",
+      "choices": []
+    },
+    "c3_day6": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月六日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 2 天。"
+        },
+        {
+          "type": "narration",
+          "text": "今天，我去学校。"
+        }
+      ],
+      "next": "c3_day6_road",
+      "choices": []
+    },
+    "c3_day6_road": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "路上还是没有人。"
+        },
+        {
+          "type": "narration",
+          "text": "但是——"
+        },
+        {
+          "type": "narration",
+          "text": "有些东西变了。"
+        },
+        {
+          "type": "narration",
+          "text": "街角的花坛里，花是干枯的。"
+        },
+        {
+          "type": "narration",
+          "text": "昨天还是活的。"
+        },
+        {
+          "type": "narration",
+          "text": "路灯没亮。"
+        },
+        {
+          "type": "narration",
+          "text": "天空越来越低。"
+        },
+        {
+          "type": "inner",
+          "text": "（两天。）"
+        },
+        {
+          "type": "inner",
+          "text": "（只剩两天。）"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c3_day6_gate",
+      "choices": []
+    },
+    "c3_day6_gate": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "校门开着。"
+        },
+        {
+          "type": "narration",
+          "text": "真开着。"
+        },
+        {
+          "type": "narration",
+          "text": "不是第一章那种、开着但里面没人的样子。"
+        },
+        {
+          "type": "narration",
+          "text": "这次，里面有声音。"
+        },
+        {
+          "type": "narration",
+          "text": "读书声。"
+        },
+        {
+          "type": "narration",
+          "text": "英语朗读。"
+        },
+        {
+          "type": "inner",
+          "text": "（……五班？）"
+        }
+      ],
+      "next": "c3_day6_inside",
+      "choices": []
+    },
+    "c3_day6_inside": {
+      "bg": "corridor",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走进教学楼。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊的灯全亮。"
+        },
+        {
+          "type": "narration",
+          "text": "每一间教室里都有声音。"
+        },
+        {
+          "type": "narration",
+          "text": "我走到五班门口。"
+        },
+        {
+          "type": "narration",
+          "text": "推开门。"
+        }
+      ],
+      "next": "c3_day6_classroom",
+      "choices": []
+    },
+    "c3_day6_classroom": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "教室里坐满了人。"
+        },
+        {
+          "type": "narration",
+          "text": "都在读书。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽站在讲台上。"
+        },
+        {
+          "type": "narration",
+          "text": "她看见我。"
+        },
+        {
+          "type": "narration",
+          "text": "她没有惊讶。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "你回来了。"
+        },
+        {
+          "type": "inner",
+          "text": "（她好像……一直在等。）"
+        }
+      ],
+      "next": "c3_day6_talk",
+      "choices": []
+    },
+    "c3_day6_talk": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "放假好玩吗。"
+        },
+        {
+          "type": "narration",
+          "text": "我没回答。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "不回答也行。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "他们也是这样的。"
+        },
+        {
+          "type": "narration",
+          "text": "她指了指教室里的学生。"
+        },
+        {
+          "type": "narration",
+          "text": "我这才发现——"
+        },
+        {
+          "type": "narration",
+          "text": "他们的脸是模糊的。"
+        },
+        {
+          "type": "narration",
+          "text": "看不清是谁。"
+        },
+        {
+          "type": "inner",
+          "text": "（……他们是什么？）"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c3_day6_ask",
+      "choices": []
+    },
+    "c3_day6_ask": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（我想问。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "「他们是谁？」",
+          "next": "c3_day6_q1",
+          "effects": {
+            "clue": 1
+          }
+        },
+        {
+          "text": "「彭梦玲说你出不来。」",
+          "next": "c3_day6_q2",
+          "effects": {
+            "clue": 1,
+            "trust": 1
+          }
+        },
+        {
+          "text": "「我是不是第 4 个？」",
+          "next": "c3_day6_q3",
+          "effects": {
+            "clue": 2,
+            "san": 3
+          }
+        },
+        {
+          "text": "什么都不问",
+          "next": "c3_day6_q4",
+          "effects": {
+            "obey": 2
+          }
+        }
+      ]
+    },
+    "c3_day6_q1": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "他们是谁？"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看了看教室。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "以前的学生。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "都在等放假。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "但放假没来。"
+        },
+        {
+          "type": "inner",
+          "text": "（他们也在等。）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 2
+      },
+      "next": "c3_day6_after",
+      "choices": []
+    },
+    "c3_day6_q2": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "顿",
+          "text": "彭梦玲说你出不来。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽的手抖了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……她还在。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "你们认识？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "她是我以前的语文老师。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "……也是我害的。"
+        },
+        {
+          "type": "inner",
+          "text": "（她害的？）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 4
+      },
+      "next": "c3_day6_after",
+      "choices": []
+    },
+    "c3_day6_q3": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "我是不是第 4 个？"
+        },
+        {
+          "type": "narration",
+          "text": "程丽第一次笑了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "笑",
+          "text": "……你翻到那一页了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "是。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你是第 4 个。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "我是第 3 个。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "轮到你了。"
+        },
+        {
+          "type": "inner",
+          "text": "（……轮到我了？）"
+        }
+      ],
+      "effects": {
+        "clue": 2,
+        "san": 5
+      },
+      "next": "c3_day6_after",
+      "choices": []
+    },
+    "c3_day6_q4": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有问。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看了我很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "你和他不一样。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "顿",
+          "text": "谁？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "第 3 个之前的那个。"
+        },
+        {
+          "type": "inner",
+          "text": "（……谁？）"
+        }
+      ],
+      "effects": {
+        "clue": 1,
+        "san": 3
+      },
+      "next": "c3_day6_after",
+      "choices": []
+    },
+    "c3_day6_after": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "走吧。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "后天，来考试。"
+        },
+        {
+          "type": "inner",
+          "text": "（考试？）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "考什么？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你想不想放假。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "考完，就知道答案了。"
+        }
+      ],
+      "next": "c3_day6_end",
+      "choices": []
+    },
+    "c3_day6_end": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊的灯，一盏一盏熄了。"
+        },
+        {
+          "type": "narration",
+          "text": "我回头看了一眼。"
+        },
+        {
+          "type": "narration",
+          "text": "教室门关上了。"
+        },
+        {
+          "type": "narration",
+          "text": "门缝里透出一点光。"
+        },
+        {
+          "type": "narration",
+          "text": "然后也熄了。"
+        },
+        {
+          "type": "inner",
+          "text": "（后天。）"
+        },
+        {
+          "type": "inner",
+          "text": "（后天考试。）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_day7",
+      "choices": []
+    },
+    "c3_home": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "回到家。"
+        },
+        {
+          "type": "narration",
+          "text": "桌上摆着饭菜，还热着。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈从厨房探出头。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "温和",
+          "text": "回来啦？第一天怎么样？"
+        },
+        {
+          "type": "inner",
+          "text": "（这句话，第一章结尾时她问过。）"
+        },
+        {
+          "type": "inner",
+          "text": "（那次，我回答得含糊。）"
+        }
+      ],
+      "next": "c3_home2",
+      "choices": []
+    },
+    "c3_home2": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "inner",
+          "text": "（这次呢。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "「放假了。」",
+          "next": "c3_home_holiday",
+          "effects": {
+            "trust": 2
+          }
+        },
+        {
+          "text": "「妈，今天几号？」",
+          "next": "c3_home_ask",
+          "effects": {
+            "clue": 1,
+            "san": 2
+          }
+        },
+        {
+          "text": "「挺好的。」（重复第一章的回答）",
+          "next": "c3_home_lie",
+          "effects": {
+            "obey": 1,
+            "san": 3
+          }
+        }
+      ]
+    },
+    "c3_home_holiday": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "放假了。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈愣了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "疑惑",
+          "text": "放假？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "笑",
+          "text": "对哦，国庆。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "温和",
+          "text": "那你想去哪儿玩？"
+        },
+        {
+          "type": "narration",
+          "text": "我想了很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（我想说——我哪儿都不想去。）"
+        },
+        {
+          "type": "inner",
+          "text": "（我只想待在这儿。）"
+        },
+        {
+          "type": "narration",
+          "text": "但我最后说："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "随便。"
+        }
+      ],
+      "next": "c3_home_end",
+      "choices": []
+    },
+    "c3_home_ask": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "迟疑",
+          "text": "妈，今天几号？"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈切菜的手停了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "平淡",
+          "text": "十月一号啊。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "平淡",
+          "text": "国庆放假嘛。"
+        },
+        {
+          "type": "narration",
+          "text": "她一直没有回头。"
+        },
+        {
+          "type": "narration",
+          "text": "从进门到现在，她一次都没回头看我。"
+        },
+        {
+          "type": "inner",
+          "text": "（她的声音，是从哪儿来的？）"
+        },
+        {
+          "type": "inner",
+          "text": "（她在切菜，但刀没有声音。）"
+        }
+      ],
+      "effects": {
+        "san": 3
+      },
+      "next": "c3_home_end",
+      "choices": []
+    },
+    "c3_home_lie": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "挺好的。老师人不错。"
+        },
+        {
+          "type": "narration",
+          "text": "我说完之后，自己愣住了。"
+        },
+        {
+          "type": "inner",
+          "text": "（这句话，第一章我说过。）"
+        },
+        {
+          "type": "inner",
+          "text": "（一模一样。）"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "妈妈",
+          "emo": "笑",
+          "text": "那就好。快洗手吃饭。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐下，拿起筷子。"
+        },
+        {
+          "type": "narration",
+          "text": "饭菜很香。"
+        },
+        {
+          "type": "narration",
+          "text": "可我吃着吃着，忽然发现——"
+        },
+        {
+          "type": "narration",
+          "text": "桌上摆着三副碗筷。"
+        },
+        {
+          "type": "narration",
+          "text": "我们家，只有两个人。"
+        },
+        {
+          "type": "inner",
+          "text": "（第三副碗筷，是谁的？）"
+        }
+      ],
+      "effects": {
+        "san": 5
+      },
+      "next": "c3_home_end",
+      "choices": []
+    },
+    "c3_home_end": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "那一夜，我睡得很好。"
+        },
+        {
+          "type": "narration",
+          "text": "没有梦。"
+        },
+        {
+          "type": "narration",
+          "text": "没有程丽。"
+        },
+        {
+          "type": "narration",
+          "text": "闹钟响的时候，天亮了。"
+        },
+        {
+          "type": "narration",
+          "text": "我睁开眼。"
+        },
+        {
+          "type": "narration",
+          "text": "手机屏幕上，日期变了。"
+        },
+        {
+          "type": "narration",
+          "text": "10 月 1 日。"
+        },
+        {
+          "type": "inner",
+          "text": "（……变了？）"
+        },
+        {
+          "type": "inner",
+          "text": "（时间真的往前走了？）"
+        }
+      ],
+      "next": "c3_day1",
+      "choices": []
+    },
+    "c3_day7": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "十月七日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校 1 天。"
+        },
+        {
+          "type": "narration",
+          "text": "明天就要回去了。"
+        }
+      ],
+      "next": "c3_day7_morning",
+      "choices": []
+    },
+    "c3_day7_morning": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "flicker",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我醒来的时候，天还没亮。"
+        },
+        {
+          "type": "narration",
+          "text": "不，是永远不会亮。"
+        },
+        {
+          "type": "narration",
+          "text": "窗外一片灰。"
+        },
+        {
+          "type": "narration",
+          "text": "不是夜晚的灰。"
+        },
+        {
+          "type": "narration",
+          "text": "是没有颜色的灰。"
+        },
+        {
+          "type": "inner",
+          "text": "（第七天了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（假期还剩……）"
+        },
+        {
+          "type": "narration",
+          "text": "我拿起手机。"
+        },
+        {
+          "type": "narration",
+          "text": "屏幕显示："
+        },
+        {
+          "type": "narration",
+          "text": "10 月 7 日。"
+        },
+        {
+          "type": "narration",
+          "text": "距返校：0 天。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c3_day7_msg",
+      "choices": []
+    },
+    "c3_day7_msg": {
+      "bg": "classroom_e",
+      "sprite": "peng_silhouette",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "手机响了。"
+        },
+        {
+          "type": "narration",
+          "text": "彭梦玲的消息。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "今天。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "回校。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "温和",
+          "text": "考试。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "彭梦玲",
+          "emo": "轻",
+          "text": "程丽在等你。"
+        },
+        {
+          "type": "inner",
+          "text": "（等我。）"
+        }
+      ],
+      "next": "c3_day7_go",
+      "choices": []
+    },
+    "c3_day7_go": {
+      "bg": "playground_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我出门。"
+        },
+        {
+          "type": "narration",
+          "text": "街上没有人。"
+        },
+        {
+          "type": "narration",
+          "text": "不是放假没人的那种没人。"
+        },
+        {
+          "type": "narration",
+          "text": "是从来没有过人。"
+        },
+        {
+          "type": "narration",
+          "text": "天空低得压在头顶。"
+        },
+        {
+          "type": "narration",
+          "text": "我往前走。"
+        },
+        {
+          "type": "narration",
+          "text": "走了很久。"
+        },
+        {
+          "type": "narration",
+          "text": "然后我听见了铃声。"
+        },
+        {
+          "type": "narration",
+          "text": "上课铃。"
+        }
+      ],
+      "effects": {
+        "san": 4
+      },
+      "next": "c3_day7_school",
+      "choices": []
+    },
+    "c3_day7_school": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "校门开着。"
+        },
+        {
+          "type": "narration",
+          "text": "我走进去。"
+        },
+        {
+          "type": "narration",
+          "text": "教学楼在等我。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊的灯，一盏都没亮。"
+        },
+        {
+          "type": "narration",
+          "text": "只有一间教室亮着——"
+        },
+        {
+          "type": "narration",
+          "text": "五班。"
+        }
+      ],
+      "next": "c3_boss_intro",
+      "choices": []
+    },
+    "c3_boss_intro": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我推开门。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里只有一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽坐在讲台后面。"
+        },
+        {
+          "type": "narration",
+          "text": "面前摆着一张卷子。"
+        },
+        {
+          "type": "narration",
+          "text": "一支红笔。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "坐。"
+        },
+        {
+          "type": "narration",
+          "text": "我走到自己的座位上。"
+        },
+        {
+          "type": "narration",
+          "text": "桌上也有一张卷子。"
+        },
+        {
+          "type": "narration",
+          "text": "第一题，写着："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "五道题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "全对，放假。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "错一题，重来。"
+        }
+      ],
+      "next": "c3_boss_start",
+      "choices": []
+    },
+    "c3_boss_q1": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "第一题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "如果放假 = 逃出，你愿意删掉谁的名字？"
+        },
+        {
+          "type": "narration",
+          "text": "卷子上写着四个选项。"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "删掉我自己的名字",
+          "next": "c3_boss_q2",
+          "effects": {
+            "trust": 2,
+            "san": 2
+          }
+        },
+        {
+          "text": "删掉程丽的名字",
+          "next": "c3_boss_q2",
+          "effects": {
+            "san": 4
+          }
+        },
+        {
+          "text": "删掉于硕的名字",
+          "next": "c3_boss_q2",
+          "effects": {
+            "obey": 1,
+            "san": 3
+          }
+        },
+        {
+          "text": "谁的名字都不删",
+          "next": "c3_boss_q2",
+          "effects": {
+            "trust": 3,
+            "clue": 1
+          }
+        }
+      ]
+    },
+    "c3_boss_q2": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽看了一眼我的卷子。"
+        },
+        {
+          "type": "narration",
+          "text": "没有评价。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "第二题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "如果只能带一个人离开，选谁？"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "带我妈妈",
+          "next": "c3_boss_q3",
+          "effects": {
+            "trust": 1,
+            "san": 2
+          }
+        },
+        {
+          "text": "带于硕",
+          "next": "c3_boss_q3",
+          "effects": {
+            "trust": 2
+          }
+        },
+        {
+          "text": "带彭梦玲",
+          "next": "c3_boss_q3",
+          "effects": {
+            "clue": 1,
+            "trust": 1
+          }
+        },
+        {
+          "text": "谁都不带，我自己走",
+          "next": "c3_boss_q3",
+          "effects": {
+            "san": 3
+          }
+        }
+      ]
+    },
+    "c3_boss_q3": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "第三题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "你确定你自己的名字是真实的吗？"
+        },
+        {
+          "type": "inner",
+          "text": "（……）"
+        },
+        {
+          "type": "inner",
+          "text": "（我从来没有想起过我的名字。）"
+        },
+        {
+          "type": "inner",
+          "text": "（连第一章都没写过。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "确定。我是真实的。",
+          "next": "c3_boss_q4",
+          "effects": {
+            "trust": 2
+          }
+        },
+        {
+          "text": "不确定。但我在。",
+          "next": "c3_boss_q4",
+          "effects": {
+            "clue": 1,
+            "san": 2
+          }
+        },
+        {
+          "text": "我不知道。",
+          "next": "c3_boss_q4",
+          "effects": {
+            "san": 3
+          }
+        },
+        {
+          "text": "名字不重要。重要的是我做了什么。",
+          "next": "c3_boss_q4",
+          "effects": {
+            "trust": 3,
+            "clue": 1
+          }
+        }
+      ]
+    },
+    "c3_boss_q4": {
+      "bg": "classroom",
+      "sprite": "chengli_ruler",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽拿起戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "在掌心敲了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "第四题。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "如果放假是假的，你还想放假吗？"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "想。哪怕只有一天。",
+          "next": "c3_boss_q5",
+          "effects": {
+            "trust": 2,
+            "san": 2
+          }
+        },
+        {
+          "text": "不想。我要真的。",
+          "next": "c3_boss_q5",
+          "effects": {
+            "trust": 3
+          }
+        },
+        {
+          "text": "我不知道什么是真的。",
+          "next": "c3_boss_q5",
+          "effects": {
+            "clue": 1,
+            "san": 3
+          }
+        },
+        {
+          "text": "只要你在等，我就回来。",
+          "next": "c3_boss_q5",
+          "effects": {
+            "trust": 4,
+            "clue": 2
+          }
+        }
+      ]
+    },
+    "c3_boss_q5": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "heartbeat",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "第五题。"
+        },
+        {
+          "type": "narration",
+          "text": "她停了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "如果我把笔给你——"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你会划掉我吗？"
+        },
+        {
+          "type": "inner",
+          "text": "（……）"
+        },
+        {
+          "type": "inner",
+          "text": "（她问的是这个。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "会。我要出去。",
+          "next": "c3_boss_end_bad",
+          "effects": {
+            "san": 5
+          }
+        },
+        {
+          "text": "不会。你不是我要杀的人。",
+          "next": "c3_boss_end_good",
+          "effects": {
+            "trust": 5,
+            "clue": 2
+          }
+        },
+        {
+          "text": "我不知道。",
+          "next": "c3_boss_end_mid",
+          "effects": {
+            "san": 3
+          }
+        },
+        {
+          "text": "笔给我，我自己决定。",
+          "next": "c3_boss_end_mid",
+          "effects": {
+            "trust": 3
+          }
+        }
+      ]
+    },
+    "c3_boss_end_bad": {
+      "bg": "classroom_e",
+      "sprite": "chengli_angry",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "不是温柔的笑。"
+        },
+        {
+          "type": "narration",
+          "text": "是那种——"
+        },
+        {
+          "type": "narration",
+          "text": "终于听到答案的笑。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "冷",
+          "text": "那你出去吧。"
+        },
+        {
+          "type": "narration",
+          "text": "她把红笔推到我面前。"
+        },
+        {
+          "type": "narration",
+          "text": "笔上刻着一行字："
+        },
+        {
+          "type": "narration",
+          "text": "「你会后悔的。」"
+        }
+      ],
+      "effects": {
+        "san": 6
+      },
+      "next": "c3_ending_choice",
+      "choices": []
+    },
+    "c3_boss_end_good": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽愣住了。"
+        },
+        {
+          "type": "narration",
+          "text": "她很久没说话。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……为什么。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "因为你也是被困住的人。"
+        },
+        {
+          "type": "narration",
+          "text": "她的手抖了一下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你和他不一样。"
+        },
+        {
+          "type": "inner",
+          "text": "（他是谁？）"
+        }
+      ],
+      "effects": {
+        "trust": 3,
+        "clue": 1
+      },
+      "next": "c3_ending_choice",
+      "choices": []
+    },
+    "c3_boss_end_mid": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "你还没想好。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "那就先别选。"
+        },
+        {
+          "type": "narration",
+          "text": "她把卷子收起来。"
+        },
+        {
+          "type": "narration",
+          "text": "把红笔放在讲台上。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "明天，再考。"
+        },
+        {
+          "type": "inner",
+          "text": "（明天……又是明天。）"
+        }
+      ],
+      "next": "c3_ending_choice",
+      "choices": []
+    },
+    "c3_ending_choice": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "考试结束了。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽站起来。"
+        },
+        {
+          "type": "narration",
+          "text": "她走到我面前。"
+        },
+        {
+          "type": "narration",
+          "text": "把红笔递给我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "现在，你选。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "笔给你。"
+        },
+        {
+          "type": "inner",
+          "text": "（……这是最后一次选择。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "留下",
+          "next": "c3_end_stay",
+          "effects": {}
+        },
+        {
+          "text": "逃出",
+          "next": "c3_end_escape",
+          "effects": {}
+        },
+        {
+          "text": "同名",
+          "next": "c3_end_samename",
+          "effects": {}
+        },
+        {
+          "text": "放假",
+          "next": "c3_end_holiday",
+          "effects": {}
+        },
+        {
+          "text": "返校",
+          "next": "c3_end_return",
+          "effects": {}
+        },
+        {
+          "text": "看向程丽",
+          "next": "c3_end_chengli",
+          "effects": {}
+        }
+      ]
+    },
+    "c3_boss_start": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "boss": true,
+      "lines": [],
+      "next": "",
+      "choices": []
+    },
+    "c3_end_stay": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把红笔放回讲台。"
+        },
+        {
+          "type": "narration",
+          "text": "我没有划。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐下。"
+        },
+        {
+          "type": "narration",
+          "text": "坐在最后一排，那个空位。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "你想好了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "想好了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "那你替我。"
+        },
+        {
+          "type": "narration",
+          "text": "她走出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "门关上。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬起头，讲台上放着一把红木戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "我把它拿起来。"
+        },
+        {
+          "type": "narration",
+          "text": "很重。"
+        },
+        {
+          "type": "narration",
+          "text": "第二天。"
+        },
+        {
+          "type": "narration",
+          "text": "一个转学生推开门。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬头，看他。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "哦。新来的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "后门那个空位，坐吧。"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_stay",
+        "title": "结局 1 · 留下",
+        "desc": "你选择留下，成为下一个程丽。\n\n轮回没有终止。它有了新的执行者。\n\n而你终于明白：程丽不是恶人。她只是先你一步坐进了那个位置。\n\n【结局 1 / 8 · 收集成功】"
+      }
+    },
+    "c3_end_escape": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我拿起笔。"
+        },
+        {
+          "type": "narration",
+          "text": "我没有划任何人。"
+        },
+        {
+          "type": "narration",
+          "text": "我转身，冲出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊的灯一盏一盏亮起来。"
+        },
+        {
+          "type": "narration",
+          "text": "我跑过操场。"
+        },
+        {
+          "type": "narration",
+          "text": "我跑出校门。"
+        },
+        {
+          "type": "narration",
+          "text": "外面的天，是蓝的。"
+        },
+        {
+          "type": "narration",
+          "text": "街上有人，有车，有国旗。"
+        },
+        {
+          "type": "narration",
+          "text": "一个小女孩拿着红气球，从我身边跑过去。"
+        },
+        {
+          "type": "narration",
+          "text": "我笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "我真的出来了。"
+        }
+      ],
+      "next": "c3_end_escape2",
+      "choices": []
+    },
+    "c3_end_escape2": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "画面转。"
+        },
+        {
+          "type": "narration",
+          "text": "我回到家。"
+        },
+        {
+          "type": "narration",
+          "text": "桌上摆着饭菜。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈问我：「国庆去哪儿玩？」"
+        },
+        {
+          "type": "narration",
+          "text": "我说：「哪儿都没去。」"
+        },
+        {
+          "type": "narration",
+          "text": "她笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "吃完饭，我躺在床上。"
+        },
+        {
+          "type": "narration",
+          "text": "我翻了翻手机。"
+        },
+        {
+          "type": "narration",
+          "text": "班级群、名单、程丽——"
+        },
+        {
+          "type": "narration",
+          "text": "全都没有了。"
+        },
+        {
+          "type": "narration",
+          "text": "好像这所学校从来没存在过。"
+        },
+        {
+          "type": "narration",
+          "text": "我松了口气。"
+        },
+        {
+          "type": "narration",
+          "text": "然后我愣住了——"
+        },
+        {
+          "type": "narration",
+          "text": "我想不起程丽的脸了。"
+        },
+        {
+          "type": "narration",
+          "text": "我拼命想。"
+        },
+        {
+          "type": "narration",
+          "text": "一点都想不起来了。"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_escape",
+        "title": "结局 2 · 逃出",
+        "desc": "你出来了。\n\n代价是——所有记忆消失。\n\n没有人记得程丽。也没有人记得你曾经被困过。\n\n这是最轻松也最残酷的结局。\n\n【结局 2 / 8 · 收集成功】"
+      }
+    },
+    "c3_end_samename": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我拿起笔。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开名单。"
+        },
+        {
+          "type": "narration",
+          "text": "找到第十二个。"
+        },
+        {
+          "type": "narration",
+          "text": "那是我的名字。"
+        },
+        {
+          "type": "narration",
+          "text": "我用力，划了一道。"
+        },
+        {
+          "type": "narration",
+          "text": "划完那一刻——"
+        },
+        {
+          "type": "narration",
+          "text": "时间第一次真的往前走了。"
+        },
+        {
+          "type": "narration",
+          "text": "从周一，走到周二。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看着我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你知道你做了什么吗。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "知道。"
+        },
+        {
+          "type": "narration",
+          "text": "我走出校门。"
+        },
+        {
+          "type": "narration",
+          "text": "外面是正常的世界。"
+        },
+        {
+          "type": "narration",
+          "text": "但——"
+        },
+        {
+          "type": "narration",
+          "text": "没有人记得我。"
+        },
+        {
+          "type": "narration",
+          "text": "妈妈看见我，问：你是谁家的孩子？"
+        },
+        {
+          "type": "narration",
+          "text": "我笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "我说：走错了。对不起。"
+        }
+      ],
+      "next": "c3_end_samename2",
+      "choices": []
+    },
+    "c3_end_samename2": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我走回学校。"
+        },
+        {
+          "type": "narration",
+          "text": "公告栏上，名单还在。"
+        },
+        {
+          "type": "narration",
+          "text": "第十二个名字，是新的。"
+        },
+        {
+          "type": "narration",
+          "text": "——"
+        },
+        {
+          "type": "narration",
+          "text": "「于硕」"
+        },
+        {
+          "type": "inner",
+          "text": "（……轮到你了。）"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_samename",
+        "title": "结局 3 · 同名",
+        "desc": "你划掉了自己的名字。\n\n时间第一次往前走了。\n\n但循环没有终止——名单上出现了新的名字。\n\n你终于明白：这不是一个人的循环，是一代一代的循环。\n\n【结局 3 / 8 · 收集成功】"
+      }
+    },
+    "c3_end_holiday": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有划任何名字。"
+        },
+        {
+          "type": "narration",
+          "text": "我也没有走。"
+        },
+        {
+          "type": "narration",
+          "text": "我把笔放下。"
+        },
+        {
+          "type": "narration",
+          "text": "我说："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "我想留在假期里。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看了我很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "好。"
+        },
+        {
+          "type": "narration",
+          "text": "时间回到 10 月 1 日。"
+        },
+        {
+          "type": "narration",
+          "text": "我站在街上。"
+        },
+        {
+          "type": "narration",
+          "text": "国旗、气球、喧闹。"
+        },
+        {
+          "type": "narration",
+          "text": "我又过了一次。"
+        },
+        {
+          "type": "narration",
+          "text": "10 月 1 日。"
+        },
+        {
+          "type": "narration",
+          "text": "又一次。"
+        },
+        {
+          "type": "narration",
+          "text": "又一次。"
+        }
+      ],
+      "next": "c3_end_holiday2",
+      "choices": []
+    },
+    "c3_end_holiday2": {
+      "bg": "playground_e",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "第 87 次。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐在街角。"
+        },
+        {
+          "type": "narration",
+          "text": "我看着那个小女孩跑过来。"
+        },
+        {
+          "type": "narration",
+          "text": "她的脸——"
+        },
+        {
+          "type": "narration",
+          "text": "是糊的。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬头看人群。"
+        },
+        {
+          "type": "narration",
+          "text": "所有人的脸，都是糊的。"
+        },
+        {
+          "type": "narration",
+          "text": "只有我一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "我不再是在放假。"
+        },
+        {
+          "type": "narration",
+          "text": "我是被困在假期里。"
+        },
+        {
+          "type": "narration",
+          "text": "手机屏幕亮起来。"
+        },
+        {
+          "type": "narration",
+          "text": "「今天是 10 月 7 日。假期还剩 0 天。」"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_holiday",
+        "title": "结局 4 · 放假",
+        "desc": "你选择留在假期里。\n\n无限重复的国庆。空无一人的街头。\n\n你把假期变成了囚笼——\n\n这是你自己的循环。没人再来接你。\n\n【结局 4 / 8 · 收集成功】"
+      }
+    },
+    "c3_end_return": {
+      "bg": "school_gate_e",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把笔放下。"
+        },
+        {
+          "type": "narration",
+          "text": "我站起来。"
+        },
+        {
+          "type": "narration",
+          "text": "我说："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "我回去。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看着我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "回去做什么。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "上课。"
+        },
+        {
+          "type": "narration",
+          "text": "她笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "不是冷笑。"
+        },
+        {
+          "type": "narration",
+          "text": "是那种终于等到的笑。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "好。"
+        },
+        {
+          "type": "narration",
+          "text": "她走出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐在讲台后面。"
+        },
+        {
+          "type": "narration",
+          "text": "教室里空无一人。"
+        },
+        {
+          "type": "narration",
+          "text": "我拿起戒尺。"
+        }
+      ],
+      "next": "c3_end_return2",
+      "choices": []
+    },
+    "c3_end_return2": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "第二天。"
+        },
+        {
+          "type": "narration",
+          "text": "一个转学生推开门。"
+        },
+        {
+          "type": "narration",
+          "text": "我抬头。"
+        },
+        {
+          "type": "narration",
+          "text": "我愣住了。"
+        },
+        {
+          "type": "narration",
+          "text": "那个转学生，是我。"
+        },
+        {
+          "type": "narration",
+          "text": "第一章的我。"
+        },
+        {
+          "type": "narration",
+          "text": "他站在门口，手里攥着转学通知单。"
+        },
+        {
+          "type": "narration",
+          "text": "他看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "我低下头，看自己的手。"
+        },
+        {
+          "type": "narration",
+          "text": "手里握着一把红木戒尺。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "哦。新来的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "后门那个空位，坐吧。"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_return",
+        "title": "结局 5 · 返校",
+        "desc": "你选择回校。\n\n你成了新的程丽——\n\n而下一个转学生，是曾经的你。\n\n循环完美闭合。从头再来。\n\n【结局 5 / 8 · 收集成功】"
+      }
+    },
+    "c3_end_chengli": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我没有拿笔。"
+        },
+        {
+          "type": "narration",
+          "text": "我看着程丽。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "你是谁？"
+        },
+        {
+          "type": "narration",
+          "text": "程丽第一次没有立刻回答。"
+        },
+        {
+          "type": "narration",
+          "text": "她走到窗边。"
+        },
+        {
+          "type": "narration",
+          "text": "看着外面。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我也曾经是学生。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我也被教过。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我也被困过。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "我尝试逃出。失败了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "所以，我选择留下。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "接下戒尺。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "替他们等下一个。"
+        }
+      ],
+      "next": "c3_end_chengli2",
+      "choices": []
+    },
+    "c3_end_chengli2": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "她转过来。"
+        },
+        {
+          "type": "narration",
+          "text": "看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我等了你很久。"
+        },
+        {
+          "type": "inner",
+          "text": "（……她等的是我？）"
+        },
+        {
+          "type": "narration",
+          "text": "她把红木戒尺递过来。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "这次，换你。"
+        },
+        {
+          "type": "narration",
+          "text": "我没有接。"
+        },
+        {
+          "type": "narration",
+          "text": "我说："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "我们一起等。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽愣住了。"
+        },
+        {
+          "type": "narration",
+          "text": "她第一次，哭了。"
+        }
+      ],
+      "next": "c3_end_chengli3",
+      "choices": []
+    },
+    "c3_end_chengli3": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我们一起站在窗边。"
+        },
+        {
+          "type": "narration",
+          "text": "看着外面的天。"
+        },
+        {
+          "type": "narration",
+          "text": "天还是灰的。"
+        },
+        {
+          "type": "narration",
+          "text": "但我们都不再是一个人。"
+        },
+        {
+          "type": "narration",
+          "text": "门开了。"
+        },
+        {
+          "type": "narration",
+          "text": "一个新的学生走进来。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽开口了："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "哦。新来的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "后门那个空位，坐吧。"
+        },
+        {
+          "type": "narration",
+          "text": "但她说完，看了我一眼。"
+        },
+        {
+          "type": "narration",
+          "text": "我点头。"
+        },
+        {
+          "type": "narration",
+          "text": "我们继续等。"
+        },
+        {
+          "type": "narration",
+          "text": "等下一个。"
+        },
+        {
+          "type": "narration",
+          "text": "等那个能带我们出去的人。"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_chengli",
+        "title": "结局 6 · 程丽",
+        "desc": "你没有拿笔，也没有走。\n\n你选择和她一起等。\n\n循环还在继续——但你不再是孤身一人。\n\n这是最温柔的结局，也是最沉重的。\n\n【结局 6 / 8 · 收集成功】\n\n集齐 6 个结局后，重玩本作，将开启隐藏支线。"
+      }
+    },
+    "c3_secret_start": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "blackout",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "你回来了。"
+        },
+        {
+          "type": "narration",
+          "text": "又一次。"
+        },
+        {
+          "type": "narration",
+          "text": "但这次不一样。"
+        },
+        {
+          "type": "narration",
+          "text": "你记得所有的事。"
+        },
+        {
+          "type": "narration",
+          "text": "留下。逃出。同名。放假。返校。程丽。"
+        },
+        {
+          "type": "narration",
+          "text": "六条路，你都走过。"
+        },
+        {
+          "type": "narration",
+          "text": "现在——"
+        },
+        {
+          "type": "narration",
+          "text": "第七次。"
+        },
+        {
+          "type": "narration",
+          "text": "这一次，你可以改变结局。"
+        }
+      ],
+      "next": "c3_secret_wake",
+      "choices": []
+    },
+    "c3_secret_wake": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我睁开眼。"
+        },
+        {
+          "type": "narration",
+          "text": "教室。"
+        },
+        {
+          "type": "narration",
+          "text": "五班。"
+        },
+        {
+          "type": "narration",
+          "text": "讲台上站着程丽。"
+        },
+        {
+          "type": "narration",
+          "text": "但她没有说「明天见」。"
+        },
+        {
+          "type": "narration",
+          "text": "她看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……你记得。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "记得。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "全部？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "全部。"
+        }
+      ],
+      "next": "c3_secret_ask",
+      "choices": []
+    },
+    "c3_secret_ask": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽没有说话。"
+        },
+        {
+          "type": "narration",
+          "text": "她走下讲台。"
+        },
+        {
+          "type": "narration",
+          "text": "走到我面前。"
+        },
+        {
+          "type": "narration",
+          "text": "坐下。"
+        },
+        {
+          "type": "narration",
+          "text": "坐在我旁边的空位上。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "你问吧。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "这次，换你问。"
+        }
+      ],
+      "next": "c3_secret_q1",
+      "choices": []
+    },
+    "c3_secret_q1": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "你叫什么名字？"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "（等她回答）",
+          "next": "c3_secret_q2",
+          "effects": {}
+        }
+      ]
+    },
+    "c3_secret_q2": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽愣住了。"
+        },
+        {
+          "type": "narration",
+          "text": "她张了张嘴。"
+        },
+        {
+          "type": "narration",
+          "text": "又合上。"
+        },
+        {
+          "type": "narration",
+          "text": "想了很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……我想不起来了。"
+        },
+        {
+          "type": "inner",
+          "text": "（她也想不起来了。）"
+        },
+        {
+          "type": "inner",
+          "text": "（和主角一样。）"
+        }
+      ],
+      "next": "c3_secret_q3",
+      "choices": []
+    },
+    "c3_secret_q3": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "你是哪一年转来的？"
+        },
+        {
+          "type": "narration",
+          "text": "程丽想了很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "1998。"
+        },
+        {
+          "type": "narration",
+          "text": "她顿了顿。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "……还是 2003？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "我不记得了。"
+        },
+        {
+          "type": "inner",
+          "text": "（二十年。）"
+        },
+        {
+          "type": "inner",
+          "text": "（她在这里待了二十年。）"
+        }
+      ],
+      "next": "c3_secret_q4",
+      "choices": []
+    },
+    "c3_secret_q4": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "你想走吗？"
+        },
+        {
+          "type": "narration",
+          "text": "程丽没有立刻回答。"
+        },
+        {
+          "type": "narration",
+          "text": "她低下头。"
+        },
+        {
+          "type": "narration",
+          "text": "看着手里的红木戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "很久。"
+        },
+        {
+          "type": "narration",
+          "text": "她抬头。"
+        },
+        {
+          "type": "narration",
+          "text": "眼睛红了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "哭",
+          "text": "……想。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "哭",
+          "text": "我想了很多年了。"
+        }
+      ],
+      "next": "c3_secret_choice",
+      "choices": []
+    },
+    "c3_secret_choice": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽把戒尺放在桌上。"
+        },
+        {
+          "type": "narration",
+          "text": "又拿出一支红笔。"
+        },
+        {
+          "type": "narration",
+          "text": "放在戒尺旁边。"
+        },
+        {
+          "type": "narration",
+          "text": "她说："
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "名单在抽屉里。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "我的名字在第三行。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "你有两个选择。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "划掉我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "平淡",
+          "text": "或者，不划。"
+        },
+        {
+          "type": "inner",
+          "text": "（……）"
+        },
+        {
+          "type": "inner",
+          "text": "（最后一次选择。）"
+        }
+      ],
+      "next": "",
+      "choices": [
+        {
+          "text": "拿起红笔",
+          "next": "c3_secret_cross",
+          "effects": {}
+        },
+        {
+          "text": "把笔放下",
+          "next": "c3_secret_keep",
+          "effects": {}
+        }
+      ]
+    },
+    "c3_secret_cross": {
+      "bg": "classroom_e",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我拿起红笔。"
+        },
+        {
+          "type": "narration",
+          "text": "我打开抽屉。"
+        },
+        {
+          "type": "narration",
+          "text": "拿出名单。"
+        },
+        {
+          "type": "narration",
+          "text": "第三行。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽的名字。"
+        },
+        {
+          "type": "narration",
+          "text": "我用力，划了一道。"
+        },
+        {
+          "type": "narration",
+          "text": "划完的那一刻——"
+        },
+        {
+          "type": "narration",
+          "text": "程丽**消失了**。"
+        },
+        {
+          "type": "narration",
+          "text": "不是走。"
+        },
+        {
+          "type": "narration",
+          "text": "不是离开。"
+        },
+        {
+          "type": "narration",
+          "text": "是**彻底消失**。"
+        }
+      ],
+      "next": "c3_secret_cross2",
+      "choices": []
+    },
+    "c3_secret_cross2": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "glitch",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "教室开始崩溃。"
+        },
+        {
+          "type": "narration",
+          "text": "墙裂了。"
+        },
+        {
+          "type": "narration",
+          "text": "灯全灭了。"
+        },
+        {
+          "type": "narration",
+          "text": "走廊消失了。"
+        },
+        {
+          "type": "narration",
+          "text": "我想跑出去。"
+        },
+        {
+          "type": "narration",
+          "text": "**门没有了。**"
+        },
+        {
+          "type": "narration",
+          "text": "窗户没有了。"
+        },
+        {
+          "type": "narration",
+          "text": "地板没有了。"
+        },
+        {
+          "type": "narration",
+          "text": "我站在一片虚空中。"
+        },
+        {
+          "type": "narration",
+          "text": "没有光。"
+        },
+        {
+          "type": "narration",
+          "text": "没有声音。"
+        },
+        {
+          "type": "narration",
+          "text": "没有人。"
+        }
+      ],
+      "next": "c3_secret_cross3",
+      "choices": []
+    },
+    "c3_secret_cross3": {
+      "bg": "classroom_e",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我不知道过了多久。"
+        },
+        {
+          "type": "narration",
+          "text": "一分钟？"
+        },
+        {
+          "type": "narration",
+          "text": "一年？"
+        },
+        {
+          "type": "narration",
+          "text": "还是一百年？"
+        },
+        {
+          "type": "narration",
+          "text": "时间在这里不存在。"
+        },
+        {
+          "type": "narration",
+          "text": "空间也不存在。"
+        },
+        {
+          "type": "narration",
+          "text": "只有我。"
+        },
+        {
+          "type": "narration",
+          "text": "和我手里那支红笔。"
+        },
+        {
+          "type": "inner",
+          "text": "（……我做了什么。）"
+        },
+        {
+          "type": "inner",
+          "text": "（我把唯一的出口毁了。）"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_void",
+        "title": "结局 8 · 虚空",
+        "desc": "你划掉了程丽。\n\n程丽不是敌人，她是这个世界的锚点。\n\n锚点消失，世界崩塌。\n\n你困在虚空里，永远回不去。\n\n这是最坏的结局。\n\n【结局 8 / 8 · 收集成功】"
+      }
+    },
+    "c3_secret_keep": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我把红笔放下。"
+        },
+        {
+          "type": "narration",
+          "text": "我看着程丽。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "我不划。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽愣住了。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "沉默",
+          "text": "你知道划掉我会怎样吗。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "知道。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "所以我不会划。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽的眼睛红了。"
+        },
+        {
+          "type": "narration",
+          "text": "这一次，不是哭。"
+        },
+        {
+          "type": "narration",
+          "text": "是**笑**。"
+        }
+      ],
+      "next": "c3_secret_keep2",
+      "choices": []
+    },
+    "c3_secret_keep2": {
+      "bg": "classroom",
+      "sprite": "chengli_smile",
+      "spriteAnim": "slideIn",
+      "anim": "none",
+      "lines": [
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "笑",
+          "text": "你不杀我？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平静",
+          "text": "你不是我要杀的人。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽站起来。"
+        },
+        {
+          "type": "narration",
+          "text": "她把红木戒尺拿起来。"
+        },
+        {
+          "type": "narration",
+          "text": "递给我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "那你得替我。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "问",
+          "text": "替你做什么？"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "做下一个锚点。"
+        }
+      ],
+      "next": "c3_secret_keep3",
+      "choices": []
+    },
+    "c3_secret_keep3": {
+      "bg": "classroom",
+      "sprite": "chengli_normal",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我接过戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "很重。"
+        },
+        {
+          "type": "narration",
+          "text": "比我想的重。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "很久。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "程丽",
+          "emo": "轻",
+          "text": "谢谢。"
+        },
+        {
+          "type": "narration",
+          "text": "她转身。"
+        },
+        {
+          "type": "narration",
+          "text": "走向门口。"
+        },
+        {
+          "type": "narration",
+          "text": "她打开门。"
+        },
+        {
+          "type": "narration",
+          "text": "门外面，是**蓝天**。"
+        }
+      ],
+      "next": "c3_secret_keep4",
+      "choices": []
+    },
+    "c3_secret_keep4": {
+      "bg": "playground",
+      "sprite": "",
+      "anim": "fade",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "程丽走出教室。"
+        },
+        {
+          "type": "narration",
+          "text": "走出学校。"
+        },
+        {
+          "type": "narration",
+          "text": "外面的街，有人。"
+        },
+        {
+          "type": "narration",
+          "text": "有车。"
+        },
+        {
+          "type": "narration",
+          "text": "有国旗。"
+        },
+        {
+          "type": "narration",
+          "text": "一个小女孩拿着红气球，从她身边跑过去。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽停在路中间。"
+        },
+        {
+          "type": "narration",
+          "text": "她抬头看天。"
+        },
+        {
+          "type": "narration",
+          "text": "天很蓝。"
+        },
+        {
+          "type": "narration",
+          "text": "她笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "真的笑了。"
+        },
+        {
+          "type": "narration",
+          "text": "这是她二十年来，第一次笑。"
+        }
+      ],
+      "next": "c3_secret_keep5",
+      "choices": []
+    },
+    "c3_secret_keep5": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "none",
+      "page": true,
+      "lines": [
+        {
+          "type": "narration",
+          "text": "画面回到教室。"
+        },
+        {
+          "type": "narration",
+          "text": "我坐在讲台后面。"
+        },
+        {
+          "type": "narration",
+          "text": "手里握着红木戒尺。"
+        },
+        {
+          "type": "narration",
+          "text": "门开了。"
+        },
+        {
+          "type": "narration",
+          "text": "一个转学生走进来。"
+        },
+        {
+          "type": "narration",
+          "text": "他手里攥着转学通知单。"
+        },
+        {
+          "type": "narration",
+          "text": "他看着我。"
+        },
+        {
+          "type": "narration",
+          "text": "我看着他。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "哦。新来的。"
+        },
+        {
+          "type": "dialogue",
+          "speaker": "我",
+          "emo": "平淡",
+          "text": "后门那个空位，坐吧。"
+        },
+        {
+          "type": "narration",
+          "text": "我说完，**笑了一下**。"
+        },
+        {
+          "type": "narration",
+          "text": "和程丽不一样。"
+        },
+        {
+          "type": "narration",
+          "text": "是真心的笑。"
+        }
+      ],
+      "next": "c3_secret_keep6",
+      "choices": []
+    },
+    "c3_secret_keep6": {
+      "bg": "classroom",
+      "sprite": "",
+      "anim": "blackout",
+      "lines": [
+        {
+          "type": "narration",
+          "text": "我坐在讲台后面。"
+        },
+        {
+          "type": "narration",
+          "text": "窗外，天蓝了。"
+        },
+        {
+          "type": "narration",
+          "text": "真正的蓝。"
+        },
+        {
+          "type": "narration",
+          "text": "不再是灰的。"
+        },
+        {
+          "type": "narration",
+          "text": "因为——"
+        },
+        {
+          "type": "narration",
+          "text": "**锚点换人了。**"
+        },
+        {
+          "type": "narration",
+          "text": "我成了新的锚点。"
+        },
+        {
+          "type": "narration",
+          "text": "程丽自由了。"
+        },
+        {
+          "type": "narration",
+          "text": "我会等下一个。"
+        },
+        {
+          "type": "narration",
+          "text": "等那个能带所有人出去的人。"
+        },
+        {
+          "type": "narration",
+          "text": "在那之前——"
+        },
+        {
+          "type": "narration",
+          "text": "**我会好好守着这个位置。**"
+        }
+      ],
+      "choices": [],
+      "ending": {
+        "id": "c3_keep",
+        "title": "结局 7 · 留下 程丽",
+        "desc": "你没有划掉她。\n\n你接替她成了新的锚点。\n\n程丽走出校门，自由了——她二十年来第一次笑。\n\n而你留在原地，等下一个。\n\n这是真·好结局。\n\n【结局 7 / 8 · 收集成功】"
+      }
+    }
+  }
+}

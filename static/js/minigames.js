@@ -64,6 +64,7 @@
       if (!words.length) { done({ win: true }); return; }
       var w = pickWord(opts, words);
       var target = w.en;
+      try { window.__MINI_ANSWER = { type: "spell", en: w.en, zh: w.zh, letters: target.replace(/\s+/g, "").toLowerCase().split("") }; } catch(e){}
       var limit = (opts && opts.time) || 20;
 
       // 拆字母（保留空格作为分隔显示）
@@ -158,6 +159,7 @@
       var others = shuffle(words.filter(function (x) { return x.en !== w.en; })).slice(0, 3)
         .map(function (x) { return x.zh; });
       var options = shuffle([w.zh].concat(others));
+      try { window.__MINI_ANSWER = { type: "dictation", en: w.en, zh: w.zh, answer: w.zh, options: options }; } catch(e){}
       var limit = (opts && opts.time) || 8;
 
       ensureOverlay();

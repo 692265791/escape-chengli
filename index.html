@@ -2,6 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#08080a">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#08080a">
 <title>逃离程丽 · 选择线路</title>
@@ -28,14 +30,21 @@ h1{
 }
 .row:hover{border-color:rgba(200,16,46,.5);background:#150608}
 .row.best{border-color:#2f8f5b;background:rgba(47,143,91,.08)}
-.row.bad{opacity:.4}
-.dot{width:8px;height:8px;border-radius:50%;background:#3a3a3c;flex:none;margin-top:5px;transition:background .3s}
+.row.bad{opacity:.5}
+.dot{width:8px;height:8px;border-radius:50%;background:#3a3a3c;flex:none;margin-top:6px;transition:background .3s}
 .dot.ok{background:#2f8f5b;box-shadow:0 0 8px rgba(47,143,91,.6)}
 .dot.bad{background:#c8102e}
 .dot.test{background:#c8102e;animation:blink .5s infinite}
 @keyframes blink{50%{opacity:.2}}
-.name{flex:1;text-align:left;font-size:13px;color:#e8e8ea}
+.name{font-size:13px;color:#e8e8ea;font-weight:700;letter-spacing:.05em}
+.desc{font-size:11.5px;color:#8a8a8e;margin-top:4px;line-height:1.5}
 .meta{font-size:11px;color:#4a4a4e;margin-top:4px;font-variant-numeric:tabular-nums}
+.tag{
+  display:inline-block;font-size:10px;font-weight:800;
+  padding:1px 7px;border-radius:2px;letter-spacing:.15em;
+  background:rgba(200,16,46,.15);color:#c8102e;
+  margin-left:6px;vertical-align:middle;
+}
 .acts{display:flex;gap:10px;margin-top:22px}
 button{
   flex:1;padding:14px;border-radius:6px;
@@ -47,10 +56,6 @@ button{
   color:#fff;box-shadow:0 8px 24px rgba(200,16,46,.4);
 }
 #btnTest:disabled{opacity:.4;cursor:not-allowed}
-#btnSkip{
-  background:transparent;color:#8a8a8e;
-  border:1px solid #1e1e22;
-}
 .tip{
   margin-top:20px;font-size:11px;color:#3a3a3c;
   text-align:center;letter-spacing:.1em;line-height:1.8;
@@ -61,25 +66,29 @@ button{
 <div class="box">
   <h1>选择线路</h1>
   <p class="sub">CHOOSE ROUTE</p>
+
   <div id="list">
     <div class="row" data-idx="0">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 1</div>
+        <div class="name">线路 1<span class="tag">推荐</span></div>
+        <div class="desc">Cloudflare · 自定义域名</div>
         <div class="meta">未测速</div>
       </div>
     </div>
     <div class="row" data-idx="1">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 2</div>
+        <div class="name">线路 2<span class="tag">备用</span></div>
+        <div class="desc">Cloudflare · 默认域名</div>
         <div class="meta">未测速</div>
       </div>
     </div>
     <div class="row" data-idx="2">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 3</div>
+        <div class="name">线路 3<span class="tag">境外</span></div>
+        <div class="desc">GitHub Pages · 国内不稳</div>
         <div class="meta">未测速</div>
       </div>
     </div>
@@ -87,10 +96,13 @@ button{
 
   <div class="acts">
     <button id="btnTest">开始测速</button>
-    <button id="btnSkip">跳过</button>
   </div>
 
-  <p class="tip">点击开始测速 · 测完手动选择线路</p>
+  <p class="tip">
+    点击开始测速 · 测完手动选择线路<br>
+    <span style="color:#4a4a4e">线路 1、2 为国内优化线路</span><br>
+    <span style="color:#c8102e">线路 3：国内访问可能变慢、超时或打不开</span>
+  </p>
 </div>
 
 <script>
@@ -109,7 +121,6 @@ button{
 
   var rows = document.querySelectorAll(".row");
   var btnTest = document.getElementById("btnTest");
-  var btnSkip = document.getElementById("btnSkip");
 
   /* 点行跳转 */
   rows.forEach(function(row){
@@ -125,22 +136,17 @@ button{
     location.replace(url);
   }
 
-  btnSkip.addEventListener("click", function(){
-    go(TARGETS[0].url);
-  });
-
-  /* 单次测速：用 favicon 加载时间 */
+  /* 单次测速：favicon 加载时间 */
   function ping(t, i, cb){
     var start = Date.now();
     var img = new Image();
     var fin = false;
     function done_(ok){
       if (fin) return; fin = true;
-      var ms = Date.now() - start;
-      cb(ok ? ms : 99999);
+      cb(ok ? (Date.now() - start) : 99999);
     }
     img.onload = function(){ done_(true); };
-    img.onerror = function(){ done_(true); };   /* 能连上就算成功 */
+    img.onerror = function(){ done_(true); };
     setTimeout(function(){ done_(false); }, 4000);
     img.src = t.url + "/favicon.ico?t=" + Date.now() + "_" + i;
   }
@@ -155,14 +161,26 @@ button{
       row.querySelector(".meta").textContent = "测速中…";
     });
 
-    var results = [];
     var done = 0;
     var bestMs = 99999;
     var bestIdx = -1;
 
+    function checkDone(){
+      if (done < TARGETS.length) return;
+      if (bestIdx >= 0){
+        rows[bestIdx].classList.add("best");
+        btnTest.textContent = "去 " + TARGETS[bestIdx].name;
+        btnTest.disabled = false;
+        btnTest.onclick = function(){ go(TARGETS[bestIdx].url); };
+      } else {
+        btnTest.textContent = "全部超时";
+        btnTest.disabled = false;
+        btnTest.onclick = function(){ go(TARGETS[0].url); };
+      }
+    }
+
     TARGETS.forEach(function(t, i){
       ping(t, i, function(ms){
-        results.push({ idx: i, ms: ms });
         done++;
         var row = rows[i];
         var dot = row.querySelector(".dot");
@@ -175,39 +193,14 @@ button{
         } else {
           dot.className = "dot ok";
           meta.textContent = ms + " ms";
-          if (ms < bestMs){ bestMs = ms; bestIdx = i; }
+          /* 线路 3 不参与推荐 */
+          if (i !== 2 && ms < bestMs){ bestMs = ms; bestIdx = i; }
         }
-
-        if (done === TARGETS.length){
-          if (bestIdx >= 0){
-            rows[bestIdx].classList.add("best");
-            btnTest.textContent = "去 " + TARGETS[bestIdx].name;
-            btnTest.disabled = false;
-            btnTest.onclick = function(){ go(TARGETS[bestIdx].url); };
-          } else {
-            btnTest.textContent = "全部超时";
-            btnTest.disabled = false;
-            btnTest.onclick = function(){ go(TARGETS[0].url); };
-          }
-        }
+        checkDone();
       });
     });
   });
 })();
 </script>
-<script>
-(function(){
-  var btn = document.getElementById("btnStart");
-  if (!btn) return;
-  btn.addEventListener("click", function(e){
-    e.preventDefault();
-    var skip = false;
-    try { skip = localStorage.getItem("ec_skip_disclaimer") === "1"; } catch(e){}
-    if (skip) location.href = "loading.html?ch=ch1";
-    else location.href = "disclaimer.html";
-  });
-})();
-</script>
-
 </body>
 </html>

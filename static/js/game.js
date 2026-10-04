@@ -43,7 +43,16 @@
   function boot() {
     var _ch = "";
     try { _ch = new URLSearchParams(location.search).get("chapter") || ""; } catch(e){}
-    var storyFile = (_ch === "ch2") ? "ch2.json" : "story.json";
+    var storyFile = "story.json";
+    if (_ch === "ch2") storyFile = "ch2.json";
+    else if (_ch === "ch3"){
+      storyFile = "ch3.json";
+      /* 集齐 6 个普通结局 + 未拿结局 7 → 走隐藏支线 */
+      if (window.__SHOULD_TRIGGER_SECRET && window.__SHOULD_TRIGGER_SECRET()){
+        /* 稍后改用隐藏起始节点 */
+        window.__SECRET_MODE = true;
+      }
+    }
     Promise.all([
       fetch(storyFile).then(function(r){ return r.json(); }),
       fetch("images.json").then(function(r){ return r.json(); }).catch(function(){ return {}; })
@@ -62,6 +71,11 @@
       updateSan();
       var _start = STORY.meta.start || "start";
       var _chapter = STORY.meta.chapter || "";
+      /* 隐藏支线：强制从 c3_secret_start 开始 */
+      if (window.__SECRET_MODE && STORY.nodes && STORY.nodes["c3_secret_start"]){
+        _start = "c3_secret_start";
+        _chapter = "第十章 · 放假 · 隐藏";
+      }
       setChapter(_chapter);
       goto(_start);
     }).catch(function(e){ alert("加载出错：" + e); });
@@ -90,6 +104,7 @@
     if (typeof window.__lazyTick === "function") window.__lazyTick();
     nodeId = id;
     node = n;
+    if (window.__TRACK_CURRENT) window.__TRACK_CURRENT(id, vars);
     __autoChapter(id);
     lines = n.lines || [];
     lineIdx = 0;
@@ -121,6 +136,12 @@
       showFullPage(lines, function () {
         if (n.next) goto(n.next); else showChoices(n);
       });
+      return;
+    }
+
+    /* Boss 战节点：直接打开答题卡 */
+    if (n.boss && window.__BOSS){
+      window.__BOSS.open();
       return;
     }
 
@@ -164,6 +185,12 @@
   function renderSprite(key, anim) {
     $sprite.innerHTML = "";
     if (!key) { if (window.__relayout) setTimeout(window.__relayout, 30); return; }
+    /* 无素材的剪影角色 */
+    if (key.indexOf("silhouette") !== -1 || key.indexOf("peng") !== -1){
+      $sprite.innerHTML = '<div class="sprite-silhouette"><span class="no-asset">[ 暂无素材 ]</span></div>';
+      if (window.__relayout) setTimeout(window.__relayout, 30);
+      return;
+    }
     var url = IMAGES[key] || ("static/img/" + key);
     var img = document.createElement("img");
     img.src = url;
@@ -327,93 +354,62 @@
     typing = true;
     finished = false;
 
-    /* 把 html 拆成“可见字符”序列，同时保留标签结构 */
-    var tmp = document.createElement("div");
-    tmp.innerHTML = html;
-    var chars = [];
-    (function walk(n){
-      for (var i = 0; i < n.childNodes.length; i++){
-        var c = n.childNodes[i];
-        if (c.nodeType === 3){
-          for (var k = 0; k < c.nodeValue.length; k++){
-            chars.push({ ch: c.nodeValue[k], html: null });
-          }
-        } else if (c.nodeType === 1){
-          var open = c.outerHTML.match(/^<[^>]+>/)[0];
-          var close = "</" + c.tagName.toLowerCase() + ">";
-          var start = chars.length;
-          chars.push({ ch: "", html: open, isOpen: true, tag: c.tagName.toLowerCase() });
-          (function walkInner(el){
-            for (var j = 0; j < el.childNodes.length; j++){
-              var cc = el.childNodes[j];
-              if (cc.nodeType === 3){
-                for (var kk = 0; kk < cc.nodeValue.length; kk++){
-                  chars.push({ ch: cc.nodeValue[kk], html: null });
-                }
-              } else if (cc.nodeType === 1){
-                walkInner(cc);
-              }
-            }
-          })(c);
-          chars.push({ ch: "", html: close, isClose: true, tag: c.tagName.toLowerCase() });
-        }
-      }
-    })(tmp);
+    /* 一次性渲染完整 HTML */
+    $text.innerHTML = html;
 
-    /* 用 span 逐字渲染 */
-    $text.innerHTML = "";
-    var frag = document.createDocumentFragment();
-    var spans = [];
-    chars.forEach(function(c){
-      if (c.html){
-        /* 标签：用一个 span 包裹，本身不显示字符 */
-        var tagSpan = document.createElement("span");
-        tagSpan.dataset.tag = c.tag;
-        if (c.isOpen) tagSpan.dataset.role = "open";
-        else tagSpan.dataset.role = "close";
-        frag.appendChild(tagSpan);
-        return;
-      }
-      var sp = document.createElement("span");
-      sp.className = "tw-char";
-      sp.textContent = c.ch === " " ? "\u00A0" : c.ch;
-      frag.appendChild(sp);
-      spans.push(sp);
-    });
-    $text.appendChild(frag);
-
-    /* 按 span 逐字揭示（保留原有 class 效果） */
     var speed = window.__typeSpeed || 28;
-    if (speed <= 0){
-      spans.forEach(function(sp){ sp.classList.add("tw-on"); });
-      typing = false; finished = true;
-      if (done) done();
-      return;
+    if (speed <= 0) { typing = false; finished = true; if (done) done(); return; }
+
+    /* 用 <span> 包住每个可见字符（跳过标签），不影响原结构 */
+    function wrapChars(node) {
+      if (node.nodeType === 3) {
+        var text = node.nodeValue;
+        if (!text) return;
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < text.length; i++) {
+          var sp = document.createElement("span");
+          sp.className = "tw-char";
+          sp.textContent = text[i];
+          frag.appendChild(sp);
+        }
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === 1) {
+        var children = Array.prototype.slice.call(node.childNodes);
+        children.forEach(wrapChars);
+      }
     }
 
+    var allChars = [];
+    try {
+      wrapChars($text);
+      allChars = $text.querySelectorAll(".tw-char");
+    } catch(e) {
+      /* 兜底：失败就直接全显 */
+      typing = false; finished = true; if (done) done(); return;
+    }
+
+    /* rAF 逐字揭示 */
     var idx = 0;
     var lastT = 0;
     var rafId = null;
 
-    function step(ts){
+    function step(ts) {
       if (!typing) return;
       if (!lastT) lastT = ts;
       var dt = ts - lastT;
 
-      if (dt >= speed){
+      if (dt >= speed) {
         lastT = ts;
-        var sp = spans[idx];
-        if (sp){
+        var sp = allChars[idx];
+        if (sp) {
           sp.classList.add("tw-on");
-          /* 标点符号延迟稍长 */
           var ch = sp.textContent;
           if ("，。！？；：、".indexOf(ch) !== -1) {
-            /* 标点后多加 1.6 倍间隔 */
             lastT = ts - speed * 0.6;
           }
         }
         idx++;
-        if (idx >= spans.length){
+        if (idx >= allChars.length) {
           typing = false;
           finished = true;
           if (done) done();
@@ -423,7 +419,10 @@
       rafId = requestAnimationFrame(step);
     }
     rafId = requestAnimationFrame(step);
-    typeTimer = { clear: function(){ typing = false; if (rafId) cancelAnimationFrame(rafId); } };
+
+    typeTimer = {
+      clear: function(){ typing = false; if (rafId) cancelAnimationFrame(rafId); }
+    };
   }
 
   function sliceHtml(html, count) {
@@ -545,6 +544,8 @@
     document.getElementById("endingDesc").textContent = end.desc || "";
     document.getElementById("endingOverlay").classList.add("show");
     if (end.id) __collect("ending", end.id, end.title || "");
+    /* 记录结局收集 */
+    if (end.id && window.__UNLOCK_ENDING) window.__UNLOCK_ENDING(end.id);
   }
   document.getElementById("btnRestart").addEventListener("click", function () {
     location.reload();
@@ -566,7 +567,7 @@
   });
   // -------- 自动保存：每个关键节点（有 next 或 choices 时）--------
   function autoSave() {
-    // 静态版：禁用云存档，本地存档由 save_local.js 处理
+    if (window.__AUTOSAVE) window.__AUTOSAVE();
   }
 
   // -------- 保存：弹窗命名 --------

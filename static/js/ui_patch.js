@@ -72,6 +72,101 @@
       } else {
       }
   });
+  /* ---------- 存/读档面板（新版） ---------- */
+  var saveOv = $("saveOverlay"), saveList = $("saveList"), saveTitle = $("saveTitle");
+  var saveClose = $("saveClose");
+  var saveMode = "save";
+
+  function closeSave(){ if (saveOv) saveOv.classList.remove("show"); }
+  on($("qkSave"), function () { closePanel(); openSave("save"); });
+  on($("qkLoad"), function () { closePanel(); openSave("load"); });
+  if (saveClose) saveClose.addEventListener("click", closeSave);
+  if (saveOv) saveOv.addEventListener("click", function(e){ if (e.target === saveOv) closeSave(); });
+
+  function openSave(mode){
+    saveMode = mode;
+    if (saveOv) saveOv.classList.add("show");
+    if (saveTitle) saveTitle.textContent = (mode === "save" ? "保存进度" : "读取进度");
+    refreshSaves();
+  }
+
+  function refreshSaves(){
+    if (!saveList) return;
+    saveList.innerHTML = "";
+    var S = window.__SAVE_SYSTEM;
+
+    /* 自动存档行 */
+    if (S && S.loadAuto()){
+      var auto = S.loadAuto();
+      var row = document.createElement("div");
+      row.className = "save-item auto";
+      row.innerHTML =
+        '<div class="save-info">' +
+          '<b>自动存档</b>' +
+          '<span>' + (auto.chapter || "?") + ' · ' + (auto.node_id || "") + ' · ' + (auto.time || "") + '</span>' +
+        '</div>' +
+        '<div class="save-acts">' +
+          (saveMode === "load" ? '<button class="save-btn" data-act="loadauto">读取</button>' : '') +
+        '</div>';
+      if (saveMode === "load"){
+        row.querySelector('[data-act="loadauto"]').addEventListener("click", function(e){
+          e.stopPropagation();
+          if (S.apply(auto)) closeSave();
+        });
+      }
+      saveList.appendChild(row);
+    }
+
+    /* 3 个手动存档 */
+    var all = S ? S.loadAll() : {};
+    for (var slot = 1; slot <= 3; slot++){
+      (function(s){
+        var d = all[s];
+        var row = document.createElement("div");
+        row.className = "save-item" + (d ? "" : " empty");
+        var info = d
+          ? '<b>存档 ' + s + ' · ' + (d.name || "") + '</b><span>' + (d.chapter || "?") + ' · ' + (d.node_id || "") + ' · ' + (d.time || "") + '</span>'
+          : '<b>存档 ' + s + '</b><span class="empty">空</span>';
+        var acts = '<div class="save-acts">';
+        if (saveMode === "save"){
+          acts += '<button class="save-btn" data-act="save">' + (d ? "覆盖" : "保存") + '</button>';
+          if (d) acts += '<button class="save-btn danger" data-act="del">删除</button>';
+        } else {
+          if (d){
+            acts += '<button class="save-btn" data-act="load">读取</button>';
+            acts += '<button class="save-btn danger" data-act="del">删除</button>';
+          }
+        }
+        acts += '</div>';
+        row.innerHTML = '<div class="save-info">' + info + '</div>' + acts;
+
+        var saveBtn = row.querySelector('[data-act="save"]');
+        var loadBtn = row.querySelector('[data-act="load"]');
+        var delBtn = row.querySelector('[data-act="del"]');
+
+        if (saveBtn) saveBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          var nm = prompt("存档名：", d ? (d.name || ("存档 " + s)) : ("存档 " + s));
+          if (nm === null) return;
+          if (S) S.save(s, nm || ("存档 " + s));
+          refreshSaves();
+        });
+        if (loadBtn) loadBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          if (S && S.apply(d)) closeSave();
+        });
+        if (delBtn) delBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          if (!confirm("删除存档 " + s + " ？")) return;
+          if (S) S.del(s);
+          refreshSaves();
+        });
+
+        saveList.appendChild(row);
+      })(slot);
+    }
+  }
+
   on($("qkHome"), function () { location.href = "index.html"; });
 
   /* ---------- 章节 ---------- */

@@ -2,6 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#08080a">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#f2f2f4">
 <title>逃离程丽</title>
@@ -33,8 +35,52 @@ body.ui-dark .ls-info b{color:#e0e0e4;}
 body.ui-dark .ls-info span{color:#9a9aa0;}
 body.ui-dark .ls-btn{background:#2a2a30;color:#e0e0e4;}
 body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
+<style>
+@keyframes spasm{
+  0%{transform:translate(0)}
+  25%{transform:translate(-8px,3px) skewX(-10deg)}
+  50%{transform:translate(6px,-2px) skewX(8deg)}
+  75%{transform:translate(-4px,1px)}
+  100%{transform:none}
+}
+</style>
 </style>
 <link rel="stylesheet" href="static/lib/animate.min.css">
+<script>
+(function(){
+  /* 一次性清掉所有旧版存档 key */
+  try {
+    Object.keys(localStorage).forEach(function(k){
+      if (k.indexOf("ec_save") === 0 || k.indexOf("ec_auto") === 0 || k.indexOf("ec_current") === 0 || k.indexOf("ec_node") === 0){
+        localStorage.removeItem(k);
+      }
+    });
+  } catch(e){}
+})();
+</script>
+
+<style id="no-invert-protect">
+html, body { color-scheme: dark only !important; forced-color-adjust: none !important; filter: none !important; }
+img, svg, canvas, video { filter: none !important; mix-blend-mode: normal !important; forced-color-adjust: none !important; }
+@media (forced-colors: active) { img, svg, canvas { forced-color-adjust: none !important; } }
+</style>
+<script>
+(function(){
+  function clean(){
+    try {
+      document.body.style.filter = "none";
+      document.documentElement.style.filter = "none";
+      document.querySelectorAll("img, svg, canvas").forEach(function(el){
+        el.style.filter = "none";
+      });
+    } catch(e){}
+  }
+  document.addEventListener("DOMContentLoaded", clean);
+  setTimeout(clean, 500);
+  setInterval(clean, 3000);
+})();
+</script>
+
 </head>
 <body class="game-page mode-normal">
 
@@ -79,6 +125,7 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
 <div class="menu-overlay" id="menuOverlay">
   <div class="menu-card">
     <h3>菜单</h3>
+    <button id="btnSave2">存档系统</button>
     <button id="btnChapters">章节选择</button>
     <button id="btnHome">返回主页</button>
     <button id="btnCloseMenu">继续游戏</button>
@@ -111,6 +158,30 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
 
 
 
+<div class="save-overlay" id="saveOverlay">
+  <div class="save-card">
+    <div class="save-head">
+      <div class="save-tabs">
+        <button id="tabSave" class="save-tab active">保存</button>
+        <button id="tabLoad" class="save-tab">读取</button>
+      </div>
+      <h3 id="saveTitle">存档</h3>
+      <span class="save-count" id="saveCount">0 / 100</span>
+    </div>
+
+    <div class="save-toolbar">
+      <button class="save-tool" id="toolNew">+ 新建</button>
+      <button class="save-tool" id="toolImport">导入</button>
+      <button class="save-tool" id="toolExport">导出</button>
+      <button class="save-tool danger" id="toolClear">清空</button>
+    </div>
+
+    <div class="save-list" id="saveList"></div>
+
+    <button class="set-close" id="saveClose">关闭</button>
+  </div>
+</div>
+
 <div class="ending-overlay" id="endingOverlay">
   <div class="ending-card">
     <h2 class="ending-title" id="endingTitle"></h2>
@@ -137,7 +208,10 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
 <script src="static/js/fx.js"></script>
 <script src="static/js/game.js"></script>
 <script src="static/js/transform.js"></script>
+<script src="static/js/save_local.js"></script>
 <script src="static/js/ui_patch.js"></script>
+<script src="static/js/endings.js"></script>
+<script src="static/js/boss.js"></script>
 
 <script>
 (function(){
@@ -159,41 +233,44 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
   setTimeout(bind, 800); setTimeout(bind, 2000);
 })();
 </script>
+<script src="static/js/anim-bridge.js"></script>
+</div>
+<style>
+</style>
 <script id="menu-fix">
 (function(){
+  "use strict";
   function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+
   ready(function(){
+
+    /* ========== 顶栏菜单 ========== */
     var menu = document.getElementById("menuOverlay");
     var btnMenu = document.getElementById("btnMenu");
     var btnCloseMenu = document.getElementById("btnCloseMenu");
     var btnHome = document.getElementById("btnHome");
     var btnChapters = document.getElementById("btnChapters");
-    var chaptersOv = document.getElementById("chaptersOverlay");
-    var chapterList = document.getElementById("chapterList");
-    var btnCloseChapters = document.getElementById("btnCloseChapters");
+    var btnSave2 = document.getElementById("btnSave2");
 
-    /* 1) 顶栏菜单按钮 → 打开菜单弹窗 */
     if (btnMenu && menu) btnMenu.addEventListener("click", function(){ menu.classList.add("show"); });
-
-    /* 2) 菜单里「继续游戏」 → 关菜单 */
     if (btnCloseMenu && menu) btnCloseMenu.addEventListener("click", function(){ menu.classList.remove("show"); });
-
-    /* 3) 菜单里「返回主页」 */
-    if (btnHome) btnHome.addEventListener("click", function(){ location.href = "index.html"; });
-
-    /* 4) 点遮罩关闭菜单 */
+    if (btnHome) btnHome.addEventListener("click", function(){ location.href = "home.html"; });
     if (menu) menu.addEventListener("click", function(e){ if (e.target === menu) menu.classList.remove("show"); });
 
-    /* 5) 菜单里「章节选择」 → 打开章节弹窗 */
+    /* ========== 章节弹窗 ========== */
+    var chOv = document.getElementById("chaptersOverlay");
+    var chList = document.getElementById("chapterList");
+    var chClose = document.getElementById("btnCloseChapters");
+
     function loadChapters(){
-      if (!chapterList || chapterList.dataset.loaded === "1") return;
-      chapterList.dataset.loaded = "1";
-      chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">加载中…</p>';
+      if (!chList || chList.dataset.loaded === "1") return;
+      chList.dataset.loaded = "1";
+      chList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">加载中…</p>';
       var url = (window.GAME_API && window.GAME_API.chapters) || "chapters.json";
       fetch(url).then(function(r){ return r.json(); }).then(function(d){
         var arr = d.chapters || d || [];
-        chapterList.innerHTML = "";
-        if (!arr.length){ chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">暂无章节</p>'; return; }
+        chList.innerHTML = "";
+        if (!arr.length){ chList.innerHTML = '<p style="color:#8a8a8e;font-size:13px">暂无章节</p>'; return; }
         arr.forEach(function(c){
           var b = document.createElement("button");
           b.className = "chapter-item";
@@ -202,109 +279,470 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
             b.addEventListener("click", function(){
               location.replace("game.html?chapter=" + (c.id || "ch1") + "&t=" + Date.now());
             });
-          } else {
-            b.classList.add("locked");
-          }
-          chapterList.appendChild(b);
+          } else { b.classList.add("locked"); }
+          chList.appendChild(b);
         });
-      }).catch(function(){
-        chapterList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">加载失败</p>';
-      });
+      }).catch(function(){ chList.innerHTML = '<p style="color:#8a8a8e;font-size:13px">加载失败</p>'; });
     }
 
     if (btnChapters) btnChapters.addEventListener("click", function(){
       if (menu) menu.classList.remove("show");
-      if (chaptersOv) chaptersOv.classList.add("show");
+      if (chOv) chOv.classList.add("show");
       loadChapters();
     });
+    if (chClose && chOv) chClose.addEventListener("click", function(){ chOv.classList.remove("show"); });
+    if (chOv) chOv.addEventListener("click", function(e){ if (e.target === chOv) chOv.classList.remove("show"); });
 
-    if (btnCloseChapters && chaptersOv) btnCloseChapters.addEventListener("click", function(){ chaptersOv.classList.remove("show"); });
-    if (chaptersOv) chaptersOv.addEventListener("click", function(e){ if (e.target === chaptersOv) chaptersOv.classList.remove("show"); });
+    /* ========== 存档弹窗 ========== */
+    var saveOv = document.getElementById("saveOverlay");
+    var saveList = document.getElementById("saveList");
+    var saveTitle = document.getElementById("saveTitle");
+    var saveCount = document.getElementById("saveCount");
+    var saveClose = document.getElementById("saveClose");
+    var tabSave = document.getElementById("tabSave");
+    var tabLoad = document.getElementById("tabLoad");
+    var toolNew = document.getElementById("toolNew");
+    var toolImport = document.getElementById("toolImport");
+    var toolExport = document.getElementById("toolExport");
+    var toolClear = document.getElementById("toolClear");
+
+    var saveMode = "save";
+
+    function closeSave(){ if (saveOv) saveOv.classList.remove("show"); }
+    if (saveClose) saveClose.addEventListener("click", closeSave);
+    if (saveOv) saveOv.addEventListener("click", function(e){ if (e.target === saveOv) closeSave(); });
+
+    function switchMode(mode){
+      saveMode = mode;
+      if (tabSave) tabSave.classList.toggle("active", mode === "save");
+      if (tabLoad) tabLoad.classList.toggle("active", mode === "load");
+      refreshSaves();
+    }
+
+    if (tabSave) tabSave.addEventListener("click", function(){ switchMode("save"); });
+    if (tabLoad) tabLoad.addEventListener("click", function(){ switchMode("load"); });
+
+    function openSave(){
+      if (menu) menu.classList.remove("show");
+      if (saveOv) saveOv.classList.add("show");
+      if (saveTitle) saveTitle.textContent = "存档系统";
+      switchMode(saveMode);
+    }
+
+    if (btnSave2) btnSave2.addEventListener("click", function(){ openSave(); });
+
+    /* 工具栏 */
+    if (toolNew) toolNew.addEventListener("click", function(){
+      var S = window.__SAVE_SYSTEM;
+      if (!S){ alert("存档系统未加载"); return; }
+      var all = S.loadAll();
+      var free = -1;
+      for (var i = 1; i <= S.MAX_SLOT; i++){ if (!all[i]){ free = i; break; } }
+      if (free === -1){ alert("存档已满"); return; }
+      var nm = prompt("新存档名：", "存档 " + free);
+      if (nm === null) return;
+      var result = S.save(free, nm || ("存档 " + free));
+      refreshSaves();
+    });
+
+    if (toolImport) toolImport.addEventListener("click", function(){
+      if (window.__IMPORT_SAVES) window.__IMPORT_SAVES();
+    });
+    if (toolExport) toolExport.addEventListener("click", function(){
+      if (window.__EXPORT_SAVES) window.__EXPORT_SAVES();
+    });
+    if (toolClear) toolClear.addEventListener("click", function(){
+      if (!confirm("清空所有存档？")) return;
+      if (window.__CLEAR_ALL) window.__CLEAR_AL
+      refreshSaves();
+    });
+
+    /* 列表 */
+    function refreshSaves(){
+      if (!saveList) return;
+      saveList.innerHTML = "";
+      var S = window.__SAVE_SYSTEM;
+      if (!S){
+        saveList.innerHTML = '<p style="color:#8a8a8e;font-size:13px;text-align:center">存档系统未加载</p>';
+        return;
+      }
+
+      var all = S.loadAll();
+      var used = Object.keys(all).length;
+      if (saveCount) saveCount.textContent = used + " / " + S.MAX_SLOT;
+
+      /* 自动存档 */
+      var auto = S.loadAuto();
+      if (auto){
+        var rowA = document.createElement("div");
+        rowA.className = "save-item auto";
+        rowA.innerHTML =
+          '<div class="save-info">' +
+            '<b>自动存档</b>' +
+            '<span>' + (auto.chapter || "?") + ' · ' + (auto.node_id || "") + ' · ' + (auto.time || "") + '</span>' +
+          '</div>' +
+          '<div class="save-acts">' +
+            (saveMode === "load" ? '<button class="save-btn main" data-act="loadauto">读取</button>' : '') +
+          '</div>';
+        if (saveMode === "load"){
+          rowA.querySelector('[data-act="loadauto"]').addEventListener("click", function(e){
+            e.stopPropagation();
+            if (S.apply(auto)) closeSave();
+          });
+        }
+        saveList.appendChild(rowA);
+      }
+
+      var keys = Object.keys(all).map(Number).sort(function(a,b){ return a - b; });
+      if (!keys.length){
+        var empty = document.createElement("p");
+        empty.style.cssText = "color:#3a3a3c;font-size:13px;text-align:center;padding:20px";
+        empty.textContent = "还没有存档";
+        saveList.appendChild(empty);
+      }
+
+      keys.forEach(function(slot){
+        var d = all[slot];
+        var row = document.createElement("div");
+        row.className = "save-item";
+
+        var info = '<b>存档 ' + slot + ' · ' + (d.name || "") + '</b>' +
+                   '<span>' + (d.chapter || "?") + ' · ' + (d.node_id || "") + ' · ' + (d.time || "") + '</span>';
+        var acts = '<div class="save-acts">';
+        if (saveMode === "save"){
+          acts += '<button class="save-btn" data-act="overwrite">覆盖</button>';
+        } else {
+          acts += '<button class="save-btn main" data-act="load">读取</button>';
+        }
+        acts += '<button class="save-btn danger" data-act="del">删除</button></div>';
+        row.innerHTML = '<div class="save-info">' + info + '</div>' + acts;
+
+        var lb = row.querySelector('[data-act="load"]');
+        var ob = row.querySelector('[data-act="overwrite"]');
+        var db = row.querySelector('[data-act="del"]');
+
+        if (lb) lb.addEventListener("click", function(e){
+          e.stopPropagation();
+          if (S.apply(d)) closeSave();
+        });
+        if (ob) ob.addEventListener("click", function(e){
+          e.stopPropagation();
+          var nm = prompt("存档名：", d.name || ("存档 " + slot));
+          if (nm === null) return;
+          var result = S.save(slot, nm || ("存档 " + slot));
+          refreshSaves();
+        });
+        if (db) db.addEventListener("click", function(e){
+          e.stopPropagation();
+          if (!confirm("删除存档 " + slot + " ？")) return;
+          S.del(slot);
+          refreshSaves();
+        });
+
+        saveList.appendChild(row);
+      });
+    }
   });
 })();
 </script>
 
-<script src="static/js/anim-bridge.js"></script>
-</div>
-<button id="cheatFab" type="button" title="作弊菜单" aria-label="作弊菜单">⚙</button>
+
+<!-- ==================== 全新作弊菜单 ==================== -->
+<button id="cheatFab" type="button" aria-label="作弊菜单">
+  <span class="cf-dot"></span>
+  <span class="cf-text">⚙</span>
+</button>
+
 <div id="cheatPanel">
-  <h4>作弊菜单</h4>
-  <button data-act="san-99999">恐惧值 -99999</button>
-  <button data-act="san-0">恐惧值 归零</button>
-  <button data-act="god">无敌模式 开/关</button>
-  <button data-act="ch1">跳转 第一章</button>
-  <button data-act="ch2">跳转 第二章</button>
-  <button data-act="close">收起</button>
+  <div class="cf-head" id="cfHead">
+    <div class="cf-title">
+      <span class="cf-pulse"></span>
+      <span>逃 离 控 制 台</span>
+      <span class="cf-tag">ESC</span>
+    </div>
+    <button class="cf-x" id="cfClose" type="button">×</button>
+  </div>
+
+  <div class="cf-tabs">
+    <button class="cf-tab active" data-tab="cheat">作弊</button>
+    <button class="cf-tab" data-tab="plot">剧情</button>
+    <button class="cf-tab" data-tab="fx">视觉</button>
+    <button class="cf-tab" data-tab="fun">恶趣味</button>
+  </div>
+
+  <div class="cf-body">
+    <!-- 作弊 -->
+    <div class="cf-pane active" data-pane="cheat">
+      <div class="cf-group">恐惧值</div>
+      <div class="cf-row"><span>锁定 0</span><button class="cf-btn" data-act="san0">执行</button></div>
+      <div class="cf-row"><span>锁定 -999</span><button class="cf-btn" data-act="sanmin">执行</button></div>
+      <div class="cf-row"><span>锁定 99（快满）</span><button class="cf-btn" data-act="sanmax">执行</button></div>
+      <div class="cf-row"><span>解除锁定</span><button class="cf-btn cf-danger" data-act="sanfree">执行</button></div>
+
+      <div class="cf-group">无敌</div>
+      <div class="cf-row"><span>无敌模式（锁 -999）</span><label class="cf-sw"><input type="checkbox" id="cfGod"><i></i></label></div>
+      <div class="cf-row"><span>关闭死亡结局</span><label class="cf-sw"><input type="checkbox" id="cfNoDeath"><i></i></label></div>
+    </div>
+
+    <!-- 剧情 -->
+    <div class="cf-pane" data-pane="plot">
+      <button class="cf-action" data-act="skipLine">跳过本句</button>
+      <button class="cf-action" data-act="skipNode">跳过本节点</button>
+      <button class="cf-action" data-act="skipMini">完成小游戏</button>
+      <button class="cf-action" data-act="skipChapter">跳过整个章节</button>
+      <div class="cf-group">跳转</div>
+      <button class="cf-action" data-act="ch1">第一章 · 初见</button>
+      <button class="cf-action" data-act="ch2">第二章 · 混乱</button>
+      <button class="cf-action" data-act="ch3">第十章 · 放假</button>
+      <button class="cf-action cf-danger" data-act="secret">跳到隐藏支线</button>
+    </div>
+
+    <!-- 视觉 -->
+    <div class="cf-pane" data-pane="fx">
+      <div class="cf-row"><span>关闭恐怖特效</span><label class="cf-sw"><input type="checkbox" id="cfNoFx"><i></i></label></div>
+      <div class="cf-row"><span>关闭动画</span><label class="cf-sw"><input type="checkbox" id="cfNoAnim"><i></i></label></div>
+      <div class="cf-group">视角</div>
+      <button class="cf-action" data-act="perspectiveChengli">切换到程丽视角</button>
+      <button class="cf-action" data-act="perspectiveHero">切换回主角视角</button>
+    </div>
+
+    <!-- 恶趣味 -->
+    <div class="cf-pane" data-pane="fun">
+      <button class="cf-action" data-act="titleGlitch">标题故障</button>
+      <button class="cf-action" data-act="rain">血雨</button>
+      <button class="cf-action" data-act="flashAll">全屏闪红</button>
+      <button class="cf-action" data-act="renameHero">改主角名字</button>
+      <button class="cf-action" data-act="ghostText">全屏血字</button>
+    </div>
+  </div>
+
+  <div class="cf-foot">
+    <div class="cf-stat">
+      <span>节点</span><b id="cfNode">-</b>
+    </div>
+    <div class="cf-stat">
+      <span>恐惧</span><b id="cfSan">-</b>
+    </div>
+    <div class="cf-stat">
+      <span>线索</span><b id="cfClue">-</b>
+    </div>
+  </div>
+
+  <div class="cf-actions">
+    <button class="cf-reset" data-act="resetAll">一键恢复默认</button>
+    <button class="cf-off" data-act="cheatOff">关闭作弊模式</button>
+  </div>
 </div>
+
 <style>
+/* ==================== 全新作弊菜单 ==================== */
 #cheatFab{
-  position:fixed;right:18px;bottom:18px;z-index:99998;
-  touch-action:none;user-select:none;-webkit-user-select:none;
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,#c8102e,#5a0e18);
-  color:#fff;border:none;font-size:22px;line-height:1;
+  position:fixed;right:20px;bottom:20px;
+  z-index:99998;
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#1a1a1f,#0a0a0c);
+  border:2px solid #c8102e;
+  color:#c8102e;font-size:22px;font-weight:900;
   cursor:pointer;display:none;
-  box-shadow:0 0 0 2px rgba(200,16,46,.55),0 10px 30px rgba(200,16,46,.6);
-  animation:cheatPulse 2s ease-in-out infinite;
+  box-shadow:
+    0 0 0 3px rgba(200,16,46,.15),
+    0 0 30px rgba(200,16,46,.6),
+    inset 0 0 20px rgba(200,16,46,.15);
+  animation:cfPulse 2.2s ease-in-out infinite;
   transition:transform .2s;
+  touch-action:none;
+  user-select:none;
 }
-#cheatFab:active{transform:scale(.92)}
-@keyframes cheatPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 #cheatFab.show{display:block}
+#cheatFab:active{transform:scale(.94)}
+@keyframes cfPulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(200,16,46,.15),0 0 30px rgba(200,16,46,.6),inset 0 0 20px rgba(200,16,46,.15)}
+  50%{box-shadow:0 0 0 3px rgba(200,16,46,.35),0 0 45px rgba(200,16,46,1),inset 0 0 30px rgba(200,16,46,.3)}
+}
+.cf-dot{
+  position:absolute;right:4px;top:4px;
+  width:8px;height:8px;border-radius:50%;
+  background:#00ff88;
+  box-shadow:0 0 8px #00ff88;
+  animation:cfBlink 1.2s infinite;
+}
+@keyframes cfBlink{50%{opacity:.3}}
+.cf-text{position:relative;z-index:1}
+
+/* 面板 */
 #cheatPanel{
-  position:fixed;right:18px;bottom:84px;z-index:99999;
-  width:220px;padding:14px;
-  background:rgba(15,15,18,.98);border:1px solid rgba(200,16,46,.5);
-  border-radius:10px;display:none;flex-direction:column;gap:8px;
-  box-shadow:0 20px 60px rgba(200,16,46,.5);
-  backdrop-filter:blur(12px);
+  position:fixed;right:20px;top:70px;
+  z-index:99999;
+  width:280px;max-height:78vh;
+  background:#0a0a0c;
+  border:1px solid rgba(200,16,46,.5);
+  border-radius:12px;
+  display:none;flex-direction:column;
+  box-shadow:0 20px 60px rgba(200,16,46,.4), 0 0 0 1px rgba(200,16,46,.1);
+  font-family:"JetBrains Mono","Courier New",monospace;
+  font-size:12px;
+  color:#c8c8d0;
+  overflow:hidden;
+  user-select:none;
 }
-#cheatPanel.show{display:flex;animation:cpIn .25s cubic-bezier(.16,1,.3,1)}
-@keyframes cpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#cheatPanel h4{
-  margin:0 0 6px;font-size:12px;color:#e8e8ea;
-  letter-spacing:.3em;text-align:center;
-  padding-bottom:8px;border-bottom:1px solid rgba(200,16,46,.3);
+#cheatPanel.show{display:flex;animation:cfIn .25s cubic-bezier(.16,1,.3,1)}
+@keyframes cfIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* 头部 */
+.cf-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  background:linear-gradient(180deg,#1a0608,#0e0406);
+  border-bottom:1px solid rgba(200,16,46,.35);
+  cursor:grab;
 }
-#cheatPanel button{
-  border:1px solid rgba(200,16,46,.35);background:#1a0608;color:#e8e8ea;
-  padding:10px 12px;border-radius:6px;font-size:13px;
-  cursor:pointer;text-align:left;transition:all .15s;
+.cf-head:active{cursor:grabbing}
+.cf-title{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:800;letter-spacing:.2em;
+  color:#c8102e;
 }
-#cheatPanel button:hover{background:#2a0a0e;border-color:#c8102e}
-#cheatPanel button[data-act="close"]{text-align:center;color:#8a8a8e}
+.cf-pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:#c8102e;
+  box-shadow:0 0 10px #c8102e;
+  animation:cfBlink 1.5s infinite;
+}
+.cf-tag{
+  font-size:9px;padding:1px 6px;border-radius:3px;
+  background:rgba(200,16,46,.2);color:#c8102e;
+  letter-spacing:.1em;
+}
+.cf-x{
+  width:24px;height:24px;
+  background:transparent;border:1px solid rgba(200,16,46,.3);
+  color:#8a8a92;font-size:16px;line-height:1;
+  border-radius:4px;cursor:pointer;padding:0;
+}
+.cf-x:hover{color:#c8102e;border-color:#c8102e}
+
+/* Tabs */
+.cf-tabs{
+  display:flex;background:#0e0406;
+  border-bottom:1px solid rgba(200,16,46,.2);
+}
+.cf-tab{
+  flex:1;padding:10px 4px;
+  background:transparent;border:none;
+  color:#5a5a62;font-size:11px;
+  font-family:inherit;letter-spacing:.05em;
+  cursor:pointer;border-bottom:2px solid transparent;
+  transition:all .15s;
+}
+.cf-tab:hover{color:#c8c8d0}
+.cf-tab.active{color:#c8102e;border-bottom-color:#c8102e;background:rgba(200,16,46,.05)}
+
+/* Body */
+.cf-body{flex:1;overflow-y:auto;padding:12px 14px}
+.cf-body::-webkit-scrollbar{width:4px}
+.cf-body::-webkit-scrollbar-thumb{background:rgba(200,16,46,.4);border-radius:2px}
+.cf-pane{display:none}
+.cf-pane.active{display:block}
+
+.cf-group{
+  font-size:10px;font-weight:800;letter-spacing:.25em;
+  color:#c8102e;margin:14px 0 8px;
+  padding-left:2px;
+}
+.cf-group:first-child{margin-top:0}
+
+.cf-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 4px;border-bottom:1px solid rgba(255,255,255,.03);
+  font-size:12px;color:#c8c8d0;
+}
+.cf-row:last-child{border-bottom:none}
+
+.cf-btn{
+  padding:5px 14px;border-radius:4px;
+  background:#1a0608;border:1px solid rgba(200,16,46,.4);
+  color:#c8c8d0;font-size:11px;font-family:inherit;
+  cursor:pointer;transition:all .15s;
+}
+.cf-btn:hover{background:#2a0a0e;border-color:#c8102e;color:#fff}
+.cf-btn.cf-danger{color:#c8102e}
+.cf-btn.cf-danger:hover{background:rgba(200,16,46,.15)}
+
+.cf-sw{position:relative;display:inline-block;width:38px;height:20px;flex:none}
+.cf-sw input{display:none}
+.cf-sw i{
+  position:absolute;inset:0;border-radius:10px;
+  background:#1a1a20;border:1px solid #2a2a30;transition:.2s;
+}
+.cf-sw i::before{
+  content:"";position:absolute;left:2px;top:2px;
+  width:14px;height:14px;border-radius:50%;
+  background:#5a5a62;transition:.2s;
+}
+.cf-sw input:checked + i{background:rgba(200,16,46,.25);border-color:#c8102e}
+.cf-sw input:checked + i::before{left:20px;background:#c8102e;box-shadow:0 0 10px #c8102e}
+
+.cf-action{
+  display:block;width:100%;
+  padding:10px 14px;margin-bottom:6px;
+  border:1px solid rgba(200,16,46,.3);
+  background:#0e0406;color:#c8c8d0;
+  font-size:12px;font-family:inherit;
+  text-align:left;border-radius:5px;
+  cursor:pointer;letter-spacing:.03em;
+  transition:all .15s;
+}
+.cf-action:hover{background:#1a0608;border-color:#c8102e;color:#fff}
+.cf-action.cf-danger{color:#c8102e;border-color:rgba(200,16,46,.5)}
+.cf-action.cf-danger:hover{background:rgba(200,16,46,.15);color:#c8102e}
+
+/* 底部状态 */
+.cf-foot{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  padding:8px 12px;gap:4px;
+  background:#0e0406;
+  border-top:1px solid rgba(200,16,46,.2);
+  font-size:10px;
+}
+.cf-stat{text-align:center;line-height:1.4}
+.cf-stat span{display:block;color:#5a5a62;letter-spacing:.05em}
+.cf-stat b{display:block;color:#c8102e;font-weight:700;font-size:11px;margin-top:2px}
+
+/* 底部操作 */
+.cf-actions{
+  display:flex;gap:6px;padding:8px 12px;
+  background:#0a0a0c;
+  border-top:1px solid rgba(200,16,46,.15);
+}
+.cf-reset, .cf-off{
+  flex:1;padding:9px;
+  border-radius:5px;
+  border:1px solid #2a2a30;
+  background:#12121a;color:#c8c8d0;
+  font-size:11px;font-family:inherit;font-weight:700;
+  cursor:pointer;letter-spacing:.05em;
+}
+.cf-reset:hover{border-color:#22d3ee;color:#22d3ee}
+.cf-off{color:#c8102e;border-color:rgba(200,16,46,.4)}
+.cf-off:hover{background:rgba(200,16,46,.15)}
 </style>
+
 <script id="cheat-hack">
 (function(){
+  "use strict";
   var FAB = document.getElementById("cheatFab");
   var PANEL = document.getElementById("cheatPanel");
   if (!FAB || !PANEL) return;
+
   var KEY = "ec_cheat_enabled";
   var GOD_KEY = "ec_god_mode";
-  var POS_KEY = "ec_cheat_pos";
+  var SAN_LOCK = "ec_san_lock";
+  var NOFX_KEY = "ec_no_fx";
+  var NOANIM_KEY = "ec_no_anim";
+  var NODEATH = "ec_no_death";
 
-  function isOn(){ try{ return localStorage.getItem(KEY)==="1"; }catch(e){ return false; } }
+  function isOn(){ try { return localStorage.getItem(KEY) === "1"; } catch(e){ return false; } }
 
-  /* ---------- 位置恢复 ---------- */
-  function applyPos(){
-    try {
-      var p = JSON.parse(localStorage.getItem(POS_KEY) || "null");
-      if (p && typeof p.x === "number"){
-        FAB.style.left = p.x + "px";
-        FAB.style.top = p.y + "px";
-        FAB.style.right = "auto";
-        FAB.style.bottom = "auto";
-        return true;
-      }
-    } catch(e){}
-    return false;
-  }
-  function savePos(x, y){
-    try { localStorage.setItem(POS_KEY, JSON.stringify({x:x, y:y})); } catch(e){}
-  }
-  applyPos();
-
-  /* ---------- 显示/隐藏同步 ---------- */
   function sync(){
     if (isOn()) FAB.classList.add("show");
     else { FAB.classList.remove("show"); PANEL.classList.remove("show"); }
@@ -312,66 +750,64 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
   sync();
   setInterval(sync, 1000);
 
-  /* ---------- 拖拽逻辑 ---------- */
-  var dragging = false, moved = false;
-  var startX = 0, startY = 0, offsetX = 0, offsetY = 0;
+  FAB.addEventListener("click", function(){ PANEL.classList.toggle("show"); refreshStats(); });
+  document.getElementById("cfClose").addEventListener("click", function(){ PANEL.classList.remove("show"); });
 
-  function getPoint(e){
-    if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    return { x: e.clientX, y: e.clientY };
-  }
-
-  function onDown(e){
-    if (e.button && e.button !== 0) return;
-    dragging = true; moved = false;
-    var p = getPoint(e);
-    var r = FAB.getBoundingClientRect();
-    startX = p.x; startY = p.y;
-    offsetX = p.x - r.left;
-    offsetY = p.y - r.top;
-    FAB.style.transition = "none";
-    e.preventDefault && e.preventDefault();
-  }
-  function onMove(e){
-    if (!dragging) return;
-    var p = getPoint(e);
-    var dx = p.x - startX;
-    var dy = p.y - startY;
-    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
-    var nx = p.x - offsetX;
-    var ny = p.y - offsetY;
-    /* 限制在视口内 */
-    var maxX = window.innerWidth - FAB.offsetWidth;
-    var maxY = window.innerHeight - FAB.offsetHeight;
-    nx = Math.max(0, Math.min(maxX, nx));
-    ny = Math.max(0, Math.min(maxY, ny));
-    FAB.style.left = nx + "px";
-    FAB.style.top = ny + "px";
-    FAB.style.right = "auto";
-    FAB.style.bottom = "auto";
-    e.preventDefault && e.preventDefault();
-  }
-  function onUp(e){
-    if (!dragging) return;
-    dragging = false;
-    FAB.style.transition = "";
-    if (moved){
-      var r = FAB.getBoundingClientRect();
-      savePos(r.left, r.top);
-    } else {
-      /* 没移动 = 点击，切换面板 */
-      PANEL.classList.toggle("show");
+  /* 拖拽 */
+  (function(){
+    var head = document.getElementById("cfHead");
+    var dragging = false, ox = 0, oy = 0;
+    function pt(e){
+      if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      return { x: e.clientX, y: e.clientY };
     }
+    head.addEventListener("mousedown", down);
+    head.addEventListener("touchstart", down, { passive: false });
+    function down(e){
+      dragging = true;
+      var p = pt(e);
+      var r = PANEL.getBoundingClientRect();
+      ox = p.x - r.left; oy = p.y - r.top;
+      e.preventDefault && e.preventDefault();
+    }
+    document.addEventListener("mousemove", move);
+    document.addEventListener("touchmove", move, { passive: false });
+    function move(e){
+      if (!dragging) return;
+      var p = pt(e);
+      var nx = p.x - ox, ny = p.y - oy;
+      nx = Math.max(0, Math.min(window.innerWidth - PANEL.offsetWidth, nx));
+      ny = Math.max(0, Math.min(window.innerHeight - PANEL.offsetHeight, ny));
+      PANEL.style.left = nx + "px"; PANEL.style.top = ny + "px";
+      PANEL.style.right = "auto";
+      e.preventDefault && e.preventDefault();
+    }
+    document.addEventListener("mouseup", function(){ dragging = false; });
+    document.addEventListener("touchend", function(){ dragging = false; });
+  })();
+
+  /* Tab */
+  document.querySelectorAll(".cf-tab").forEach(function(t){
+    t.addEventListener("click", function(){
+      document.querySelectorAll(".cf-tab").forEach(function(x){ x.classList.remove("active"); });
+      document.querySelectorAll(".cf-pane").forEach(function(x){ x.classList.remove("active"); });
+      t.classList.add("active");
+      var p = document.querySelector('.cf-pane[data-pane="' + t.dataset.tab + '"]');
+      if (p) p.classList.add("active");
+    });
+  });
+
+  /* 状态刷新 */
+  function refreshStats(){
+    var node = window.__curNodeId ? window.__curNodeId() : "-";
+    var vars = window.__curVars ? window.__curVars() : {};
+    document.getElementById("cfNode").textContent = node || "-";
+    document.getElementById("cfSan").textContent = vars.san != null ? vars.san : "-";
+    document.getElementById("cfClue").textContent = vars.clue != null ? vars.clue : "-";
   }
+  setInterval(refreshStats, 1500);
 
-  FAB.addEventListener("mousedown", onDown);
-  FAB.addEventListener("touchstart", onDown, { passive: false });
-  document.addEventListener("mousemove", onMove);
-  document.addEventListener("touchmove", onMove, { passive: false });
-  document.addEventListener("mouseup", onUp);
-  document.addEventListener("touchend", onUp);
-
-  /* ---------- 恐惧值操作 ---------- */
+  /* 作弊逻辑 */
   function setSan(v){
     if (window.__setVars) window.__setVars({ san: v });
     var num = document.getElementById("sanNum");
@@ -380,31 +816,209 @@ body.ui-dark .ls-btn.main{background:#e8e8ea;color:#111;}
     if (fill) fill.style.width = (v < 0 ? 0 : Math.min(100, v)) + "%";
   }
 
-  PANEL.addEventListener("click", function(e){
-    var t = e.target;
-    if (!t || t.tagName !== "BUTTON") return;
-    var act = t.dataset.act;
-    if (act === "san-99999") setSan(-99999);
-    else if (act === "san-0") setSan(0);
-    else if (act === "god"){
-      try {
-        if (localStorage.getItem(GOD_KEY) === "1") localStorage.removeItem(GOD_KEY);
-        else localStorage.setItem(GOD_KEY, "1");
-      } catch(e){}
+  function skipLine(){
+    var box = document.getElementById("textBox");
+    if (box){ box.click(); box.click(); }
+  }
+  function skipNode(){
+    var i = 0;
+    var t = setInterval(function(){ skipLine(); i++; if (i >= 20) clearInterval(t); }, 50);
+  }
+  function skipChapter(){
+    var i = 0;
+    var t = setInterval(function(){
+      skipLine(); i++;
+      if (i >= 500){ clearInterval(t); alert("已连点 500 次，停止"); }
+    }, 40);
+  }
+  function skipMini(){
+    var A = window.__MINI_ANSWER;
+    if (!A){ document.querySelectorAll(".mg-overlay button").forEach(function(b){ b.click(); }); return; }
+    if (A.type === "spell"){
+      var target = A.letters.slice(), done = 0, guard = 0;
+      var t = setInterval(function(){
+        guard++; if (guard > 60){ clearInterval(t); return; }
+        var avail = document.querySelectorAll(".mg-pool .mg-letter:not(.used)");
+        if (!avail.length || done >= target.length){ clearInterval(t); return; }
+        var want = target[done], found = null;
+        avail.forEach(function(b){ if (!found && b.textContent.trim().toLowerCase() === want) found = b; });
+        if (found){ found.click(); done++; } else { avail[0].click(); done++; }
+      }, 70);
+      return;
     }
-    else if (act === "ch1") location.replace("game.html?chapter=ch1&t=" + Date.now());
-    else if (act === "ch2") location.replace("game.html?chapter=ch2&t=" + Date.now());
-    else if (act === "close") PANEL.classList.remove("show");
+    if (A.type === "dictation"){
+      var opts = document.querySelectorAll(".mg-opt");
+      var picked = false;
+      opts.forEach(function(b){ if (!picked && b.textContent.trim() === A.answer){ b.click(); picked = true; } });
+      if (!picked && opts.length) opts[0].click();
+      return;
+    }
+    if (document.querySelector(".mg-write-btn")){
+      var t2 = setInterval(function(){
+        var b = document.querySelector(".mg-write-btn");
+        if (!b){ clearInterval(t2); return; }
+        b.click();
+      }, 40);
+      return;
+    }
+    var dodge = document.querySelector(".mg-dodge");
+    if (dodge){ dodge.click(); return; }
+    document.querySelectorAll(".mg-overlay button").forEach(function(b){ b.click(); });
+  }
+
+  function titleGlitch(){
+    var t = document.querySelector(".topbar-title");
+    if (!t) return;
+    t.style.animation = "none";
+    void t.offsetWidth;
+    t.style.animation = "spasm 0.15s steps(2) 20";
+    t.style.color = "#c8102e";
+    setTimeout(function(){ t.style.animation = ""; t.style.color = ""; }, 3500);
+  }
+  function bloodRain(){
+    for (var i = 0; i < 30; i++){
+      (function(idx){
+        setTimeout(function(){
+          var d = document.createElement("div");
+          d.textContent = "🩸";
+          d.style.cssText = "position:fixed;left:" + (Math.random()*100) + "vw;top:-40px;font-size:" + (14+Math.random()*20) + "px;z-index:9999;pointer-events:none;transition:top 2.5s linear,opacity 2.5s;";
+          document.body.appendChild(d);
+          requestAnimationFrame(function(){ d.style.top = "110vh"; d.style.opacity = "0"; });
+          setTimeout(function(){ d.remove(); }, 3000);
+        }, idx * 80);
+      })(i);
+    }
+  }
+  function flashAll(){
+    var d = document.createElement("div");
+    d.style.cssText = "position:fixed;inset:0;background:#c8102e;opacity:0;z-index:9999;pointer-events:none;transition:opacity .3s;";
+    document.body.appendChild(d);
+    var i = 0;
+    var t = setInterval(function(){
+      i++;
+      d.style.opacity = (i % 2 === 0) ? "0.6" : "0";
+      if (i >= 6){ clearInterval(t); d.remove(); }
+    }, 200);
+  }
+  function renameHero(){
+    var n = prompt("改主角名字：", "我");
+    if (n === null) return;
+    try { localStorage.setItem("ec_hero_name", n || "我"); } catch(e){}
+    var sp = document.getElementById("speakerName");
+    if (sp && sp.textContent === "我") sp.textContent = n || "我";
+  }
+  function ghostText(){
+    for (var i = 0; i < 20; i++){
+      (function(idx){
+        setTimeout(function(){
+          var d = document.createElement("div");
+          d.textContent = ["程丽","明天见","别回头","你逃不掉","她来了"][Math.floor(Math.random()*5)];
+          d.style.cssText = "position:fixed;left:" + (Math.random()*90) + "vw;top:" + (Math.random()*90) + "vh;color:#c8102e;font-size:" + (16+Math.random()*30) + "px;font-weight:900;z-index:9999;pointer-events:none;opacity:0;transition:opacity .4s,transform .4s;letter-spacing:.1em;";
+          document.body.appendChild(d);
+          requestAnimationFrame(function(){ d.style.opacity = "1"; d.style.transform = "translateY(-10px)"; });
+          setTimeout(function(){ d.style.opacity = "0"; }, 1500);
+          setTimeout(function(){ d.remove(); }, 2000);
+        }, idx * 100);
+      })(i);
+    }
+  }
+
+  /* 开关 */
+  function bindSw(id, key, cb){
+    var el = document.getElementById(id);
+    if (!el) return;
+    try { el.checked = localStorage.getItem(key) === "1"; } catch(e){}
+    el.addEventListener("change", function(){
+      try { if (el.checked) localStorage.setItem(key, "1"); else localStorage.removeItem(key); } catch(e){}
+      if (cb) cb(el.checked);
+    });
+  }
+  bindSw("cfGod", GOD_KEY, function(v){
+    if (v) try { localStorage.removeItem(SAN_LOCK); } catch(e){}
+  });
+  bindSw("cfNoDeath", NODEATH);
+  bindSw("cfNoFx", NOFX_KEY, function(v){
+    document.body.classList.toggle("no-horror", v);
+  });
+  bindSw("cfNoAnim", NOANIM_KEY, function(v){
+    document.body.classList.toggle("no-anim", v);
   });
 
-  /* 无敌：每 300ms 压回 -99999 */
+  /* 面板点击 */
+  PANEL.addEventListener("click", function(e){
+    var t = e.target;
+    if (!t) return;
+
+    /* 按钮 [data-act] */
+    if (t.tagName === "BUTTON" && t.dataset.act){
+      var act = t.dataset.act;
+      if (act === "san0"){ try { localStorage.setItem(SAN_LOCK, "0"); localStorage.removeItem(GOD_KEY); } catch(e){} setSan(0); }
+      else if (act === "sanmin"){ try { localStorage.setItem(SAN_LOCK, "-999"); localStorage.removeItem(GOD_KEY); } catch(e){} setSan(-999); }
+      else if (act === "sanmax"){ try { localStorage.setItem(SAN_LOCK, "99"); localStorage.removeItem(GOD_KEY); } catch(e){} setSan(99); }
+      else if (act === "sanfree"){ try { localStorage.removeItem(SAN_LOCK); localStorage.removeItem(GOD_KEY); } catch(e){} setSan(0); }
+      else if (act === "skipLine") skipLine();
+      else if (act === "skipNode") skipNode();
+      else if (act === "skipMini") skipMini();
+      else if (act === "skipChapter") skipChapter();
+      else if (act === "ch1") location.replace("game.html?chapter=ch1&t=" + Date.now());
+      else if (act === "ch2") location.replace("game.html?chapter=ch2&t=" + Date.now());
+      else if (act === "ch3") location.replace("game.html?chapter=ch3&t=" + Date.now());
+      else if (act === "secret"){
+        localStorage.setItem("ec_endings_v1", JSON.stringify(["c3_stay","c3_escape","c3_samename","c3_holiday","c3_return","c3_chengli"]));
+        location.replace("game.html?chapter=ch3&t=" + Date.now());
+      }
+      else if (act === "perspectiveChengli"){
+        window.__PERSPECTIVE = "chengli";
+        document.body.classList.add("perspective-chengli");
+        alert("已切换到程丽视角");
+      }
+      else if (act === "perspectiveHero"){
+        window.__PERSPECTIVE = "hero";
+        document.body.classList.remove("perspective-chengli");
+        alert("已切换回主角视角");
+      }
+      else if (act === "titleGlitch") titleGlitch();
+      else if (act === "rain") bloodRain();
+      else if (act === "flashAll") flashAll();
+      else if (act === "renameHero") renameHero();
+      else if (act === "ghostText") ghostText();
+      else if (act === "resetAll"){
+        if (!confirm("恢复默认？将清空所有作弊设置")) return;
+        [KEY, GOD_KEY, SAN_LOCK, NOFX_KEY, NOANIM_KEY, NODEATH].forEach(function(k){
+          try { localStorage.removeItem(k); } catch(e){}
+        });
+        document.body.classList.remove("no-horror","no-anim","perspective-chengli");
+        setSan(0);
+        alert("已恢复默认");
+      }
+      else if (act === "cheatOff"){
+        try { localStorage.removeItem(KEY); } catch(e){}
+        sync();
+      }
+      return;
+    }
+  });
+
+  /* 后台轮询 */
   setInterval(function(){
     try {
-      if (localStorage.getItem(GOD_KEY) === "1" && isOn()){
-        setSan(-99999);
+      if (!isOn()) return;
+      if (localStorage.getItem(GOD_KEY) === "1"){
+        setSan(-999);
+      } else {
+        var lock = localStorage.getItem(SAN_LOCK);
+        if (lock !== null) setSan(parseInt(lock, 10) || 0);
       }
     } catch(e){}
   }, 300);
+
+  /* 启动时恢复视觉设置 */
+  try {
+    if (localStorage.getItem(NOFX_KEY) === "1") document.body.classList.add("no-horror");
+    if (localStorage.getItem(NOANIM_KEY) === "1") document.body.classList.add("no-anim");
+  } catch(e){}
+
+  refreshStats();
 })();
 </script>
 

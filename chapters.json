@@ -13,6 +13,13 @@
       "start": "c2_b1",
       "available": true,
       "updated": "已更新"
+    },
+    {
+      "id": "ch3",
+      "title": "第十章 · 放假",
+      "start": "c3_start",
+      "available": true,
+      "updated": "已更新"
     }
   ]
 }

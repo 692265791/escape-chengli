@@ -3,266 +3,926 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#08080a">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#101014">
 <title>逃离 叶·程丽</title>
 <link rel="stylesheet" href="static/css/skin-page.css">
+
+<style>
+/* ============ Minecraft 风格角标 ============ */
+.mc-badge{
+  position:absolute;
+  right:12px;
+  bottom:20px;
+  transform:rotate(-12deg) skewX(-6deg);
+  text-align:right;
+  pointer-events:none;
+  z-index:5;
+  animation:mcFloat 3s ease-in-out infinite;
+}
+@keyframes mcFloat{
+  0%,100%{transform:rotate(-12deg) skewX(-6deg) translateY(0)}
+  50%{transform:rotate(-12deg) skewX(-6deg) translateY(-4px)}
+}
+.mc-line-1{
+  display:block;
+  font-family:"Courier New","Consolas",monospace;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.15em;
+  color:#ffcc00;
+  text-shadow:
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    0 0 10px rgba(255,204,0,.6);
+  margin-bottom:4px;
+}
+.mc-line-2{
+  display:block;
+  font-family:"Courier New","Consolas",monospace;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.1em;
+  background:linear-gradient(90deg,
+    #ff2d4d 0%,
+    #ffb347 25%,
+    #ffcc00 50%,
+    #55ff55 75%,
+    #55ffff 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(2px 2px 0 #000) drop-shadow(-1px -1px 0 #000);
+  animation:mcShine 3s linear infinite;
+  background-size:200% auto;
+}
+@keyframes mcShine{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+/* 移动端缩小 */
+@media (max-width:640px){
+  .mc-badge{right:8px;bottom:12px}
+  .mc-line-1{font-size:10px}
+  .mc-line-2{font-size:13px}
+}
+</style>
+
+
+<style>
+/* ============ 弹力球入口区块 ============ */
+.bouncy-block{
+  position:relative;
+  display:flex;align-items:center;gap:20px;
+  padding:26px 28px;
+  background:linear-gradient(135deg,#16161c 0%,#2a0810 100%);
+  border:1px solid rgba(255,45,77,.5);
+  border-radius:14px;
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+}
+.bouncy-block:hover{
+  border-color:#ff2d4d;
+  box-shadow:0 14px 40px rgba(255,45,77,.3);
+  transform:translateY(-3px);
+}
+.bouncy-glow{
+  position:absolute;
+  width:240px;height:240px;
+  right:-80px;top:-120px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,45,77,.3),transparent 70%);
+  pointer-events:none;
+}
+.bouncy-ico{
+  flex:none;
+  width:64px;height:64px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;
+  background:linear-gradient(135deg,#ff2d4d,#8b0e1f);
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(255,45,77,.4);
+  animation:bouncyFloat 2.4s ease-in-out infinite;
+}
+@keyframes bouncyFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.bouncy-body{
+  flex:1;min-width:0;
+  position:relative;z-index:1;
+}
+.bouncy-body h3{
+  margin:0 0 8px;
+  font-size:19px;font-weight:800;
+  color:#e0e0e6;
+  letter-spacing:.05em;
+}
+.bouncy-body p{
+  margin:0;
+  font-size:13.5px;line-height:1.7;
+  color:#a8a8b0;
+}
+.bouncy-btn{
+  flex:none;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 24px;
+  background:linear-gradient(135deg,#ff2d4d,#8b0e1f);
+  color:#fff;
+  font-size:14px;font-weight:800;
+  letter-spacing:.1em;
+  text-decoration:none;
+  border-radius:999px;
+  box-shadow:0 8px 24px rgba(255,45,77,.5);
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+  position:relative;z-index:1;
+}
+.bouncy-btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 12px 32px rgba(255,45,77,.8);
+}
+.bouncy-btn span{
+  transition:transform .25s;
+  display:inline-block;
+}
+.bouncy-btn:hover span{transform:translateX(4px)}
+
+@media (max-width:640px){
+  .bouncy-block{
+    flex-direction:column;
+    text-align:center;
+    padding:22px 20px;
+  }
+  .bouncy-btn{width:100%;justify-content:center}
+  .bouncy-ico{width:56px;height:56px;font-size:28px}
+  .bouncy-body h3{font-size:17px}
+}
+</style>
+
 </head>
 <body>
 
+<!-- ==================== 顶栏 ==================== -->
 <header class="nav">
   <a class="brand" href="home.html">逃离 叶·程丽</a>
+  <a class="nav-gh" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">GitHub →</a>
 </header>
 
+<!-- ==================== 主体 ==================== -->
 <main>
+
+  <!-- 1. HERO：核心入口 -->
   <section class="hero">
     <h1 data-text="逃离 叶·程丽">逃离 叶·程丽</h1>
-    <p class="lead">叶·程丽官方认证<br>耍起嘛耍起嘛</p>
-    <p class="lead">作者太懒了 鸽一段时间更新🌚</p>
+    <p class="lead">恐怖校园文字冒险 · 第十章「放假」</p>
     <div class="acts">
-      <a class="btn dark" href="disclaimer.html" id="btnStart">游戏耍起</a>
-      <a class="btn plain" href="#about">了解更多</a>
+      <a class="btn dark" href="disclaimer.html" id="btnStart">开始游戏</a>
+      <a class="btn plain" href="#more">了解更多</a>
+    </div>
+    <div class="mc-badge" aria-hidden="true">
+      <span class="mc-line-1">第十章 · 放假</span>
+      <span class="mc-line-2">第三章大结局已更新</span>
     </div>
   </section>
 
-  <a class="notice" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">
-    <span class="notice-tag">公告</span>
-    <span class="notice-text">本作已开源 · 点击查看 GitHub 仓库</span>
-    <span class="notice-arrow">→</span>
-  </a>
-
-  <section class="hero-mods">
-    <a class="hm-card" href="loading.html?ch=ch2">
-      <span class="hm-badge">NEW</span>
-      <div class="hm-body">
-        <h3>第二章 · 混乱 已更新</h3>
-        <p>闹钟响时，我以为是周一。可日期还停在昨天。走廊尽头，站着一个不该存在的人。</p>
-      </div>
-      <span class="hm-arrow">→</span>
-    </a>
-    <a class="hm-hint" href="loading.html?ch=ch1">没玩过第一章？先试试「初见」吧 →</a>
+  <!-- 2. 公告：一条 -->
+  <section class="notice-one">
+    <div class="no-tag">公告</div>
+    <div class="no-text">本作已开源 · 点击查看 GitHub 仓库</div>
+    <a class="no-btn" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">查看 →</a>
   </section>
 
-  <section class="sponsor" id="sponsor">
-    <div class="sponsor-inner">
-      <div class="sponsor-text">
-        <h2>赞助作者</h2>
-        <p>本作为个人非商业作品，服务器与开发均由作者自费维持。<br>如果它曾让你感到一丝有趣，欢迎请作者喝杯咖啡。</p>
-      </div>
-      <button class="sponsor-btn" id="sponsorBtn" type="button">❤ 赞助 →</button>
-    </div>
-  </section>
-
+  <!-- 3. 弹力球小游戏入口 -->
   <section class="block" id="about">
-    <h2>关于本作</h2>
-    <p>恐怖校园题材文字冒险。打字机对白、分支选项、恐惧值驱动，第一章「初见」完整可玩。</p>
-    <div class="cards">
-      <div class="c"><h3>沉浸剧情</h3><p>名单上为什么有你的名字，落款却在三个月前。选择会推动故事走向。</p></div>
-      <div class="c"><h3>恐惧值</h3><p>每一次遭遇都会累积恐惧值。当恐惧值满了，就会触发「迷失」结局——再也走不出这所学校。</p></div>
-      <div class="c"><h3>多结局</h3><p>顺从、反抗、沉默，不同的选择通向不同的结局。</p></div>
+    <h2>弹力球小游戏</h2>
+    <div class="bouncy-block">
+      <div class="bouncy-glow"></div>
+      <div class="bouncy-ico">🎮</div>
+      <div class="bouncy-body">
+        <h3>声控弹力球 · Bouncy Balls</h3>
+        <p>小球会随着声音的变化而跳动，可以用来监测声音强度。轻松解压，随便玩。</p>
+      </div>
+      <a class="bouncy-btn" href="bouncy.html" target="_blank" rel="noopener">
+        进入小游戏 <span>→</span>
+      </a>
     </div>
   </section>
 
-  <section class="block" id="log">
-    <h2>更新日志</h2>
-    <p><b>v2.0</b> · 全站暗黑改版，第一章改名「初见」，主线衔接优化。</p>
-    <p><b>v1.0</b> · 第一章「名单」完整可玩，打字机 / 分支 / 小游戏。</p>
-  </section>
-
-  <section class="block">
-    <h2>特别鸣谢</h2>
-    <div class="cards">
-      <a class="c" href="https://www.deepseek.com" target="_blank" rel="noopener"><h3>DeepSeek</h3><p>剧情 · 代码</p></a>
-      <a class="c" href="https://www.doubao.com" target="_blank" rel="noopener"><h3>豆包</h3><p>图片素材</p></a>
-      <a class="c" href="https://github.com/animate-css/animate.css" target="_blank" rel="noopener"><h3>Animate.css</h3><p>UI 动画库 · GitHub</p></a>
+  <!-- 4. 更多内容：4 个图标按钮 -->
+  <section class="block" id="more">
+    <h2>更多内容</h2>
+    <div class="more-grid">
+      <button class="more-btn" data-open="log">
+        <div class="mb-ico">📜</div>
+        <div class="mb-txt">更新日志</div>
+        <div class="mb-sub">v1.0 → v3.0</div>
+      </button>
+      <button class="more-btn" data-open="endings">
+        <div class="mb-ico">🏆</div>
+        <div class="mb-txt">结局收集</div>
+        <div class="mb-sub" id="endQuick">0 / 8</div>
+      </button>
+      <button class="more-btn" data-open="contact">
+        <div class="mb-ico">📞</div>
+        <div class="mb-txt">联系作者</div>
+        <div class="mb-sub">QQ / 快手 / B站 …</div>
+      </button>
+      <button class="more-btn" data-open="sponsor">
+        <div class="mb-ico">❤</div>
+        <div class="mb-txt">赞助作者</div>
+        <div class="mb-sub">个人非商业</div>
+      </button>
+      <a class="more-btn" href="bouncy.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="mb-ico">🎮</div>
+        <div class="mb-txt">弹力球</div>
+        <div class="mb-sub">声控小游戏</div>
+      </a>
     </div>
   </section>
+
 </main>
 
-<div class="sponsor-mask" id="sponsorMask">
-  <div class="sponsor-box">
-    <button class="sponsor-close" id="sponsorClose" type="button">×</button>
-    <h3>感谢您的支持</h3>
-    <img src="static/img/赞助作者/赞助.png" alt="赞助作者">
-    <p class="sponsor-tip">扫码赞助 · 金额随意</p>
-  </div>
-</div>
-
+<!-- ==================== 页脚 ==================== -->
 <footer class="foot">
   <div class="foot-links">
     <a href="home.html">首页</a> ·
-    <a href="#about">关于</a> ·
-    <a href="#log">更新日志</a>
+    <a href="#more">更多</a>
   </div>
   <div class="foot-info">
     <span class="foot-name">逃离程丽 ESCAPE CHENGLI</span>
-    <span class="foot-slogan">个人非商业 · 恐怖校园文字冒险</span>
+    <span class="foot-slogan">个人非商业 · CC BY 4.0</span>
   </div>
   <div class="foot-copy">© 2026 逃离程丽 · 保留所有权利</div>
 </footer>
 
-<!-- 全屏血字乱闪 -->
-<div id="ghostField" aria-hidden="true"></div>
-<style>
-#ghostField{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden}
-#ghostField .g{
-  position:absolute;font-weight:900;letter-spacing:.2em;
-  opacity:0;will-change:opacity,transform;white-space:nowrap;
-  font-family:"Courier New","Consolas",monospace;
-}
-#ghostField .g.red{color:#c8102e;text-shadow:0 0 8px rgba(200,16,46,.6)}
-#ghostField .g.black{color:#0a0a0c;text-shadow:0 0 3px rgba(200,16,46,.4)}
-#ghostField .g.darkred{color:#5a0e18;text-shadow:0 0 6px rgba(90,14,24,.6)}
-#ghostField .g.gray{color:#3a3a3c;text-shadow:0 0 2px rgba(0,0,0,.5)}
-@keyframes tw1{0%{opacity:0;transform:translate(0,0) skewX(0)}8%{opacity:1;transform:translate(-3px,2px) skewX(-6deg)}12%{opacity:0}18%{opacity:1;transform:translate(5px,-3px) skewX(9deg)}24%{opacity:.2}30%{opacity:1;transform:translate(-8px,0) skewX(0)}40%{opacity:0;transform:translate(-4px,2px)}55%{opacity:1;transform:translate(2px,-4px) skewX(-12deg)}70%{opacity:.1}82%{opacity:1;transform:translate(-6px,3px)}100%{opacity:0}}
-@keyframes tw2{0%{opacity:0;transform:translate(0,0) scale(1)}10%{opacity:1;transform:translate(0,-5px) scale(1.02)}20%{opacity:0}35%{opacity:1;transform:translate(-6px,3px) scale(.98)}42%{opacity:.15}50%{opacity:1;transform:translate(7px,-2px) scale(1.05)}68%{opacity:0}80%{opacity:1;transform:translate(-3px,4px) scale(1)}100%{opacity:0}}
-@keyframes tw3{0%,100%{opacity:0;transform:translate(0,0)}6%{opacity:1;transform:translate(-2px,0) rotate(-1deg)}14%{opacity:0}22%{opacity:1;transform:translate(4px,2px) rotate(1deg)}30%{opacity:0}44%{opacity:1;transform:translate(-5px,-3px) rotate(-2deg)}58%{opacity:0}72%{opacity:1;transform:translate(3px,3px) rotate(2deg)}88%{opacity:0}}
-@keyframes tw4{0%,100%{opacity:0}12%{opacity:.9;transform:translate(0,0)}20%{opacity:.05}28%{opacity:1;transform:translate(0,-6px) skewY(4deg)}44%{opacity:0}60%{opacity:.95;transform:translate(-5px,5px) skewY(-6deg)}76%{opacity:.1}84%{opacity:1;transform:translate(4px,-3px) skewY(2deg)}}
-</style>
-<script>
-(function(){
-  var field = document.getElementById("ghostField");
-  if (!field) return;
-  var TEXTS = ["死","死","死","杀","杀","无","404","303","ERROR","NOT FOUND","NULL","0x00","?????","程丽","程丽","她 来 了","你 逃 不 掉","明 天 见","别 回 头"];
-  var COLORS = ["red","red","black","black","darkred","gray"];
-  var ATTRS = ["tw1","tw2","tw3","tw4"];
-  function rand(a,b){ return a + Math.random()*(b-a); }
-  function spawn(){
-    var el = document.createElement("span");
-    var c = COLORS[Math.floor(Math.random()*COLORS.length)];
-    el.className = "g " + c;
-    el.textContent = TEXTS[Math.floor(Math.random()*TEXTS.length)];
-    var fs = (Math.random() < 0.25) ? rand(52,90) : rand(16,40);
-    el.style.fontSize = fs + "px";
-    el.style.left = rand(-6,94) + "%";
-    el.style.top  = rand(-4,94) + "%";
-    var a = ATTRS[Math.floor(Math.random()*ATTRS.length)];
-    var d = rand(1.4, 2.6);
-    el.style.animation = a + " " + d + "s steps(1) 1 forwards";
-    field.appendChild(el);
-    setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, d*1000+100);
-  }
-  var TOTAL = 40, i = 0;
-  function loop(){ if (i>=TOTAL) return; i++; spawn(); setTimeout(loop, rand(100,240)); }
-  setTimeout(loop, 400);
-  setTimeout(function(){
-    var t = setInterval(spawn, 380);
-    setTimeout(function(){ clearInterval(t); }, 12000);
-  }, 14000);
-})();
-</script>
+<!-- ==================== 弹窗 1：更新日志 ==================== -->
+<div class="panel" id="panelLog">
+  <div class="panel-card">
+    <div class="panel-head">
+      <div class="panel-title"><span class="panel-dot"></span><span>更新日志</span></div>
+      <button class="panel-x" data-close>×</button>
+    </div>
+    <div class="panel-tabs">
+      <button class="panel-tab active" data-tab="v3">v3.0</button>
+      <button class="panel-tab" data-tab="v2">v2.0</button>
+      <button class="panel-tab" data-tab="v1">v1.0</button>
+    </div>
+    <div class="panel-body" id="logBody"></div>
+  </div>
+</div>
 
-<script>
-(function(){
-  var btn = document.getElementById("sponsorBtn"),
-      mask = document.getElementById("sponsorMask"),
-      close = document.getElementById("sponsorClose");
-  if (!btn || !mask) return;
-  btn.addEventListener("click", function(){ mask.classList.add("on"); });
-  close.addEventListener("click", function(){ mask.classList.remove("on"); });
-  mask.addEventListener("click", function(e){ if (e.target === mask) mask.classList.remove("on"); });
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape") mask.classList.remove("on"); });
-})();
-</script>
-</div>
-</div>
-</div>
-<div id="redeemZone">
-  <button id="redeemEntry" type="button">兑换</button>
-</div>
-<div id="redeemModal">
-  <div id="redeemModalBox">
-    <h4>兑换码</h4>
-    <input id="redeemCode" type="text" placeholder="输入兑换码" maxlength="16" autocomplete="off">
-    <p id="redeemMsg"></p>
-    <div class="rd-acts">
-      <button id="rdCancel">取消</button>
-      <button id="rdOk">确认</button>
+<!-- ==================== 弹窗 2：结局收集 ==================== -->
+<div class="panel" id="panelEndings">
+  <div class="panel-card">
+    <div class="panel-head">
+      <div class="panel-title"><span class="panel-dot"></span><span>结局收集</span></div>
+      <button class="panel-x" data-close>×</button>
+    </div>
+    <div class="panel-body">
+      <p class="panel-sub">玩到结局会自动记录 · 共 8 个 · 其中 2 个隐藏</p>
+      <div class="endings-grid" id="endingsGrid"></div>
+      <p class="endings-hint" id="endingsHint"></p>
     </div>
   </div>
 </div>
+
+<!-- ==================== 弹窗 3：联系作者 ==================== -->
+<div class="panel" id="panelContact">
+  <div class="panel-card">
+    <div class="panel-head">
+      <div class="panel-title"><span class="panel-dot"></span><span>联系作者</span></div>
+      <button class="panel-x" data-close>×</button>
+    </div>
+    <div class="panel-body">
+      <p class="panel-sub">关注作者 · 获取更新动态</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://qm.qq.com/q/QRZ4Qz3mU0" target="_blank" rel="noopener">
+          <div class="contact-icon"><img src="static/img/联系作者/QQ.png" alt="QQ"></div>
+          <div class="contact-info"><b>QQ</b><span>点击加我为好友</span></div>
+          <div class="contact-arrow">→</div>
+        </a>
+        <a class="contact-card" href="https://v.kuaishou.com/KDXJGjVF" target="_blank" rel="noopener">
+          <div class="contact-icon"><img src="static/img/联系作者/快手.png" alt="快手"></div>
+          <div class="contact-info"><b>快手</b><span>作者快手主页</span></div>
+          <div class="contact-arrow">→</div>
+        </a>
+        <a class="contact-card" href="https://v.douyin.com/6Phnhjc34zg/" target="_blank" rel="noopener">
+          <div class="contact-icon"><img src="static/img/联系作者/抖音.png" alt="抖音"></div>
+          <div class="contact-info"><b>抖音</b><span>作者抖音主页</span></div>
+          <div class="contact-arrow">→</div>
+        </a>
+        <a class="contact-card" href="https://space.bilibili.com/2114815638" target="_blank" rel="noopener">
+          <div class="contact-icon"><img src="static/img/联系作者/哔哩哔哩.png" alt="哔哩哔哩"></div>
+          <div class="contact-info"><b>哔哩哔哩</b><span>作者 B 站主页</span></div>
+          <div class="contact-arrow">→</div>
+        </a>
+        <a class="contact-card" href="https://163cn.tv/bhPZt3WB" target="_blank" rel="noopener">
+          <div class="contact-icon"><img src="static/img/联系作者/网易云.png" alt="网易云音乐"></div>
+          <div class="contact-info"><b>网易云音乐</b><span>作者云村主页</span></div>
+          <div class="contact-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 弹窗 4：赞助 ==================== -->
+<div class="panel" id="panelSponsor">
+  <div class="panel-card">
+    <div class="panel-head">
+      <div class="panel-title"><span class="panel-dot"></span><span>赞助作者</span></div>
+      <button class="panel-x" data-close>×</button>
+    </div>
+    <div class="panel-body center">
+      <p class="panel-sub">本作为个人非商业作品 · 服务器与开发均由作者自费</p>
+      <img class="sponsor-qr" src="static/img/赞助作者/赞助.png" alt="赞助作者">
+      <p class="panel-sub">扫码赞助 · 金额随意</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 弹窗 5：公告（强制） ==================== -->
+<div class="panel force" id="panelNotice">
+  <div class="panel-card">
+    <div class="panel-head">
+      <div class="panel-title"><span class="panel-dot"></span><span>公 告</span></div>
+      <span class="panel-ver">v3.0</span>
+    </div>
+    <div class="panel-body">
+      <h2 class="notice-h2">逃离程丽 V3.0</h2>
+      <ul class="notice-list">
+        <li>我们更换了服务器，采用了更加稳定的<b>静态部署</b>。</li>
+        <li>因此，删除了云服务。存档这些可以正常使用。</li>
+        <li>优化了服务器，优化了加载速度。</li>
+        <li>增加了<b>第十章 · 放假</b>，具体详见更新日志 V3.0。</li>
+      </ul>
+    </div>
+    <div class="panel-foot">
+      <label class="notice-skip">
+        <input type="checkbox" id="noticeSkip">
+        <i></i>
+        <span>下次不再提醒</span>
+      </label>
+      <button class="notice-ok" id="noticeOk" type="button">我知道了</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 弹窗通用样式 ==================== -->
 <style>
-#redeemZone{position:relative;z-index:5;max-width:900px;margin:20px auto 40px;padding:0 24px;text-align:center}
-#redeemEntry{
-  padding:8px 22px;border-radius:2px;
-  background:transparent;color:#3a3a3c;
-  border:1px solid #1e1e22;
-  font-size:12px;font-weight:600;letter-spacing:.4em;
-  cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);
-  opacity:.5;
+/* 顶栏右侧 GitHub */
+.nav-gh{font-size:13px;color:#a8a8b0;transition:color .2s}
+.nav-gh:hover{color:#ff2d4d}
+
+/* HERO */
+.hero{position:relative;padding:50px 24px 30px}
+.hero-meta{
+  display:flex;justify-content:center;gap:10px;
+  margin-top:22px;
+  font-size:12px;color:#7a7a82;
+  letter-spacing:.1em;
 }
-#redeemEntry:hover{opacity:1;color:#c8102e;border-color:rgba(200,16,46,.5)}
-#redeemEntry.on{
-  opacity:1;color:#c8102e;border-color:rgba(200,16,46,.6);
+
+/* 公告条 */
+.notice-one{
+  max-width:900px;margin:0 auto 32px;padding:0 24px;
+  display:flex;align-items:center;gap:14px;
+  padding:16px 22px;
+  background:linear-gradient(90deg,#16161c,#2a0810);
+  border:1px solid rgba(200,16,46,.3);
+  border-radius:10px;
+}
+.no-tag{
+  flex:none;font-size:11px;font-weight:800;
+  background:#ff2d4d;color:#fff;
+  padding:3px 10px;border-radius:4px;
+  letter-spacing:.15em;
+}
+.no-text{flex:1;font-size:13.5px;color:#e0e0e6}
+.no-btn{
+  flex:none;font-size:13px;font-weight:700;
+  color:#ff2d4d;text-decoration:none;
+}
+
+/* 关于本作：3 卡片 */
+.cards.three{
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.c-ico{
+  font-size:28px;margin-bottom:10px;
+}
+.cards .c h3{margin:0 0 8px}
+.cards .c p{margin:0;font-size:13px;line-height:1.7;color:#a8a8b0}
+
+/* 更多内容：4 图标按钮 */
+.more-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+}
+.more-btn{
+  position:relative;
+  padding:24px 18px 26px;
+  background:linear-gradient(180deg,#16161c,#1e1e26);
+  border:1.5px solid #2a2a30;
+  border-radius:12px;
+  cursor:pointer;
+  text-align:center;
+  font-family:inherit;
+  color:inherit;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+  overflow:hidden;
+}
+.more-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 100%,rgba(255,45,77,.15),transparent 70%);
+  opacity:0;
+  transition:opacity .3s;
+}
+.more-btn:hover{
+  transform:translateY(-4px);
+  border-color:#ff2d4d;
+  box-shadow:0 14px 40px rgba(255,45,77,.35);
+}
+.more-btn:hover::before{opacity:1}
+.more-btn:hover .mb-ico{transform:scale(1.15) rotate(-5deg)}
+.more-btn:active{transform:translateY(-2px) scale(.98)}
+
+.mb-ico{
+  position:relative;z-index:1;
+  font-size:32px;margin-bottom:10px;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+  display:inline-block;
+}
+.mb-txt{
+  position:relative;z-index:1;
+  font-size:15px;font-weight:800;
+  color:#e0e0e6;letter-spacing:.05em;
+  margin-bottom:4px;
+}
+.mb-sub{
+  position:relative;z-index:1;
+  font-size:11.5px;color:#a8a8b0;
+}
+/* 可点提示：右上角小箭头 */
+.more-btn::after{
+  content:"→";
+  position:absolute;
+  top:12px;right:14px;
+  font-size:14px;
+  color:#7a7a82;
+  transition:all .3s;
+  font-weight:700;
+}
+.more-btn:hover::after{
+  color:#ff2d4d;
+  transform:translateX(4px);
+}
+
+/* ============ 通用弹窗 ============ */
+.panel{
+  position:fixed;inset:0;z-index:99997;
+  background:rgba(0,0,0,.88);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;
+  padding:16px;
+}
+.panel.show{display:flex}
+.panel.force{z-index:99999}
+.panel-card{
+  width:min(560px,94vw);
+  max-height:88vh;
+  display:flex;flex-direction:column;
+  background:#101014;
+  border:1px solid rgba(200,16,46,.5);
+  border-radius:12px;
+  box-shadow:0 30px 80px rgba(200,16,46,.5);
+  overflow:hidden;
+  animation:panelIn .3s cubic-bezier(.16,1,.3,1);
+}
+@keyframes panelIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.panel-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;
+  background:linear-gradient(180deg,#2a0810,#1a0508);
+  border-bottom:1px solid rgba(200,16,46,.3);
+}
+.panel-title{
+  display:flex;align-items:center;gap:10px;
+  font-size:14px;font-weight:900;letter-spacing:.25em;
+  color:#ff2d4d;
+}
+.panel-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#ff2d4d;box-shadow:0 0 10px #ff2d4d;
+  animation:panelPulse 1.5s infinite;
+}
+@keyframes panelPulse{50%{opacity:.3}}
+.panel-ver{
+  font-size:11px;font-weight:800;
+  padding:3px 10px;border-radius:4px;
+  background:rgba(200,16,46,.15);color:#ff2d4d;
+  letter-spacing:.15em;
+}
+.panel-x{
+  width:28px;height:28px;border-radius:6px;
+  background:transparent;border:1px solid rgba(200,16,46,.3);
+  color:#8a8a92;font-size:18px;line-height:1;cursor:pointer;
+  transition:all .15s;
+}
+.panel-x:hover{border-color:#ff2d4d;color:#ff2d4d}
+
+.panel-tabs{
+  display:flex;background:#1a0508;
+  border-bottom:1px solid rgba(200,16,46,.2);
+}
+.panel-tab{
+  flex:1;padding:12px 6px;
+  background:transparent;border:none;
+  color:#7a7a82;font-size:13px;font-weight:800;
+  letter-spacing:.15em;cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all .15s;
+  font-family:inherit;
+}
+.panel-tab:hover{color:#e0e0e6}
+.panel-tab.active{color:#ff2d4d;border-bottom-color:#ff2d4d;background:rgba(200,16,46,.05)}
+
+.panel-body{
+  flex:1;overflow-y:auto;
+  padding:20px 22px;
+}
+.panel-body.center{text-align:center}
+.panel-body::-webkit-scrollbar{width:6px}
+.panel-body::-webkit-scrollbar-thumb{background:rgba(200,16,46,.4);border-radius:3px}
+.panel-sub{
+  font-size:13px;color:#a8a8b0;
+  line-height:1.8;margin:0 0 16px;
+}
+
+/* 结局卡片（弹窗内） */
+.endings-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:10px;margin-bottom:16px;
+}
+.ending-card{
+  padding:14px 12px;
+  background:#16161c;border:1px solid #2a2a30;
+  border-radius:8px;text-align:center;
+  transition:all .25s;
+}
+.ending-card.got{
+  border-color:rgba(200,16,46,.6);
   background:rgba(200,16,46,.05);
 }
-#redeemModal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px}
-#redeemModal.show{display:flex}
-#redeemModalBox{width:min(340px,92vw);background:#0f0f12;border:1px solid rgba(200,16,46,.5);border-radius:8px;padding:26px 22px;box-shadow:0 30px 80px rgba(200,16,46,.5);animation:rdIn .3s cubic-bezier(.16,1,.3,1)}
-@keyframes rdIn{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:none}}
-#redeemModalBox h4{margin:0 0 18px;font-size:14px;color:#e8e8ea;letter-spacing:.3em;text-align:center;font-weight:700}
-#redeemCode{width:100%;padding:14px 16px;font-size:16px;background:#08080a;color:#e8e8ea;border:1px solid rgba(200,16,46,.3);border-radius:4px;outline:none;margin-bottom:10px;text-align:center;letter-spacing:.5em;font-family:monospace}
-#redeemCode:focus{border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
-#redeemMsg{margin:0 0 14px;font-size:12.5px;text-align:center;color:#c8102e;min-height:18px}
-.rd-acts{display:flex;gap:10px}
-.rd-acts button{flex:1;padding:12px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;border:none;letter-spacing:.1em}
-#rdCancel{background:#1a0608;color:#8a8a8e;border:1px solid rgba(200,16,46,.3)}
-#rdOk{background:linear-gradient(135deg,#c8102e,#5a0e18);color:#fff}
+.ending-card.locked{opacity:.4}
+.ending-card.secret{border-style:dashed}
+.ending-tag{
+  font-size:10px;font-weight:800;letter-spacing:.2em;
+  color:#ff2d4d;margin-bottom:6px;
+}
+.ending-name{
+  font-size:15px;font-weight:800;color:#e8e8ea;
+  letter-spacing:.1em;margin-bottom:4px;
+}
+.ending-state{font-size:11px;color:#a8a8b0}
+.ending-card.got .ending-state{color:#2f8f5b}
+.endings-hint{
+  font-size:13px;color:#a8a8b0;text-align:center;
+  letter-spacing:.05em;min-height:20px;margin:0;
+}
+
+/* 联系作者卡片 */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+.contact-card{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;
+  background:#16161c;border:1px solid #2a2a30;border-radius:10px;
+  text-decoration:none;color:inherit;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.contact-card:hover{
+  transform:translateY(-3px);border-color:#ff2d4d;
+  background:rgba(200,16,46,.05);
+  box-shadow:0 10px 30px rgba(200,16,46,.25);
+}
+.contact-icon{
+  flex:none;width:44px;height:44px;border-radius:10px;
+  background:#101014;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.contact-icon img{
+  width:100%;height:100%;object-fit:contain;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+.contact-info{flex:1;min-width:0}
+.contact-info b{display:block;font-size:14px;font-weight:800;color:#e8e8ea;margin-bottom:2px}
+.contact-info span{display:block;font-size:11.5px;color:#a8a8b0}
+.contact-arrow{flex:none;font-size:16px;color:#7a7a82;transition:all .25s}
+.contact-card:hover .contact-arrow{color:#ff2d4d;transform:translateX(4px)}
+
+/* 赞助二维码 */
+.sponsor-qr{
+  width:100%;max-width:240px;
+  border-radius:10px;display:block;margin:0 auto 14px;
+  filter:none !important;
+}
+
+/* 公告（强制） */
+.notice-h2{
+  margin:0 0 16px;font-size:22px;font-weight:900;
+  color:#e8e8ea;letter-spacing:.08em;text-align:center;
+}
+.notice-list{
+  margin:0;padding:0;list-style:none;
+}
+.notice-list li{
+  position:relative;
+  padding:6px 0 6px 20px;
+  font-size:14px;line-height:1.9;color:#e0e0e6;
+}
+.notice-list li::before{
+  content:"◆";position:absolute;left:0;top:6px;
+  color:#ff2d4d;font-size:10px;
+}
+.notice-list b{color:#ff2d4d;font-weight:800}
+.panel-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:16px 20px;
+  background:#1a0508;
+  border-top:1px solid rgba(200,16,46,.25);
+}
+.notice-skip{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:#a8a8b0;cursor:pointer;user-select:none;
+}
+.notice-skip input{display:none}
+.notice-skip i{
+  position:relative;flex:none;width:16px;height:16px;
+  border:1.5px solid rgba(200,16,46,.5);border-radius:3px;
+  background:#101014;transition:all .2s;
+}
+.notice-skip input:checked + i{background:#ff2d4d;border-color:#ff2d4d}
+.notice-skip input:checked + i::after{
+  content:"✓";position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);color:#fff;font-size:11px;font-weight:900;
+}
+.notice-ok{
+  padding:11px 26px;border-radius:8px;
+  background:linear-gradient(135deg,#ff2d4d,#8b0e1f);
+  color:#fff;border:none;
+  font-size:13px;font-weight:800;letter-spacing:.2em;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(200,16,46,.5);
+  transition:transform .15s;
+}
+.notice-ok:hover{transform:translateY(-2px) scale(1.03)}
+
+/* 更新日志（弹窗内） */
+.log-cat{
+  margin-bottom:18px;padding:14px 16px;
+  background:#16161c;border:1px solid #2a2a30;border-radius:8px;
+  border-left:3px solid #ff2d4d;
+}
+.log-cat:last-child{margin-bottom:0}
+.log-cat-title{
+  font-size:13px;font-weight:800;color:#e8e8ea;
+  letter-spacing:.05em;margin-bottom:8px;
+  padding-bottom:6px;border-bottom:1px solid #2a2a30;
+}
+.log-cat ul{margin:0;padding:0;list-style:none}
+.log-cat li{
+  position:relative;padding:5px 0 5px 18px;
+  font-size:13px;color:#a8a8b0;line-height:1.7;
+  border-bottom:1px solid rgba(255,255,255,.03);
+}
+.log-cat li:last-child{border-bottom:none}
+.log-cat li::before{
+  content:"◆";position:absolute;left:0;top:5px;
+  color:#ff2d4d;font-size:9px;
+}
 </style>
-<script id="redeem-index">
-(function(){
-  var KEY = "ec_cheat_enabled";
-  var entry = document.getElementById("redeemEntry");
-  var modal = document.getElementById("redeemModal");
-  var codeEl = document.getElementById("redeemCode");
-  var msgEl = document.getElementById("redeemMsg");
-  if (!entry || !modal) return;
 
-  function isOn(){ try{ return localStorage.getItem(KEY)==="1"; }catch(e){ return false; } }
-  function setOn(v){ try{ if(v) localStorage.setItem(KEY,"1"); else localStorage.removeItem(KEY); }catch(e){} }
-
-  function sync(){
-    var on = isOn();
-    entry.textContent = on ? "作弊已开启" : "兑换";
-    entry.classList.toggle("on", on);
-  }
-  sync();
-
-  entry.addEventListener("click", function(){
-    if (isOn()){
-      // 已开启：再点一次 = 关闭
-      if (confirm("关闭作弊模式？")){ setOn(false); sync(); }
-      return;
-    }
-    modal.classList.add("show");
-    codeEl.value = "";
-    msgEl.textContent = "";
-    setTimeout(function(){ codeEl.focus(); }, 80);
-  });
-
-  document.getElementById("rdCancel").addEventListener("click", function(){ modal.classList.remove("show"); });
-  modal.addEventListener("click", function(e){ if (e.target === modal) modal.classList.remove("show"); });
-
-  document.getElementById("rdOk").addEventListener("click", function(){
-    if ((codeEl.value||"").trim() === "6767"){
-      setOn(true); sync(); modal.classList.remove("show");
-    } else {
-      msgEl.textContent = "兑换码错误";
-    }
-  });
-  codeEl.addEventListener("keydown", function(e){ if (e.key === "Enter") document.getElementById("rdOk").click(); });
-})();
-</script>
-
+<!-- ==================== 弹窗交互 + 更新日志数据 ==================== -->
 <script>
 (function(){
-  var btn = document.getElementById("btnStart");
-  if (!btn) return;
-  btn.addEventListener("click", function(e){
-    e.preventDefault();
-    var agreed = false;
-    try { agreed = localStorage.getItem("ec_agreed") === "1"; } catch(e){}
-    if (agreed) location.href = "loading.html?ch=ch1";
-    else location.href = "disclaimer.html";
+  "use strict";
+  function $(id){ return document.getElementById(id); }
+  function ready(fn){ if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+
+  /* ============ 更新日志数据 ============ */
+  var LOG = {
+    v3: [
+      { cat: "📖 第十章 · 放假（主线）", items: [
+        "新增第十章「放假」，国庆放假 = 逃出程丽",
+        "新剧情约 150 节点，从程丽主动放行到 Boss 战",
+        "新增国庆假期 7 天剧情（10 月 1 日 - 10 月 7 日）",
+        "新增返校日 Boss 战场景"
+      ]},
+      { cat: "🏆 结局系统", items: [
+        "新增 6 个普通结局：留下 / 逃出 / 同名 / 放假 / 返校 / 程丽",
+        "新增 2 个隐藏结局：留下 程丽 / 虚空",
+        "集齐 6 个普通结局后解锁隐藏支线",
+        "首页新增「结局收集」，实时显示解锁进度"
+      ]},
+      { cat: "⚔️ Boss 战", items: [
+        "新增考卷式 Boss 战，真实答题卡界面",
+        "5 道道德困境题，涂格作答",
+        "答完自动判分，全对进入好结局"
+      ]},
+      { cat: "🎭 新角色", items: [
+        "新增彭梦玲（五班语文老师）",
+        "黑色剪影立绘（暂无素材标记）",
+        "她与程丽的师生关系揭示"
+      ]},
+      { cat: "💾 存档系统", items: [
+        "100 位手动存档位",
+        "自动存档（每次跳节点自动更新）",
+        "存档导入 / 导出（跨设备搬运）"
+      ]},
+      { cat: "⚙️ 作弊菜单", items: [
+        "全新「逃离控制台」UI（4 Tab 分类）",
+        "恐惧值锁定 / 无敌 / 变量修改",
+        "剧情推进 / 章节跳转 / 节点跳转",
+        "6 个视觉滤镜 + 11 个恶趣味特效"
+      ]},
+      { cat: "🐞 调试面板", items: [
+        "独立调试面板（开发者用）",
+        "5 个 Tab：作弊 / 测试 / 图片 / 日志 / 信息",
+        "35+ 测试项目（CPU / DOM / Canvas / JSON 基准）",
+        "图片资源查看 + 单张下载 + 批量下载",
+        "一键打包下载全部源码（ZIP）"
+      ]},
+      { cat: "🎨 视觉改版", items: [
+        "全站黑白恐怖风",
+        "丝滑打字机（逐字淡入 + 标点停顿）",
+        "标题随机恐怖动画池（8 种）"
+      ]},
+      { cat: "🌐 线路 / 部署", items: [
+        "新增线路选择页（三线路自动测速）",
+        "Cloudflare + GitHub Pages 双托管"
+      ]},
+      { cat: "🐛 Bug 修复", items: [
+        "修复章节切换死链 / 小游戏卡死",
+        "修复打字机 DOMException",
+        "修复存档节点跳错",
+        "修复免责声明 cookie 不生效"
+      ]}
+    ],
+    v2: [
+      { cat: "🎨 视觉改版", items: ["全站极简黑白改版", "Home 页布局重做"] },
+      { cat: "📜 免责声明", items: ["改为长条款，必须输入 yes 同意", "支持「不再提示」"] },
+      { cat: "💾 云存档", items: ["输入名字即可获取云存档", "跨设备续玩"] },
+      { cat: "📖 剧情优化", items: ["第一章改名「初见」", "主线剧情衔接优化"] }
+    ],
+    v1: [
+      { cat: "📖 第一章 · 名单", items: ["第一章「名单」完整可玩", "打字机对白 / 分支选项 / 存读档"] },
+      { cat: "🎮 小游戏", items: ["拼写游戏（字母拼词）", "单词听写（4 选 1）", "抄写惩罚（限时连点）", "QTE 闪避戒尺"] },
+      { cat: "🎭 恐怖氛围", items: ["恐怖主页：血色重影故障", "扫描线 / 噪点 / 暗角 / 随机闪白", "恐惧值系统（满 100 触发迷失结局）"] }
+    ]
+  };
+
+  /* ============ 结局数据 ============ */
+  var NORMAL = [
+    { id: "c3_stay", title: "留下", tag: "坏" },
+    { id: "c3_escape", title: "逃出", tag: "好" },
+    { id: "c3_samename", title: "同名", tag: "中立" },
+    { id: "c3_holiday", title: "放假", tag: "中立" },
+    { id: "c3_return", title: "返校", tag: "坏" },
+    { id: "c3_chengli", title: "程丽", tag: "苦涩" }
+  ];
+  var SECRET = [
+    { id: "c3_keep", title: "留下 程丽", tag: "真·好", secret: true },
+    { id: "c3_void", title: "虚空", tag: "最坏", secret: true }
+  ];
+
+  ready(function(){
+    /* ============ 打开/关闭弹窗 ============ */
+    function openPanel(id){
+      var p = $(id);
+      if (p) p.classList.add("show");
+    }
+    function closePanel(p){
+      if (p) p.classList.remove("show");
+    }
+
+    document.querySelectorAll(".more-btn").forEach(function(b){
+      b.addEventListener("click", function(){
+        var t = b.dataset.open;
+        if (t === "log"){ renderLog("v3"); openPanel("panelLog"); }
+        else if (t === "endings"){ renderEndings(); openPanel("panelEndings"); }
+        else if (t === "contact"){ openPanel("panelContact"); }
+        else if (t === "sponsor"){ openPanel("panelSponsor"); }
+      });
+    });
+
+    /* 关闭按钮 + 点遮罩关闭 */
+    document.querySelectorAll(".panel").forEach(function(p){
+      p.querySelectorAll("[data-close]").forEach(function(x){
+        x.addEventListener("click", function(){ closePanel(p); });
+      });
+      p.addEventListener("click", function(e){
+        if (e.target === p && !p.classList.contains("force")) closePanel(p);
+      });
+    });
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape"){
+        document.querySelectorAll(".panel.show").forEach(function(p){
+          if (!p.classList.contains("force")) closePanel(p);
+        });
+      }
+    });
+
+    /* ============ 更新日志渲染 ============ */
+    function renderLog(ver){
+      var body = $("logBody");
+      if (!body) return;
+      var list = LOG[ver] || [];
+      body.innerHTML = list.map(function(cat){
+        return '<div class="log-cat">' +
+          '<div class="log-cat-title">' + cat.cat + '</div>' +
+          '<ul>' + cat.items.map(function(x){ return '<li>' + x + '</li>'; }).join("") + '</ul>' +
+          '</div>';
+      }).join("");
+    }
+    document.querySelectorAll("#panelLog .panel-tab").forEach(function(t){
+      t.addEventListener("click", function(){
+        document.querySelectorAll("#panelLog .panel-tab").forEach(function(x){ x.classList.remove("active"); });
+        t.classList.add("active");
+        renderLog(t.dataset.tab);
+      });
+    });
+
+    /* ============ 结局渲染 ============ */
+    function renderEndings(){
+      var grid = $("endingsGrid");
+      var hint = $("endingsHint");
+      if (!grid) return;
+      var unlocked = [];
+      try { unlocked = JSON.parse(localStorage.getItem("ec_endings_v1") || "[]"); } catch(e){}
+      function has(id){ return unlocked.indexOf(id) !== -1; }
+      grid.innerHTML = "";
+      NORMAL.concat(SECRET).forEach(function(e){
+        var got = has(e.id);
+        var d = document.createElement("div");
+        d.className = "ending-card" + (got ? " got" : " locked") + (e.secret ? " secret" : "");
+        d.innerHTML =
+          '<div class="ending-tag">' + (e.secret ? "隐藏 · " : "") + e.tag + '</div>' +
+          '<div class="ending-name">' + (got ? e.title : "？？？") + '</div>' +
+          '<div class="ending-state">' + (got ? "已解锁" : "未解锁") + '</div>';
+        grid.appendChild(d);
+      });
+      var got = unlocked.length;
+      var normalDone = NORMAL.filter(function(e){ return has(e.id); }).length;
+      if (hint){
+        if (normalDone >= 6){
+          hint.textContent = "✓ 已集齐 6 个普通结局。重玩第 10 章，将开启隐藏支线。";
+          hint.style.color = "#ff2d4d";
+        } else {
+          hint.textContent = "已解锁 " + got + " / 8 · 普通结局 " + normalDone + " / 6";
+          hint.style.color = "#a8a8b0";
+        }
+      }
+      /* 首页快捷数量 */
+      var quick = $("endQuick");
+      if (quick) quick.textContent = got + " / 8";
+    }
+    renderEndings();
+
+    /* ============ 公告（强制） ============ */
+    var NOTICE_KEY = "ec_notice_v3_dismissed";
+    var notice = $("panelNotice");
+    var noticeOk = $("noticeOk");
+    var noticeSkip = $("noticeSkip");
+    var dismissed = false;
+    try { dismissed = localStorage.getItem(NOTICE_KEY) === "1"; } catch(e){}
+    if (!dismissed && notice){
+      setTimeout(function(){ notice.classList.add("show"); }, 500);
+    }
+    if (noticeOk) noticeOk.addEventListener("click", function(){
+      if (noticeSkip && noticeSkip.checked){
+        try { localStorage.setItem(NOTICE_KEY, "1"); } catch(e){}
+      }
+      notice.classList.remove("show");
+    });
+
+    /* ============ 开始游戏按钮 cookie 检查 ============ */
+    var startBtn = $("btnStart");
+    if (startBtn){
+      startBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        var agreed = false;
+        try { agreed = localStorage.getItem("ec_agreed") === "1"; } catch(err){}
+        location.href = agreed ? "loading.html?ch=ch1" : "disclaimer.html";
+      });
+    }
   });
 })();
 </script>
