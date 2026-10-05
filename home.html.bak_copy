@@ -91,17 +91,6 @@
 @media (max-width:640px){
   .entry-row{flex-direction:column}
 }
-
-.mb-ico img{
-  width:32px;height:32px;
-  object-fit:cover;
-  border-radius:8px;
-  display:block;
-}
-.mb-ico:has(img){
-  font-size:0;
-  width:32px;height:32px;
-}
 </style>
 
 
@@ -257,8 +246,8 @@ img, a, button, .btn, [role="button"] {
   <!-- 2. 个人站入口 -->
   <section class="notice-one">
     <div class="no-tag">个人站</div>
-    <div class="no-text">作者的小站 · 自留地，随缘更新</div>
-    <a class="no-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener">去看看 →</a>
+    <div class="no-text">作者主站 · 最新动态与作品</div>
+    <a class="no-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener">前往 →</a>
   </section>
 
   <!-- 3. 弹力球小游戏入口 -->
@@ -305,11 +294,6 @@ img, a, button, .btn, [role="button"] {
         <div class="mb-ico">🎮</div>
         <div class="mb-txt">弹力球</div>
         <div class="mb-sub">声控小游戏</div>
-      </a>
-      <a class="more-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-        <div class="mb-ico" style="overflow:hidden;padding:0"><img src="static/img/联系作者/个人站.png" alt="个人站" style="width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>
-        <div class="mb-txt">个人站</div>
-        <div class="mb-sub">作者自用 · 日常贴文</div>
       </a>
     </div>
   </section>
@@ -402,7 +386,7 @@ img, a, button, .btn, [role="button"] {
         </a>
         <a class="contact-card" href="https://cxl.dpdns.org/" target="_blank" rel="noopener">
           <div class="contact-icon"><img src="static/img/联系作者/个人站.png" alt="个人站"></div>
-          <div class="contact-info"><b>个人站</b><span>作者自用 · 日常贴文</span></div>
+          <div class="contact-info"><b>个人站</b><span>作者主站 · 最新动态</span></div>
           <div class="contact-arrow">→</div>
         </a>
       </div>
@@ -433,11 +417,11 @@ img, a, button, .btn, [role="button"] {
       <span class="panel-ver">v3.0</span>
     </div>
     <div class="panel-body">
-      <h2 class="notice-h2">作者的小站</h2>
+      <h2 class="notice-h2">个人站已上线</h2>
       <p style="line-height:1.9;color:#444;font-size:15px;margin:0 0 10px">
-        作者自己搭的小站，平时发发日常、写写贴文，感兴趣可以来看看。<br>
+        作者主站已开放，收录最新动态与作品。<br>
         <a href="https://cxl.dpdns.org/" target="_blank" rel="noopener"
-           style="color:#2f6bff;font-weight:700;text-decoration:none">前往小站 →</a>
+           style="color:#2f6bff;font-weight:700;text-decoration:none">前往个人站 →</a>
       </p>
     </div>
     <div class="panel-foot">

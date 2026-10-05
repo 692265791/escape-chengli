@@ -91,17 +91,6 @@
 @media (max-width:640px){
   .entry-row{flex-direction:column}
 }
-
-.mb-ico img{
-  width:32px;height:32px;
-  object-fit:cover;
-  border-radius:8px;
-  display:block;
-}
-.mb-ico:has(img){
-  font-size:0;
-  width:32px;height:32px;
-}
 </style>
 
 
@@ -305,11 +294,6 @@ img, a, button, .btn, [role="button"] {
         <div class="mb-ico">🎮</div>
         <div class="mb-txt">弹力球</div>
         <div class="mb-sub">声控小游戏</div>
-      </a>
-      <a class="more-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-        <div class="mb-ico" style="overflow:hidden;padding:0"><img src="static/img/联系作者/个人站.png" alt="个人站" style="width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>
-        <div class="mb-txt">个人站</div>
-        <div class="mb-sub">作者自用 · 日常贴文</div>
       </a>
     </div>
   </section>
