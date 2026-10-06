@@ -572,25 +572,24 @@ img, a, button, .btn, [role="button"] {
   position:fixed;right:20px;bottom:20px;
   z-index:99998;
   width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,#1a1a1f,#0a0a0c);
-  border:2px solid #c8102e;
-  color:#c8102e;font-size:22px;font-weight:900;
+  background:rgba(255,255,255,.65);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,.8);
+  color:#1d1d1f;font-size:22px;font-weight:900;
   cursor:pointer;display:none;
-  box-shadow:
-    0 0 0 3px rgba(200,16,46,.15),
-    0 0 30px rgba(200,16,46,.6),
-    inset 0 0 20px rgba(200,16,46,.15);
-  animation:cfPulse 2.2s ease-in-out infinite;
-  transition:transform .2s;
+  box-shadow:0 6px 24px rgba(0,0,0,.15);
+  transition:transform .2s,background .2s,box-shadow .2s;
   touch-action:none;
   user-select:none;
 }
 #cheatFab.show{display:block}
-#cheatFab:active{transform:scale(.94)}
-@keyframes cfPulse{
-  0%,100%{box-shadow:0 0 0 3px rgba(200,16,46,.15),0 0 30px rgba(200,16,46,.6),inset 0 0 20px rgba(200,16,46,.15)}
-  50%{box-shadow:0 0 0 3px rgba(200,16,46,.35),0 0 45px rgba(200,16,46,1),inset 0 0 30px rgba(200,16,46,.3)}
+#cheatFab:hover{
+  background:rgba(255,255,255,.85);
+  transform:scale(1.05);
+  box-shadow:0 8px 28px rgba(0,0,0,.2);
 }
+#cheatFab:active{transform:scale(.94)}
 .cf-dot{
   position:absolute;right:4px;top:4px;
   width:8px;height:8px;border-radius:50%;
@@ -606,14 +605,16 @@ img, a, button, .btn, [role="button"] {
   position:fixed;right:20px;top:70px;
   z-index:99999;
   width:280px;max-height:78vh;
-  background:#0a0a0c;
-  border:1px solid rgba(200,16,46,.5);
-  border-radius:12px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:16px;
   display:none;flex-direction:column;
-  box-shadow:0 20px 60px rgba(200,16,46,.4), 0 0 0 1px rgba(200,16,46,.1);
-  font-family:"JetBrains Mono","Courier New",monospace;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  font-family:-apple-system,"PingFang SC",sans-serif;
   font-size:12px;
-  color:#c8c8d0;
+  color:#1d1d1f;
   overflow:hidden;
   user-select:none;
 }
@@ -624,61 +625,61 @@ img, a, button, .btn, [role="button"] {
 .cf-head{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 14px;
-  background:linear-gradient(180deg,#1a0608,#0e0406);
-  border-bottom:1px solid rgba(200,16,46,.35);
+  background:rgba(0,0,0,.03);
+  border-bottom:1px solid rgba(0,0,0,.06);
   cursor:grab;
 }
 .cf-head:active{cursor:grabbing}
 .cf-title{
   display:flex;align-items:center;gap:8px;
   font-size:11px;font-weight:800;letter-spacing:.2em;
-  color:#c8102e;
+  color:#1d1d1f;
 }
 .cf-pulse{
   width:8px;height:8px;border-radius:50%;
-  background:#c8102e;
-  box-shadow:0 0 10px #c8102e;
+  background:#1d1d1f;
+  box-shadow:0 0 10px #1d1d1f;
   animation:cfBlink 1.5s infinite;
 }
 .cf-tag{
   font-size:9px;padding:1px 6px;border-radius:3px;
-  background:rgba(200,16,46,.2);color:#c8102e;
+  background:rgba(0,0,0,.2);color:#1d1d1f;
   letter-spacing:.1em;
 }
 .cf-x{
   width:24px;height:24px;
-  background:transparent;border:1px solid rgba(200,16,46,.3);
-  color:#8a8a92;font-size:16px;line-height:1;
+  background:transparent;border:1px solid rgba(0,0,0,.3);
+  color:#86868b;font-size:16px;line-height:1;
   border-radius:4px;cursor:pointer;padding:0;
 }
-.cf-x:hover{color:#c8102e;border-color:#c8102e}
+.cf-x:hover{color:#1d1d1f;border-color:#1d1d1f}
 
 /* Tabs */
 .cf-tabs{
-  display:flex;background:#0e0406;
-  border-bottom:1px solid rgba(200,16,46,.2);
+  display:flex;background:rgba(0,0,0,.03);
+  border-bottom:1px solid rgba(0,0,0,.2);
 }
 .cf-tab{
   flex:1;padding:10px 4px;
   background:transparent;border:none;
-  color:#5a5a62;font-size:11px;
+  color:#86868b;font-size:11px;
   font-family:inherit;letter-spacing:.05em;
   cursor:pointer;border-bottom:2px solid transparent;
   transition:all .15s;
 }
 .cf-tab:hover{color:#c8c8d0}
-.cf-tab.active{color:#c8102e;border-bottom-color:#c8102e;background:rgba(200,16,46,.05)}
+.cf-tab.active{color:#1d1d1f;border-bottom-color:#1d1d1f;background:rgba(0,0,0,.05)}
 
 /* Body */
 .cf-body{flex:1;overflow-y:auto;padding:12px 14px}
 .cf-body::-webkit-scrollbar{width:4px}
-.cf-body::-webkit-scrollbar-thumb{background:rgba(200,16,46,.4);border-radius:2px}
+.cf-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.4);border-radius:2px}
 .cf-pane{display:none}
 .cf-pane.active{display:block}
 
 .cf-group{
   font-size:10px;font-weight:800;letter-spacing:.25em;
-  color:#c8102e;margin:14px 0 8px;
+  color:#1d1d1f;margin:14px 0 8px;
   padding-left:2px;
 }
 .cf-group:first-child{margin-top:0}
@@ -686,77 +687,77 @@ img, a, button, .btn, [role="button"] {
 .cf-row{
   display:flex;align-items:center;justify-content:space-between;
   padding:8px 4px;border-bottom:1px solid rgba(255,255,255,.03);
-  font-size:12px;color:#c8c8d0;
+  font-size:12px;color:#1d1d1f;
 }
 .cf-row:last-child{border-bottom:none}
 
 .cf-btn{
   padding:5px 14px;border-radius:4px;
-  background:#1a0608;border:1px solid rgba(200,16,46,.4);
-  color:#c8c8d0;font-size:11px;font-family:inherit;
+  background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.4);
+  color:#1d1d1f;font-size:11px;font-family:inherit;
   cursor:pointer;transition:all .15s;
 }
-.cf-btn:hover{background:#2a0a0e;border-color:#c8102e;color:#fff}
-.cf-btn.cf-danger{color:#c8102e}
-.cf-btn.cf-danger:hover{background:rgba(200,16,46,.15)}
+.cf-btn:hover{background:rgba(0,0,0,.08);border-color:#1d1d1f;color:#1d1d1f}
+.cf-btn.cf-danger{color:#1d1d1f}
+.cf-btn.cf-danger:hover{background:rgba(0,0,0,.15)}
 
 .cf-sw{position:relative;display:inline-block;width:38px;height:20px;flex:none}
 .cf-sw input{display:none}
 .cf-sw i{
   position:absolute;inset:0;border-radius:10px;
-  background:#1a1a20;border:1px solid #2a2a30;transition:.2s;
+  background:rgba(0,0,0,.08);border:1px solid #2a2a30;transition:.2s;
 }
 .cf-sw i::before{
   content:"";position:absolute;left:2px;top:2px;
   width:14px;height:14px;border-radius:50%;
   background:#5a5a62;transition:.2s;
 }
-.cf-sw input:checked + i{background:rgba(200,16,46,.25);border-color:#c8102e}
-.cf-sw input:checked + i::before{left:20px;background:#c8102e;box-shadow:0 0 10px #c8102e}
+.cf-sw input:checked + i{background:rgba(0,0,0,.25);border-color:#1d1d1f}
+.cf-sw input:checked + i::before{left:20px;background:#1d1d1f;box-shadow:0 0 10px #1d1d1f}
 
 .cf-action{
   display:block;width:100%;
   padding:10px 14px;margin-bottom:6px;
-  border:1px solid rgba(200,16,46,.3);
-  background:#0e0406;color:#c8c8d0;
+  border:1px solid rgba(0,0,0,.3);
+  background:rgba(0,0,0,.03);color:#1d1d1f;
   font-size:12px;font-family:inherit;
   text-align:left;border-radius:5px;
   cursor:pointer;letter-spacing:.03em;
   transition:all .15s;
 }
-.cf-action:hover{background:#1a0608;border-color:#c8102e;color:#fff}
-.cf-action.cf-danger{color:#c8102e;border-color:rgba(200,16,46,.5)}
-.cf-action.cf-danger:hover{background:rgba(200,16,46,.15);color:#c8102e}
+.cf-action:hover{background:rgba(0,0,0,.04);border-color:#1d1d1f;color:#fff}
+.cf-action.cf-danger{color:#1d1d1f;border-color:rgba(0,0,0,.5)}
+.cf-action.cf-danger:hover{background:rgba(0,0,0,.15);color:#1d1d1f}
 
 /* 底部状态 */
 .cf-foot{
   display:grid;grid-template-columns:1fr 1fr 1fr;
   padding:8px 12px;gap:4px;
-  background:#0e0406;
-  border-top:1px solid rgba(200,16,46,.2);
+  background:rgba(0,0,0,.03);
+  border-top:1px solid rgba(0,0,0,.2);
   font-size:10px;
 }
 .cf-stat{text-align:center;line-height:1.4}
-.cf-stat span{display:block;color:#5a5a62;letter-spacing:.05em}
-.cf-stat b{display:block;color:#c8102e;font-weight:700;font-size:11px;margin-top:2px}
+.cf-stat span{display:block;color:#86868b;letter-spacing:.05em}
+.cf-stat b{display:block;color:#1d1d1f;font-weight:700;font-size:11px;margin-top:2px}
 
 /* 底部操作 */
 .cf-actions{
   display:flex;gap:6px;padding:8px 12px;
-  background:#0a0a0c;
-  border-top:1px solid rgba(200,16,46,.15);
+  background:rgba(255,255,255,.8);
+  border-top:1px solid rgba(0,0,0,.15);
 }
 .cf-reset, .cf-off{
   flex:1;padding:9px;
   border-radius:5px;
   border:1px solid #2a2a30;
-  background:#12121a;color:#c8c8d0;
+  background:rgba(0,0,0,.04);color:#1d1d1f;
   font-size:11px;font-family:inherit;font-weight:700;
   cursor:pointer;letter-spacing:.05em;
 }
 .cf-reset:hover{border-color:#22d3ee;color:#22d3ee}
-.cf-off{color:#c8102e;border-color:rgba(200,16,46,.4)}
-.cf-off:hover{background:rgba(200,16,46,.15)}
+.cf-off{color:#1d1d1f;border-color:rgba(0,0,0,.4)}
+.cf-off:hover{background:rgba(0,0,0,.15)}
 </style>
 
 <script id="cheat-hack">
@@ -782,8 +783,86 @@ img, a, button, .btn, [role="button"] {
   sync();
   setInterval(sync, 1000);
 
-  FAB.addEventListener("click", function(){ PANEL.classList.toggle("show"); refreshStats(); });
-  document.getElementById("cfClose").addEventListener("click", function(){ PANEL.classList.remove("show"); });
+  /* ===== ⚙ 拖拽 + 点击（最终版）===== */
+  (function(){
+    var dragging=false, moved=false, ox=0, oy=0, sx=0, sy=0, downOnFab=false;
+
+    function pt(e){
+      if (e.touches && e.touches[0]) return {x:e.touches[0].clientX, y:e.touches[0].clientY};
+      if (e.changedTouches && e.changedTouches[0]) return {x:e.changedTouches[0].clientX, y:e.changedTouches[0].clientY};
+      return {x:e.clientX, y:e.clientY};
+    }
+
+    // 只在按钮按下时启动拖拽
+    FAB.addEventListener("mousedown", function(e){
+      dragging=true; moved=false; downOnFab=true;
+      var p=pt(e), r=FAB.getBoundingClientRect();
+      sx=p.x; sy=p.y; ox=p.x-r.left; oy=p.y-r.top;
+      FAB.style.transition="none";
+    });
+    FAB.addEventListener("touchstart", function(e){
+      dragging=true; moved=false; downOnFab=true;
+      var p=pt(e), r=FAB.getBoundingClientRect();
+      sx=p.x; sy=p.y; ox=p.x-r.left; oy=p.y-r.top;
+      FAB.style.transition="none";
+    }, { passive: true });
+
+    document.addEventListener("mousemove", function(e){
+      if(!dragging) return;
+      var p=pt(e);
+      if (Math.abs(p.x-sx)>5 || Math.abs(p.y-sy)>5) moved=true;
+      if(!moved) return;
+      var nx=p.x-ox, ny=p.y-oy;
+      nx=Math.max(0,Math.min(window.innerWidth-FAB.offsetWidth,nx));
+      ny=Math.max(0,Math.min(window.innerHeight-FAB.offsetHeight,ny));
+      FAB.style.left=nx+"px"; FAB.style.top=ny+"px";
+      FAB.style.right="auto"; FAB.style.bottom="auto";
+      if (e.cancelable) e.preventDefault();
+    });
+    document.addEventListener("touchmove", function(e){
+      if(!dragging) return;
+      var p=pt(e);
+      if (Math.abs(p.x-sx)>5 || Math.abs(p.y-sy)>5) moved=true;
+      if(!moved) return;
+      var nx=p.x-ox, ny=p.y-oy;
+      nx=Math.max(0,Math.min(window.innerWidth-FAB.offsetWidth,nx));
+      ny=Math.max(0,Math.min(window.innerHeight-FAB.offsetHeight,ny));
+      FAB.style.left=nx+"px"; FAB.style.top=ny+"px";
+      FAB.style.right="auto"; FAB.style.bottom="auto";
+      if (e.cancelable) e.preventDefault();
+    }, { passive: false });
+
+    function endDrag(){
+      if(!dragging) return;
+      dragging=false;
+      FAB.style.transition="";
+      if (moved || !downOnFab) { downOnFab=false; return; }
+      downOnFab=false;
+      // 没拖 → 点击开关
+      PANEL.classList.toggle("show");
+      try { refreshStats(); } catch(err){}
+    }
+    document.addEventListener("mouseup", endDrag);
+    document.addEventListener("touchend", endDrag);
+    document.addEventListener("touchcancel", endDrag);
+  })();
+
+
+        /* ===== 最简点击逻辑 ===== */
+        (function(){
+    var closeBtn = document.getElementById("cfClose");
+    if (!closeBtn) return;
+    var lastTap = 0;
+    function closePanel(e){
+      var now = Date.now();
+      if (now - lastTap < 300) return;
+      lastTap = now;
+      PANEL.classList.remove("show");
+      if (e && e.preventDefault) e.preventDefault();
+    }
+    closeBtn.addEventListener("click", closePanel);
+    closeBtn.addEventListener("touchend", closePanel, { passive: false });
+  })();
 
   /* 拖拽 */
   (function(){
@@ -904,7 +983,7 @@ img, a, button, .btn, [role="button"] {
     t.style.animation = "none";
     void t.offsetWidth;
     t.style.animation = "spasm 0.15s steps(2) 20";
-    t.style.color = "#c8102e";
+    t.style.color = "#1d1d1f";
     setTimeout(function(){ t.style.animation = ""; t.style.color = ""; }, 3500);
   }
   function bloodRain(){
@@ -923,7 +1002,7 @@ img, a, button, .btn, [role="button"] {
   }
   function flashAll(){
     var d = document.createElement("div");
-    d.style.cssText = "position:fixed;inset:0;background:#c8102e;opacity:0;z-index:9999;pointer-events:none;transition:opacity .3s;";
+    d.style.cssText = "position:fixed;inset:0;background:#1d1d1f;opacity:0;z-index:9999;pointer-events:none;transition:opacity .3s;";
     document.body.appendChild(d);
     var i = 0;
     var t = setInterval(function(){
@@ -945,7 +1024,7 @@ img, a, button, .btn, [role="button"] {
         setTimeout(function(){
           var d = document.createElement("div");
           d.textContent = ["程丽","明天见","别回头","你逃不掉","她来了"][Math.floor(Math.random()*5)];
-          d.style.cssText = "position:fixed;left:" + (Math.random()*90) + "vw;top:" + (Math.random()*90) + "vh;color:#c8102e;font-size:" + (16+Math.random()*30) + "px;font-weight:900;z-index:9999;pointer-events:none;opacity:0;transition:opacity .4s,transform .4s;letter-spacing:.1em;";
+          d.style.cssText = "position:fixed;left:" + (Math.random()*90) + "vw;top:" + (Math.random()*90) + "vh;color:#1d1d1f;font-size:" + (16+Math.random()*30) + "px;font-weight:900;z-index:9999;pointer-events:none;opacity:0;transition:opacity .4s,transform .4s;letter-spacing:.1em;";
           document.body.appendChild(d);
           requestAnimationFrame(function(){ d.style.opacity = "1"; d.style.transform = "translateY(-10px)"; });
           setTimeout(function(){ d.style.opacity = "0"; }, 1500);

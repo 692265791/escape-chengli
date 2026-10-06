@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#08080a">
 <title>免责声明 · 逃离程丽</title>
 <link rel="stylesheet" href="static/css/skin-page.css">
+<link rel="stylesheet" href="static/css/anime.css">
 <style>
 .skip-box{
   display:flex;align-items:center;gap:10px;
@@ -52,6 +53,21 @@ img, a, button, .btn, [role="button"] {
   -webkit-tap-highlight-color: transparent !important;
 }
 </style>
+<script>
+(function(){
+  function setWallpaper(){
+    var base = (window.innerWidth > window.innerHeight) ? "https://t.alcy.cc/pc" : "https://t.alcy.cc/mp";
+    var wallpaper = base + "?t=" + Date.now() + "_" + Math.random();
+    document.documentElement.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+    if (document.body) document.body.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+  }
+  if (document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", setWallpaper);
+  } else {
+    setWallpaper();
+  }
+})();
+</script>
 </head>
 <body>
 <main class="stage">
