@@ -2,103 +2,128 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="color-scheme" content="dark only">
-<meta name="theme-color" content="#08080a">
+<meta name="theme-color" content="#f5f5f7">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#08080a">
 <title>逃离程丽 · 选择线路</title>
 <style>
-* { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; }
-html,body,a,button,img,.btn,[role="button"],input,textarea,select { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; outline: none !important; }
-img,a,button,.btn,[role="button"] { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; -webkit-user-drag:none; }
-button:focus,a:focus,img:focus,input:focus,textarea:focus { outline: none !important; box-shadow: none; }
-* { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; }
-html,body,a,button,img,.btn,[role="button"],input,textarea,select { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; outline: none !important; }
-img,a,button,.btn,[role="button"] { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; -webkit-user-drag:none; }
-button:focus,a:focus,img:focus,input:focus,textarea:focus { outline: none !important; box-shadow: none; }
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:#08080a;color:#e8e8ea;
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent!important}
+html,body{
+  background:#f5f5f7;color:#1d1d1f;
   font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;
   display:flex;align-items:center;justify-content:center;
   min-height:100vh;padding:24px;
+  -webkit-tap-highlight-color:transparent!important;
 }
-.box{max-width:420px;width:100%}
+/* 二次元壁纸层 */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;
+  background-image:var(--anime-bg, none);
+  background-size:cover;background-position:center;
+  background-attachment:fixed;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:rgba(255,255,255,.55);
+}
+
+.box{
+  position:relative;z-index:2;
+  max-width:420px;width:100%;
+}
+
 h1{
-  font-size:20px;font-weight:900;letter-spacing:.3em;
-  color:#e8e8ea;margin:0 0 6px;text-align:center;
-  text-shadow:0 0 20px rgba(200,16,46,.5);
+  font-size:22px;font-weight:800;letter-spacing:.15em;
+  color:#1d1d1f;margin:0 0 6px;text-align:center;
+  text-shadow:0 2px 12px rgba(255,255,255,.8);
 }
-.sub{font-size:11px;color:#3a3a3c;letter-spacing:.25em;margin:0 0 28px;text-align:center}
+.sub{
+  font-size:11px;color:#86868b;letter-spacing:.3em;
+  margin:0 0 28px;text-align:center;
+}
+
 .row{
   display:flex;align-items:flex-start;gap:12px;
-  margin:10px 0;padding:14px 16px;
-  background:#0f0f12;border:1px solid #1e1e22;border-radius:6px;
-  cursor:pointer;transition:border-color .25s,background .25s;
+  margin:12px 0;padding:18px 20px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:20px;
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.16,1,.3,1),
+             border-color .25s, background .25s, box-shadow .25s;
 }
-.row:hover{border-color:rgba(200,16,46,.5);background:#150608}
-.row.best{border-color:#2f8f5b;background:rgba(47,143,91,.08)}
+.row:hover{
+  border-color:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.8);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.row.best{
+  border-color:#34c759;
+  background:rgba(52,199,89,.12);
+}
 .row.bad{opacity:.5}
-.dot{width:8px;height:8px;border-radius:50%;background:#3a3a3c;flex:none;margin-top:6px;transition:background .3s}
-.dot.ok{background:#2f8f5b;box-shadow:0 0 8px rgba(47,143,91,.6)}
-.dot.bad{background:#c8102e}
-.dot.test{background:#c8102e;animation:blink .5s infinite}
+
+/* 状态点 */
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:#c7c7cc;flex:none;margin-top:6px;
+  transition:background .3s;
+}
+.dot.ok{background:#34c759;box-shadow:0 0 10px rgba(52,199,89,.6)}
+.dot.bad{background:#ff3b30}
+.dot.test{background:#ff9500;animation:blink .5s infinite}
 @keyframes blink{50%{opacity:.2}}
-.name{font-size:13px;color:#e8e8ea;font-weight:700;letter-spacing:.05em}
-.desc{font-size:11.5px;color:#8a8a8e;margin-top:4px;line-height:1.5}
-.meta{font-size:11px;color:#4a4a4e;margin-top:4px;font-variant-numeric:tabular-nums}
+
+.name{
+  font-size:15px;color:#1d1d1f;font-weight:700;
+  letter-spacing:.03em;
+}
+.desc{font-size:12.5px;color:#6e6e73;margin-top:4px;line-height:1.5}
+.meta{font-size:11.5px;color:#86868b;margin-top:5px;font-variant-numeric:tabular-nums}
+
+/* 标签 */
 .tag{
-  display:inline-block;font-size:10px;font-weight:800;
-  padding:1px 7px;border-radius:2px;letter-spacing:.15em;
-  background:rgba(200,16,46,.15);color:#c8102e;
+  display:inline-block;font-size:10.5px;font-weight:800;
+  padding:3px 10px;border-radius:999px;
+  letter-spacing:.12em;
   margin-left:6px;vertical-align:middle;
 }
-.acts{display:flex;gap:10px;margin-top:22px}
+.tag-blue{background:rgba(0,122,255,.15);color:#007aff}
+.tag-gray{background:rgba(120,120,128,.15);color:#6e6e73}
+.tag-yellow{background:rgba(255,204,0,.25);color:#b8860b}
+
+.acts{display:flex;gap:10px;margin-top:24px}
 button{
-  flex:1;padding:14px;border-radius:6px;
-  font-size:14px;font-weight:800;letter-spacing:.15em;
+  flex:1;padding:16px;border-radius:999px;
+  font-size:14px;font-weight:700;letter-spacing:.15em;
   cursor:pointer;border:none;transition:all .2s;
 }
 #btnTest{
-  background:linear-gradient(135deg,#c8102e,#5a0e18);
-  color:#fff;box-shadow:0 8px 24px rgba(200,16,46,.4);
+  background:#1d1d1f;color:#fff;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+}
+#btnTest:hover:not(:disabled){
+  background:#333;
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(0,0,0,.22);
 }
 #btnTest:disabled{opacity:.4;cursor:not-allowed}
+
 .tip{
-  margin-top:20px;font-size:11px;color:#3a3a3c;
-  text-align:center;letter-spacing:.1em;line-height:1.8;
+  margin-top:22px;font-size:11.5px;color:#86868b;
+  text-align:center;letter-spacing:.05em;line-height:1.9;
 }
-</style>
-<style>
-/* ===== 彻底杀掉点击填充块 / 蓝色高亮 / focus 框 ===== */
-* {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
-  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-}
-*:active, *:focus, *:focus-visible, *:focus-within,
-button:active, button:focus, button:focus-visible,
-a:active, a:focus, a:focus-visible,
-.btn:active, .btn:focus, [role="button"]:active, [role="button"]:focus,
-img:active, img:focus {
-  outline: none !important;
-  outline-color: transparent !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-  border-color: transparent !important;
-}
-button:active, a:active, .btn:active, [role="button"]:active {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-img, a, button, .btn, [role="button"] {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  -webkit-tap-highlight-color: transparent !important;
+.tip .warn{color:#b8860b;font-weight:700}
+
+/* 低端机 / 小屏：关毛玻璃 */
+@media (max-width: 480px), (prefers-reduced-motion: reduce){
+  .row{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:rgba(255,255,255,.9);
+  }
 }
 </style>
 </head>
@@ -111,7 +136,7 @@ img, a, button, .btn, [role="button"] {
     <div class="row" data-idx="0">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 1<span class="tag">推荐</span></div>
+        <div class="name">线路 1<span class="tag tag-blue">推荐</span></div>
         <div class="desc">Cloudflare · 自定义域名</div>
         <div class="meta">未测速</div>
       </div>
@@ -119,7 +144,7 @@ img, a, button, .btn, [role="button"] {
     <div class="row" data-idx="1">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 2<span class="tag">备用</span></div>
+        <div class="name">线路 2<span class="tag tag-gray">备用</span></div>
         <div class="desc">Cloudflare · 默认域名</div>
         <div class="meta">未测速</div>
       </div>
@@ -127,7 +152,7 @@ img, a, button, .btn, [role="button"] {
     <div class="row" data-idx="2">
       <span class="dot"></span>
       <div style="flex:1">
-        <div class="name">线路 3<span class="tag">境外</span></div>
+        <div class="name">线路 3<span class="tag tag-yellow">不推荐</span></div>
         <div class="desc">GitHub Pages · 国内不稳</div>
         <div class="meta">未测速</div>
       </div>
@@ -140,13 +165,18 @@ img, a, button, .btn, [role="button"] {
 
   <p class="tip">
     点击开始测速 · 测完手动选择线路<br>
-    <span style="color:#4a4a4e">线路 1、2 为国内优化线路</span><br>
-    <span style="color:#c8102e">线路 3：国内访问可能变慢、超时或打不开</span>
+    线路 1、2 为国内优化线路<br>
+    <span class="warn">线路 3：不参与推荐 · 国内访问可能变慢</span>
   </p>
 </div>
 
 <script>
 (function(){
+  /* 随机二次元壁纸 */
+  var base = (window.innerWidth > window.innerHeight) ? "https://t.alcy.cc/pc" : "https://t.alcy.cc/mp";
+  var wallpaper = base + "?t=" + Date.now() + "_" + Math.random();
+  document.documentElement.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+
   var TARGETS = [
     { name: "线路 1", url: "https://chengli.dpdns.org" },
     { name: "线路 2", url: "https://escape-chengli.pages.dev" },
@@ -176,9 +206,7 @@ img, a, button, .btn, [role="button"] {
     location.replace(url);
   }
 
-  /* 真实测速：下载 probe.bin，算 KB/s */
-
-  /* 测速：用 <img> 加载真实大图，不受 CORS 限制 */
+  /* 测速：用 <img> 加载小图 */
   var TEST_IMG = "/static/test-speed.png";
 
   function ping(t, i, cb){
@@ -245,8 +273,8 @@ img, a, button, .btn, [role="button"] {
         } else {
           dot.className = "dot ok";
           meta.textContent = r.ms + " ms";
-          /* 线路 3 不参与推荐 */
-          if (r.ms < bestMs){ bestMs = r.ms; bestIdx = i; }
+          /* ⭐ 线路 3（i===2）不参与推荐 */
+          if (i !== 2 && r.ms < bestMs){ bestMs = r.ms; bestIdx = i; }
         }
         checkDone();
       });
