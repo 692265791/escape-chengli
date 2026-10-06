@@ -228,6 +228,22 @@ img, a, button, .btn, [role="button"] {
   -webkit-tap-highlight-color: transparent !important;
 }
 </style>
+<script>
+(function(){
+  function setWallpaper(){
+    var base = (window.innerWidth > window.innerHeight) ? "https://t.alcy.cc/pc" : "https://t.alcy.cc/mp";
+    var wallpaper = base + "?t=" + Date.now() + "_" + Math.random();
+    document.documentElement.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+    if (document.body) document.body.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+  }
+  if (document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", setWallpaper);
+  } else {
+    setWallpaper();
+  }
+  window.__setWallpaper = setWallpaper;
+})();
+</script>
 </head>
 <body>
 
@@ -1773,5 +1789,6 @@ img, a, button, .btn, [role="button"] {
 })();
 </script>
 
+<link rel="stylesheet" href="static/css/anime.css">
 </body>
 </html>

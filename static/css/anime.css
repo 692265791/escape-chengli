@@ -1,0 +1,358 @@
+/* ============================================================
+   anime.css · 主页二次元风
+   覆盖 skin-page.css 的血色
+   ============================================================ */
+
+/* 底色改浅 */
+body{
+  background:transparent !important;
+  color:#1d1d1f !important;
+}
+
+/* 干掉噪点层 */
+body::before{ display:none !important; }
+
+/* 顶栏：白底毛玻璃 */
+.nav{
+  background:rgba(255,255,255,.6) !important;
+  border-bottom:1px solid rgba(0,0,0,.06) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+}
+.brand{
+  color:#1d1d1f !important;
+  text-shadow:none !important;
+  animation:none !important;
+}
+.nav-gh{
+  color:#6e6e73 !important;
+}
+.nav-gh:hover{ color:#1d1d1f !important; }
+
+/* 标题：黑字 */
+.hero h1{
+  color:#1d1d1f !important;
+  text-shadow:none !important;
+  animation:none !important;
+}
+.hero h1::before,
+.hero h1::after{ display:none !important; }
+.lead{ color:#6e6e73 !important; }
+
+/* 主按钮：黑胶囊 */
+.btn.dark{
+  background:#1d1d1f !important;
+  background-image:none !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  animation:none !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.15) !important;
+}
+.btn.dark:hover{
+  background:#333 !important;
+  transform:translateY(-2px) !important;
+}
+.btn.plain{
+  background:rgba(255,255,255,.65) !important;
+  color:#1d1d1f !important;
+  border:1px solid #d2d2d7 !important;
+  border-radius:999px !important;
+}
+.btn.plain:hover{
+  border-color:#1d1d1f !important;
+}
+
+/* 个人站入口条 */
+.notice-one{
+  background:rgba(255,255,255,.6) !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  border-radius:16px !important;
+}
+.no-tag{
+  background:#1d1d1f !important;
+  color:#fff !important;
+  border-radius:6px !important;
+}
+.no-text{ color:#1d1d1f !important; }
+.no-btn{ color:#1d1d1f !important; }
+
+/* 弹力球区块 */
+.bouncy-block{
+  background:rgba(255,255,255,.6) !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  border-radius:20px !important;
+}
+.bouncy-block:hover{
+  border-color:#1d1d1f !important;
+  box-shadow:0 10px 32px rgba(0,0,0,.1) !important;
+}
+.bouncy-glow{ display:none !important; }
+.bouncy-ico{
+  background:#1d1d1f !important;
+  color:#fff !important;
+  box-shadow:none !important;
+}
+.bouncy-body h3{ color:#1d1d1f !important; }
+.bouncy-body p{ color:#6e6e73 !important; }
+.bouncy-btn{
+  background:#1d1d1f !important;
+  background-image:none !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  box-shadow:none !important;
+}
+.bouncy-btn:hover{
+  background:#333 !important;
+  transform:translateY(-2px) !important;
+}
+
+/* 区块标题 */
+.block h2{
+  color:#1d1d1f !important;
+  border-bottom-color:rgba(0,0,0,.08) !important;
+}
+.block h2::after{ background:#1d1d1f !important; }
+
+/* 更多内容按钮网格 */
+.more-btn{
+  background:rgba(255,255,255,.6) !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  border-radius:16px !important;
+}
+.more-btn:hover{
+  border-color:#1d1d1f !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.08) !important;
+  transform:translateY(-3px) !important;
+}
+.more-btn::before{ display:none !important; }
+.more-btn::after{ color:#a1a1a6 !important; }
+.mb-txt{ color:#1d1d1f !important; }
+.mb-sub{ color:#6e6e73 !important; }
+.mb-ico{ font-size:32px !important; }
+
+/* 页脚 */
+.foot{
+  border-top-color:rgba(0,0,0,.08) !important;
+  color:#6e6e73 !important;
+}
+.foot-links a{ color:#6e6e73 !important; }
+.foot-links a:hover{ color:#1d1d1f !important; }
+.foot-name{ color:#1d1d1f !important; }
+.foot-slogan{ color:#a1a1a6 !important; }
+
+/* 弹窗 */
+.panel{ background:rgba(0,0,0,.4) !important; }
+.panel-card{
+  background:rgba(255,255,255,.7) !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  border-radius:22px !important;
+  box-shadow:0 24px 64px rgba(0,0,0,.15) !important;
+}
+.panel-head{
+  background:rgba(0,0,0,.02) !important;
+  border-bottom-color:rgba(0,0,0,.06) !important;
+}
+.panel-title{ color:#1d1d1f !important; }
+.panel-dot{ background:#1d1d1f !important; box-shadow:none !important; }
+.panel-ver{ background:rgba(0,0,0,.06) !important; color:#6e6e73 !important; }
+.panel-x{ border-color:rgba(0,0,0,.1) !important; color:#6e6e73 !important; }
+.panel-x:hover{ border-color:#1d1d1f !important; color:#1d1d1f !important; }
+
+/* 联系卡片 */
+.contact-card{
+  background:rgba(255,255,255,.6) !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  border-radius:14px !important;
+}
+.contact-card:hover{
+  border-color:#1d1d1f !important;
+  background:rgba(255,255,255,.65) !important;
+}
+.contact-info b{ color:#1d1d1f !important; }
+.contact-info span{ color:#6e6e73 !important; }
+.contact-arrow{ color:#a1a1a6 !important; }
+
+/* 强制关闭所有恐怖特效 */
+body::after{ display:none !important; }
+.mc-line-1,.mc-line-2{
+  filter:none !important;
+}
+
+/* ===== 二次元壁纸 ===== */
+html{
+  background-color:#f5f5f7 !important;
+}
+body{
+  background-color:transparent !important;
+}
+body::before{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  top:0 !important; left:0 !important; right:0 !important; bottom:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  background-image:var(--anime-bg, none) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-attachment:fixed !important;
+  will-change:background-image;
+}
+
+/* 半透明白遮罩层：让内容看清 */
+body::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  top:0 !important; left:0 !important; right:0 !important; bottom:0 !important;
+  z-index:-1 !important;
+  pointer-events:none !important;
+  background:rgba(255,255,255,.4) !important;
+}
+
+
+/* ============ 卡片半透明毛玻璃 ============ */
+.notice-one,
+.bouncy-block,
+.more-btn,
+.contact-card,
+.panel-card,
+.nav{
+  backdrop-filter:blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter:blur(12px) saturate(160%) !important;
+}
+
+/* 低端机 / 小屏自动关毛玻璃（性能） */
+@media (max-width: 480px), (prefers-reduced-motion: reduce){
+  .notice-one,
+  .bouncy-block,
+  .more-btn,
+  .contact-card,
+  .panel-card,
+  .nav{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(255,255,255,.85) !important;
+  }
+}
+
+
+/* ============ 内容浮到壁纸之上 ============ */
+main,
+header.nav,
+footer.foot{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+/* 遮罩层放中间 */
+body::after{
+  z-index:1 !important;
+  background:rgba(255,255,255,.35) !important;
+}
+
+
+/* 禁止背景层任何动画/过渡 */
+body::before{
+  animation:none !important;
+  transition:none !important;
+  transform:none !important;
+}
+
+/* ============================================================
+   毛玻璃（性能友好版）
+   只给必要元素，低端机自动关
+   ============================================================ */
+
+/* 顶栏：毛玻璃 */
+.nav{
+  background:rgba(255,255,255,.55) !important;
+  backdrop-filter:blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(180%) !important;
+  will-change:backdrop-filter;
+}
+
+/* 卡片：轻量毛玻璃 */
+.notice-one,
+.bouncy-block,
+.more-btn,
+.contact-card,
+.panel-card{
+  background:rgba(255,255,255,.6) !important;
+  backdrop-filter:blur(10px) saturate(150%) !important;
+  -webkit-backdrop-filter:blur(10px) saturate(150%) !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.06) !important;
+}
+
+/* 悬停时稍亮 */
+.bouncy-block:hover,
+.more-btn:hover,
+.contact-card:hover,
+.notice-one:hover{
+  background:rgba(255,255,255,.75) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.1) !important;
+}
+
+/* ============================================================
+   手机端：轻量毛玻璃（blur 更小，性能更好）
+   ============================================================ */
+@media (max-width: 480px){
+  .nav{
+    backdrop-filter:blur(8px) saturate(150%) !important;
+    -webkit-backdrop-filter:blur(8px) saturate(150%) !important;
+  }
+  .notice-one,
+  .bouncy-block,
+  .more-btn,
+  .contact-card,
+  .panel-card{
+    backdrop-filter:blur(6px) saturate(140%) !important;
+    -webkit-backdrop-filter:blur(6px) saturate(140%) !important;
+    background:rgba(255,255,255,.65) !important;
+  }
+}
+
+/* 极致低端 / 省电模式：彻底关 */
+@media (prefers-reduced-motion: reduce){
+  .nav,
+  .notice-one,
+  .bouncy-block,
+  .more-btn,
+  .contact-card,
+  .panel-card{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(255,255,255,.88) !important;
+  }
+}
+
+/* 页面滚动时避免毛玻璃重绘 */
+html{
+  scroll-behavior:smooth;
+}
+
+/* ============ 顶栏：贴顶 + 底部圆角 ============ */
+.nav{
+  position:sticky !important;
+  top:0 !important;
+  margin:0 !important;
+  border-radius:0 0 18px 18px !important;
+  border-bottom:1px solid rgba(0,0,0,.08) !important;
+  border-top:none !important;
+  border-left:none !important;
+  border-right:none !important;
+  box-shadow:0 2px 16px rgba(0,0,0,.06) !important;
+}
+
+/* 顶栏里的链接文字 */
+.nav .brand{
+  font-size:15px !important;
+  font-weight:700 !important;
+  letter-spacing:.05em !important;
+}
+.nav .nav-gh{
+  font-size:13px !important;
+}
