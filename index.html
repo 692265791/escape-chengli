@@ -176,19 +176,31 @@ img, a, button, .btn, [role="button"] {
     location.replace(url);
   }
 
-  /* 单次测速：favicon 加载时间 */
+  /* 真实测速：下载 probe.bin，算 KB/s */
+
+  /* 测速：用 <img> 加载真实大图，不受 CORS 限制 */
+  var TEST_IMG = "/static/test-speed.webp";
+
   function ping(t, i, cb){
     var start = Date.now();
     var img = new Image();
     var fin = false;
-    function done_(ok){
+    var timer = setTimeout(function(){
       if (fin) return; fin = true;
-      cb(ok ? (Date.now() - start) : 99999);
-    }
-    img.onload = function(){ done_(true); };
-    img.onerror = function(){ done_(true); };
-    setTimeout(function(){ done_(false); }, 4000);
-    img.src = t.url + "/favicon.ico?t=" + Date.now() + "_" + i;
+      cb({ ok: false, ms: 99999 });
+    }, 8000);
+
+    img.onload = function(){
+      if (fin) return; fin = true;
+      clearTimeout(timer);
+      cb({ ok: true, ms: Date.now() - start });
+    };
+    img.onerror = function(){
+      if (fin) return; fin = true;
+      clearTimeout(timer);
+      cb({ ok: false, ms: 99999 });
+    };
+    img.src = t.url + encodeURI(TEST_IMG) + "?t=" + Date.now() + "_" + i;
   }
 
   btnTest.addEventListener("click", function(){
@@ -220,21 +232,21 @@ img, a, button, .btn, [role="button"] {
     }
 
     TARGETS.forEach(function(t, i){
-      ping(t, i, function(ms){
+      ping(t, i, function(r){
         done++;
         var row = rows[i];
         var dot = row.querySelector(".dot");
         var meta = row.querySelector(".meta");
 
-        if (ms >= 99999){
+        if (!r.ok){
           dot.className = "dot bad";
           meta.textContent = "超时";
           row.classList.add("bad");
         } else {
           dot.className = "dot ok";
-          meta.textContent = ms + " ms";
+          meta.textContent = r.ms + " ms";
           /* 线路 3 不参与推荐 */
-          if (i !== 2 && ms < bestMs){ bestMs = ms; bestIdx = i; }
+          if (r.ms < bestMs){ bestMs = r.ms; bestIdx = i; }
         }
         checkDone();
       });
