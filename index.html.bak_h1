@@ -130,21 +130,11 @@ button{
   font-size:13px;line-height:1.8;color:#6e6e73;
   text-align:center;max-width:360px;margin:0 auto 24px;
 }
-
-.seo-h1-sub{
-  font-size:15px;
-  color:#6e6e73;
-  letter-spacing:.15em;
-  text-align:center;
-  margin:4px 0 8px;
-  font-weight:500;
-}
 </style>
 </head>
 <body>
 <div class="box">
-  <h1>逃离程丽</h1>
-  <p class="seo-h1-sub">恐怖校园文字冒险</p>
+  <h1>逃离程丽 - 恐怖校园文字冒险</h1>
   <p class="sub">CHOOSE ROUTE</p>
   <p class="seo-desc">这是《逃离程丽》的官方入口页，提供多线路选择。点击下方按钮选择线路，进入游戏主页。</p>
 
