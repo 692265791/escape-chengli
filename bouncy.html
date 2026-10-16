@@ -3,6 +3,10 @@
 
 <head prefix="og: http://ogp.me/ns#">
     <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
     <title>声控弹力球 - Bouncy Balls</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -1398,6 +1402,21 @@ img, a, button, .btn, [role="button"] {
   -webkit-tap-highlight-color: transparent !important;
 }
 </style>
+
+<script>
+/* 主动注销所有 Service Worker + 清缓存（确保永远最新） */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(r){ r.unregister(); });
+  });
+}
+if ("caches" in window) {
+  caches.keys().then(function(keys){
+    keys.forEach(function(k){ caches.delete(k); });
+  });
+}
+</script>
+
 </head>
 
 <body>

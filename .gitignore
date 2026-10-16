@@ -3,3 +3,9 @@
 *.tmp
 static/css/_bak/
 static/js.bak/
+
+# 临时分析文件
+*.txt.bak
+game完整快照.txt
+game骨架版.txt
+调试扫描报告.txt

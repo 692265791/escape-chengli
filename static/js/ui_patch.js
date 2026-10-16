@@ -167,7 +167,7 @@
     }
   }
 
-  on($("qkHome"), function () { location.href = "index.html"; });
+  on($("qkHome"), function () { location.href = "home.html"; });
 
   /* ---------- 章节 ---------- */
   var chapters = $("chaptersOverlay"), chapterList = $("chapterList"), chaptersLoaded = false;

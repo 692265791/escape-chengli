@@ -168,7 +168,7 @@
     _fn(_t, mg.opts || {}, function (res) {
       if (mg.winEffects && res.win) applyEffects(mg.winEffects);
       if (mg.loseEffects && !res.win) applyEffects(mg.loseEffects);
-      if (vars.san >= 100) return;
+      if (vars.san >= 100 && !window.__NO_SAN_LIMIT) return;
       var next = res.win ? (mg.winNext || n.next || "") : (mg.loseNext || n.next || "");
       if (next) { goto(next); }
       else { showChoices(n); }
@@ -444,7 +444,7 @@
   function showChoices(n) {
     var chs = n.choices || [];
     if (!chs.length) {
-      if (n.ending) showEnding(n.ending);
+      if (n.ending) { console.log("[NODE] 节点自带 ending:", n.ending && n.ending.id); showEnding(n.ending); }
       return;
     }
     $choices.innerHTML = "";
@@ -456,7 +456,8 @@
         e.stopPropagation();
         $choices.classList.remove("show");
         if (ch.effects) applyEffects(ch.effects);
-        if (vars.san >= 100) {
+        console.log("[SAN] 选项后 san:", vars.san, "NO_LIMIT:", window.__NO_SAN_LIMIT);
+        if (vars.san >= 100 && !window.__NO_SAN_LIMIT) {
           showEnding({ id: "lost", title: "迷失",
             desc: "恐惧值到达了上限。你听见走廊尽头有人在背单词，一个音节一个音节地，念着你的名字。你走过去，加入了他们。从此，你也学会了对新来的人绕开走。" });
           return;
@@ -490,6 +491,13 @@
     }
     if (vars.san < 0) vars.san = 0;
     updateSan();
+    /* 新增：每次应用效果后，检查恐惧值上限 */
+    if (vars.san >= 100 && !window.__NO_SAN_LIMIT && !window.___IN_LOST_CHECK) {
+      window.___IN_LOST_CHECK = true;
+      setTimeout(function(){ window.___IN_LOST_CHECK = false; }, 500);
+      showEnding({ id: "lost", title: "迷失", desc: "恐惧值到达了上限。你听见走廊尽头有人在背单词，一个音节一个音节地，念着你的名字。你走过去，加入了他们。从此，你也学会了对新来的人绕开走。" });
+      return;
+    }
     if (false) {
       showEnding({ id: "memlost", title: "遗忘",
         desc: "你想不起自己是谁了。也想不起为什么会在这里。循环把你一点点擦干净，直到连“逃”这个念头都不剩。你成了这所学校的一部分。" });
@@ -532,6 +540,14 @@
     
   }
   function showEnding(end) {
+    console.log("[END] showEnding 调用，id:", end && end.id, "title:", end && end.title);
+    if (window.__NO_SAN_LIMIT && end && end.id === "lost") {
+      return;
+    }
+    if (window.__NO_SAN_LIMIT && end && end.id === "memlost") {
+      return;
+    }
+
     document.getElementById("endingTitle").textContent = end.title || "结局";
     document.getElementById("endingDesc").textContent = end.desc || "";
     document.getElementById("endingOverlay").classList.add("show");
@@ -542,7 +558,7 @@
   document.getElementById("btnRestart").addEventListener("click", function () {
     location.reload();
   });
-  (function(){ var _h=document.getElementById("btnEndHome"); if(_h) _h.addEventListener("click", function(){ location.href="index.html"; }); })();
+  (function(){ var _h=document.getElementById("btnEndHome"); if(_h) _h.addEventListener("click", function(){ location.href="home.html"; }); })();
 
   // ============================================================
   //  菜单 / 存读档
@@ -555,7 +571,7 @@
     $menu.classList.remove("show");
   });
   document.getElementById("btnHome").addEventListener("click", function () {
-    location.href = "index.html";
+    location.href = "home.html";
   });
   // -------- 自动保存：每个关键节点（有 next 或 choices 时）--------
   function autoSave() {

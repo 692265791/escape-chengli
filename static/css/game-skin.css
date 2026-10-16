@@ -1,0 +1,514 @@
+/* ============================================================
+   逃离程丽 · game 页皮肤 · 覆盖 skin.css
+   冷白 + 近黑 + 暗红 + 扫描线 + 故障方块
+   ============================================================ */
+
+/* ========== 配色变量（覆盖 skin.css 的 --ink/--sub 等）========== */
+:root{
+  --ink:#e8e8e8;
+  --sub:#8a8a8a;
+  --line:rgba(255,255,255,.1);
+  --blood:#8b2a2a;
+  --blood-dark:#5a1c1c;
+  --bg:#0a0a0a;
+  --card:#141414;
+}
+
+/* ========== 全局背景 ========== */
+html, body, .game-page{
+  background:#0a0a0a !important;
+  color:#e8e8e8 !important;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif !important;
+}
+
+/* ========== 扫描线 + 暗角（全屏叠层）========== */
+/* 暗角已删 */
+/* 扫描线已删（游戏画面不要条痕） */
+
+/* ========== 顶栏 ========== */
+.topbar{
+  background:rgba(10,10,10,.88) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+}
+.topbar-title{
+  color:#e8e8e8 !important;
+  text-shadow:0 0 8px rgba(232,232,232,.4) !important;
+}
+.topbar-title .t-esc{
+  color:#8b2a2a !important;
+  text-shadow:0 0 8px rgba(139,42,42,.6) !important;
+}
+.t-name{color:#e8e8e8 !important}
+
+/* 恐惧值条 */
+.san-label{color:#8a8a8a !important}
+.san-bar{
+  background:rgba(255,255,255,.08) !important;
+}
+.san-bar i{
+  background:linear-gradient(90deg,#5a1c1c,#8b2a2a) !important;
+  box-shadow:0 0 8px rgba(139,42,42,.6) !important;
+}
+.san-num{
+  color:#e8e8e8 !important;
+  text-shadow:0 0 6px rgba(232,232,232,.4) !important;
+}
+
+/* 菜单按钮 */
+.topbar-btn{
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  color:#e8e8e8 !important;
+}
+.topbar-btn:hover{
+  border-color:#8b2a2a !important;
+  background:rgba(139,42,42,.15) !important;
+}
+
+/* ========== 说话人 ========== */
+.speaker-bar{
+  background:rgba(10,10,10,.7) !important;
+  border-left:3px solid #8b2a2a !important;
+  padding:4px 12px !important;
+}
+.speaker-name{
+  color:#e8e8e8 !important;
+  text-shadow:0 0 8px rgba(232,232,232,.4) !important;
+  font-weight:700 !important;
+  letter-spacing:.1em !important;
+}
+.speaker-bar.chengli .speaker-name{color:#c44a4a !important}
+.speaker-bar.me .speaker-name{color:#e8e8e8 !important}
+.speaker-bar.ghost .speaker-name{color:#6a6a6a !important}
+.speaker-bar.yushuo .speaker-name{color:#7aa0c4 !important}
+
+/* ========== 对话框 ========== */
+.text-box{
+  background:rgba(10,10,10,.85) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+}
+.text-box:before{
+  background:linear-gradient(180deg,rgba(139,42,42,.1),transparent) !important;
+  border-left-color:#8b2a2a !important;
+}
+.dialog-text{
+  color:#e8e8e8 !important;
+  font-family:"Songti SC","SimSun","Noto Serif SC",Georgia,serif !important;
+  letter-spacing:.04em !important;
+  line-height:1.9 !important;
+}
+.dialog-text .emote{
+  color:#8b2a2a !important;
+  font-style:italic !important;
+}
+.dialog-text .inner-os{
+  color:#6a6a6a !important;
+  font-style:italic !important;
+}
+.dialog-text .narr{
+  color:#8a8a8a !important;
+}
+
+/* 打字机：不加动画（game.js 自己控制），只留微光 */
+.tw-char{
+  text-shadow:0 0 4px rgba(232,232,232,.3);
+}
+
+/* 继续提示 ▼ */
+.next-hint{
+  color:#8b2a2a !important;
+  text-shadow:0 0 8px rgba(139,42,42,.6) !important;
+  animation:nextPulse 1.5s ease-in-out infinite !important;
+}
+@keyframes nextPulse{
+  0%,100%{opacity:.5;transform:translateY(0)}
+  50%{opacity:1;transform:translateY(3px)}
+}
+
+/* ========== 选项按钮 ========== */
+.choices{
+  background:rgba(10,10,10,.9) !important;
+}
+.choice-btn{
+  background:rgba(20,20,20,.8) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  color:#e8e8e8 !important;
+  font-family:inherit !important;
+  transition:all .25s cubic-bezier(.16,1,.3,1) !important;
+}
+.choice-btn:hover{
+  background:rgba(139,42,42,.15) !important;
+  border-color:#8b2a2a !important;
+  box-shadow:0 0 16px rgba(139,42,42,.4) !important;
+  transform:translateX(4px) !important;
+}
+.choice-btn:active{
+  transform:translateX(4px) scale(.98) !important;
+}
+
+/* ========== 全屏大字 ========== */
+.fullpage-text{
+  background:rgba(5,5,5,.92) !important;
+  backdrop-filter:blur(6px) !important;
+  -webkit-backdrop-filter:blur(6px) !important;
+}
+.fullpage-text p{
+  color:#e8e8e8 !important;
+  font-family:"Songti SC","SimSun","Noto Serif SC",Georgia,serif !important;
+  letter-spacing:.2em !important;
+  text-shadow:
+    0 0 4px rgba(232,232,232,.8),
+    0 0 20px rgba(232,232,232,.4),
+    2px 0 0 rgba(139,42,42,.6),
+    -2px 0 0 rgba(232,232,232,.3) !important;
+  animation:fpGlow 3s ease-in-out infinite !important;
+}
+@keyframes fpGlow{
+  0%,100%{
+    text-shadow:0 0 4px rgba(232,232,232,.8),0 0 20px rgba(232,232,232,.4),2px 0 0 rgba(139,42,42,.6),-2px 0 0 rgba(232,232,232,.3);
+  }
+  50%{
+    text-shadow:0 0 2px rgba(232,232,232,.6),0 0 12px rgba(232,232,232,.3),1px 0 0 rgba(139,42,42,.5),-1px 0 0 rgba(232,232,232,.2);
+  }
+}
+.fp-hint{
+  color:#8a8a8a !important;
+  letter-spacing:.3em !important;
+}
+
+/* ========== 全屏大字逐字浮现（如果 JS 用 .fp-char）========== */
+.fp-char{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(8px);
+  animation:fpCharIn .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes fpCharIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ========== 弹层（菜单/设置/章节/存档/结局）========== */
+.menu-overlay,.settings-overlay,.chapters-overlay,.save-overlay,.ending-overlay{
+  background:rgba(0,0,0,.92) !important;
+  backdrop-filter:blur(8px) !important;
+}
+.menu-card,.settings-card,.chapters-card,.save-card,.ending-card{
+  background:rgba(15,15,15,.96) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  color:#e8e8e8 !important;
+  box-shadow:0 0 40px rgba(139,42,42,.15) !important;
+}
+.menu-card h3,.settings-card h3,.chapters-card h3,.save-head h3{
+  color:#e8e8e8 !important;
+  text-shadow:0 0 8px rgba(232,232,232,.3) !important;
+}
+.menu-card button{
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  color:#e8e8e8 !important;
+}
+.menu-card button:hover{
+  border-color:#8b2a2a !important;
+  background:rgba(139,42,42,.15) !important;
+}
+.menu-tip,.set-row label{
+  color:#8a8a8a !important;
+}
+.set-val{
+  color:#e8e8e8 !important;
+}
+.set-close{
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  color:#e8e8e8 !important;
+}
+.set-close:hover{
+  border-color:#8b2a2a !important;
+  background:rgba(139,42,42,.15) !important;
+}
+
+/* 开关 */
+.switch i{
+  background:rgba(0,0,0,.5) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+}
+.switch i:before{
+  background:#6a6a6a !important;
+}
+.switch input:checked + i{
+  background:rgba(139,42,42,.4) !important;
+  border-color:#8b2a2a !important;
+}
+.switch input:checked + i:before{
+  background:#c44a4a !important;
+}
+
+/* 章节 / 存档 */
+.chapter-item,.save-row{
+  background:rgba(20,20,20,.8) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  color:#e8e8e8 !important;
+}
+.chapter-item:hover{
+  border-color:#8b2a2a !important;
+  background:rgba(139,42,42,.08) !important;
+}
+.ch-status,.save-info b{
+  color:#8a8a8a !important;
+}
+.save-btn{
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  color:#e8e8e8 !important;
+}
+.save-btn.main{
+  border-color:#8b2a2a !important;
+  background:rgba(139,42,42,.15) !important;
+}
+.save-btn.danger{
+  border-color:rgba(139,42,42,.6) !important;
+  color:#c44a4a !important;
+}
+
+/* 结局弹层 */
+.ending-title{
+  color:#e8e8e8 !important;
+  text-shadow:
+    0 0 6px rgba(232,232,232,.6),
+    2px 0 0 rgba(139,42,42,.6) !important;
+}
+.ending-desc{
+  color:#8a8a8a !important;
+}
+.ending-card button{
+  background:rgba(139,42,42,.15) !important;
+  border:1px solid #8b2a2a !important;
+  color:#e8e8e8 !important;
+}
+.ending-card button:hover{
+  background:rgba(139,42,42,.3) !important;
+  box-shadow:0 0 16px rgba(139,42,42,.5) !important;
+}
+
+/* ========== 悬浮球（作弊）========== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   立绘：干掉 drop-shadow（安卓 GPU 黑块元凶）
+   ============================================================ */
+.sprite-layer img,
+.sprite-layer img.breathe {
+  filter: none !important;
+  -webkit-filter: none !important;
+  will-change: transform !important;
+}
+
+/* 立绘浮动：纯 transform，不加 filter */
+.sprite-layer img.breathe {
+  animation: breathe 4s cubic-bezier(.4,0,.2,1) infinite !important;
+}
+
+/* ============================================================
+   对话框白线（skin.css 的 .text-box:before）彻底干掉
+   ============================================================ */
+.text-box::before,
+.text-box:before {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  height: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* 顺带把 info-bar / speaker-bar / chapter-tag 的边框也清掉 */
+.info-bar,
+.speaker-bar,
+.chapter-tag {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   彻底干掉对话框上方所有可能的线
+   ============================================================ */
+.topbar,
+.topbar::before,
+.topbar::after,
+.info-bar,
+.info-bar::before,
+.info-bar::after,
+.chapter-tag,
+.chapter-tag::before,
+.chapter-tag::after,
+.speaker-bar,
+.speaker-bar::before,
+.speaker-bar::after {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* 顶栏：不加底部线 */
+.topbar {
+  border-bottom: none !important;
+}
+
+/* 对话框：不加顶部线 */
+.text-box,
+.text-box::before,
+.text-box::after {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+.text-box::before,
+.text-box::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ============================================================
+   悬浮球 · 外挂辅助 UI（侧边栏 + 打勾开关）
+   ============================================================ */
+
+/* 悬浮球 */
+
+
+
+@keyframes cfBlink {
+  50% { opacity: .3; }
+}
+
+/* 主面板：左侧栏 + 右侧内容 */
+
+
+@keyframes cfIn {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 顶栏 */
+
+
+
+
+
+
+
+
+/* 主体：左侧栏 + 右侧内容 */
+
+
+/* 左侧栏（Tab 改成竖排） */
+
+
+
+
+
+
+/* 右侧内容区 */
+
+
+
+
+
+/* 分组标题 */
+
+
+
+
+/* 行 */
+
+
+
+
+/* 按钮 */
+
+
+
+
+/* 动作按钮（全宽） */
+
+
+
+
+
+/* 打勾开关 */
+
+
+
+
+
+
+
+
+/* 底部状态栏 */
+
+
+
+
+
+/* 底部操作 */
+
+
+
+
+
+
+
+/* ============================================================
+   外挂 UI · 布局修正 v2（顶部横排 Tab）
+   ============================================================ */
+
+/* 主面板 */
+
+
+/* 主体不再分左右两列，改成纵向 */
+
+
+/* Tab 改回顶部横排（可横向滑动） */
+
+
+
+
+
+
+/* 内容区 */
+
+
+
+

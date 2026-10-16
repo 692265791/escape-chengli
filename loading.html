@@ -2,12 +2,16 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#08080a">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#fafafa">
 <title>正在进入 · 逃离程丽</title>
-<link rel="stylesheet" href="static/css/apple.css">
+<link rel="stylesheet" href="static/css/apple.css?v=1792146091">
 <style>
 .load-stage{max-width:420px;margin:0 auto;padding:0 24px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;}
 .load-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;}
@@ -50,6 +54,48 @@ img, a, button, .btn, [role="button"] {
   -webkit-tap-highlight-color: transparent !important;
 }
 </style>
+
+<style>
+/* 新页面加载后，从 0 淡入到 1 */
+html {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+html.page-ready {
+  opacity: 1;
+}
+</style>
+<script>
+/* 页面一加载完，立刻淡入 */
+(function(){
+  function fadeIn(){
+    document.documentElement.classList.add("page-ready");
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function(){
+      requestAnimationFrame(fadeIn);
+    });
+  } else {
+    requestAnimationFrame(fadeIn);
+  }
+})();
+</script>
+
+
+<script>
+/* 主动注销所有 Service Worker + 清缓存（确保永远最新） */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(r){ r.unregister(); });
+  });
+}
+if ("caches" in window) {
+  caches.keys().then(function(keys){
+    keys.forEach(function(k){ caches.delete(k); });
+  });
+}
+</script>
+
 </head>
 <body class="min">
 

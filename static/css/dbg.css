@@ -1,0 +1,247 @@
+/* ============================================================
+   辅助菜单 · 极简白黑风
+   ============================================================ */
+
+/* 悬浮球 */
+#cheatFab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99998;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, .12);
+  color: #1d1d1f;
+  font-size: 22px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+  transition: transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#cheatFab.show { display: flex; }
+#cheatFab:active { transform: scale(.95); box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+
+/* 面板 */
+#cheatPanel {
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
+  z-index: 99999;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 14px;
+  display: none;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #1d1d1f;
+  user-select: none;
+}
+#cheatPanel.show {
+  display: block;
+  animation: cfIn .25s cubic-bezier(.16, 1, .3, 1);
+}
+@keyframes cfIn {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 顶栏 */
+.cf-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+  cursor: grab;
+}
+.cf-head:active { cursor: grabbing; }
+.cf-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: #1d1d1f;
+}
+.cf-x {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, .12);
+  color: #8a8a8e;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  transition: all .15s ease;
+}
+.cf-x:active { background: rgba(0, 0, 0, .05); }
+
+/* 主体 */
+.cf-body {
+  padding: 4px 0;
+}
+
+/* 项 */
+.cf-item {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+.cf-item:last-child { border-bottom: none; }
+
+.cf-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+}
+.cf-item-desc {
+  font-size: 11px;
+  color: #8a8a8e;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* 打勾 */
+
+
+.cf-box {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(0, 0, 0, .2);
+  background: #fff;
+  transition: all .2s ease;
+  flex: none;
+}
+.cf-box::after {
+  content: "✓";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  transition: transform .18s cubic-bezier(.16, 1, .3, 1);
+}
+
+.cf-check input:checked + .cf-box::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+.cf-current {
+  font-size: 12px;
+  color: #8a8a8e;
+  margin-top: 8px;
+}
+.cf-current b {
+  color: #1d1d1f;
+  font-weight: 700;
+}
+
+/* 输入框 */
+.cf-input-row {
+  display: flex;
+  gap: 8px;
+}
+.cf-input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #f5f5f7;
+  border: 1px solid rgba(0, 0, 0, .06);
+  color: #1d1d1f;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+.cf-input-row input:focus {
+  border-color: rgba(0, 0, 0, .3);
+  background: #fff;
+}
+.cf-input-row input::placeholder {
+  color: #b0b0b5;
+}
+.cf-confirm {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #1d1d1f;
+  border: none;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s ease;
+  flex: none;
+}
+.cf-confirm:active {
+  background: #333;
+  transform: scale(.97);
+}
+
+
+/* ============================================================
+   打勾开关：只有点方块才切换
+   ============================================================ */
+.cf-check {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 12.5px !important;
+  color: #1d1d1f !important;
+  padding: 4px 0 !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+.cf-check input {
+  display: none !important;
+}
+.cf-check .cf-label {
+  flex: 1 !important;
+  cursor: default !important;
+  pointer-events: none !important;   /* ← 文字不响应点击 */
+}
+.cf-box {
+  position: relative !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 5px !important;
+  border: 1.5px solid rgba(0, 0, 0, .2) !important;
+  background: #fff !important;
+  transition: all .2s ease !important;
+  flex: none !important;
+  cursor: pointer !important;        /* ← 方块才是点击区 */
+}
+.cf-box::after {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  transition: transform .18s cubic-bezier(.16, 1, .3, 1) !important;
+}
+.cf-check input:checked + .cf-box {
+  background: #1d1d1f !important;
+  border-color: #1d1d1f !important;
+}
+.cf-check input:checked + .cf-box::after {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.cf-box:active {
+  transform: scale(.92) !important;
+}

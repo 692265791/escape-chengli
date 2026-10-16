@@ -2,301 +2,184 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#f5f5f7">
+<meta name="theme-color" content="#0d0d0d">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>逃离程丽 - 恐怖校园文字冒险</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>逃离 程丽</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent!important}
 html,body{
-  background:#f5f5f7;color:#1d1d1f;
-  font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;
-  display:flex;align-items:center;justify-content:center;
-  min-height:100vh;padding:24px;
-  -webkit-tap-highlight-color:transparent!important;
+  background:#0a0a0a;color:#e8e8e8;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  min-height:100vh;overflow:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-/* 二次元壁纸层 */
-body::before{
-  content:"";position:fixed;inset:0;z-index:0;
-  background-image:var(--anime-bg, none);
-  background-size:cover;background-position:center;
-  background-attachment:fixed;
+.layer{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity 1s cubic-bezier(.4,0,.2,1)}
+
+/* 扫描线 + 暗角 */
+.crt{position:fixed;inset:0;pointer-events:none;z-index:1}
+.crt::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0px,rgba(0,0,0,.35) 1px,transparent 1px,transparent 5px);
+  opacity:.25;mix-blend-mode:multiply;
 }
-body::after{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:rgba(255,255,255,.55);
+.crt::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 95% 80% at 50% 50%,transparent 50%,rgba(0,0,0,.8) 100%);
 }
 
-.box{
-  position:relative;z-index:2;
-  max-width:420px;width:100%;
+/* 过场文字 */
+#intro{z-index:10}
+.intro-line{
+  position:absolute;text-align:center;padding:0 32px;
+  font-size:clamp(34px,9vw,56px);
+  font-weight:500;letter-spacing:.14em;
+  color:#e8e8e8;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 1.4s cubic-bezier(.16,1,.3,1),transform 1.4s cubic-bezier(.16,1,.3,1);
+}
+.intro-line.show{opacity:1;transform:translateY(0)}
+.intro-line.out{opacity:0;transform:translateY(-8px)}
+.intro-line.small{
+  font-size:clamp(18px,5vw,26px);
+  font-weight:400;letter-spacing:.4em;
+  color:rgba(232,232,232,.8);
 }
 
-h1{
-  font-size:22px;font-weight:800;letter-spacing:.15em;
-  color:#1d1d1f;margin:0 0 6px;text-align:center;
-  text-shadow:0 2px 12px rgba(255,255,255,.8);
+/* 轻触进入 */
+#enter{z-index:20;opacity:0;pointer-events:none;transition:opacity 1.2s ease}
+#enter.show{opacity:1;pointer-events:auto;cursor:pointer}
+.enter-inner{text-align:center}
+.enter-text{
+  font-size:clamp(18px,5vw,24px);
+  letter-spacing:.5em;
+  color:rgba(232,232,232,.7);
+  animation:tapPulse 2s ease-in-out infinite;
 }
-.sub{
-  font-size:11px;color:#86868b;letter-spacing:.3em;
-  margin:0 0 28px;text-align:center;
+@keyframes tapPulse{
+  0%,100%{opacity:.55}
+  50%{opacity:1}
 }
-
-.row{
-  display:flex;align-items:flex-start;gap:12px;
-  margin:12px 0;padding:18px 20px;
-  background:rgba(255,255,255,.65);
-  border:1px solid rgba(255,255,255,.7);
-  border-radius:20px;
-  backdrop-filter:blur(14px) saturate(160%);
-  -webkit-backdrop-filter:blur(14px) saturate(160%);
-  cursor:pointer;
-  transition:transform .25s cubic-bezier(.16,1,.3,1),
-             border-color .25s, background .25s, box-shadow .25s;
-}
-.row:hover{
-  border-color:rgba(255,255,255,.9);
-  background:rgba(255,255,255,.8);
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-.row.best{
-  border-color:#34c759;
-  background:rgba(52,199,89,.12);
-}
-.row.bad{opacity:.5}
-
-/* 状态点 */
-.dot{
-  width:10px;height:10px;border-radius:50%;
-  background:#c7c7cc;flex:none;margin-top:6px;
-  transition:background .3s;
-}
-.dot.ok{background:#34c759;box-shadow:0 0 10px rgba(52,199,89,.6)}
-.dot.bad{background:#ff3b30}
-.dot.test{background:#ff9500;animation:blink .5s infinite}
-@keyframes blink{50%{opacity:.2}}
-
-.name{
-  font-size:15px;color:#1d1d1f;font-weight:700;
-  letter-spacing:.03em;
-}
-.desc{font-size:12.5px;color:#6e6e73;margin-top:4px;line-height:1.5}
-.meta{font-size:11.5px;color:#86868b;margin-top:5px;font-variant-numeric:tabular-nums}
-
-/* 标签 */
-.tag{
-  display:inline-block;font-size:10.5px;font-weight:800;
-  padding:3px 10px;border-radius:999px;
-  letter-spacing:.12em;
-  margin-left:6px;vertical-align:middle;
-}
-.tag-blue{background:rgba(0,122,255,.15);color:#007aff}
-.tag-gray{background:rgba(120,120,128,.15);color:#6e6e73}
-.tag-yellow{background:rgba(255,204,0,.25);color:#b8860b}
-
-.acts{display:flex;gap:10px;margin-top:24px}
-button{
-  flex:1;padding:16px;border-radius:999px;
-  font-size:14px;font-weight:700;letter-spacing:.15em;
-  cursor:pointer;border:none;transition:all .2s;
-}
-#btnTest{
-  background:#1d1d1f;color:#fff;
-  box-shadow:0 6px 20px rgba(0,0,0,.18);
-}
-#btnTest:hover:not(:disabled){
-  background:#333;
-  transform:translateY(-2px);
-  box-shadow:0 10px 28px rgba(0,0,0,.22);
-}
-#btnTest:disabled{opacity:.4;cursor:not-allowed}
-
-.tip{
-  margin-top:22px;font-size:11.5px;color:#86868b;
-  text-align:center;letter-spacing:.05em;line-height:1.9;
-}
-.tip .warn{color:#b8860b;font-weight:700}
-
-/* 低端机 / 小屏：关毛玻璃 */
-@media (max-width: 480px), (prefers-reduced-motion: reduce){
-  .row{
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-    background:rgba(255,255,255,.9);
-  }
+.enter-hint{
+  margin-top:16px;
+  font-size:13px;
+  letter-spacing:.3em;
+  color:rgba(232,232,232,.3);
 }
 
-.seo-desc{
-  font-size:13px;line-height:1.8;color:#6e6e73;
-  text-align:center;max-width:360px;margin:0 auto 24px;
-}
+/* 跳转淡出 */
+body.leaving{opacity:0;transition:opacity .6s ease}
+</style>
 
-.seo-h1-sub{
-  font-size:15px;
-  color:#6e6e73;
-  letter-spacing:.15em;
-  text-align:center;
-  margin:4px 0 8px;
-  font-weight:500;
+<style>
+/* 新页面加载后，从 0 淡入到 1 */
+html {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+html.page-ready {
+  opacity: 1;
 }
 </style>
+<script>
+/* 页面一加载完，立刻淡入 */
+(function(){
+  function fadeIn(){
+    document.documentElement.classList.add("page-ready");
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function(){
+      requestAnimationFrame(fadeIn);
+    });
+  } else {
+    requestAnimationFrame(fadeIn);
+  }
+})();
+</script>
+
+
+<script>
+/* 主动注销所有 Service Worker + 清缓存（确保永远最新） */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(r){ r.unregister(); });
+  });
+}
+if ("caches" in window) {
+  caches.keys().then(function(keys){
+    keys.forEach(function(k){ caches.delete(k); });
+  });
+}
+</script>
+
 </head>
 <body>
-<div class="box">
-  <h1>逃离程丽</h1>
-  <p class="seo-h1-sub">恐怖校园文字冒险</p>
-  <p class="sub">CHOOSE ROUTE</p>
-  <p class="seo-desc">这是《逃离程丽》的官方入口页，提供多线路选择。点击下方按钮选择线路，进入游戏主页。</p>
 
-  <div id="list">
-    <div class="row" data-idx="0">
-      <span class="dot"></span>
-      <div style="flex:1">
-        <div class="name">线路 1<span class="tag tag-blue">推荐</span></div>
-        <div class="desc">Cloudflare · 自定义域名</div>
-        <div class="meta">未测速</div>
-      </div>
-    </div>
-    <div class="row" data-idx="1">
-      <span class="dot"></span>
-      <div style="flex:1">
-        <div class="name">线路 2<span class="tag tag-gray">备用</span></div>
-        <div class="desc">Cloudflare · 默认域名</div>
-        <div class="meta">未测速</div>
-      </div>
-    </div>
-    <div class="row" data-idx="2">
-      <span class="dot"></span>
-      <div style="flex:1">
-        <div class="name">线路 3<span class="tag tag-yellow">不推荐</span></div>
-        <div class="desc">GitHub Pages · 国内不稳</div>
-        <div class="meta">未测速</div>
-      </div>
-    </div>
+<div class="crt"></div>
+
+<!-- 阶段1：过场文字 -->
+<div class="layer" id="intro">
+  <div class="intro-line" id="t1">逃 离 程 丽</div>
+  <div class="intro-line small" id="t2">恐怖校园文字冒险</div>
+</div>
+
+<!-- 阶段2：轻触进入 -->
+<div class="layer" id="enter">
+  <div class="enter-inner">
+    <div class="enter-text">轻 触 进 入 主 页</div>
+    <div class="enter-hint">TAP TO ENTER</div>
   </div>
-
-  <div class="acts">
-    <button id="btnTest">开始测速</button>
-  </div>
-
-  <p class="tip">
-    点击开始测速 · 测完手动选择线路<br>
-    线路 1、2 为国内优化线路<br>
-    <span class="warn">线路 3：不参与推荐 · 国内访问可能变慢</span>
-  </p>
 </div>
 
 <script>
 (function(){
-  /* 随机二次元壁纸 */
-  var base = (window.innerWidth > window.innerHeight) ? "https://t.alcy.cc/pc" : "https://t.alcy.cc/mp";
-  var wallpaper = base + "?t=" + Date.now() + "_" + Math.random();
-  document.documentElement.style.setProperty("--anime-bg", "url('" + wallpaper + "')");
+  "use strict";
 
-  var TARGETS = [
-    { name: "线路 1", url: "https://chengli.dpdns.org" },
-    { name: "线路 2", url: "https://escape-chengli.pages.dev" },
-    { name: "线路 3", url: "https://692265791.github.io/escape-chengli" }
-  ];
+  function $(id){ return document.getElementById(id); }
 
-  /* 已选过直接跳 */
-  try {
-    var p = new URLSearchParams(location.search);
-    if (p.get("direct") === "1"){ location.replace("home.html"); return; }
-  } catch(e){}
+  function showLine(id, hold, done){
+    var el = $(id);
+    el.classList.remove("out");
+    el.classList.add("show");
+    setTimeout(function(){
+      el.classList.remove("show");
+      el.classList.add("out");
+      setTimeout(done, 1100);
+    }, hold);
+  }
 
-  var rows = document.querySelectorAll(".row");
-  var btnTest = document.getElementById("btnTest");
-
-  /* 点行跳转 */
-  rows.forEach(function(row){
-    row.addEventListener("click", function(){
-      var idx = parseInt(row.dataset.idx, 10);
-      var t = TARGETS[idx];
-      if (t) go(t.url);
+  /* 过场：两行文字，约 5 秒 */
+  showLine("t1", 1800, function(){
+    showLine("t2", 1600, function(){
+      setTimeout(function(){
+        $("intro").style.opacity = "0";
+        setTimeout(function(){
+          $("intro").style.display = "none";
+          $("enter").classList.add("show");
+        }, 800);
+      }, 300);
     });
   });
 
-  function go(url){
-    url += (url.indexOf("?") === -1 ? "?" : "&") + "direct=1";
-    location.replace(url);
+  /* 轻触进入 */
+  var entered = false;
+  function goHome(){
+    if (entered) return;
+    entered = true;
+    document.body.classList.add("leaving");
+    setTimeout(function(){ location.href = "home.html"; }, 650);
   }
 
-  /* 测速：用 <img> 加载小图 */
-  var TEST_IMG = "/static/test-speed.png";
+  $("enter").addEventListener("click", goHome);
+  $("enter").addEventListener("touchend", function(e){
+    e.preventDefault();
+    goHome();
+  }, { passive: false });
 
-  function ping(t, i, cb){
-    var start = Date.now();
-    var img = new Image();
-    var fin = false;
-    var timer = setTimeout(function(){
-      if (fin) return; fin = true;
-      cb({ ok: false, ms: 99999 });
-    }, 8000);
-
-    img.onload = function(){
-      if (fin) return; fin = true;
-      clearTimeout(timer);
-      cb({ ok: true, ms: Date.now() - start });
-    };
-    img.onerror = function(){
-      if (fin) return; fin = true;
-      clearTimeout(timer);
-      cb({ ok: false, ms: 99999 });
-    };
-    img.src = t.url + encodeURI(TEST_IMG) + "?t=" + Date.now() + "_" + i;
-  }
-
-  btnTest.addEventListener("click", function(){
-    btnTest.disabled = true;
-    btnTest.textContent = "测速中…";
-
-    rows.forEach(function(row){
-      row.classList.remove("best", "bad");
-      row.querySelector(".dot").className = "dot test";
-      row.querySelector(".meta").textContent = "测速中…";
-    });
-
-    var done = 0;
-    var bestMs = 99999;
-    var bestIdx = -1;
-
-    function checkDone(){
-      if (done < TARGETS.length) return;
-      if (bestIdx >= 0){
-        rows[bestIdx].classList.add("best");
-        btnTest.textContent = "去 " + TARGETS[bestIdx].name;
-        btnTest.disabled = false;
-        btnTest.onclick = function(){ go(TARGETS[bestIdx].url); };
-      } else {
-        btnTest.textContent = "全部超时";
-        btnTest.disabled = false;
-        btnTest.onclick = function(){ go(TARGETS[0].url); };
-      }
-    }
-
-    TARGETS.forEach(function(t, i){
-      ping(t, i, function(r){
-        done++;
-        var row = rows[i];
-        var dot = row.querySelector(".dot");
-        var meta = row.querySelector(".meta");
-
-        if (!r.ok){
-          dot.className = "dot bad";
-          meta.textContent = "超时";
-          row.classList.add("bad");
-        } else {
-          dot.className = "dot ok";
-          meta.textContent = r.ms + " ms";
-          /* ⭐ 线路 3（i===2）不参与推荐 */
-          if (i !== 2 && r.ms < bestMs){ bestMs = r.ms; bestIdx = i; }
-        }
-        checkDone();
-      });
-    });
-  });
 })();
 </script>
+
+
+
 </body>
 </html>
