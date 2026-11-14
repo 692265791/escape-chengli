@@ -2,57 +2,38 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#E6E8E9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>逃离 程丽</title>
+<title>逃离 程丽 · 中式校园悬疑文字冒险</title>
 <link rel="stylesheet" href="static/css/home.css">
 <link rel="stylesheet" href="static/css/dbg.css">
 
-<style>
-/* 页面跳转淡出 */
-body.leaving { opacity: 0; transition: opacity .35s ease; }
-</style>
 <script>
-/* 拦截所有 a[href$=".html"] 点击，加淡出 */
+/* 页面跳转淡出（跳过新窗口外链，修复原版 target=_blank 失效问题） */
 document.addEventListener("click", function(e){
   var a = e.target.closest && e.target.closest('a[href$=".html"]');
   if (!a) return;
   var href = a.getAttribute("href");
-  if (!href || href.startsWith("http") || href.startsWith("#")) return;
+  if (!href || href.startsWith("http") || href.startsWith("#") || a.target === "_blank") return;
   e.preventDefault();
   document.body.classList.add("leaving");
-  setTimeout(function(){ location.href = href; }, 360);
+  setTimeout(function(){ location.href = href; }, 320);
 }, true);
 </script>
 
-
 <style>
-/* 新页面加载后，从 0 淡入到 1 */
-html {
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-html.page-ready {
-  opacity: 1;
-}
+html{opacity:0;transition:opacity .5s ease}
+html.page-ready{opacity:1}
 </style>
 <script>
-/* 页面一加载完，立刻淡入 */
 (function(){
-  function fadeIn(){
-    document.documentElement.classList.add("page-ready");
-  }
+  function fadeIn(){ document.documentElement.classList.add("page-ready"); }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function(){
-      requestAnimationFrame(fadeIn);
-    });
-  } else {
-    requestAnimationFrame(fadeIn);
-  }
+    document.addEventListener("DOMContentLoaded", function(){ requestAnimationFrame(fadeIn); });
+  } else { requestAnimationFrame(fadeIn); }
 })();
 </script>
-
 
 <script>
 /* 主动注销所有 Service Worker + 清缓存（确保永远最新） */
@@ -68,94 +49,111 @@ if ("caches" in window) {
 }
 </script>
 
+<script src="static/js/intro-anim.js"></script>
+<script src="static/js/home.js"></script>
+<script src="static/js/dbg.js"></script>
+
 </head>
 <body>
 
-<!-- CRT 层：扫描线 + 暗角 + 噪点 + 闪烁 -->
-<div class="crt"><div class="flicker"></div></div>
+<canvas id="dustCanvas" aria-hidden="true"></canvas>
+<div class="scanline-overlay" aria-hidden="true"></div>
 
 <!-- ==================== 顶栏 ==================== -->
 <header class="nav">
-  <a class="brand" href="home.html">逃离 程丽</a>
-  <a class="nav-gh" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">GitHub →</a>
+  <a class="brand" href="home.html">逃离<span class="b-blood">程丽</span></a>
+  <nav class="nav-right">
+    <a class="nav-link" href="https://share.weiyun.com/j4xgGst7" target="_blank" rel="noopener noreferrer">此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情</a>
+    <a class="nav-link" href="https://github.com/692265791/escape-chengli" target="_blank" rel="noopener">GitHub</a>
+  </nav>
 </header>
 
-<!-- ==================== 主体 ==================== -->
 <main>
 
+  <!-- ==================== Hero ==================== -->
   <section class="hero">
-    <h1>逃离 程丽</h1>
-    <p class="lead">恐怖校园文字冒险 · 第十章「放假」</p>
-    <div class="acts">
-      <a class="btn dark" href="disclaimer.html" id="btnStart">开始游戏</a>
-      <a class="btn plain" href="#more">了解更多</a>
+    <div class="hero-badge anim-float"><span class="bd-dot"></span>3.5 · 全新引擎上线</div>
+    <h1>逃离<span class="h-blood">程丽</span></h1>
+    <p class="lead">中式校园悬疑文字冒险 · 三章可玩 · 八种结局</p>
+    <p class="whisper anim-flicker">走廊尽头的灯，又灭了一盏。</p>
+    <div class="hero-acts">
+      <button class="btn-primary" id="btnStart" type="button">开 始 游 戏 <span aria-hidden="true">→</span></button>
+      <button class="btn-ghost more-btn" data-open="log" type="button">📜 更新日志</button>
     </div>
-    <div class="mc-badge" aria-hidden="true">
-      <span class="mc-line-1">第十章 · 放假</span>
-      <span class="mc-line-2">第三章 · 放假 已更新</span>
-    </div>
+    <p class="hero-meta">结局收集 <b id="endQuick">0 / 8</b> · 含 2 个隐藏结局</p>
   </section>
 
-  <section class="notice-one">
-    <div class="no-tag">个人站</div>
-    <div class="no-text">作者的小站 · 自留地，随缘更新</div>
-    <a class="no-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener">去看看 →</a>
+  <!-- ==================== 功能卡片 ==================== -->
+  <section class="cards" aria-label="更多内容">
+    <button class="card more-btn" data-open="log" type="button">
+      <span class="c-ico">📜</span><span class="c-title">更新日志</span>
+      <span class="c-sub">3.5 → v1.0 全记录</span>
+    </button>
+    <button class="card more-btn" data-open="endings" type="button">
+      <span class="c-ico">🏆</span><span class="c-title">结局收集</span>
+      <span class="c-sub">玩到结局自动记录</span>
+      <span class="c-tag" id="endQuick">0 / 8</span>
+    </button>
+    <button class="card more-btn" data-open="contact" type="button">
+      <span class="c-ico">📞</span><span class="c-title">联系作者</span>
+      <span class="c-sub">QQ · 快手 · B站 …</span>
+    </button>
+    <button class="card more-btn" data-open="sponsor" type="button">
+      <span class="c-ico">🤍</span><span class="c-title">赞助作者</span>
+      <span class="c-sub">个人非商业 · 自费开发</span>
+    </button>
+    <a class="card" href="bouncy.html" target="_blank" rel="noopener">
+      <span class="c-ico">🎮</span><span class="c-title">弹力球</span>
+      <span class="c-sub">声控解压小游戏</span>
+    </a>
+    <a class="card is-blood" href="https://share.weiyun.com/j4xgGst7" target="_blank" rel="noopener noreferrer">
+      <span class="c-ico">📌</span><span class="c-title">此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情</span>
+      <span class="c-sub">最新动态 · 微云笔记</span>
+    </a>
   </section>
 
-  <section class="block" id="about">
-    <h2>弹力球小游戏</h2>
-    <div class="bouncy-block">
-      <div class="bouncy-ico">🎮</div>
+  <!-- ==================== 弹力球介绍 ==================== -->
+  <section class="bouncy-block" aria-label="弹力球小游戏">
+    <div class="bouncy-inner anim-float">
+      <span class="bouncy-ico">🎮</span>
       <div class="bouncy-body">
         <h3>声控弹力球 · Bouncy Balls</h3>
-        <p>小球会随着声音的变化而跳动，可以用来监测声音强度。轻松解压，随便玩。</p>
+        <p>小球随声音跳动，监测声音强度。轻松解压，随便玩。</p>
       </div>
-      <a class="bouncy-btn" href="bouncy.html" target="_blank" rel="noopener">进入小游戏 <span>→</span></a>
+      <a class="bouncy-btn" href="bouncy.html" target="_blank" rel="noopener">进入 →</a>
     </div>
   </section>
 
-  <section class="block" id="more">
-    <h2>更多内容</h2>
-    <div class="more-grid">
-      <button class="more-btn" data-open="log">
-        <div class="mb-ico">📜</div><div class="mb-txt">更新日志</div><div class="mb-sub">v1.0 → v4.0</div>
-      </button>
-      <button class="more-btn" data-open="endings">
-        <div class="mb-ico">🏆</div><div class="mb-txt">结局收集</div><div class="mb-sub" id="endQuick">0 / 8</div>
-      </button>
-      <button class="more-btn" data-open="contact">
-        <div class="mb-ico">📞</div><div class="mb-txt">联系作者</div><div class="mb-sub">QQ / 快手 / B站 …</div>
-      </button>
-      <button class="more-btn" data-open="sponsor">
-        <div class="mb-ico">❤</div><div class="mb-txt">赞助作者</div><div class="mb-sub">个人非商业</div>
-      </button>
-      <a class="more-btn" href="bouncy.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-        <div class="mb-ico">🎮</div><div class="mb-txt">弹力球</div><div class="mb-sub">声控小游戏</div>
-      </a>
-      <a class="more-btn" href="https://cxl.dpdns.org/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-        <div class="mb-ico" style="overflow:hidden;padding:0"><img src="static/img/联系作者/个人站.png" alt="个人站" style="width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>
-        <div class="mb-txt">个人站</div><div class="mb-sub">作者自用 · 日常贴文</div>
-      </a>
-    </div>
-  </section>
+  <!-- ==================== 页脚 ==================== -->
+  <footer class="foot">
+    <p class="foot-links"><a href="home.html">首页</a> · <a href="https://share.weiyun.com/j4xgGst7" target="_blank" rel="noopener noreferrer">此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情</a></p>
+    <span class="foot-name">逃离程丽 ESCAPE CHENGLI</span>
+    <span class="foot-slogan">个人非商业 · CC BY 4.0 · 悰城中学教务处 存档编号 3.5</span>
+    <p class="foot-copy">© 2026 逃离程丽 · 人物与剧情均为虚构，与现实无关</p>
+  </footer>
 
 </main>
-
-<footer class="foot">
-  <div class="foot-links"><a href="home.html">首页</a> · <a href="#more">更多</a></div>
-  <div class="foot-info">
-    <span class="foot-name">逃离程丽 ESCAPE CHENGLI</span>
-    <span class="foot-slogan">个人非商业 · CC BY 4.0</span>
-  </div>
-  <div class="foot-copy">© 2026 逃离程丽 · 保留所有权利</div>
-</footer>
 
 <div id="toolZone">
   <button id="dlSrc" type="button">📦 下载源码</button>
   <button id="dbgOpen" type="button">🐞 调试面板</button>
-</div>
 
-<!-- ==================== 弹窗 1：更新日志 ==================== -->
+
 <div class="panel" id="panelLog">
   <div class="panel-card">
     <div class="panel-head">
@@ -163,7 +161,8 @@ if ("caches" in window) {
       <button class="panel-x" data-close>×</button>
     </div>
     <div class="panel-tabs">
-      <button class="panel-tab active" data-tab="v4">v4.0</button>
+      <button class="panel-tab active" data-tab="v31">3.5</button>
+      <button class="panel-tab" data-tab="v4">v3.3</button>
       <button class="panel-tab" data-tab="v3">v3.0</button>
       <button class="panel-tab" data-tab="v2">v2.0</button>
       <button class="panel-tab" data-tab="v1">v1.0</button>
@@ -180,7 +179,7 @@ if ("caches" in window) {
       <button class="panel-x" data-close>×</button>
     </div>
     <div class="panel-body">
-      <p class="panel-sub">玩到结局会自动记录 · 共 8 个 · 其中 2 个隐藏</p>
+      <p class="panel-sub">玩到结局会自动记录 · 共 8 个 · 其中 2 个隐藏 · 3.5 起死亡结局已移除</p>
       <div class="endings-grid" id="endingsGrid"></div>
       <p class="endings-hint" id="endingsHint"></p>
     </div>
@@ -222,9 +221,14 @@ if ("caches" in window) {
           <div class="contact-info"><b>网易云音乐</b><span>作者云村主页</span></div>
           <div class="contact-arrow">→</div>
         </a>
-        <a class="contact-card" href="https://cxl.dpdns.org/" target="_blank" rel="noopener">
-          <div class="contact-icon"><img src="static/img/联系作者/个人站.png" alt="个人站"></div>
-          <div class="contact-info"><b>个人站</b><span>作者自用 · 日常贴文</span></div>
+        <a class="contact-card" href="https://share.weiyun.com/j4xgGst7" target="_blank" rel="noopener noreferrer">
+          <div class="contact-icon">📌</div>
+          <div class="contact-info"><b>此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情</b><span>最新动态 · 微云笔记</span></div>
           <div class="contact-arrow">→</div>
         </a>
       </div>
@@ -247,18 +251,33 @@ if ("caches" in window) {
   </div>
 </div>
 
-<!-- ==================== 弹窗 5：公告 ==================== -->
+<!-- ==================== 弹窗 5：此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情 ==================== -->
 <div class="panel force" id="panelNotice">
   <div class="panel-card">
     <div class="panel-head">
       <div class="panel-title"><span class="panel-dot"></span><span>公 告</span></div>
-      <span class="panel-ver">v4.0</span>
+      <span class="panel-ver">v3.5</span>
     </div>
     <div class="panel-body">
-      <h2 class="notice-h2">作者的小站</h2>
-      <p style="line-height:1.9;color:#5a7a6a;font-size:15px;margin:0 0 10px">
-        作者自己搭的小站，平时发发日常、写写贴文，感兴趣可以来看看。<br>
-        <a href="https://cxl.dpdns.org/" target="_blank" rel="noopener" style="color:#7dffb3;font-weight:700">前往小站 →</a>
+      <h2 class="notice-h2">此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情</h2>
+      <p style="line-height:1.9;color:#8a8578;font-size:15px;margin:0 0 10px">
+        版本更新与动态会发布在微云笔记。<br>
+        <a href="https://share.weiyun.com/j4xgGst7" target="_blank" rel="noopener noreferrer" style="color:#c9a0a0;font-weight:700">查看此版本为测试版！
+还没有任何剧情
+在接下来的更新中
+我们将重构剧情！
+带来更加真实、
+更加好玩的剧情 →</a>
       </p>
     </div>
     <div class="panel-foot">
@@ -271,12 +290,11 @@ if ("caches" in window) {
   </div>
 </div>
 
-<!-- ==================== 调试面板 ==================== -->
 <div id="dbgPanel">
   <div class="dbg-head">
     <div class="dbg-title"><span class="dbg-dot"></span><span>调试面板</span></div>
     <div class="dbg-head-right">
-      <span class="dbg-hint">v4.0</span>
+      <span class="dbg-hint">v3.3</span>
       <button id="dbgClose" class="dbg-x">×</button>
     </div>
   </div>
@@ -373,10 +391,13 @@ if ("caches" in window) {
 <div id="dbgToast"></div>
 
 <script src="static/lib/jszip.min.js"></script>
+<script src="static/js/intro-anim.js"></script>
 <script src="static/js/home.js"></script>
 <script src="static/js/dbg.js"></script>
 
 
-
+<script>
+  if (window.EC_ANIM) EC_ANIM.initHome("dustCanvas");
+</script>
 </body>
 </html>

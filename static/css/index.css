@@ -1,0 +1,205 @@
+/* ============================================================
+   逃离程丽 · index.css —— 3.1 电影级开场（程序化动效版）
+   布局与材质层；核心动画全部由 intro-anim.js 的
+   Canvas / SVG / JS 物理驱动（本文件不承载装饰性关键帧）。
+   ============================================================ */
+
+:root{
+  --mist:#E6E8E9;
+  --chalk:#4A6572;
+  --chalk-deep:#3A505C;
+  --blood:#8C2B2B;
+  --blood-deep:#5C1717;
+  --paper:#F6F2E7;
+  --ink:#20262B;
+  --mist-dim:rgba(230,232,233,.72);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",STSong,SimSun,Georgia,serif;
+  --sans:"PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  background:#0b0f11;color:var(--mist);
+  font-family:var(--sans);
+  overflow-x:hidden;min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+html{opacity:0;transition:opacity .6s ease}
+html.page-ready{opacity:1}
+
+/* ---------- 视差·背景层（JS translate3d 驱动） ---------- */
+.plx-bg{position:fixed;inset:-24px;z-index:0;will-change:transform}
+.bg-photo{
+  position:absolute;inset:0;
+  background-image:url("../img/场景背景（正常）/楼道.webp");
+  background-size:cover;background-position:center 42%;
+  filter:blur(6px) brightness(.4) saturate(.7) contrast(1.06);
+}
+.bg-veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 92% 72% at 50% 36%, rgba(10,14,16,.10) 0%, rgba(10,14,16,.5) 72%, rgba(6,9,10,.78) 100%),
+    linear-gradient(180deg, rgba(11,15,17,.42) 0%, rgba(11,15,17,.08) 36%, rgba(11,15,17,.6) 100%);
+}
+.grain{
+  position:absolute;inset:0;opacity:.10;pointer-events:none;
+  background-image:repeating-conic-gradient(rgba(255,255,255,.05) 0% .7%, transparent .7% 1.4%);
+  background-size:3px 3px;
+}
+
+/* ---------- 视差·前景层：fx 画布 ---------- */
+#fxCanvas{
+  position:fixed;inset:0;z-index:30;
+  width:100%;height:100%;
+  pointer-events:none;
+  will-change:transform;
+}
+
+/* ---------- 印泥时间戳 ---------- */
+.stamp-time{
+  position:fixed;top:14px;right:14px;z-index:40;
+  font-family:var(--sans);
+  font-size:9.5px;letter-spacing:.14em;line-height:1.7;
+  color:rgba(190,88,88,.92);
+  text-shadow:0 0 6px rgba(140,43,43,.4);
+  border:1.5px solid rgba(140,43,43,.55);
+  border-radius:3px;
+  padding:6px 10px;
+  transform:rotate(-2.5deg);
+  background:rgba(20,8,8,.35);
+}
+.stamp-time b{font-family:var(--serif);font-size:11px;letter-spacing:.08em;color:#c46a6a}
+
+/* ---------- 内容层 ---------- */
+.poster{
+  position:relative;z-index:20;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(18px,4.5vh,44px) 20px calc(26px + env(safe-area-inset-bottom,0px));
+  will-change:transform;
+}
+.poster-tag{
+  font-size:11px;letter-spacing:.5em;text-indent:.5em;
+  color:var(--mist-dim);opacity:.7;margin-top:1vh;
+}
+
+/* ---------- 场景 B：血迹书写 ---------- */
+.title-wrap{margin-top:clamp(8px,3vh,34px);text-align:center;width:100%}
+.title-svg{
+  width:min(760px,96vw);
+  display:block;margin:0 auto;
+  overflow:visible;
+}
+.bt-char{
+  font-family:var(--serif);
+  font-size:172px;
+  fill:rgba(140,43,43,0);
+  fill-opacity:1;
+  stroke:#7d1f1f;
+  stroke-width:2.4;
+  transition:fill .7s ease;
+}
+.bt-char.inked{
+  fill:rgba(150,45,45,.94);
+  text-shadow:none;
+  filter:drop-shadow(0 0 14px rgba(140,43,43,.45));
+}
+.poster-sub{
+  margin-top:6px;
+  font-family:var(--serif);
+  font-size:clamp(12px,2.6vw,16px);
+  letter-spacing:.58em;text-indent:.58em;
+  color:var(--mist-dim);
+}
+
+/* ---------- 场景 E：红线缝合档案卡 ---------- */
+.dossier{
+  margin-top:clamp(18px,4vh,40px);
+  width:min(560px,94vw);
+  position:relative;
+}
+.stitch-svg{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;overflow:visible;
+}
+.stitch-svg rect{
+  fill:none;
+  stroke:rgba(140,43,43,.75);
+  stroke-width:1.6;
+  stroke-linecap:round;
+}
+.dossier-card{
+  background:
+    repeating-linear-gradient(0deg, rgba(120,104,64,.045) 0px, rgba(120,104,64,.045) 1px, transparent 1px, transparent 22px),
+    linear-gradient(168deg, #F8F4E8 0%, #F1EBD8 58%, #E7DFC6 100%);
+  color:var(--ink);
+  border-radius:4px;
+  padding:22px 24px 20px;
+  box-shadow:0 18px 44px rgba(0,0,0,.5), 0 2px 0 rgba(255,255,255,.25) inset;
+  transform:rotate(-.5deg);
+}
+.dossier-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding-bottom:10px;margin-bottom:12px;
+  border-bottom:1px dashed #D8D2BE;
+}
+.dossier-title{
+  font-family:var(--serif);
+  font-size:15.5px;font-weight:600;letter-spacing:.12em;
+  color:#3d3527;white-space:nowrap;
+}
+.dossier-no{
+  font-size:10px;letter-spacing:.2em;color:var(--blood);
+  border:1px solid rgba(140,43,43,.4);
+  padding:3px 8px;border-radius:3px;white-space:nowrap;
+}
+.dossier-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.dossier-list li{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:13px;line-height:1.7;color:#3a3322;
+}
+.dossier-list .mark{
+  flex:none;
+  font-weight:700;letter-spacing:.02em;
+  color:var(--blood);
+}
+
+/* ---------- CTA ---------- */
+.poster-acts{
+  margin-top:clamp(18px,3.6vh,32px);
+  display:flex;justify-content:center;
+}
+.btn-enter{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--serif);
+  font-size:16px;letter-spacing:.3em;text-indent:.1em;
+  color:#F5F3EC;
+  background:linear-gradient(180deg,#55717F,var(--chalk) 55%,var(--chalk-deep));
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:4px;
+  padding:14px 44px;
+  text-decoration:none;
+  box-shadow:0 10px 26px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.2) inset;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease, filter .18s ease;
+}
+.btn-enter:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.55);filter:brightness(1.06)}
+.btn-enter:active{transform:translateY(1px)}
+
+/* ---------- 致谢：机密档案脚注 ---------- */
+.poster-foot{
+  margin-top:auto;padding-top:24px;text-align:center;
+  font-size:9px;letter-spacing:.14em;line-height:2;
+  color:rgba(230,232,233,.38);
+}
+.poster-foot .foot-tiny{color:rgba(230,232,233,.28);letter-spacing:.08em}
+
+/* ---------- 小屏 ---------- */
+@media (max-width:480px){
+  .title-svg{width:100vw}
+  .bt-char{font-size:190px}
+  .dossier-card{padding:18px 16px 16px}
+  .dossier-list li{font-size:12px;line-height:1.65}
+  .stamp-time{font-size:8.5px;top:10px;right:10px;padding:5px 8px}
+  .stamp-time b{font-size:10px}
+}

@@ -71,10 +71,22 @@ var REG={
   vignette:vignette, static:staticFx, heartbeat:heartbeat, zoom:zoom,
   spriteGlitch:spriteGlitch, spriteShake:spriteShake, spriteZoom:spriteZoom
 };
+/* 高刺激特效清单：reduced-motion / 关闭动效时跳过（光敏保护） */
+var HEAVY={flash:1,shake:1,glitch:1,invert:1,blur:1,static:1,heartbeat:1,zoom:1,
+  spriteGlitch:1,spriteShake:1,spriteZoom:1};
+function reduceOn(){
+  try{
+    if(document.body&&document.body.classList.contains("no-anim")) return true;
+    if(document.body&&document.body.classList.contains("no-horror")) return true;
+    return !!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }catch(e){ return false; }
+}
 function play(list){
   if(!list) return;
+  var reduced=reduceOn();
   (Array.isArray(list)?list:[list]).forEach(function(o){
     if(!o||!o.type) return;
+    if(reduced&&HEAVY[o.type]) return;   /* 降级：跳过强刺激视效 */
     var fn=REG[o.type];
     if(fn){ try{ fn(o); }catch(e){ console.warn("fx err",o.type,e); } }
     else console.warn("未知特效:",o.type);
@@ -82,4 +94,6 @@ function play(list){
 }
 function reg(name,fn){ REG[name]=fn; }
 window.__FX={ play:play, reg:reg, types:REG };
+/* 事件解耦：game.js 只派发 storyfx 事件，不再直接调用特效实现 */
+window.addEventListener("storyfx", function(e){ try{ play(e.detail); }catch(err){} });
 })();

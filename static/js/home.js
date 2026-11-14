@@ -12,6 +12,20 @@
 
   /* ---------- 更新日志数据 ---------- */
   var LOG = {
+    v31: [
+      { cat: "🚀 引擎升级", items: [
+        "全新 3.5 引擎上线",
+        "引擎级打字机动画重构，更加丝滑"
+      ]},
+      { cat: "🛡 体验保护", items: [
+        "新增选项防误触保护机制",
+        "底层性能优化，消除卡顿，全设备适配"
+      ]},
+      { cat: "🗑 做减法", items: [
+        "正式废弃糟糕的「恐惧值」死亡设定",
+        "彻底移除作弊菜单，还原纯粹体验"
+      ]}
+    ],
     v4: [
       { cat: "🎨 视觉重构", items: [
         "去除二次元/动态壁纸背景",
@@ -34,7 +48,7 @@
         "样式独立，可被 game.html 复用"
       ]},
       { cat: "🌐 首页优化", items: [
-        "版本号升级至 v4.0",
+        "版本号升级至 v3.3",
         "静态资源加版本号（防缓存）"
       ]}
     ],
@@ -130,7 +144,7 @@
     document.querySelectorAll(".more-btn").forEach(function (b) {
       b.addEventListener("click", function () {
         var t = b.dataset.open;
-        if (t === "log") { renderLog("v3"); openPanel("panelLog"); }
+        if (t === "log") { renderLog("v31"); openPanel("panelLog"); }
         else if (t === "endings") { renderEndings(); openPanel("panelEndings"); }
         else if (t === "contact") { openPanel("panelContact"); }
         else if (t === "sponsor") { openPanel("panelSponsor"); }

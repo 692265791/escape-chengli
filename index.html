@@ -2,184 +2,109 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#0b0f11">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>逃离 程丽</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent!important}
-html,body{
-  background:#0a0a0a;color:#e8e8e8;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
-  min-height:100vh;overflow:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-.layer{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity 1s cubic-bezier(.4,0,.2,1)}
-
-/* 扫描线 + 暗角 */
-.crt{position:fixed;inset:0;pointer-events:none;z-index:1}
-.crt::before{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0px,rgba(0,0,0,.35) 1px,transparent 1px,transparent 5px);
-  opacity:.25;mix-blend-mode:multiply;
-}
-.crt::after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 95% 80% at 50% 50%,transparent 50%,rgba(0,0,0,.8) 100%);
-}
-
-/* 过场文字 */
-#intro{z-index:10}
-.intro-line{
-  position:absolute;text-align:center;padding:0 32px;
-  font-size:clamp(34px,9vw,56px);
-  font-weight:500;letter-spacing:.14em;
-  color:#e8e8e8;
-  opacity:0;transform:translateY(12px);
-  transition:opacity 1.4s cubic-bezier(.16,1,.3,1),transform 1.4s cubic-bezier(.16,1,.3,1);
-}
-.intro-line.show{opacity:1;transform:translateY(0)}
-.intro-line.out{opacity:0;transform:translateY(-8px)}
-.intro-line.small{
-  font-size:clamp(18px,5vw,26px);
-  font-weight:400;letter-spacing:.4em;
-  color:rgba(232,232,232,.8);
-}
-
-/* 轻触进入 */
-#enter{z-index:20;opacity:0;pointer-events:none;transition:opacity 1.2s ease}
-#enter.show{opacity:1;pointer-events:auto;cursor:pointer}
-.enter-inner{text-align:center}
-.enter-text{
-  font-size:clamp(18px,5vw,24px);
-  letter-spacing:.5em;
-  color:rgba(232,232,232,.7);
-  animation:tapPulse 2s ease-in-out infinite;
-}
-@keyframes tapPulse{
-  0%,100%{opacity:.55}
-  50%{opacity:1}
-}
-.enter-hint{
-  margin-top:16px;
-  font-size:13px;
-  letter-spacing:.3em;
-  color:rgba(232,232,232,.3);
-}
-
-/* 跳转淡出 */
-body.leaving{opacity:0;transition:opacity .6s ease}
-</style>
+<title>逃离 程丽 · 3.5</title>
+<link rel="stylesheet" href="static/css/index.css">
 
 <style>
-/* 新页面加载后，从 0 淡入到 1 */
-html {
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-html.page-ready {
-  opacity: 1;
-}
+/* 页面加载淡入 */
+html{opacity:0;transition:opacity .6s ease}
+html.page-ready{opacity:1}
+/* 频闪遮罩 */
+#flickerOverlay{position:fixed;inset:0;z-index:500;pointer-events:none;opacity:0;transition:opacity 40ms linear}
+/* 扫描线（环境层） */
+.scanline-overlay{position:fixed;top:0;left:0;width:100%;height:10px;
+  background:linear-gradient(to bottom,transparent,rgba(74,101,114,.12),transparent);
+  animation:scan 8s linear infinite;pointer-events:none;z-index:600}
+@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@media (prefers-reduced-motion: reduce){.scanline-overlay{display:none}}
 </style>
+
 <script>
-/* 页面一加载完，立刻淡入 */
 (function(){
-  function fadeIn(){
-    document.documentElement.classList.add("page-ready");
-  }
+  function fadeIn(){ document.documentElement.classList.add("page-ready"); }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function(){
-      requestAnimationFrame(fadeIn);
-    });
-  } else {
-    requestAnimationFrame(fadeIn);
-  }
+    document.addEventListener("DOMContentLoaded", function(){ requestAnimationFrame(fadeIn); });
+  } else { requestAnimationFrame(fadeIn); }
 })();
+/* 注销 SW + 清缓存（确保永远最新） */
+if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then(function(r){ r.forEach(function(x){ x.unregister(); }); });
+if ("caches" in window) caches.keys().then(function(k){ k.forEach(function(x){ caches.delete(x); }); });
 </script>
-
-
-<script>
-/* 主动注销所有 Service Worker + 清缓存（确保永远最新） */
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(r){ r.unregister(); });
-  });
-}
-if ("caches" in window) {
-  caches.keys().then(function(keys){
-    keys.forEach(function(k){ caches.delete(k); });
-  });
-}
-</script>
-
 </head>
 <body>
 
-<div class="crt"></div>
-
-<!-- 阶段1：过场文字 -->
-<div class="layer" id="intro">
-  <div class="intro-line" id="t1">逃 离 程 丽</div>
-  <div class="intro-line small" id="t2">恐怖校园文字冒险</div>
+<!-- 视差·背景层：教学楼走廊（虚化暗调） -->
+<div class="plx-bg" aria-hidden="true">
+  <div class="bg-photo"></div>
+  <div class="bg-veil"></div>
+  <div class="grain"></div>
 </div>
 
-<!-- 阶段2：轻触进入 -->
-<div class="layer" id="enter">
-  <div class="enter-inner">
-    <div class="enter-text">轻 触 进 入 主 页</div>
-    <div class="enter-hint">TAP TO ENTER</div>
+<!-- 视差·前景层：粉笔灰 / 试卷遗书 / 血滴（Canvas 程序化） -->
+<canvas id="fxCanvas" aria-hidden="true"></canvas>
+
+<!-- 日光灯频闪遮罩 -->
+<div id="flickerOverlay" aria-hidden="true"></div>
+
+<div class="scanline-overlay" aria-hidden="true"></div>
+
+<!-- 印泥时间戳 -->
+<div class="stamp-time">最后更新时间<br><b>2026.11.14 19:56 更新发布</b></div>
+
+<!-- 视差·中景层：标题与档案 -->
+<main class="poster">
+
+  <p class="poster-tag">悰城中学 · 教务处 · 存档编号 3.5</p>
+
+  <!-- 场景 B：SVG 血迹书写 -->
+  <div class="title-wrap">
+    <svg id="bloodTitle" viewBox="0 0 900 235" aria-label="逃离 程丽">
+      <text class="bt-char" x="115" y="178" text-anchor="middle">逃</text>
+      <text class="bt-char" x="338" y="178" text-anchor="middle">离</text>
+      <text class="bt-char" x="561" y="178" text-anchor="middle">程</text>
+      <text class="bt-char" x="784" y="178" text-anchor="middle">丽</text>
+    </svg>
+    <p class="poster-sub">中 式 校 园 悬 疑 文 字 冒 险</p>
   </div>
-</div>
 
+  <!-- 场景 E：红线缝合的档案卡 -->
+  <section class="dossier" aria-label="3.5 版本档案">
+    <svg class="stitch-svg" aria-hidden="true"><rect id="stitchRect" x="0.4%" y="0.4%" width="99.2%" height="99.2%" rx="4"/></svg>
+    <div class="dossier-card">
+      <header class="dossier-head">
+        <h2 class="dossier-title">3.5 版本档案 · 更新记录</h2>
+        <span class="dossier-no">密 · 已启封</span>
+      </header>
+      <ul class="dossier-list">
+        <li><span class="mark">【底层重构】</span>彻底删除旧版恐惧值，移除作弊菜单，纯粹体验！</li>
+        <li><span class="mark">【全端丝滑】</span>全新打字机引擎，消除卡顿，老旧设备满帧运行！</li>
+        <li><span class="mark">【沉浸演出】</span>融合物理粒子与中式诡异视差，重新定义网页惊悚！</li>
+        <li><span class="mark">【极致交互】</span>新增进度防误触与全时轴回退，容错率拉满！</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 行动区（强制看完开场，无跳过入口） -->
+  <div class="poster-acts">
+    <a class="btn-enter" href="home.html">进 入 游 戏 <span aria-hidden="true">→</span></a>
+  </div>
+
+  <!-- 致谢：机密档案脚注 -->
+  <footer class="poster-foot">
+    <p>Engine Powered by: DeepSeek4.1Flash / Tencent HY4 / Qwen3.8 / Kimi 3.1K</p>
+    <p>Special Thanks: DeepSeek / 腾讯混元 / 阿里千问 / GitHub</p>
+    <p class="foot-tiny">© 2026 逃离程丽 ESCAPE CHENGLI · ZHT · CC BY 4.0 · 本作纯属虚构</p>
+  </footer>
+
+</main>
+
+<script src="static/js/intro-anim.js"></script>
 <script>
-(function(){
-  "use strict";
-
-  function $(id){ return document.getElementById(id); }
-
-  function showLine(id, hold, done){
-    var el = $(id);
-    el.classList.remove("out");
-    el.classList.add("show");
-    setTimeout(function(){
-      el.classList.remove("show");
-      el.classList.add("out");
-      setTimeout(done, 1100);
-    }, hold);
-  }
-
-  /* 过场：两行文字，约 5 秒 */
-  showLine("t1", 1800, function(){
-    showLine("t2", 1600, function(){
-      setTimeout(function(){
-        $("intro").style.opacity = "0";
-        setTimeout(function(){
-          $("intro").style.display = "none";
-          $("enter").classList.add("show");
-        }, 800);
-      }, 300);
-    });
-  });
-
-  /* 轻触进入 */
-  var entered = false;
-  function goHome(){
-    if (entered) return;
-    entered = true;
-    document.body.classList.add("leaving");
-    setTimeout(function(){ location.href = "home.html"; }, 650);
-  }
-
-  $("enter").addEventListener("click", goHome);
-  $("enter").addEventListener("touchend", function(e){
-    e.preventDefault();
-    goHome();
-  }, { passive: false });
-
-})();
+  if (window.EC_ANIM) EC_ANIM.initIndex();
 </script>
-
-
 
 </body>
 </html>

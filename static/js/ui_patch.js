@@ -5,6 +5,7 @@
 (function () {
   "use strict";
   function $(id) { return document.getElementById(id); }
+  function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
   function on(el, fn) { if (el) el.addEventListener("click", fn); }
   function fire(id) { var b = $(id); if (b) b.click(); }
 
@@ -103,7 +104,7 @@
       row.innerHTML =
         '<div class="save-info">' +
           '<b>自动存档</b>' +
-          '<span>' + (auto.chapter || "?") + ' · ' + (auto.node_id || "") + ' · ' + (auto.time || "") + '</span>' +
+          '<span>' + esc(auto.chapter || "?") + ' · ' + esc(auto.node_id || "") + ' · ' + esc(auto.time || "") + '</span>' +
         '</div>' +
         '<div class="save-acts">' +
           (saveMode === "load" ? '<button class="save-btn" data-act="loadauto">读取</button>' : '') +
@@ -125,7 +126,7 @@
         var row = document.createElement("div");
         row.className = "save-item" + (d ? "" : " empty");
         var info = d
-          ? '<b>存档 ' + s + ' · ' + (d.name || "") + '</b><span>' + (d.chapter || "?") + ' · ' + (d.node_id || "") + ' · ' + (d.time || "") + '</span>'
+          ? '<b>存档 ' + s + ' · ' + esc(d.name || "") + '</b><span>' + esc(d.chapter || "?") + ' · ' + esc(d.node_id || "") + ' · ' + esc(d.time || "") + '</span>'
           : '<b>存档 ' + s + '</b><span class="empty">空</span>';
         var acts = '<div class="save-acts">';
         if (saveMode === "save"){
